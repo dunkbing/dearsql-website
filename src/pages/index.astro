@@ -64,7 +64,8 @@ const currentYear = new Date().getFullYear();
           />
           DearSQL
         </a>
-        <div class="flex items-center gap-6 text-sm">
+        <!-- Desktop nav -->
+        <div class="hidden sm:flex items-center gap-6 text-sm">
           <a
             href="#features"
             class="text-subtext0 hover:text-text transition-colors">Features</a
@@ -92,7 +93,46 @@ const currentYear = new Date().getFullYear();
             Report Bug
           </a>
         </div>
+        <!-- Mobile hamburger -->
+        <button
+          id="menu-toggle"
+          class="sm:hidden text-subtext0 hover:text-text transition-colors"
+          aria-label="Toggle menu"
+        >
+          <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+          </svg>
+          <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
       </nav>
+      <!-- Mobile menu -->
+      <div
+        id="mobile-menu"
+        class="sm:hidden hidden border-t border-surface1 bg-base/95 backdrop-blur-sm"
+      >
+        <div class="max-w-2xl mx-auto px-6 py-4 flex flex-col gap-4 text-sm">
+          <a
+            href="#features"
+            class="text-subtext0 hover:text-text transition-colors py-1"
+          >Features</a>
+          <a
+            href="#pricing"
+            class="text-subtext0 hover:text-text transition-colors py-1"
+          >Pricing</a>
+          <a
+            href="https://github.com/dunkbing/dearsql-website"
+            target="_blank"
+            class="text-subtext0 hover:text-text transition-colors py-1"
+          >GitHub</a>
+          <a
+            href="https://github.com/dunkbing/dearsql-website/issues/new?labels=bug&title=%5BBug%5D+&body=%23%23+Description%0AA+clear+description+of+the+bug.%0A%0A%23%23+Steps+to+Reproduce%0A1.+%0A2.+%0A3.+%0A%0A%23%23+Expected+Behavior%0AWhat+you+expected+to+happen.%0A%0A%23%23+Actual+Behavior%0AWhat+actually+happened.%0A%0A%23%23+Environment%0A-+**OS**%3A+%0A-+**DearSQL+version**%3A+%0A-+**Database**%3A+%0A%0A%23%23+Screenshots%0AIf+applicable%2C+add+screenshots."
+            target="_blank"
+            class="inline-flex items-center gap-1.5 text-subtext0 hover:text-text transition-colors py-1"
+          >Report Bug</a>
+        </div>
+      </div>
     </header>
 
     <main class="max-w-2xl mx-auto px-6">
@@ -149,24 +189,31 @@ const currentYear = new Date().getFullYear();
             Linux (.deb)
           </a>
         </div>
-        <div class="max-w-md mx-auto">
-          <p class="text-subtext0 text-sm mb-3">
-            Or install via PPA (Ubuntu/Debian):
-          </p>
-          <div
-            class="bg-crust rounded-lg p-4 text-left font-mono text-sm border border-surface1"
+        <div class="flex gap-5 justify-center mt-8">
+          <a
+            href="https://instagram.com/dunkbingg"
+            target="_blank"
+            class="text-subtext0 hover:text-text transition-colors"
+            aria-label="Instagram"
           >
-            <p class="text-subtext0">
-              <span class="text-green select-none">$ </span><span
-                class="text-text select-all"
-                >sudo add-apt-repository ppa:dunkbing/dearsql</span>
-            </p>
-            <p class="text-subtext0">
-              <span class="text-green select-none">$ </span><span
-                class="text-text select-all"
-                >sudo apt update && sudo apt install dearsql</span>
-            </p>
-          </div>
+            <span class="block w-5 h-5 bg-current" style="-webkit-mask-image: url('/icons/instagram.svg'); mask-image: url('/icons/instagram.svg'); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;"></span>
+          </a>
+          <a
+            href="https://x.com/dunkbingg"
+            target="_blank"
+            class="text-subtext0 hover:text-text transition-colors"
+            aria-label="X"
+          >
+            <span class="block w-5 h-5 bg-current" style="-webkit-mask-image: url('/icons/x.svg'); mask-image: url('/icons/x.svg'); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;"></span>
+          </a>
+          <a
+            href="https://github.com/dunkbing/dearsql-website"
+            target="_blank"
+            class="text-subtext0 hover:text-text transition-colors"
+            aria-label="GitHub"
+          >
+            <span class="block w-5 h-5 bg-current" style="-webkit-mask-image: url('/icons/github.svg'); mask-image: url('/icons/github.svg'); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;"></span>
+          </a>
         </div>
       </section>
 
@@ -240,6 +287,27 @@ const currentYear = new Date().getFullYear();
                 ?.classList.remove("hidden");
             });
           });
+      </script>
+
+      <script>
+        const toggle = document.getElementById("menu-toggle")!;
+        const menu = document.getElementById("mobile-menu")!;
+        const iconOpen = document.getElementById("menu-icon-open")!;
+        const iconClose = document.getElementById("menu-icon-close")!;
+
+        toggle.addEventListener("click", () => {
+          menu.classList.toggle("hidden");
+          iconOpen.classList.toggle("hidden");
+          iconClose.classList.toggle("hidden");
+        });
+
+        menu.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            menu.classList.add("hidden");
+            iconOpen.classList.remove("hidden");
+            iconClose.classList.add("hidden");
+          });
+        });
       </script>
 
       <!-- Features -->
@@ -433,27 +501,6 @@ const currentYear = new Date().getFullYear();
             class="text-subtext0 hover:text-text transition-colors"
           >
             Contact
-          </a>
-          <a
-            href="https://instagram.com/dunkbingg"
-            target="_blank"
-            class="text-subtext0 hover:text-text transition-colors"
-          >
-            Instagram
-          </a>
-          <a
-            href="https://x.com/dunkbingg"
-            target="_blank"
-            class="text-subtext0 hover:text-text transition-colors"
-          >
-            X
-          </a>
-          <a
-            href="https://github.com/dunkbing/dearsql-website"
-            target="_blank"
-            class="text-subtext0 hover:text-text transition-colors"
-          >
-            GitHub
           </a>
         </div>
       </div>
