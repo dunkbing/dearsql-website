@@ -2,10 +2,10 @@
 set -eu
 
 # Downloads DearSQL and installs it into ~/.local/.
-# Usage: curl -fsSL https://dearsql.db99.dev/install.sh | sh
+# Usage: curl -fsSL https://dearsql.dev/install.sh | sh
 
-MANIFEST_URL="https://dearsql.db99.dev/api/version.json"
-ICON_URL="https://dearsql.db99.dev/appicon.png"
+MANIFEST_URL="https://dearsql.dev/api/version.json"
+ICON_URL="https://dearsql.dev/appicon.png"
 APP_ID="io.gitlab.dunkbing.dearsql"
 
 main() {
