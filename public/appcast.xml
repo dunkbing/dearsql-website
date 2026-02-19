@@ -6,21 +6,21 @@
         <description>Most recent changes with links to updates.</description>
         <language>en</language>
         <item>
-            <title>Version 0.1.7</title>
-            <pubDate>Tue, 18 Feb 2026 00:00:00 +0000</pubDate>
-            <sparkle:version>0.1.7</sparkle:version>
-            <sparkle:shortVersionString>0.1.7</sparkle:shortVersionString>
+            <title>Version 0.1.8</title>
+            <pubDate>Thu, 19 Feb 2026 00:00:00 +0000</pubDate>
+            <sparkle:version>0.1.8</sparkle:version>
+            <sparkle:shortVersionString>0.1.8</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
             <description><![CDATA[
-                <h2>What's New in 0.1.7</h2>
+                <h2>What's New in 0.1.8</h2>
                 <ul>
-                    <li>Initial release with auto-update support</li>
+                    <li>Fix Sparkle updater initialization</li>
                 </ul>
             ]]></description>
             <enclosure
-                url="https://pub-29493441e7d647038e2f777e7cac5cce.r2.dev/DearSQL-0.1.7.dmg"
-                sparkle:edSignature=""
-                length="0"
+                url="https://pub-29493441e7d647038e2f777e7cac5cce.r2.dev/DearSQL-0.1.8.dmg"
+                sparkle:edSignature="y9LICJIokxPmo27a8So7UXGAOl5JDuc9ncRtiprMV6LT+PQi2PTij4F0VTTHCsIEFjzwHxZWB+6DeWBwFxsXAA=="
+                length="9971890"
                 type="application/octet-stream"
             />
         </item>
