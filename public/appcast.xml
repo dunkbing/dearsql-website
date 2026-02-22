@@ -1,28 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<?xml version="1.0" encoding="utf-8" ?>
+<rss
+  version="2.0"
+  xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+>
     <channel>
         <title>DearSQL Updates</title>
         <link>https://dearsql.dev/appcast.xml</link>
         <description>Most recent changes with links to updates.</description>
         <language>en</language>
         <item>
-            <title>Version 0.1.8</title>
-            <pubDate>Thu, 19 Feb 2026 00:00:00 +0000</pubDate>
-            <sparkle:version>0.1.8</sparkle:version>
-            <sparkle:shortVersionString>0.1.8</sparkle:shortVersionString>
+            <title>Version 0.1.9</title>
+            <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+            <sparkle:version>0.1.9</sparkle:version>
+            <sparkle:shortVersionString>0.1.9</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description><![CDATA[
-                <h2>What's New in 0.1.8</h2>
+            <description
+      ><![CDATA[
+                <h2>What's New in 0.1.9</h2>
                 <ul>
-                    <li>Fix Sparkle updater initialization</li>
+                    <li>Add AI chat panel</li>
+                    <li>Add database/schema selection dropdowns to SQL editor tab</li>
+                    <li>Fix refresh crash</li>
                 </ul>
             ]]></description>
             <enclosure
-                url="https://pub-29493441e7d647038e2f777e7cac5cce.r2.dev/DearSQL-0.1.8.dmg"
-                sparkle:edSignature="y9LICJIokxPmo27a8So7UXGAOl5JDuc9ncRtiprMV6LT+PQi2PTij4F0VTTHCsIEFjzwHxZWB+6DeWBwFxsXAA=="
-                length="9971890"
-                type="application/octet-stream"
-            />
+        url="https://pub-29493441e7d647038e2f777e7cac5cce.r2.dev/DearSQL-0.1.9.dmg"
+        sparkle:edSignature="FQwijLCE1b6koqfwKqZiViMR8biepXvmIFf//28krSzDpZqbeDjVo3espPbTms9OIOkLZmP989DdQWOxAhUuDg=="
+        length="10020499"
+        type="application/octet-stream"
+      />
         </item>
     </channel>
 </rss>
