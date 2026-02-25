@@ -9,12 +9,8 @@ export const GET: APIRoute = () => {
       version: VERSION,
       release_notes: "",
       downloads: {
-        "linux-x86_64": {
-          url: `${R2_BASE}/dearsql-${VERSION}-linux-x86_64`,
-          sha256: "",
-        },
-        "linux-aarch64": {
-          url: `${R2_BASE}/dearsql-${VERSION}-linux-aarch64`,
+        "appimage-x86_64": {
+          url: `${R2_BASE}/DearSQL-${VERSION}-x86_64.AppImage`,
           sha256: "",
         },
       },
