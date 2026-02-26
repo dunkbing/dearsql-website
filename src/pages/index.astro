@@ -1,6 +1,18 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
+const R2_BASE = "https://pub-29493441e7d647038e2f777e7cac5cce.r2.dev";
+
+let appImageUrl = `${R2_BASE}/DearSQL-0.1.9-x86_64.AppImage`;
+try {
+  const res = await fetch(`${R2_BASE}/version.json`);
+  if (res.ok) {
+    const data = await res.json();
+    const url = data?.downloads?.["appimage-x86_64"]?.url;
+    if (url) appImageUrl = url;
+  }
+} catch {}
+
 const features = [
   {
     title: "Hand-crafted querying experience",
@@ -173,7 +185,7 @@ const currentYear = new Date().getFullYear();
             macOS (.dmg)
           </a>
           <a
-            href="https://pub-29493441e7d647038e2f777e7cac5cce.r2.dev/dearsql_0.1.7_amd64.deb"
+            href={appImageUrl}
             class="inline-flex items-center justify-center gap-2 bg-surface0 hover:bg-surface1 border border-surface1 text-text px-6 py-3 rounded-lg font-medium transition-colors"
           >
             <svg
@@ -186,7 +198,7 @@ const currentYear = new Date().getFullYear();
                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"
               ></path>
             </svg>
-            Linux (.deb)
+            Linux (AppImage)
           </a>
         </div>
         <div class="flex gap-5 justify-center mt-8">
