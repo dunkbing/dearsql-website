@@ -1,0 +1,114 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const currentYear = new Date().getFullYear();
+
+const changelog = [
+  {
+    version: "0.1.12",
+    date: "2026-02-27",
+    changes: [
+      "Added one-click SQL formatting.",
+      "Added shortcuts: Ctrl+Enter run, Ctrl+/ comment, Ctrl+F/Ctrl+H find and replace.",
+      "Improved autocomplete with type indicators.",
+      "Synced editor colors with app theme.",
+      "Fixed AI chat input affecting the SQL editor.",
+    ],
+  },
+  {
+    version: "0.1.11",
+    date: "2026-02-27",
+    changes: [
+      "Replaced the old input with a custom SQL editor.",
+      "Added tree-sitter SQL syntax highlighting.",
+      "Added autocomplete for SQL keywords and database objects.",
+      "Added line numbers, cursor and selection improvements, keyboard and mouse navigation.",
+      "Added undo/redo and full clipboard support.",
+    ],
+  },
+];
+---
+
+<Layout title="Changelog - DearSQL">
+  <div class="min-h-screen bg-base">
+    <!-- Header -->
+    <header
+      class="fixed top-0 left-0 right-0 z-50 bg-base/80 backdrop-blur-sm border-b border-surface1"
+    >
+      <nav
+        class="max-w-2xl mx-auto px-6 h-14 flex items-center justify-between"
+      >
+        <a href="/" class="flex items-center gap-2 font-semibold text-lg">
+          <img
+            src="/icon.webp"
+            alt="DearSQL"
+            width="28"
+            height="28"
+            class="rounded-md"
+          />
+          DearSQL
+        </a>
+        <div class="flex items-center gap-6 text-sm">
+          <a
+            href="/#features"
+            class="text-subtext0 hover:text-text transition-colors">Features</a
+          >
+          <a href="/changelog" class="text-text font-medium">Changelog</a>
+          <a
+            href="/#pricing"
+            class="text-subtext0 hover:text-text transition-colors">Pricing</a
+          >
+        </div>
+      </nav>
+    </header>
+
+    <main class="max-w-2xl mx-auto px-6">
+      <section class="pt-28 pb-16">
+        <h1 class="text-4xl font-bold text-text mb-2">Changelog</h1>
+        <p class="text-subtext0 mb-12">What's new in DearSQL.</p>
+
+        <div class="space-y-12">
+          {
+            changelog.map((release, i) => (
+              <article class:list={[i > 0 && "border-t border-surface1 pt-12"]}>
+                <div class="flex items-baseline gap-3 mb-4">
+                  <h2 class="text-2xl font-bold text-text">
+                    {release.version}
+                  </h2>
+                  <span class="text-sm text-subtext0">{release.date}</span>
+                </div>
+                <ul class="space-y-2">
+                  {release.changes.map((change) => (
+                    <li class="flex gap-2 text-sm text-subtext0 leading-relaxed">
+                      <span class="text-green mt-0.5 shrink-0">&bull;</span>
+                      {change}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))
+          }
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 px-6 border-t border-surface1">
+      <div
+        class="max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4"
+      >
+        <p class="text-subtext0 text-sm">
+          &copy; {currentYear} DearSQL
+        </p>
+        <div class="flex gap-6 text-sm">
+          <a
+            href="mailto:bing@db99.dev"
+            class="text-subtext0 hover:text-text transition-colors"
+          >
+            Contact
+          </a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</Layout>
