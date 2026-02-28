@@ -26,7 +26,16 @@ const imageURL = new URL(image, Astro.site);
     <link rel="canonical" href={canonicalURL} />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
-    <meta name="theme-color" content="#1e1e2e" />
+    <meta
+      name="theme-color"
+      content="#faf7f0"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#1a1a1a"
+      media="(prefers-color-scheme: dark)"
+    />
     <title>{title}</title>
 
     <!-- Open Graph -->
@@ -42,7 +51,7 @@ const imageURL = new URL(image, Astro.site);
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={imageURL} />
   </head>
-  <body class="antialiased">
+  <body>
     <slot />
   </body>
 </html>

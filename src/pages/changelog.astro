@@ -30,59 +30,47 @@ const changelog = [
 ---
 
 <Layout title="Changelog - DearSQL">
-  <div class="min-h-screen bg-base">
+  <div class="min-h-screen">
     <!-- Header -->
     <header
-      class="fixed top-0 left-0 right-0 z-50 bg-base/80 backdrop-blur-sm border-b border-surface1"
+      class="fixed top-0 left-0 right-0 z-50 bg-base border-b border-surface1"
     >
       <nav
-        class="max-w-2xl mx-auto px-6 h-14 flex items-center justify-between"
+        class="max-w-2xl mx-auto px-4 h-10 flex items-center justify-between text-sm"
       >
-        <a href="/" class="flex items-center gap-2 font-semibold text-lg">
-          <img
-            src="/icon.webp"
-            alt="DearSQL"
-            width="28"
-            height="28"
-            class="rounded-md"
-          />
+        <a
+          href="/"
+          class="no-underline text-text hover:text-text font-bold flex items-center gap-2"
+        >
+          <img src="/icon.webp" alt="" width="18" height="18" />
           DearSQL
         </a>
-        <div class="flex items-center gap-6 text-sm">
-          <a
-            href="/#features"
-            class="text-subtext0 hover:text-text transition-colors">Features</a
-          >
-          <a href="/changelog" class="text-text font-medium">Changelog</a>
-          <a
-            href="/#pricing"
-            class="text-subtext0 hover:text-text transition-colors">Pricing</a
-          >
+        <div class="flex items-center text-subtext0 gap-1">
+          [<a href="/#features">features</a>
+          | <span class="text-text font-bold">changelog</span>
+          | <a href="/#pricing">pricing</a>]
         </div>
       </nav>
     </header>
 
-    <main class="max-w-2xl mx-auto px-6">
-      <section class="pt-28 pb-16">
-        <h1 class="text-4xl font-bold text-text mb-2">Changelog</h1>
-        <p class="text-subtext0 mb-12">What's new in DearSQL.</p>
+    <main class="max-w-2xl mx-auto px-4">
+      <section class="pt-24 pb-12">
+        <h1 class="text-2xl font-bold mb-2">## Changelog</h1>
+        <p class="text-subtext0 text-sm mb-8">What's new in DearSQL.</p>
 
-        <div class="space-y-12">
+        <div class="space-y-8">
           {
             changelog.map((release, i) => (
-              <article class:list={[i > 0 && "border-t border-surface1 pt-12"]}>
-                <div class="flex items-baseline gap-3 mb-4">
-                  <h2 class="text-2xl font-bold text-text">
-                    {release.version}
-                  </h2>
+              <article
+                class:list={[i > 0 && "border-t border-surface1 pt-8"]}
+              >
+                <div class="flex items-baseline gap-3 mb-3">
+                  <h2 class="font-bold">v{release.version}</h2>
                   <span class="text-sm text-subtext0">{release.date}</span>
                 </div>
-                <ul class="space-y-2">
+                <ul class="space-y-1 text-sm">
                   {release.changes.map((change) => (
-                    <li class="flex gap-2 text-sm text-subtext0 leading-relaxed">
-                      <span class="text-green mt-0.5 shrink-0">&bull;</span>
-                      {change}
-                    </li>
+                    <li class="text-subtext0">- {change}</li>
                   ))}
                 </ul>
               </article>
@@ -93,21 +81,12 @@ const changelog = [
     </main>
 
     <!-- Footer -->
-    <footer class="py-8 px-6 border-t border-surface1">
+    <footer class="py-6 px-4 border-t border-surface1">
       <div
-        class="max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4"
+        class="max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-sm text-subtext0"
       >
-        <p class="text-subtext0 text-sm">
-          &copy; {currentYear} DearSQL
-        </p>
-        <div class="flex gap-6 text-sm">
-          <a
-            href="mailto:bing@db99.dev"
-            class="text-subtext0 hover:text-text transition-colors"
-          >
-            Contact
-          </a>
-        </div>
+        <p>&copy; {currentYear} DearSQL</p>
+        <a href="mailto:bing@db99.dev">contact</a>
       </div>
     </footer>
   </div>

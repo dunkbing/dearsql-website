@@ -1,23 +1,45 @@
 @import "tailwindcss";
 
 :root {
-  --base: #141414;
-  --mantle: #0f0f0f;
-  --crust: #0a0a0a;
-  --surface0: #1f1f1f;
-  --surface1: #262626;
-  --surface2: #333333;
-  --overlay0: #404040;
-  --overlay1: #595959;
-  --overlay2: #737373;
-  --text: #ffffff;
-  --subtext0: #bfbfbf;
-  --subtext1: #e6e6e6;
-  --blue: #007aff;
-  --sky: #66b8ff;
-  --green: #a6e6ab;
-  --peach: #fab387;
-  --mauve: #cba6f7;
+  --base: #faf7f0;
+  --mantle: #f4f0e6;
+  --crust: #eee8da;
+  --surface0: #f0ece2;
+  --surface1: #b8b098;
+  --surface2: #9a9280;
+  --overlay0: #7a7468;
+  --overlay1: #5c5848;
+  --overlay2: #3e3a30;
+  --text: #2d2a25;
+  --subtext0: #6b6455;
+  --subtext1: #4a4538;
+  --blue: #0000ee;
+  --sky: #0055aa;
+  --green: #006400;
+  --peach: #cc4400;
+  --mauve: #551a8b;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --base: #1a1a1a;
+    --mantle: #151515;
+    --crust: #101010;
+    --surface0: #252525;
+    --surface1: #3a3a3a;
+    --surface2: #505050;
+    --overlay0: #666666;
+    --overlay1: #808080;
+    --overlay2: #9a9a9a;
+    --text: #d4d4d4;
+    --subtext0: #999999;
+    --subtext1: #bbbbbb;
+    --blue: #6699ff;
+    --sky: #88bbff;
+    --green: #55bb55;
+    --peach: #ee8833;
+    --mauve: #bb88ff;
+  }
 }
 
 @theme inline {
@@ -40,14 +62,21 @@
   --color-mauve: var(--mauve);
 }
 
-body {
-  background: var(--base);
-  color: var(--text);
-  font-family:
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    sans-serif;
+@layer base {
+  body {
+    background: var(--base);
+    color: var(--text);
+    font-family: "Courier New", Courier, "Liberation Mono", monospace;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  a {
+    color: var(--blue);
+    text-decoration: underline;
+  }
+
+  a:hover {
+    color: var(--peach);
+  }
 }
