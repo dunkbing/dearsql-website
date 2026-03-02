@@ -54,7 +54,7 @@ const features = [
 
 const databases = [
   { name: "SQLite", icon: "/icons/sqlite.svg" },
-  { name: "PostgreSQL", icon: "/icons/postgresql.svg" },
+  { name: "Postgres", icon: "/icons/postgresql.svg" },
   { name: "MySQL", icon: "/icons/mysql.svg" },
   { name: "MariaDB", icon: "/icons/mariadb.svg" },
   { name: "Redis", icon: "/icons/redis.svg" },
@@ -85,12 +85,11 @@ const currentYear = new Date().getFullYear();
           [<a href="#features">features</a>
           | <a href="/changelog">changelog</a>
           | <a href="#pricing">pricing</a>
-          | <a
-            href="https://github.com/dunkbing/dearsql-website"
-            target="_blank">github</a
+          | <a href="https://github.com/dunkbing/dearsql" target="_blank"
+            >github</a
           >
           | <a
-            href="https://github.com/dunkbing/dearsql-website/issues/new?labels=bug&title=%5BBug%5D+"
+            href="https://github.com/dunkbing/dearsql/issues/new?labels=bug&title=%5BBug%5D+"
             target="_blank">bugs</a
           >]
         </div>
@@ -113,12 +112,12 @@ const currentYear = new Date().getFullYear();
           <a href="/changelog" class="py-1">changelog</a>
           <a href="#pricing" class="py-1">pricing</a>
           <a
-            href="https://github.com/dunkbing/dearsql-website"
+            href="https://github.com/dunkbing/dearsql"
             target="_blank"
             class="py-1">github</a
           >
           <a
-            href="https://github.com/dunkbing/dearsql-website/issues/new?labels=bug&title=%5BBug%5D+"
+            href="https://github.com/dunkbing/dearsql/issues/new?labels=bug&title=%5BBug%5D+"
             target="_blank"
             class="py-1">report a bug</a
           >
@@ -133,18 +132,19 @@ const currentYear = new Date().getFullYear();
           &gt; status: currently in development
         </p>
         <h1 class="text-2xl sm:text-3xl font-bold mb-4">
-          A simple, powerful<br />database manager
+          A simple<br />database client
         </h1>
-        <p class="text-subtext0 max-w-lg mx-auto mb-4">
-          Fast, native, and designed for developers who care about their tools.
+        <p class="text-sm mb-2">
+          <span class="line-through text-subtext0">AI-powered</span>
+          <span class="text-peach font-bold">ImGui-powered</span>
         </p>
-        <p class="text-subtext0 text-sm mb-8">
-          Free. macOS &amp; Linux. Coming soon for Windows.
+        <p class="text-subtext0 max-w-lg mx-auto mb-4">
+          Fast, native, no bloat, no electron, no webview, no java.
         </p>
 
         <!-- Downloads -->
         <div
-          class="border border-surface1 p-4 text-left max-w-sm mx-auto mb-8 text-sm"
+          class="border border-surface1 p-4 text-left max-w-sm mx-auto text-sm"
         >
           <p class="font-bold mb-2">&gt; Downloads</p>
           <a href={macDmgUrl} class="block py-0.5">
@@ -161,16 +161,8 @@ const currentYear = new Date().getFullYear();
               )
             }
           </a>
-        </div>
-
-        <!-- Social -->
-        <div class="flex gap-4 justify-center text-sm text-subtext0">
-          [<a href="https://www.threads.net/@dunkbingg" target="_blank"
-            >threads</a
-          >] [<a href="https://x.com/dunkbingg" target="_blank">x</a>] [<a
-            href="https://github.com/dunkbing/dearsql-website"
-            target="_blank">github</a
-          >]
+          <span class="block py-0.5 text-subtext0">* Windows — coming soon</span
+          >
         </div>
       </section>
 
@@ -288,17 +280,14 @@ const currentYear = new Date().getFullYear();
       <section id="databases" class="py-16 border-t border-surface1">
         <h2 class="text-xl font-bold mb-2">## Supported Databases</h2>
         <p class="text-subtext0 text-sm mb-8">
-          Connect to SQLite, PostgreSQL, MySQL, MariaDB, Redis, and MongoDB from a single interface.
+          Connect to SQLite, PostgreSQL, MySQL, MariaDB, Redis, and MongoDB from
+          a single interface.
         </p>
         <div class="grid grid-cols-3 sm:grid-cols-6 gap-3">
           {
             databases.map((db) => (
               <div class="text-center border border-surface1 p-4">
-                <img
-                  src={db.icon}
-                  alt={db.name}
-                  class="w-8 h-8 mx-auto mb-2"
-                />
+                <img src={db.icon} alt={db.name} class="w-8 h-8 mx-auto mb-2" />
                 <span class="text-sm">{db.name}</span>
               </div>
             ))
@@ -336,6 +325,7 @@ const currentYear = new Date().getFullYear();
               <li>[+] Up to 3 devices</li>
               <li>[+] All future updates</li>
               <li>[+] ER diagrams</li>
+              <li>[+] Support development</li>
             </ul>
           </div>
         </div>
@@ -345,10 +335,17 @@ const currentYear = new Date().getFullYear();
     <!-- Footer -->
     <footer class="py-6 px-4 border-t border-surface1">
       <div
-        class="max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-sm text-subtext0"
+        class="max-w-2xl mx-auto flex items-center justify-between text-sm text-subtext0"
       >
         <p>&copy; {currentYear} DearSQL</p>
-        <a href="mailto:bing@db99.dev">contact</a>
+        <div class="flex gap-3">
+          [<a href="https://www.threads.net/@dunkbingg" target="_blank"
+            >threads</a
+          >] [<a href="https://x.com/dunkbingg" target="_blank">x</a>] [<a
+            href="https://github.com/dunkbing/dearsql"
+            target="_blank">github</a
+          >] [<a href="mailto:bing@db99.dev">email</a>]
+        </div>
       </div>
     </footer>
   </div>
