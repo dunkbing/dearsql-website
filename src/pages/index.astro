@@ -35,21 +35,14 @@ const [macSize, linuxSize] = await Promise.all([
 ]);
 
 const features = [
-  {
-    title: "Hand-crafted querying experience",
-    description:
-      "Syntax highlighting, autocomplete, and query history. Write SQL with less friction and more confidence.",
-  },
-  {
-    title: "Effortless table editing",
-    description:
-      "Browse, filter, and edit table data inline. Changes are staged and generate proper SQL before committing.",
-  },
-  {
-    title: "Built for performance",
-    description:
-      "Native C++ with Metal on macOS and OpenGL on Linux. No Electron, no bloat. Just fast, responsive UI.",
-  },
+  "Syntax highlighting, autocomplete, and query history.",
+  "Browse and edit table data inline. Changes generate proper SQL before committing.",
+  // "Connect via SSH tunnel to databases behind a bastion host.",
+  // "TLS/SSL support for all backends.",
+  "SQLite, PostgreSQL, MySQL, MongoDB, and Redis in one app.",
+  "Saved connections with encrypted credentials.",
+  "Schema browser — tables, views, indexes, and more.",
+  "Native C++ with Metal on macOS and OpenGL on Linux.",
 ];
 
 const databases = [
@@ -84,7 +77,7 @@ const currentYear = new Date().getFullYear();
         <div class="hidden sm:flex items-center text-subtext0 gap-1">
           [<a href="#features">features</a>
           | <a href="/changelog">changelog</a>
-          | <a href="#pricing">pricing</a>
+          {/* | <a href="#pricing">pricing</a> */}
           | <a href="https://github.com/dunkbing/dearsql" target="_blank"
             >github</a
           >
@@ -110,7 +103,7 @@ const currentYear = new Date().getFullYear();
         <div class="max-w-2xl mx-auto px-4 py-3 flex flex-col gap-2 text-sm">
           <a href="#features" class="py-1">features</a>
           <a href="/changelog" class="py-1">changelog</a>
-          <a href="#pricing" class="py-1">pricing</a>
+          {/* <a href="#pricing" class="py-1">pricing</a> */}
           <a
             href="https://github.com/dunkbing/dearsql"
             target="_blank"
@@ -139,7 +132,7 @@ const currentYear = new Date().getFullYear();
           <span class="text-peach font-bold">ImGui-powered</span>
         </p>
         <p class="text-subtext0 max-w-lg mx-auto mb-4">
-          Fast, native, no bloat, no electron, no webview, no java.
+          Fast, native, no bloat, no electron, no webview, no java. <a href="https://github.com/dunkbing/dearsql" target="_blank" class="text-green inline-flex items-center gap-1"><span class="inline-block w-3.5 h-3.5 bg-current" style="mask-image: url(/icons/github.svg); mask-size: contain; mask-repeat: no-repeat; -webkit-mask-image: url(/icons/github.svg); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat;"></span>Open source.</a>
         </p>
 
         <!-- Downloads -->
@@ -260,20 +253,9 @@ const currentYear = new Date().getFullYear();
       <!-- Features -->
       <section id="features" class="py-16 border-t border-surface1">
         <h2 class="text-xl font-bold mb-2">## Features</h2>
-        <p class="text-subtext0 text-sm mb-8">
-          No unnecessary complexity. Just what matters for working with
-          databases.
-        </p>
-        <div class="space-y-6 text-sm">
-          {
-            features.map((f) => (
-              <div>
-                <h3 class="font-bold">* {f.title}</h3>
-                <p class="text-subtext0 ml-2">{f.description}</p>
-              </div>
-            ))
-          }
-        </div>
+        <ul class="space-y-2 text-sm text-subtext0">
+          {features.map((f) => <li>- {f}</li>)}
+        </ul>
       </section>
 
       <!-- Databases -->
@@ -296,7 +278,7 @@ const currentYear = new Date().getFullYear();
       </section>
 
       <!-- Pricing -->
-      <section id="pricing" class="py-16 border-t border-surface1">
+      <section id="pricing" class="hidden py-16 border-t border-surface1">
         <h2 class="text-xl font-bold mb-2">## Pricing</h2>
         <p class="text-subtext0 text-sm mb-8">
           One-time purchase. No subscriptions, no recurring fees.
