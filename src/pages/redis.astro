@@ -7,17 +7,17 @@ const features = [
   {
     title: "Command Editor",
     desc: "Execute Redis commands with syntax highlighting and autocomplete. Multi-command support — run several commands at once and see individual results.",
-    screenshot: "/screenshots/redis-cli.webp",
+    screenshot: "/redis/commands.webp",
   },
   {
     title: "Key Browser",
     desc: "Browse all keys with type, value, TTL, and memory size columns. Inline editing — click to modify values, TTL, or key names directly in the table.",
-    screenshot: "/screenshots/redis-keys.webp",
+    screenshot: "/redis/keys.webp",
   },
   {
     title: "Pub/Sub Monitor",
     desc: "Subscribe to channels with glob patterns. Real-time message table with timestamps and color-coded channels. Publish messages from the same tab.",
-    screenshot: "/screenshots/redis-pubsub.webp",
+    screenshot: "/redis/pub_sub.webp",
   },
 ];
 ---
@@ -125,9 +125,7 @@ const features = [
             <h2 class="text-xl font-bold mb-2">## {feature.title}</h2>
             <p class="text-subtext0 text-sm mb-8">{feature.desc}</p>
             <div class="border border-surface1 overflow-hidden bg-surface0">
-              <div class="flex items-center justify-center py-24 text-subtext0 text-sm">
-                [screenshot: {feature.screenshot}]
-              </div>
+              <img src={feature.screenshot} alt={feature.title} class="w-full" loading="lazy" />
             </div>
           </section>
         ))
