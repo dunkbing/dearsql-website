@@ -2,9 +2,9 @@
 import Layout from "../layouts/Layout.astro";
 
 const R2_BASE = "https://pub-29493441e7d647038e2f777e7cac5cce.r2.dev";
-const macDmgUrl = `${R2_BASE}/DearSQL-0.2.0.dmg`;
+const macDmgUrl = `${R2_BASE}/DearSQL-0.2.1.dmg`;
 
-let appImageUrl = `${R2_BASE}/DearSQL-0.1.9-x86_64.AppImage`;
+let appImageUrl = `${R2_BASE}/DearSQL-0.2.1-x86_64.AppImage`;
 try {
   const res = await fetch(`${R2_BASE}/version.json`);
   if (res.ok) {
@@ -132,7 +132,15 @@ const currentYear = new Date().getFullYear();
           <span class="text-peach font-bold">ImGui-powered</span>
         </p>
         <p class="text-subtext0 max-w-lg mx-auto mb-4">
-          Fast, native, no bloat, no electron, no webview, no java. <a href="https://github.com/dunkbing/dearsql" target="_blank" class="text-green inline-flex items-center gap-1"><span class="inline-block w-3.5 h-3.5 bg-current" style="mask-image: url(/icons/github.svg); mask-size: contain; mask-repeat: no-repeat; -webkit-mask-image: url(/icons/github.svg); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat;"></span>Open source.</a>
+          Fast, native, no bloat, no electron, no webview, no java. <a
+            href="https://github.com/dunkbing/dearsql"
+            target="_blank"
+            class="text-green inline-flex items-center gap-1"
+            ><span
+              class="inline-block w-3.5 h-3.5 bg-current"
+              style="mask-image: url(/icons/github.svg); mask-size: contain; mask-repeat: no-repeat; -webkit-mask-image: url(/icons/github.svg); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat;"
+            ></span>Open source.</a
+          >
         </p>
 
         <!-- Downloads -->
