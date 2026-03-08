@@ -10,6 +10,28 @@
         <description>Most recent changes with links to updates.</description>
         <language>en</language>
         <item>
+            <title>Version 0.2.1</title>
+            <pubDate>Sun, 08 Mar 2026 00:00:00 +0000</pubDate>
+            <sparkle:version>0.2.1</sparkle:version>
+            <sparkle:shortVersionString>0.2.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <description
+      ><![CDATA[
+                <h2>What's New in 0.2.1</h2>
+                <ul>
+                    <li>Add redis commands runner, pub/sub</li>
+                    <li>Add mssql</li>
+                    <li>Bug fixes and improvements</li>
+                </ul>
+            ]]></description>
+            <enclosure
+        url="https://pub-29493441e7d647038e2f777e7cac5cce.r2.dev/DearSQL-0.2.1.dmg"
+        sparkle:edSignature="ZLSghE/Ajl7uo1YPR1eGwJ/XEh630qkdcC6aSnI2TRPGAMwC8Jplx4eoep0Bv4R9XLQ3cVdA3uW5yCBLQvH2CA=="
+        length="11404707"
+        type="application/octet-stream"
+      />
+        </item>
+        <item>
             <title>Version 0.2.0</title>
             <pubDate>Mon, 02 Mar 2026 00:00:00 +0000</pubDate>
             <sparkle:version>0.2.0</sparkle:version>
