@@ -5,6 +5,15 @@ const currentYear = new Date().getFullYear();
 
 const changelog = [
   {
+    version: "0.2.1",
+    date: "2026-03-08",
+    changes: [
+      "Added Redis commands runner and pub/sub.",
+      "Added MSSQL support.",
+      "Bug fixes and improvements.",
+    ],
+  },
+  {
     version: "0.2.0",
     date: "2026-03-02",
     changes: [
@@ -71,9 +80,7 @@ const changelog = [
         <div class="space-y-8">
           {
             changelog.map((release, i) => (
-              <article
-                class:list={[i > 0 && "border-t border-surface1 pt-8"]}
-              >
+              <article class:list={[i > 0 && "border-t border-surface1 pt-8"]}>
                 <div class="flex items-baseline gap-3 mb-3">
                   <h2 class="font-bold">v{release.version}</h2>
                   <span class="text-sm text-subtext0">{release.date}</span>
