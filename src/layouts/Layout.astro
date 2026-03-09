@@ -53,5 +53,137 @@ const imageURL = new URL(image, Astro.site);
   </head>
   <body>
     <slot />
+
+    <!-- Bug report modal -->
+    <div
+      id="bug-modal"
+      class="fixed inset-0 z-100 items-center justify-center"
+      style="display: none"
+    >
+      <div id="bug-overlay" class="absolute inset-0 bg-black/50"></div>
+      <div
+        class="relative border border-surface1 bg-base p-6 w-full max-w-md mx-4 text-sm"
+      >
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="font-bold">&gt; report bug</h2>
+          <button id="bug-close" class="text-subtext0 hover:text-text"
+            >[close]</button
+          >
+        </div>
+        <form id="bug-form" class="space-y-3">
+          <div>
+            <label class="block text-subtext0 mb-1">name</label>
+            <input
+              type="text"
+              name="name"
+              placeholder="optional"
+              class="w-full bg-surface0 border border-surface1 px-3 py-1.5 text-text placeholder:text-overlay0 focus:outline-none focus:border-overlay1"
+            />
+          </div>
+          <div>
+            <label class="block text-subtext0 mb-1">email</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="optional"
+              class="w-full bg-surface0 border border-surface1 px-3 py-1.5 text-text placeholder:text-overlay0 focus:outline-none focus:border-overlay1"
+            />
+          </div>
+          <div>
+            <label class="block text-subtext0 mb-1">description *</label>
+            <textarea
+              name="message"
+              required
+              rows="4"
+              placeholder="what happened?"
+              class="w-full bg-surface0 border border-surface1 px-3 py-1.5 text-text placeholder:text-overlay0 focus:outline-none focus:border-overlay1 resize-none"
+            ></textarea>
+          </div>
+          <div class="flex items-center justify-between pt-1">
+            <span id="bug-status" class="text-subtext0"></span>
+            <div class="flex gap-2">
+              <button
+                type="button"
+                id="bug-cancel"
+                class="px-3 py-1 border border-surface1 text-subtext0 hover:text-text hover:bg-surface0"
+                >[cancel]</button
+              >
+              <button
+                type="submit"
+                class="px-3 py-1 border border-surface1 text-text hover:bg-surface0 font-bold"
+                >[send]</button
+              >
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      import * as Sentry from "@sentry/browser";
+
+      Sentry.init({
+        dsn: import.meta.env.PUBLIC_SENTRY_DSN,
+        tunnel: "/api/sentry-tunnel",
+      });
+
+      const modal = document.getElementById("bug-modal")!;
+      const form = document.getElementById("bug-form") as HTMLFormElement;
+      const status = document.getElementById("bug-status")!;
+
+      function openModal() {
+        modal.style.display = "flex";
+        form.reset();
+        status.textContent = "";
+      }
+
+      function closeModal() {
+        modal.style.display = "none";
+      }
+
+      document.querySelectorAll("[data-sentry-feedback]").forEach((el) => {
+        el.addEventListener("click", (e) => {
+          e.preventDefault();
+          openModal();
+        });
+      });
+
+      document
+        .getElementById("bug-close")!
+        .addEventListener("click", closeModal);
+      document
+        .getElementById("bug-cancel")!
+        .addEventListener("click", closeModal);
+      document
+        .getElementById("bug-overlay")!
+        .addEventListener("click", closeModal);
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.style.display !== "none") {
+          closeModal();
+        }
+      });
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const data = new FormData(form);
+        const message = (data.get("message") as string)?.trim();
+        if (!message) return;
+
+        status.textContent = "sending...";
+
+        try {
+          Sentry.captureFeedback({
+            name: (data.get("name") as string) || undefined,
+            email: (data.get("email") as string) || undefined,
+            message,
+          });
+          status.textContent = "sent!";
+          setTimeout(closeModal, 1000);
+        } catch {
+          status.textContent = "failed to send";
+        }
+      });
+    </script>
   </body>
 </html>
