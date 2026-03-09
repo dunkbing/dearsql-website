@@ -99,6 +99,23 @@ const imageURL = new URL(image, Astro.site);
               class="w-full bg-surface0 border border-surface1 px-3 py-1.5 text-text placeholder:text-overlay0 focus:outline-none focus:border-overlay1 resize-none"
             ></textarea>
           </div>
+          <div>
+            <label class="block text-subtext0 mb-1">screenshots</label>
+            <label
+              id="bug-file-label"
+              class="flex items-center gap-2 px-3 py-1.5 border border-dashed border-surface1 text-subtext0 hover:text-text hover:border-overlay0 cursor-pointer"
+            >
+              <span>[+ attach images]</span>
+              <input
+                type="file"
+                id="bug-file-input"
+                accept="image/*"
+                multiple
+                class="hidden"
+              />
+            </label>
+            <div id="bug-previews" class="flex flex-wrap gap-2 mt-2"></div>
+          </div>
           <div class="flex items-center justify-between pt-1">
             <span id="bug-status" class="text-subtext0"></span>
             <div class="flex gap-2">
@@ -121,6 +138,7 @@ const imageURL = new URL(image, Astro.site);
 
     <script>
       import * as Sentry from "@sentry/browser";
+      import type { Attachment } from "@sentry/core";
 
       Sentry.init({
         dsn: import.meta.env.PUBLIC_SENTRY_DSN,
@@ -130,10 +148,58 @@ const imageURL = new URL(image, Astro.site);
       const modal = document.getElementById("bug-modal")!;
       const form = document.getElementById("bug-form") as HTMLFormElement;
       const status = document.getElementById("bug-status")!;
+      const fileInput = document.getElementById(
+        "bug-file-input",
+      ) as HTMLInputElement;
+      const previewsContainer = document.getElementById("bug-previews")!;
+
+      let selectedFiles: File[] = [];
+
+      fileInput.addEventListener("change", () => {
+        const files = fileInput.files;
+        if (!files) return;
+        for (const file of files) {
+          selectedFiles.push(file);
+          addPreview(file, selectedFiles.length - 1);
+        }
+        fileInput.value = "";
+      });
+
+      function addPreview(file: File, index: number) {
+        const wrapper = document.createElement("div");
+        wrapper.className = "relative inline-block";
+        wrapper.dataset.index = String(index);
+
+        const img = document.createElement("img");
+        img.className = "h-16 border border-surface1";
+        img.src = URL.createObjectURL(file);
+        img.title = file.name;
+
+        const removeBtn = document.createElement("button");
+        removeBtn.type = "button";
+        removeBtn.className =
+          "absolute -top-1.5 -right-1.5 bg-base border border-surface1 text-subtext0 hover:text-text px-1 text-xs leading-none";
+        removeBtn.textContent = "x";
+        removeBtn.addEventListener("click", () => {
+          selectedFiles[index] = null!;
+          wrapper.remove();
+        });
+
+        wrapper.appendChild(img);
+        wrapper.appendChild(removeBtn);
+        previewsContainer.appendChild(wrapper);
+      }
+
+      function clearFiles() {
+        selectedFiles = [];
+        previewsContainer.innerHTML = "";
+        fileInput.value = "";
+      }
 
       function openModal() {
         modal.style.display = "flex";
         form.reset();
+        clearFiles();
         status.textContent = "";
       }
 
@@ -173,11 +239,27 @@ const imageURL = new URL(image, Astro.site);
         status.textContent = "sending...";
 
         try {
-          Sentry.captureFeedback({
-            name: (data.get("name") as string) || undefined,
-            email: (data.get("email") as string) || undefined,
-            message,
-          });
+          const files = selectedFiles.filter(Boolean);
+          let attachments: Attachment[] | undefined;
+
+          if (files.length > 0) {
+            attachments = await Promise.all(
+              files.map(async (file) => ({
+                data: new Uint8Array(await file.arrayBuffer()),
+                filename: file.name,
+                contentType: file.type,
+              })),
+            );
+          }
+
+          Sentry.captureFeedback(
+            {
+              name: (data.get("name") as string) || undefined,
+              email: (data.get("email") as string) || undefined,
+              message,
+            },
+            { attachments },
+          );
           status.textContent = "sent!";
           setTimeout(closeModal, 1000);
         } catch {

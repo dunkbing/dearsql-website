@@ -5,12 +5,19 @@ const SENTRY_HOST = "o1146325.ingest.us.sentry.io";
 export const prerender = false;
 
 export const POST: APIRoute = async ({ request }) => {
-  const body = await request.text();
-  const header = body.split("\n")[0];
+  const buf = await request.arrayBuffer();
+  const bytes = new Uint8Array(buf);
 
+  // extract the first line (header JSON) to validate the DSN
+  const newline = bytes.indexOf(10); // '\n'
+  if (newline === -1) {
+    return new Response("Invalid envelope", { status: 400 });
+  }
+
+  const headerLine = new TextDecoder().decode(bytes.subarray(0, newline));
   let dsn: string | undefined;
   try {
-    dsn = JSON.parse(header)?.dsn;
+    dsn = JSON.parse(headerLine)?.dsn;
   } catch {
     return new Response("Invalid envelope", { status: 400 });
   }
@@ -24,7 +31,7 @@ export const POST: APIRoute = async ({ request }) => {
 
   const res = await fetch(url, {
     method: "POST",
-    body,
+    body: buf,
     headers: { "Content-Type": "application/x-sentry-envelope" },
   });
 
