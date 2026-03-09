@@ -1,51 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { releases } from "../data/releases";
 
 const currentYear = new Date().getFullYear();
-
-const changelog = [
-  {
-    version: "0.2.1",
-    date: "2026-03-08",
-    changes: [
-      "Added Redis commands runner and pub/sub.",
-      "Added MSSQL support.",
-      "Bug fixes and improvements.",
-    ],
-  },
-  {
-    version: "0.2.0",
-    date: "2026-03-02",
-    changes: [
-      "Added native alert dialog.",
-      "Fixed MySQL crash.",
-      "Fixed tab flash and improved light theme contrast.",
-      "Disabled form fields while connecting.",
-    ],
-  },
-  {
-    version: "0.1.12",
-    date: "2026-02-27",
-    changes: [
-      "Added one-click SQL formatting.",
-      "Added shortcuts: Ctrl+Enter run, Ctrl+/ comment, Ctrl+F/Ctrl+H find and replace.",
-      "Improved autocomplete with type indicators.",
-      "Synced editor colors with app theme.",
-      "Fixed AI chat input affecting the SQL editor.",
-    ],
-  },
-  {
-    version: "0.1.11",
-    date: "2026-02-27",
-    changes: [
-      "Replaced the old input with a custom SQL editor.",
-      "Added tree-sitter SQL syntax highlighting.",
-      "Added autocomplete for SQL keywords and database objects.",
-      "Added line numbers, cursor and selection improvements, keyboard and mouse navigation.",
-      "Added undo/redo and full clipboard support.",
-    ],
-  },
-];
 ---
 
 <Layout title="Changelog - DearSQL">
@@ -79,7 +36,7 @@ const changelog = [
 
         <div class="space-y-8">
           {
-            changelog.map((release, i) => (
+            releases.map((release, i) => (
               <article class:list={[i > 0 && "border-t border-surface1 pt-8"]}>
                 <div class="flex items-baseline gap-3 mb-3">
                   <h2 class="font-bold">v{release.version}</h2>
