@@ -1,8 +1,8 @@
 ---
+import { R2_BASE } from "../data/releases";
 import Layout from "../layouts/Layout.astro";
 
-const R2_BASE = "https://pub-29493441e7d647038e2f777e7cac5cce.r2.dev";
-const macDmgUrl = `${R2_BASE}/DearSQL-0.2.1.dmg`;
+const macDmgUrl = `${R2_BASE}/DearSQL-0.2.2.dmg`;
 
 let appImageUrl = `${R2_BASE}/DearSQL-0.2.1-x86_64.AppImage`;
 try {
@@ -306,7 +306,9 @@ const currentYear = new Date().getFullYear();
         <div class="flex gap-3">
           [<a href="https://www.threads.net/@dunkbingg" target="_blank"
             >threads</a
-          >] [<a href="https://x.com/dunkbingg" target="_blank">x</a>] [<a href="mailto:bing@db99.dev">email</a>]
+          >] [<a href="https://x.com/dunkbingg" target="_blank">x</a>] [<a
+            href="mailto:bing@db99.dev">email</a
+          >]
         </div>
       </div>
     </footer>

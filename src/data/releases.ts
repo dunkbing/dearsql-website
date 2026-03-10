@@ -1,4 +1,4 @@
-const R2_BASE = "https://pub-29493441e7d647038e2f777e7cac5cce.r2.dev";
+export const R2_BASE = "https://pub-b590ba39b15741d1bd6a1b4bffc11e87.r2.dev";
 
 export interface Release {
   version: string;
@@ -12,6 +12,23 @@ export interface Release {
 }
 
 export const releases: Release[] = [
+  {
+    version: "0.2.2",
+    date: "2026-03-10",
+    changes: [
+      "Added Redshift support.",
+      "Added MongoDB query editor and AI assistant.",
+      "Added connection rename option with native input dialog.",
+      "Added MSSQL database selector in SQL editor.",
+      "Added system database visibility option.",
+      "Fixed PostgreSQL deferred schema loading.",
+    ],
+    sparkle: {
+      edSignature:
+        "OExRLjM9cCWiNa26CS8Ul6au4T9hfEu1AST3q+YvXdKVMZ5xSupqUSx62XSypWxa62lyb3z7EL20l4qUA1wdCw==",
+      length: 11474389,
+    },
+  },
   {
     version: "0.2.1",
     date: "2026-03-08",
