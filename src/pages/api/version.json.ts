@@ -1,7 +1,7 @@
 import type { APIRoute } from "astro";
+import { R2_BASE } from "../../data/releases";
 
-const METADATA_URL =
-  "https://pub-29493441e7d647038e2f777e7cac5cce.r2.dev/version.json";
+const METADATA_URL = `${R2_BASE}/version.json`;
 
 export const GET: APIRoute = async () => {
   try {
