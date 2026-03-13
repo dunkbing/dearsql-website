@@ -13,6 +13,22 @@ export interface Release {
 
 export const releases: Release[] = [
   {
+    version: "0.2.3",
+    date: "2026-03-13",
+    changes: [
+      "Added Oracle database support.",
+      "Added table export to JSON and CSV.",
+      "Added editor font size setting.",
+      "Added Oracle client install status and improved macOS client install flow.",
+      "Fixed Linux build issues and other stability improvements.",
+    ],
+    sparkle: {
+      edSignature:
+        "Hb0zpz6CN1yPvJrveUzeb43iOSsHEtg73ILtPcJntWS963lRYnN9YdugYvMHODwu82YAzR3+zkkDIDk96xc9Bg==",
+      length: 11774071,
+    },
+  },
+  {
     version: "0.2.2",
     date: "2026-03-10",
     changes: [

@@ -2,9 +2,9 @@
 import { R2_BASE } from "../data/releases";
 import Layout from "../layouts/Layout.astro";
 
-const macDmgUrl = `${R2_BASE}/DearSQL-0.2.2.dmg`;
+const macDmgUrl = `${R2_BASE}/DearSQL-0.2.3.dmg`;
 
-let appImageUrl = `${R2_BASE}/DearSQL-0.2.1-x86_64.AppImage`;
+let appImageUrl = `${R2_BASE}/DearSQL-0.2.3-x86_64.AppImage`;
 try {
   const res = await fetch(`${R2_BASE}/version.json`);
   if (res.ok) {
