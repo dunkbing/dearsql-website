@@ -39,10 +39,10 @@ const features = [
   "Browse and edit table data inline. Changes generate proper SQL before committing.",
   // "Connect via SSH tunnel to databases behind a bastion host.",
   // "TLS/SSL support for all backends.",
-  "SQLite, PostgreSQL, MySQL, MongoDB, and Redis in one app.",
+  "SQLite, PostgreSQL, MySQL, MongoDB, Redis, and Oracle in one app.",
   "Saved connections with encrypted credentials.",
   "Schema browser — tables, views, indexes, and more.",
-  "Native C++ with Metal on macOS and OpenGL on Linux.",
+  "Native C++ with Metal on macOS, OpenGL on Linux, and DirectX on Windows.",
 ];
 
 const databases = [
@@ -52,6 +52,7 @@ const databases = [
   { name: "MariaDB", icon: "/icons/mariadb.svg" },
   { name: "Redis", icon: "/icons/redis.svg" },
   { name: "MongoDB", icon: "/icons/mongodb.svg" },
+  { name: "Oracle", icon: "/icons/oracle.svg" },
 ];
 
 const currentYear = new Date().getFullYear();
@@ -245,10 +246,10 @@ const currentYear = new Date().getFullYear();
       <section id="databases" class="py-16 border-t border-surface1">
         <h2 class="text-xl font-bold mb-2">## Supported Databases</h2>
         <p class="text-subtext0 text-sm mb-8">
-          Connect to SQLite, PostgreSQL, MySQL, MariaDB, Redis, and MongoDB from
-          a single interface.
+          Connect to SQLite, PostgreSQL, MySQL, MariaDB, Redis, MongoDB, and
+          Oracle from a single interface.
         </p>
-        <div class="grid grid-cols-3 sm:grid-cols-6 gap-3">
+        <div class="grid grid-cols-3 sm:grid-cols-7 gap-3">
           {
             databases.map((db) => (
               <div class="text-center border border-surface1 p-4">
