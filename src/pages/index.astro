@@ -2,7 +2,7 @@
 import { R2_BASE } from "../data/releases";
 import Layout from "../layouts/Layout.astro";
 
-const macDmgUrl = `${R2_BASE}/DearSQL-0.2.3.dmg`;
+const macDmgUrl = `${R2_BASE}/DearSQL-0.3.0.dmg`;
 
 let appImageUrl = `${R2_BASE}/DearSQL-0.2.3-x86_64.AppImage`;
 try {
@@ -50,7 +50,9 @@ const currentYear = new Date().getFullYear();
   <main class="max-w-2xl mx-auto px-4 py-6">
     <!-- Hero -->
     <section class="pb-6">
-      <p class="text-green text-sm mb-3">&gt; status: currently in development</p>
+      <p class="text-green text-sm mb-3">
+        &gt; status: currently in development
+      </p>
       <h1 class="text-xl font-bold mb-2">A simple database client.</h1>
       <p class="text-sm mb-1">
         <span class="line-through text-subtext0">AI-powered</span>
@@ -64,10 +66,18 @@ const currentYear = new Date().getFullYear();
       <div class="text-sm">
         <p class="font-bold mb-1">&gt; Downloads</p>
         <a href={macDmgUrl} class="block py-0.5">
-          * macOS (.dmg){macSize && <span class="text-subtext0 no-underline"> [{macSize}]</span>}
+          * macOS (.dmg){
+            macSize && (
+              <span class="text-subtext0 no-underline"> [{macSize}]</span>
+            )
+          }
         </a>
         <a href={appImageUrl} class="block py-0.5">
-          * Linux (AppImage){linuxSize && <span class="text-subtext0 no-underline"> [{linuxSize}]</span>}
+          * Linux (AppImage){
+            linuxSize && (
+              <span class="text-subtext0 no-underline"> [{linuxSize}]</span>
+            )
+          }
         </a>
         <span class="block py-0.5 text-subtext0">* Windows — coming soon</span>
       </div>
@@ -76,34 +86,74 @@ const currentYear = new Date().getFullYear();
     <!-- Screenshot -->
     <section class="pb-6 border-t border-surface1 pt-4">
       <div class="flex gap-2 mb-3 text-sm text-subtext0">
-        <button id="tab-macos" class="tab-btn" data-tab="macos" style="background:none;border:none;padding:0;cursor:pointer;font-family:inherit;font-size:inherit;font-weight:bold;text-decoration:underline;color:var(--text);">macOS</button>
+        <button
+          id="tab-macos"
+          class="tab-btn"
+          data-tab="macos"
+          style="background:none;border:none;padding:0;cursor:pointer;font-family:inherit;font-size:inherit;font-weight:bold;text-decoration:underline;color:var(--text);"
+          >macOS</button
+        >
         <span>|</span>
-        <button id="tab-linux" class="tab-btn" data-tab="linux" style="background:none;border:none;padding:0;cursor:pointer;font-family:inherit;font-size:inherit;color:var(--subtext0);">Linux</button>
+        <button
+          id="tab-linux"
+          class="tab-btn"
+          data-tab="linux"
+          style="background:none;border:none;padding:0;cursor:pointer;font-family:inherit;font-size:inherit;color:var(--subtext0);"
+          >Linux</button
+        >
       </div>
-      <div id="screenshot-macos" class="screenshot-panel border border-surface1 overflow-hidden">
-        <img src="/sc.webp" alt="DearSQL on macOS" width="1400" height="913" fetchpriority="high" class="w-full h-auto" />
+      <div
+        id="screenshot-macos"
+        class="screenshot-panel border border-surface1 overflow-hidden"
+      >
+        <img
+          src="/sc.webp"
+          alt="DearSQL on macOS"
+          width="1400"
+          height="913"
+          fetchpriority="high"
+          class="w-full h-auto"
+        />
       </div>
-      <div id="screenshot-linux" class="screenshot-panel hidden border border-surface1 overflow-hidden">
-        <img src="/sc_gtk.webp" alt="DearSQL on Linux" width="1400" height="783" fetchpriority="high" class="w-full h-auto" />
+      <div
+        id="screenshot-linux"
+        class="screenshot-panel hidden border border-surface1 overflow-hidden"
+      >
+        <img
+          src="/sc_gtk.webp"
+          alt="DearSQL on Linux"
+          width="1400"
+          height="783"
+          fetchpriority="high"
+          class="w-full h-auto"
+        />
       </div>
     </section>
 
     <script>
-      document.querySelectorAll<HTMLButtonElement>(".tab-btn").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const tab = btn.dataset.tab;
-          document.querySelectorAll<HTMLButtonElement>(".tab-btn").forEach((b) => {
-            b.style.color = "var(--subtext0)";
-            b.style.fontWeight = "";
-            b.style.textDecoration = "none";
+      document
+        .querySelectorAll<HTMLButtonElement>(".tab-btn")
+        .forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const tab = btn.dataset.tab;
+            document
+              .querySelectorAll<HTMLButtonElement>(".tab-btn")
+              .forEach((b) => {
+                b.style.color = "var(--subtext0)";
+                b.style.fontWeight = "";
+                b.style.textDecoration = "none";
+              });
+            btn.style.color = "var(--text)";
+            btn.style.fontWeight = "bold";
+            btn.style.textDecoration = "underline";
+            document
+              .querySelectorAll(".screenshot-panel")
+              .forEach((p) => p.classList.add("hidden"));
+            document
+              .getElementById(`screenshot-${tab}`)
+              ?.classList.remove("hidden");
           });
-          btn.style.color = "var(--text)";
-          btn.style.fontWeight = "bold";
-          btn.style.textDecoration = "underline";
-          document.querySelectorAll(".screenshot-panel").forEach((p) => p.classList.add("hidden"));
-          document.getElementById(`screenshot-${tab}`)?.classList.remove("hidden");
         });
-      });
     </script>
 
     <!-- Features -->
@@ -125,12 +175,15 @@ const currentYear = new Date().getFullYear();
 
   <!-- Footer -->
   <footer class="border-t border-surface1 py-3 px-4">
-    <div class="max-w-2xl mx-auto flex items-center justify-between text-sm text-subtext0">
+    <div
+      class="max-w-2xl mx-auto flex items-center justify-between text-sm text-subtext0"
+    >
       <p>&copy; {currentYear} DearSQL</p>
       <div class="flex gap-3">
-        [<a href="https://www.threads.net/@dunkbingg" target="_blank">threads</a>]
-        [<a href="https://x.com/dunkbingg" target="_blank">x</a>]
-        [<a href="mailto:bing@db99.dev">email</a>]
+        [<a href="https://www.threads.net/@dunkbingg" target="_blank">threads</a
+        >] [<a href="https://x.com/dunkbingg" target="_blank">x</a>] [<a
+          href="mailto:bing@db99.dev">email</a
+        >]
       </div>
     </div>
   </footer>

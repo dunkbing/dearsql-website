@@ -13,6 +13,21 @@ export interface Release {
 
 export const releases: Release[] = [
   {
+    version: "0.3.0",
+    date: "2026-03-15",
+    changes: [
+      "Added CSV editor.",
+      "Added file open support and close tabs on connection removal.",
+      "Switched to libmariadb.",
+      "Fixed connection pool reconnect handling.",
+    ],
+    sparkle: {
+      edSignature:
+        "fImgqEM2c8M6nWmjXCpxmOspw3eH+szIo2GNeG70XBE+m+lwUVPvEe0GKDZoz1x3wBWhu7VaoEJxnQ0P1E45Dw==",
+      length: 9802568,
+    },
+  },
+  {
     version: "0.2.3",
     date: "2026-03-13",
     changes: [
