@@ -37,281 +37,101 @@ const [macSize, linuxSize] = await Promise.all([
 const features = [
   "Syntax highlighting, autocomplete, and query history.",
   "Browse and edit table data inline. Changes generate proper SQL before committing.",
-  // "Connect via SSH tunnel to databases behind a bastion host.",
-  // "TLS/SSL support for all backends.",
   "SQLite, PostgreSQL, MySQL, MongoDB, Redis, and Oracle in one app.",
   "Saved connections with encrypted credentials.",
   "Schema browser — tables, views, indexes, and more.",
   "Native C++ with Metal on macOS, OpenGL on Linux, and DirectX on Windows.",
 ];
 
-const databases = [
-  { name: "SQLite", icon: "/icons/sqlite.svg" },
-  { name: "Postgres", icon: "/icons/postgresql.svg" },
-  { name: "MySQL", icon: "/icons/mysql.svg" },
-  { name: "MariaDB", icon: "/icons/mariadb.svg" },
-  { name: "Redis", icon: "/icons/redis.svg" },
-  { name: "MongoDB", icon: "/icons/mongodb.svg" },
-  { name: "Oracle", icon: "/icons/oracle.svg" },
-];
-
 const currentYear = new Date().getFullYear();
 ---
 
 <Layout title="DearSQL - Simple, Powerful Database Manager">
-  <div class="min-h-screen">
-    <!-- Header -->
-    <header
-      class="fixed top-0 left-0 right-0 z-50 bg-base border-b border-surface1"
-    >
-      <nav
-        class="max-w-2xl mx-auto px-4 h-10 flex items-center justify-between text-sm"
-      >
-        <a
-          href="/"
-          class="no-underline text-text hover:text-text font-bold flex items-center gap-2"
-        >
-          <img src="/icon.webp" alt="" width="18" height="18" />
-          DearSQL
+  <main class="max-w-2xl mx-auto px-4 py-6">
+    <!-- Hero -->
+    <section class="pb-6">
+      <p class="text-green text-sm mb-3">&gt; status: currently in development</p>
+      <h1 class="text-xl font-bold mb-2">A simple database client.</h1>
+      <p class="text-sm mb-1">
+        <span class="line-through text-subtext0">AI-powered</span>
+        <span class="text-peach font-bold"> ImGui-powered.</span>
+      </p>
+      <p class="text-subtext0 text-sm mb-5">
+        Fast, native, no bloat, no electron, no webview, no java.
+      </p>
+
+      <!-- Downloads -->
+      <div class="text-sm">
+        <p class="font-bold mb-1">&gt; Downloads</p>
+        <a href={macDmgUrl} class="block py-0.5">
+          * macOS (.dmg){macSize && <span class="text-subtext0 no-underline"> [{macSize}]</span>}
         </a>
-        <!-- Desktop nav -->
-        <div class="hidden sm:flex items-center text-subtext0 gap-1">
-          [<a href="#features">features</a>
-          | <a href="/changelog">changelog</a>
-          | <a href="#" data-sentry-feedback>report bug</a>]
-        </div>
-        <!-- Mobile menu toggle -->
-        <button
-          id="menu-toggle"
-          class="sm:hidden text-subtext0 hover:text-text text-sm font-bold"
-        >
-          <span id="menu-icon-open">[menu]</span>
-          <span id="menu-icon-close" class="hidden">[close]</span>
-        </button>
-      </nav>
-      <!-- Mobile menu -->
-      <div
-        id="mobile-menu"
-        class="sm:hidden hidden border-t border-surface1 bg-base"
-      >
-        <div class="max-w-2xl mx-auto px-4 py-3 flex flex-col gap-2 text-sm">
-          <a href="#features" class="py-1">features</a>
-          <a href="/changelog" class="py-1">changelog</a>
-          <a href="#" data-sentry-feedback class="py-1">report bug</a>
-        </div>
+        <a href={appImageUrl} class="block py-0.5">
+          * Linux (AppImage){linuxSize && <span class="text-subtext0 no-underline"> [{linuxSize}]</span>}
+        </a>
+        <span class="block py-0.5 text-subtext0">* Windows — coming soon</span>
       </div>
-    </header>
+    </section>
 
-    <main class="max-w-2xl mx-auto px-4">
-      <!-- Hero -->
-      <section class="pt-24 pb-12 text-center">
-        <p class="text-green text-sm mb-4">
-          &gt; status: currently in development
-        </p>
-        <h1 class="text-2xl sm:text-3xl font-bold mb-4">
-          A simple<br />database client
-        </h1>
-        <p class="text-sm mb-2">
-          <span class="line-through text-subtext0">AI-powered</span>
-          <span class="text-peach font-bold">ImGui-powered</span>
-        </p>
-        <p class="text-subtext0 max-w-lg mx-auto mb-4">
-          Fast, native, no bloat, no electron, no webview, no java.
-        </p>
-
-        <!-- Downloads -->
-        <div
-          class="border border-surface1 p-4 text-left max-w-sm mx-auto text-sm"
-        >
-          <p class="font-bold mb-2">&gt; Downloads</p>
-          <a href={macDmgUrl} class="block py-0.5">
-            * macOS (.dmg){
-              macSize && (
-                <span class="text-subtext0 no-underline"> [{macSize}]</span>
-              )
-            }
-          </a>
-          <a href={appImageUrl} class="block py-0.5">
-            * Linux (AppImage){
-              linuxSize && (
-                <span class="text-subtext0 no-underline"> [{linuxSize}]</span>
-              )
-            }
-          </a>
-          <span class="block py-0.5 text-subtext0">* Windows — coming soon</span
-          >
-        </div>
-      </section>
-
-      <!-- Screenshot -->
-      <section class="pb-16">
-        <div class="flex justify-center gap-2 mb-4 text-sm">
-          <button
-            id="tab-macos"
-            class="tab-btn px-3 py-1 border border-surface1 bg-surface0 text-text font-bold"
-            data-tab="macos"
-          >
-            [macOS]
-          </button>
-          <button
-            id="tab-linux"
-            class="tab-btn px-3 py-1 border border-surface1 text-subtext0 hover:text-text"
-            data-tab="linux"
-          >
-            [Linux]
-          </button>
-        </div>
-        <div
-          id="screenshot-macos"
-          class="screenshot-panel border border-surface1 overflow-hidden"
-        >
-          <img
-            src="/sc.webp"
-            alt="DearSQL on macOS"
-            width="1400"
-            height="913"
-            fetchpriority="high"
-            class="w-full h-auto"
-          />
-        </div>
-        <div
-          id="screenshot-linux"
-          class="screenshot-panel hidden border border-surface1 overflow-hidden"
-        >
-          <img
-            src="/sc_gtk.webp"
-            alt="DearSQL on Linux"
-            width="1400"
-            height="783"
-            fetchpriority="high"
-            class="w-full h-auto"
-          />
-        </div>
-      </section>
-
-      <script>
-        document
-          .querySelectorAll<HTMLButtonElement>(".tab-btn")
-          .forEach((btn) => {
-            btn.addEventListener("click", () => {
-              const tab = btn.dataset.tab;
-              document
-                .querySelectorAll<HTMLButtonElement>(".tab-btn")
-                .forEach((b) => {
-                  b.classList.remove("bg-surface0", "text-text", "font-bold");
-                  b.classList.add("text-subtext0");
-                });
-              btn.classList.remove("text-subtext0");
-              btn.classList.add("bg-surface0", "text-text", "font-bold");
-              document
-                .querySelectorAll(".screenshot-panel")
-                .forEach((p) => p.classList.add("hidden"));
-              document
-                .getElementById(`screenshot-${tab}`)
-                ?.classList.remove("hidden");
-            });
-          });
-      </script>
-
-      <script>
-        const toggle = document.getElementById("menu-toggle")!;
-        const menu = document.getElementById("mobile-menu")!;
-        const iconOpen = document.getElementById("menu-icon-open")!;
-        const iconClose = document.getElementById("menu-icon-close")!;
-
-        toggle.addEventListener("click", () => {
-          menu.classList.toggle("hidden");
-          iconOpen.classList.toggle("hidden");
-          iconClose.classList.toggle("hidden");
-        });
-
-        menu.querySelectorAll("a").forEach((link) => {
-          link.addEventListener("click", () => {
-            menu.classList.add("hidden");
-            iconOpen.classList.remove("hidden");
-            iconClose.classList.add("hidden");
-          });
-        });
-      </script>
-
-      <!-- Features -->
-      <section id="features" class="py-16 border-t border-surface1">
-        <h2 class="text-xl font-bold mb-2">## Features</h2>
-        <ul class="space-y-2 text-sm text-subtext0">
-          {features.map((f) => <li>- {f}</li>)}
-        </ul>
-      </section>
-
-      <!-- Databases -->
-      <section id="databases" class="py-16 border-t border-surface1">
-        <h2 class="text-xl font-bold mb-2">## Supported Databases</h2>
-        <p class="text-subtext0 text-sm mb-8">
-          Connect to SQLite, PostgreSQL, MySQL, MariaDB, Redis, MongoDB, and
-          Oracle from a single interface.
-        </p>
-        <div class="grid grid-cols-3 sm:grid-cols-7 gap-3">
-          {
-            databases.map((db) => (
-              <div class="text-center border border-surface1 p-4">
-                <img src={db.icon} alt={db.name} class="w-8 h-8 mx-auto mb-2" />
-                <span class="text-sm">{db.name}</span>
-              </div>
-            ))
-          }
-        </div>
-      </section>
-
-      <!-- Pricing -->
-      <section id="pricing" class="hidden py-16 border-t border-surface1">
-        <h2 class="text-xl font-bold mb-2">## Pricing</h2>
-        <p class="text-subtext0 text-sm mb-8">
-          One-time purchase. No subscriptions, no recurring fees.
-        </p>
-        <div class="grid sm:grid-cols-2 gap-4 text-sm">
-          <!-- Free -->
-          <div class="border border-surface1 p-6">
-            <h3 class="font-bold mb-1">Free</h3>
-            <p class="text-subtext0 mb-4">For getting started</p>
-            <p class="text-2xl font-bold mb-4">$0</p>
-            <ul class="text-subtext0 space-y-1">
-              <li>[+] SQLite support</li>
-              <li>[+] Table editor</li>
-              <li>[+] Query editor</li>
-            </ul>
-          </div>
-          <!-- License -->
-          <div class="border-2 border-peach p-6">
-            <h3 class="font-bold mb-1">License</h3>
-            <p class="text-subtext0 mb-4">For professionals</p>
-            <p class="text-2xl font-bold mb-4">
-              $30 <span class="text-sm text-subtext0 font-normal">USD</span>
-            </p>
-            <ul class="text-subtext0 space-y-1">
-              <li>[+] All databases</li>
-              <li>[+] Up to 3 devices</li>
-              <li>[+] All future updates</li>
-              <li>[+] ER diagrams</li>
-              <li>[+] Support development</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="py-6 px-4 border-t border-surface1">
-      <div
-        class="max-w-2xl mx-auto flex items-center justify-between text-sm text-subtext0"
-      >
-        <p>&copy; {currentYear} DearSQL</p>
-        <div class="flex gap-3">
-          [<a href="https://www.threads.net/@dunkbingg" target="_blank"
-            >threads</a
-          >] [<a href="https://x.com/dunkbingg" target="_blank">x</a>] [<a
-            href="mailto:bing@db99.dev">email</a
-          >]
-        </div>
+    <!-- Screenshot -->
+    <section class="pb-6 border-t border-surface1 pt-4">
+      <div class="flex gap-2 mb-3 text-sm text-subtext0">
+        <button id="tab-macos" class="tab-btn" data-tab="macos" style="background:none;border:none;padding:0;cursor:pointer;font-family:inherit;font-size:inherit;font-weight:bold;text-decoration:underline;color:var(--text);">macOS</button>
+        <span>|</span>
+        <button id="tab-linux" class="tab-btn" data-tab="linux" style="background:none;border:none;padding:0;cursor:pointer;font-family:inherit;font-size:inherit;color:var(--subtext0);">Linux</button>
       </div>
-    </footer>
-  </div>
+      <div id="screenshot-macos" class="screenshot-panel border border-surface1 overflow-hidden">
+        <img src="/sc.webp" alt="DearSQL on macOS" width="1400" height="913" fetchpriority="high" class="w-full h-auto" />
+      </div>
+      <div id="screenshot-linux" class="screenshot-panel hidden border border-surface1 overflow-hidden">
+        <img src="/sc_gtk.webp" alt="DearSQL on Linux" width="1400" height="783" fetchpriority="high" class="w-full h-auto" />
+      </div>
+    </section>
+
+    <script>
+      document.querySelectorAll<HTMLButtonElement>(".tab-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const tab = btn.dataset.tab;
+          document.querySelectorAll<HTMLButtonElement>(".tab-btn").forEach((b) => {
+            b.style.color = "var(--subtext0)";
+            b.style.fontWeight = "";
+            b.style.textDecoration = "none";
+          });
+          btn.style.color = "var(--text)";
+          btn.style.fontWeight = "bold";
+          btn.style.textDecoration = "underline";
+          document.querySelectorAll(".screenshot-panel").forEach((p) => p.classList.add("hidden"));
+          document.getElementById(`screenshot-${tab}`)?.classList.remove("hidden");
+        });
+      });
+    </script>
+
+    <!-- Features -->
+    <section id="features" class="pb-6 border-t border-surface1 pt-4">
+      <h2 class="font-bold mb-2">## Features</h2>
+      <ul class="text-sm text-subtext0 space-y-1">
+        {features.map((f) => <li>- {f}</li>)}
+      </ul>
+    </section>
+
+    <!-- Databases -->
+    <section id="databases" class="pb-6 border-t border-surface1 pt-4">
+      <h2 class="font-bold mb-2">## Supported Databases</h2>
+      <p class="text-sm text-subtext0">
+        SQLite, PostgreSQL, MySQL, MariaDB, Redis, MongoDB, Oracle.
+      </p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-surface1 py-3 px-4">
+    <div class="max-w-2xl mx-auto flex items-center justify-between text-sm text-subtext0">
+      <p>&copy; {currentYear} DearSQL</p>
+      <div class="flex gap-3">
+        [<a href="https://www.threads.net/@dunkbingg" target="_blank">threads</a>]
+        [<a href="https://x.com/dunkbingg" target="_blank">x</a>]
+        [<a href="mailto:bing@db99.dev">email</a>]
+      </div>
+    </div>
+  </footer>
 </Layout>

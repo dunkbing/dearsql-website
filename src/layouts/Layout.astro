@@ -53,6 +53,28 @@ const imageURL = new URL(image, Astro.site);
     <meta name="twitter:image" content={imageURL} />
   </head>
   <body>
+    <header class="bg-crust border-b border-surface1">
+      <nav class="max-w-2xl mx-auto px-4 py-2 flex flex-wrap items-center gap-x-1 gap-y-1 text-sm">
+        <a href="/" class="font-bold text-text no-underline flex items-center gap-2 mr-2">
+          <img src="/icon.webp" alt="" width="16" height="16" />
+          DearSQL
+        </a>
+        {Astro.url.pathname === "/changelog" ? (
+          <>
+            [<a href="/#features" class="no-underline hover:underline">features</a>
+            | <span class="font-bold text-text">changelog</span>
+            | <a href="#" data-sentry-feedback class="no-underline hover:underline">report bug</a>]
+          </>
+        ) : (
+          <>
+            [<a href="/#features" class="no-underline hover:underline">features</a>
+            | <a href="/changelog" class="no-underline hover:underline">changelog</a>
+            | <a href="#" data-sentry-feedback class="no-underline hover:underline">report bug</a>]
+          </>
+        )}
+      </nav>
+    </header>
+
     <slot />
 
     <!-- Bug report modal -->

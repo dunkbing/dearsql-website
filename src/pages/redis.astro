@@ -26,136 +26,63 @@ const features = [
   title="DearSQL - Redis Features"
   description="Browse keys, execute commands, monitor Pub/Sub channels, and edit data inline — all from a native desktop Redis client."
 >
-  <div class="min-h-screen">
-    <!-- Header -->
-    <header
-      class="fixed top-0 left-0 right-0 z-50 bg-base border-b border-surface1"
-    >
-      <nav
-        class="max-w-2xl mx-auto px-4 h-10 flex items-center justify-between text-sm"
-      >
-        <a
-          href="/"
-          class="no-underline text-text hover:text-text font-bold flex items-center gap-2"
-        >
-          <img src="/icon.webp" alt="" width="18" height="18" />
-          DearSQL
-        </a>
-        <div class="hidden sm:flex items-center text-subtext0 gap-1">
-          [<a href="/#features">features</a>
-          | <a href="/changelog">changelog</a>
-          | <a href="#" data-sentry-feedback>report bug</a>]
-        </div>
-        <!-- Mobile menu toggle -->
-        <button
-          id="menu-toggle"
-          class="sm:hidden text-subtext0 hover:text-text text-sm font-bold"
-        >
-          <span id="menu-icon-open">[menu]</span>
-          <span id="menu-icon-close" class="hidden">[close]</span>
-        </button>
-      </nav>
-      <!-- Mobile menu -->
-      <div
-        id="mobile-menu"
-        class="sm:hidden hidden border-t border-surface1 bg-base"
-      >
-        <div class="max-w-2xl mx-auto px-4 py-3 flex flex-col gap-2 text-sm">
-          <a href="/#features" class="py-1">features</a>
-          <a href="/changelog" class="py-1">changelog</a>
-          <a href="#" data-sentry-feedback class="py-1">report bug</a>
-        </div>
+  <main class="max-w-2xl mx-auto px-4 py-6">
+    <!-- Hero -->
+    <section class="pb-6">
+      <div class="flex items-center gap-3 mb-3">
+        <img src="/icons/redis.svg" alt="Redis" class="w-6 h-6" />
+        <h1 class="text-xl font-bold">Redis</h1>
       </div>
-    </header>
+      <p class="text-subtext0 text-sm">
+        A full-featured Redis client built into DearSQL. Browse keys, execute
+        commands, monitor Pub/Sub channels, and edit data inline — all from a
+        native desktop interface with zero overhead.
+      </p>
+    </section>
 
-    <script>
-      const toggle = document.getElementById("menu-toggle")!;
-      const menu = document.getElementById("mobile-menu")!;
-      const iconOpen = document.getElementById("menu-icon-open")!;
-      const iconClose = document.getElementById("menu-icon-close")!;
+    <!-- Feature sections -->
+    {
+      features.map((feature) => (
+        <section class="pb-6 border-t border-surface1 pt-4">
+          <h2 class="font-bold mb-2">## {feature.title}</h2>
+          <p class="text-subtext0 text-sm mb-4">{feature.desc}</p>
+          <div class="border border-surface1 overflow-hidden">
+            <img src={feature.screenshot} alt={feature.title} class="w-full" loading="lazy" />
+          </div>
+        </section>
+      ))
+    }
 
-      toggle.addEventListener("click", () => {
-        menu.classList.toggle("hidden");
-        iconOpen.classList.toggle("hidden");
-        iconClose.classList.toggle("hidden");
-      });
+    <!-- Highlights -->
+    <section class="pb-6 border-t border-surface1 pt-4">
+      <h2 class="font-bold mb-2">## Highlights</h2>
+      <ul class="space-y-1 text-sm text-subtext0">
+        <li>- TLS/SSL support for secure connections.</li>
+        <li>- SSH tunneling for Redis behind a bastion host.</li>
+        <li>- Color-coded key types (string, list, set, hash, zset, stream).</li>
+        <li>- Inline editing for key names, values, and TTL.</li>
+        <li>- Add new keys with type selection via dropdown.</li>
+        <li>- Memory usage per key displayed in the browser.</li>
+        <li>- Command history with execution time and re-run support.</li>
+        <li>- Glob pattern subscriptions for Pub/Sub monitoring.</li>
+      </ul>
+    </section>
 
-      menu.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", () => {
-          menu.classList.add("hidden");
-          iconOpen.classList.remove("hidden");
-          iconClose.classList.add("hidden");
-        });
-      });
-    </script>
+    <!-- Back to home -->
+    <section class="pb-6 border-t border-surface1 pt-4">
+      <a href="/" class="text-sm">&lt;- back to home</a>
+    </section>
+  </main>
 
-    <main class="max-w-2xl mx-auto px-4">
-      <!-- Hero -->
-      <section class="pt-24 pb-12">
-        <div class="flex items-center gap-3 mb-4">
-          <img src="/icons/redis.svg" alt="Redis" class="w-8 h-8" />
-          <h1 class="text-2xl font-bold">Redis</h1>
-        </div>
-        <p class="text-subtext0 text-sm">
-          A full-featured Redis client built into DearSQL. Browse keys, execute
-          commands, monitor Pub/Sub channels, and edit data inline — all from a
-          native desktop interface with zero overhead.
-        </p>
-      </section>
-
-      <!-- Feature sections -->
-      {
-        features.map((feature, i) => (
-          <section
-            class:list={[
-              "py-16 border-t border-surface1",
-              i === 0 && "scroll-mt-12",
-            ]}
-          >
-            <h2 class="text-xl font-bold mb-2">## {feature.title}</h2>
-            <p class="text-subtext0 text-sm mb-8">{feature.desc}</p>
-            <div class="border border-surface1 overflow-hidden bg-surface0">
-              <img src={feature.screenshot} alt={feature.title} class="w-full" loading="lazy" />
-            </div>
-          </section>
-        ))
-      }
-
-      <!-- Highlights -->
-      <section class="py-16 border-t border-surface1">
-        <h2 class="text-xl font-bold mb-2">## Highlights</h2>
-        <ul class="space-y-2 text-sm text-subtext0">
-          <li>- TLS/SSL support for secure connections.</li>
-          <li>- SSH tunneling for Redis behind a bastion host.</li>
-          <li>
-            - Color-coded key types (string, list, set, hash, zset, stream).
-          </li>
-          <li>- Inline editing for key names, values, and TTL.</li>
-          <li>- Add new keys with type selection via dropdown.</li>
-          <li>- Memory usage per key displayed in the browser.</li>
-          <li>- Command history with execution time and re-run support.</li>
-          <li>- Glob pattern subscriptions for Pub/Sub monitoring.</li>
-        </ul>
-      </section>
-
-      <!-- Back to home -->
-      <section class="py-16 border-t border-surface1 text-center">
-        <a href="/" class="text-sm">&lt;- back to home</a>
-      </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="py-6 px-4 border-t border-surface1">
-      <div
-        class="max-w-2xl mx-auto flex items-center justify-between text-sm text-subtext0"
-      >
-        <p>&copy; {currentYear} DearSQL</p>
-        <div class="flex gap-3">
-          [<a href="https://www.threads.net/@dunkbingg" target="_blank"
-            >threads</a
-          >] [<a href="https://x.com/dunkbingg" target="_blank">x</a>] [<a href="mailto:bing@db99.dev">email</a>]
-        </div>
+  <!-- Footer -->
+  <footer class="border-t border-surface1 py-3 px-4">
+    <div class="max-w-2xl mx-auto flex items-center justify-between text-sm text-subtext0">
+      <p>&copy; {currentYear} DearSQL</p>
+      <div class="flex gap-3">
+        [<a href="https://www.threads.net/@dunkbingg" target="_blank">threads</a>]
+        [<a href="https://x.com/dunkbingg" target="_blank">x</a>]
+        [<a href="mailto:bing@db99.dev">email</a>]
       </div>
-    </footer>
-  </div>
+    </div>
+  </footer>
 </Layout>

@@ -67,13 +67,17 @@
     background: var(--base);
     color: var(--text);
     font-family: "Courier New", Courier, "Liberation Mono", monospace;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1.7;
   }
 
   a {
     color: var(--blue);
     text-decoration: underline;
+  }
+
+  a:visited {
+    color: var(--mauve);
   }
 
   a:hover {
