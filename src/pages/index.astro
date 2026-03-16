@@ -72,15 +72,59 @@ const currentYear = new Date().getFullYear();
             )
           }
         </a>
-        <a href={appImageUrl} class="block py-0.5">
-          * Linux (AppImage){
-            linuxSize && (
-              <span class="text-subtext0 no-underline"> [{linuxSize}]</span>
-            )
-          }
-        </a>
-        <span class="block py-0.5 text-subtext0">* Windows — coming soon</span>
+        <div class="flex items-center gap-2 py-0.5 flex-wrap">
+          <a href={appImageUrl}>
+            * Linux (AppImage){
+              linuxSize && (
+                <span class="text-subtext0 no-underline"> [{linuxSize}]</span>
+              )
+            }
+          </a>
+          <span class="text-subtext0">or:</span>
+          <div
+            class="flex items-center gap-1.5 bg-surface0 border border-surface1 px-2 py-0.5 rounded text-xs font-mono"
+          >
+            <span>
+              <span class="text-blue">curl</span>
+              <span class="text-subtext0"> -fsSL </span>
+              <span class="text-green">https://dearsql.dev/install.sh</span>
+              <span class="text-subtext0"> | </span>
+              <span class="text-blue">sh</span>
+            </span>
+            <button
+              id="copy-install-cmd"
+              title="Copy"
+              style="background:none;border:none;padding:0;cursor:pointer;display:flex;align-items:center;"
+            >
+              <span
+                id="copy-icon"
+                style="display:inline-block;width:13px;height:13px;background-color:currentColor;-webkit-mask:url('/icons/copy.svg') no-repeat center;mask:url('/icons/copy.svg') no-repeat center;-webkit-mask-size:contain;mask-size:contain;"
+              ></span>
+              <span
+                id="check-icon"
+                style="display:none;width:13px;height:13px;background-color:var(--green);-webkit-mask:url('/icons/check.svg') no-repeat center;mask:url('/icons/check.svg') no-repeat center;-webkit-mask-size:contain;mask-size:contain;"
+              ></span>
+            </button>
+          </div>
+        </div>
       </div>
+      <script>
+        const btn = document.getElementById("copy-install-cmd");
+        const copyIcon = document.getElementById("copy-icon");
+        const checkIcon = document.getElementById("check-icon");
+        btn?.addEventListener("click", () => {
+          navigator.clipboard.writeText(
+            "curl -fsSL https://dearsql.dev/install.sh | sh",
+          );
+          copyIcon!.style.display = "none";
+          checkIcon!.style.display = "inline-block";
+          setTimeout(() => {
+            copyIcon!.style.display = "inline-block";
+            checkIcon!.style.display = "none";
+          }, 1500);
+        });
+      </script>
+      <span class="block py-0.5 text-subtext0">* Windows — coming soon</span>
     </section>
 
     <!-- Screenshot -->
@@ -172,19 +216,19 @@ const currentYear = new Date().getFullYear();
       </p>
     </section>
   </main>
-
-  <!-- Footer -->
-  <footer class="border-t border-surface1 py-3 px-4">
-    <div
-      class="max-w-2xl mx-auto flex items-center justify-between text-sm text-subtext0"
-    >
-      <p>&copy; {currentYear} DearSQL</p>
-      <div class="flex gap-3">
-        [<a href="https://www.threads.net/@dunkbingg" target="_blank">threads</a
-        >] [<a href="https://x.com/dunkbingg" target="_blank">x</a>] [<a
-          href="mailto:bing@db99.dev">email</a
-        >]
-      </div>
-    </div>
-  </footer>
 </Layout>
+
+<!-- Footer -->
+<footer class="border-t border-surface1 py-3 px-4">
+  <div
+    class="max-w-2xl mx-auto flex items-center justify-between text-sm text-subtext0"
+  >
+    <p>&copy; {currentYear} DearSQL</p>
+    <div class="flex gap-3">
+      [<a href="https://www.threads.net/@dunkbingg" target="_blank">threads</a>]
+      [<a href="https://x.com/dunkbingg" target="_blank">x</a>] [<a
+        href="mailto:bing@db99.dev">email</a
+      >]
+    </div>
+  </div>
+</footer>
