@@ -26,7 +26,7 @@ main() {
             ;;
     esac
 
-    platform_key="linux-$arch"
+    platform_key="appimage-$arch"
 
     if command -v curl >/dev/null 2>&1; then
         fetch() { command curl -fsSL "$@"; }
@@ -44,8 +44,8 @@ main() {
 
     # Parse JSON with pure shell (no python3/jq dependency)
     version=$(echo "$manifest" | tr -d '[:space:]' | sed 's/.*"version":"\([^"]*\)".*/\1/')
-    url=$(echo "$manifest" | tr -d '\n' | sed "s/.*\"$platform_key\":{[^}]*\"url\":\"\\([^\"]*\\)\".*/\\1/")
-    sha256=$(echo "$manifest" | tr -d '\n' | sed "s/.*\"$platform_key\":{[^}]*\"sha256\":\"\\([^\"]*\\)\".*/\\1/")
+    url=$(echo "$manifest" | tr -d '[:space:]' | sed "s/.*\"$platform_key\":{[^}]*\"url\":\"\\([^\"]*\\)\".*/\\1/")
+    sha256=$(echo "$manifest" | tr -d '[:space:]' | sed "s/.*\"$platform_key\":{[^}]*\"sha256\":\"\\([^\"]*\\)\".*/\\1/")
 
     if [ -z "$version" ] || [ -z "$url" ]; then
         echo "Failed to parse version manifest."
@@ -86,29 +86,29 @@ main() {
     # Create desktop entry
     desktop_dir="$HOME/.local/share/applications"
     mkdir -p "$desktop_dir"
-    cat > "$desktop_dir/${APP_ID}.desktop" << EOF
-[Desktop Entry]
-Name=DearSQL
-Comment=SQL Database Client
-Exec=$install_dir/dearsql
-Icon=$icon_dir/${APP_ID}.png
-Terminal=false
-Type=Application
-StartupWMClass=${APP_ID}
-Categories=Development;Database;IDE;
-EOF
+    printf '%s\n' \
+        "[Desktop Entry]" \
+        "Name=DearSQL" \
+        "Comment=SQL Database Client" \
+        "Exec=$install_dir/dearsql" \
+        "Icon=$icon_dir/${APP_ID}.png" \
+        "Terminal=false" \
+        "Type=Application" \
+        "StartupWMClass=${APP_ID}" \
+        "Categories=Development;Database;IDE;" \
+        > "$desktop_dir/${APP_ID}.desktop"
 
-    command -v update-desktop-database >/dev/null 2>&1 && update-desktop-database "$desktop_dir" 2>/dev/null || true
+    (command -v update-desktop-database >/dev/null 2>&1 && update-desktop-database "$desktop_dir" 2>/dev/null) || true
 
     echo "DearSQL v${version} installed to ${install_dir}/dearsql"
 
     # Check PATH
-    if [ "$(command -v dearsql)" = "$install_dir/dearsql" ]; then
+    if command -v dearsql >/dev/null 2>&1; then
         echo "Run with 'dearsql'"
     else
         echo "To run DearSQL from your terminal, you must add ~/.local/bin to your PATH"
         echo "Run:"
-        case "${SHELL:-}" in
+        case "${SHELL:-$(ps -p $$ -o comm= 2>/dev/null)}" in
             *zsh)
                 echo "   echo 'export PATH=\$HOME/.local/bin:\$PATH' >> ~/.zshrc"
                 echo "   source ~/.zshrc"
