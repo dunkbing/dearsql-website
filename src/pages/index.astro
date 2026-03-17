@@ -3,6 +3,7 @@ import { R2_BASE } from "../data/releases";
 import Layout from "../layouts/Layout.astro";
 
 const macDmgUrl = `${R2_BASE}/DearSQL-0.3.0.dmg`;
+const winMsiUrl = `${R2_BASE}/DearSQL-0.3.0-x64.msi`;
 
 let appImageUrl = `${R2_BASE}/DearSQL-0.2.3-x86_64.AppImage`;
 try {
@@ -29,9 +30,10 @@ async function getFileSize(url: string): Promise<string | null> {
   }
 }
 
-const [macSize, linuxSize] = await Promise.all([
+const [macSize, linuxSize, winSize] = await Promise.all([
   getFileSize(macDmgUrl),
   getFileSize(appImageUrl),
+  getFileSize(winMsiUrl),
 ]);
 
 const features = [
@@ -124,7 +126,13 @@ const currentYear = new Date().getFullYear();
           }, 1500);
         });
       </script>
-      <span class="block py-0.5 text-subtext0">* Windows — coming soon</span>
+      <a href={winMsiUrl} class="block py-0.5">
+        * Windows (.msi){
+          winSize && (
+            <span class="text-subtext0 no-underline"> [{winSize}]</span>
+          )
+        }
+      </a>
     </section>
 
     <!-- Screenshot -->
