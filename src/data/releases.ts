@@ -17,6 +17,26 @@ export interface Release {
 
 export const releases: Release[] = [
   {
+    version: "0.3.1",
+    date: "2026-03-19",
+    changes: [
+      "Added data importer.",
+      "Replaced table edit dialog with inline tab.",
+      "Added Windows support.",
+      "Improved Linux idle mode when inactive and unfocused.",
+    ],
+    sparkle: {
+      edSignature:
+        "Js3lyrKY6h11NsfenuHYavqgteU/cqW8dZnz+UlrkeTt0gSUexPKV5hHl97sUrOQGuMrC+gp7twapxVtFqsfBQ==",
+      length: 9838209,
+    },
+    windows: {
+      edSignature:
+        "tqQS5CJboRxP4R2YAv5XH1tPAkeoXMGGPccA+VKi47358oP57pfF92oXkO9MGgnfz1pm725xXIzgSSp6f8OfAw==",
+      length: 7294976,
+    },
+  },
+  {
     version: "0.3.0",
     date: "2026-03-15",
     changes: [
