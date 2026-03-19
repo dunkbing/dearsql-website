@@ -1,14 +1,37 @@
 import type { APIRoute } from "astro";
-import { releases, dmgUrl, toRfc822 } from "../data/releases";
+import { releases, dmgUrl, msiUrl, toRfc822 } from "../data/releases";
 
 export const GET: APIRoute = () => {
   const items = releases
-    .filter((r) => r.sparkle)
+    .filter((r) => r.sparkle || r.windows)
     .map((r) => {
-      const minOS = r.sparkle!.minimumSystemVersion ?? "14.0";
+      const minOS = r.sparkle?.minimumSystemVersion ?? "14.0";
       const changesHtml = r.changes
         .map((c) => `                    <li>${c}</li>`)
         .join("\n");
+
+      const enclosures: string[] = [];
+
+      if (r.sparkle) {
+        enclosures.push(`            <enclosure
+        url="${dmgUrl(r.version)}"
+        sparkle:edSignature="${r.sparkle.edSignature}"
+        length="${r.sparkle.length}"
+        type="application/octet-stream"
+        sparkle:os="macos"
+      />`);
+      }
+
+      if (r.windows) {
+        enclosures.push(`            <enclosure
+        url="${msiUrl(r.version)}"
+        sparkle:edSignature="${r.windows.edSignature}"
+        length="${r.windows.length}"
+        type="application/octet-stream"
+        sparkle:os="windows"
+      />`);
+      }
+
       return `        <item>
             <title>Version ${r.version}</title>
             <pubDate>${toRfc822(r.date)}</pubDate>
@@ -22,12 +45,7 @@ export const GET: APIRoute = () => {
 ${changesHtml}
                 </ul>
             ]]></description>
-            <enclosure
-        url="${dmgUrl(r.version)}"
-        sparkle:edSignature="${r.sparkle!.edSignature}"
-        length="${r.sparkle!.length}"
-        type="application/octet-stream"
-      />
+${enclosures.join("\n")}
         </item>`;
     })
     .join("\n");

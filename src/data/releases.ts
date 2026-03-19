@@ -1,14 +1,18 @@
 export const R2_BASE = "https://pub-b590ba39b15741d1bd6a1b4bffc11e87.r2.dev";
 
+export interface SparkleInfo {
+  edSignature: string;
+  length: number;
+}
+
 export interface Release {
   version: string;
   date: string; // ISO date (YYYY-MM-DD)
   changes: string[];
-  sparkle?: {
-    edSignature: string;
-    length: number;
+  sparkle?: SparkleInfo & {
     minimumSystemVersion?: string; // defaults to "14.0"
   };
+  windows?: SparkleInfo;
 }
 
 export const releases: Release[] = [
@@ -134,6 +138,10 @@ export const releases: Release[] = [
 
 export function dmgUrl(version: string): string {
   return `${R2_BASE}/DearSQL-${version}.dmg`;
+}
+
+export function msiUrl(version: string): string {
+  return `${R2_BASE}/DearSQL-${version}-x64.msi`;
 }
 
 // format ISO date to RFC 822 for Sparkle
