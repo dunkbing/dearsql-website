@@ -17,6 +17,24 @@ export interface Release {
 
 export const releases: Release[] = [
   {
+    version: "0.3.2",
+    date: "2026-03-21",
+    changes: [
+      "Added SQL query save.",
+      "Fixed app unresponsive after idle mode on macOS and Windows.",
+    ],
+    sparkle: {
+      edSignature:
+        "iNNRmhpNQ9y0p8i4hCfl43/Vq97Dy+pvUjYdd5bPHTRN2PYBZdNE4boB09A6VwaNTak+mbtCH+4aXfrsJiNOCw==",
+      length: 9850495,
+    },
+    windows: {
+      edSignature:
+        "qkeL5fuMPRqNzA+AavoIXtllL+col9SngJKtM5PDBDrI6iNC6t+t22ax/uLHiPM5zOZxv3Wg5aGE2PuCkZNYDA==",
+      length: 7303168,
+    },
+  },
+  {
     version: "0.3.1",
     date: "2026-03-19",
     changes: [
