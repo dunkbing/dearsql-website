@@ -178,6 +178,14 @@ const currentYear = new Date().getFullYear();
           style="background:none;border:none;padding:0;cursor:pointer;font-family:inherit;font-size:inherit;color:var(--subtext0);"
           >Linux</button
         >
+        <span>|</span>
+        <button
+          id="tab-windows"
+          class="tab-btn"
+          data-tab="windows"
+          style="background:none;border:none;padding:0;cursor:pointer;font-family:inherit;font-size:inherit;color:var(--subtext0);"
+          >Windows</button
+        >
       </div>
       <div
         id="screenshot-macos"
@@ -201,6 +209,19 @@ const currentYear = new Date().getFullYear();
           alt="DearSQL on Linux"
           width="1400"
           height="783"
+          fetchpriority="high"
+          class="w-full h-auto"
+        />
+      </div>
+      <div
+        id="screenshot-windows"
+        class="screenshot-panel hidden border border-surface1 overflow-hidden"
+      >
+        <img
+          src="/sc_win.webp"
+          alt="DearSQL on Windows"
+          width="1400"
+          height="913"
           fetchpriority="high"
           class="w-full h-auto"
         />
