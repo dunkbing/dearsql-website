@@ -19,6 +19,7 @@ export const GET: APIRoute = () => {
         length="${r.sparkle.length}"
         type="application/octet-stream"
         sparkle:os="macos"
+        sparkle:minimumSystemVersion="${minOS}"
       />`);
       }
 
@@ -37,7 +38,6 @@ export const GET: APIRoute = () => {
             <pubDate>${toRfc822(r.date)}</pubDate>
             <sparkle:version>${r.version}</sparkle:version>
             <sparkle:shortVersionString>${r.version}</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>${minOS}</sparkle:minimumSystemVersion>
             <description
       ><![CDATA[
                 <h2>What's New in ${r.version}</h2>
