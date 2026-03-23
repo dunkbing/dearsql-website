@@ -71,7 +71,7 @@ const currentYear = new Date().getFullYear();
         </p>
         <a
           href={macDmgUrl}
-          class="flex items-center justify-between px-3 py-2 border-b border-surface1 hover:bg-surface1 no-underline"
+          class="flex items-center px-3 py-2 border-b border-surface1 hover:bg-surface1 no-underline gap-2"
         >
           <span
             ><span class="text-subtext0">* </span>macOS <span
@@ -81,54 +81,53 @@ const currentYear = new Date().getFullYear();
           {macSize && <span class="text-subtext0 text-xs">[{macSize}]</span>}
         </a>
         <div class="border-b border-surface1">
-          <div
-            class="flex items-center justify-between px-3 py-2 hover:bg-surface1 flex-wrap gap-y-1"
+          <a
+            href={appImageUrl}
+            class="flex items-center px-3 pt-2 pb-1 hover:bg-surface1 no-underline gap-2"
           >
-            <a href={appImageUrl} class="no-underline">
-              <span
-                ><span class="text-subtext0">* </span>Linux <span
-                  class="text-subtext0">(AppImage)</span
-                ></span
+            <span
+              ><span class="text-subtext0">* </span>Linux <span
+                class="text-subtext0">(AppImage)</span
+              ></span
+            >
+            {
+              linuxSize && (
+                <span class="text-subtext0 text-xs">[{linuxSize}]</span>
+              )
+            }
+          </a>
+          <div class="flex items-center gap-2 px-3 pb-2">
+            <span class="text-subtext0 text-xs">or:</span>
+            <div
+              class="flex items-center gap-1.5 bg-crust border border-surface1 px-2 py-0.5 text-xs font-mono"
+            >
+              <span>
+                <span class="text-blue">curl</span>
+                <span class="text-subtext0"> -fsSL </span>
+                <span class="text-green">https://dearsql.dev/install.sh</span>
+                <span class="text-subtext0"> | </span>
+                <span class="text-blue">sh</span>
+              </span>
+              <button
+                id="copy-install-cmd"
+                title="Copy"
+                style="background:none;border:none;padding:0;cursor:pointer;display:flex;align-items:center;"
               >
-              {
-                linuxSize && (
-                  <span class="text-subtext0 text-xs"> [{linuxSize}]</span>
-                )
-              }
-            </a>
-            <div class="flex items-center gap-2 flex-wrap">
-              <span class="text-subtext0 text-xs">or:</span>
-              <div
-                class="flex items-center gap-1.5 bg-crust border border-surface1 px-2 py-0.5 text-xs font-mono"
-              >
-                <span>
-                  <span class="text-blue">curl</span>
-                  <span class="text-subtext0"> -fsSL </span>
-                  <span class="text-green">https://dearsql.dev/install.sh</span>
-                  <span class="text-subtext0"> | </span>
-                  <span class="text-blue">sh</span>
-                </span>
-                <button
-                  id="copy-install-cmd"
-                  title="Copy"
-                  style="background:none;border:none;padding:0;cursor:pointer;display:flex;align-items:center;"
-                >
-                  <span
-                    id="copy-icon"
-                    style="display:inline-block;width:13px;height:13px;background-color:currentColor;-webkit-mask:url('/icons/copy.svg') no-repeat center;mask:url('/icons/copy.svg') no-repeat center;-webkit-mask-size:contain;mask-size:contain;"
-                  ></span>
-                  <span
-                    id="check-icon"
-                    style="display:none;width:13px;height:13px;background-color:var(--green);-webkit-mask:url('/icons/check.svg') no-repeat center;mask:url('/icons/check.svg') no-repeat center;-webkit-mask-size:contain;mask-size:contain;"
-                  ></span>
-                </button>
-              </div>
+                <span
+                  id="copy-icon"
+                  style="display:inline-block;width:13px;height:13px;background-color:currentColor;-webkit-mask:url('/icons/copy.svg') no-repeat center;mask:url('/icons/copy.svg') no-repeat center;-webkit-mask-size:contain;mask-size:contain;"
+                ></span>
+                <span
+                  id="check-icon"
+                  style="display:none;width:13px;height:13px;background-color:var(--green);-webkit-mask:url('/icons/check.svg') no-repeat center;mask:url('/icons/check.svg') no-repeat center;-webkit-mask-size:contain;mask-size:contain;"
+                ></span>
+              </button>
             </div>
           </div>
         </div>
         <a
           href={winMsiUrl}
-          class="flex items-center justify-between px-3 py-2 hover:bg-surface1 no-underline"
+          class="flex items-center px-3 py-2 hover:bg-surface1 no-underline gap-2"
         >
           <span
             ><span class="text-subtext0">* </span>Windows <span
@@ -298,7 +297,7 @@ const currentYear = new Date().getFullYear();
             <span class="text-subtext0 text-xs ml-2">one-time</span>
           </div>
           <div class="px-3 py-2 border-b border-green">
-            <span class="text-2xl font-bold">$30</span>
+            <span class="text-2xl font-bold">$35</span>
           </div>
           <ul class="px-3 py-2 space-y-1 text-subtext0">
             <li>- unlimited connections</li>
