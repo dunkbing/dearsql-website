@@ -17,9 +17,21 @@ const currentYear = new Date().getFullYear();
         <h2 class="font-bold text-text mb-2">### What we collect</h2>
         <p>DearSQL collects minimal data:</p>
         <ul class="mt-2 space-y-1 ml-2">
-          <li>- <span class="text-text">Bug reports</span> — submitted voluntarily via the "report bug" form. Processed by Sentry. Includes your description and any screenshots you attach.</li>
-          <li>- <span class="text-text">License validation</span> — when you activate a Pro license, your license key and a device identifier are sent to Polar.sh to verify the activation. We do not store this on our own servers.</li>
-          <li>- <span class="text-text">Purchase data</span> — handled entirely by Polar.sh. We receive your email address when you buy a license. We do not store payment details.</li>
+          <li>
+            - <span class="text-text">Bug reports</span> — submitted voluntarily via
+            the "report bug" form. Processed by Sentry. Includes your description
+            and any screenshots you attach.
+          </li>
+          <li>
+            - <span class="text-text">License validation</span> — when you activate
+            a Pro license, your license key and a device identifier are sent to Polar.sh
+            to verify the activation. We do not store this on our own servers.
+          </li>
+          <li>
+            - <span class="text-text">Purchase data</span> — handled entirely by Polar.sh.
+            We receive your email address when you buy a license. We do not store
+            payment details.
+          </li>
         </ul>
       </section>
 
@@ -35,10 +47,18 @@ const currentYear = new Date().getFullYear();
       <section>
         <h2 class="font-bold text-text mb-2">### Third-party services</h2>
         <ul class="space-y-1 ml-2">
-          <li>- <a href="https://sentry.io" target="_blank">Sentry</a> — error and bug report processing</li>
-          <li>- <a href="https://polar.sh" target="_blank">Polar.sh</a> — payment and license management</li>
+          <li>
+            - <a href="https://sentry.io" target="_blank">Sentry</a> — error and bug
+            report processing
+          </li>
+          <li>
+            - <a href="https://polar.sh" target="_blank">Polar.sh</a> — payment and
+            license management
+          </li>
         </ul>
-        <p class="mt-2">Each service has its own privacy policy governing data they collect.</p>
+        <p class="mt-2">
+          Each service has its own privacy policy governing data they collect.
+        </p>
       </section>
 
       <section>
@@ -49,13 +69,17 @@ const currentYear = new Date().getFullYear();
   </main>
 
   <footer class="border-t border-surface1 py-4 px-4 text-xs text-subtext0">
-    <div class="max-w-2xl mx-auto flex flex-wrap items-center justify-between gap-y-2">
+    <div
+      class="max-w-2xl mx-auto flex flex-wrap items-center justify-between gap-y-2"
+    >
       <p>&copy; {currentYear} DearSQL</p>
       <div class="flex flex-wrap gap-x-3 gap-y-1">
-        [<a href="/" class="hover:text-text">home</a>]
-        &nbsp;·&nbsp;
-        [<a href="/privacy" class="hover:text-text">privacy</a>]
-        [<a href="/terms" class="hover:text-text">terms</a>]
+        [<a href="/" class="hover:text-text">home</a>] [<a
+          href="https://github.com/dunkbing/dearsql"
+          target="_blank"
+          class="hover:text-text">github</a
+        >] &nbsp;·&nbsp; [<a href="/privacy" class="hover:text-text">privacy</a
+        >] [<a href="/terms" class="hover:text-text">terms</a>]
       </div>
     </div>
   </footer>

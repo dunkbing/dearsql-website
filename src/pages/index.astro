@@ -52,37 +52,49 @@ const currentYear = new Date().getFullYear();
   title="DearSQL — Native Desktop SQL Client for macOS, Linux & Windows"
   description="DearSQL is a fast, native desktop SQL client. Connect to SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, and MSSQL. No Electron, no bloat. Free tier available."
 >
-  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "DearSQL",
-    "applicationCategory": "DeveloperApplication",
-    "operatingSystem": "macOS, Linux, Windows",
-    "offers": [
-      {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD",
-        "name": "Free"
-      },
-      {
-        "@type": "Offer",
-        "price": "35",
-        "priceCurrency": "USD",
-        "name": "Pro"
-      }
-    ],
-    "description": "Fast, native desktop SQL client for SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, and MSSQL. Built with C++ and ImGui.",
-    "url": "https://dearsql.dev",
-    "screenshot": "https://dearsql.dev/sc.webp"
-  })} />
+  <script
+    is:inline
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      name: "DearSQL",
+      applicationCategory: "DeveloperApplication",
+      operatingSystem: "macOS, Linux, Windows",
+      offers: [
+        {
+          "@type": "Offer",
+          price: "0",
+          priceCurrency: "USD",
+          name: "Free",
+        },
+        {
+          "@type": "Offer",
+          price: "35",
+          priceCurrency: "USD",
+          name: "Pro",
+        },
+      ],
+      description:
+        "Fast, native desktop SQL client for SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, and MSSQL. Built with C++ and ImGui.",
+      url: "https://dearsql.dev",
+      screenshot: "https://dearsql.dev/sc.webp",
+    })}
+  />
   <main class="max-w-2xl mx-auto px-4 py-6">
     <!-- Hero -->
     <section class="pb-6">
-      <p class="text-green text-sm mb-3">
-        &gt; status: currently in development
+      <p class="text-subtext0 text-xs mb-2">
+        <a
+          href="https://github.com/dunkbing/dearsql"
+          target="_blank"
+          class="no-underline hover:underline">open source</a
+        >
       </p>
-      <h1 class="text-xl font-bold mb-2">Native SQL client for macOS, Linux & Windows.</h1>
+      <h1 class="text-xl font-bold mb-2">
+        Native SQL client for macOS, Linux & Windows.
+      </h1>
       <p class="text-sm mb-1">
         <span class="line-through text-subtext0">AI-powered</span>
         <span class="text-peach font-bold"> ImGui-powered.</span>
@@ -91,7 +103,9 @@ const currentYear = new Date().getFullYear();
         No Electron. No JVM. No bloat. Built with C++.
       </p>
       <div class="flex flex-wrap gap-x-3 gap-y-0.5 text-xs text-subtext0 mb-5">
-        <span>* SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, MSSQL</span>
+        <span
+          >* SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, MSSQL</span
+        >
         <span>* SSH tunneling & TLS</span>
         <span>* AI assistant</span>
       </div>
@@ -310,7 +324,9 @@ const currentYear = new Date().getFullYear();
             <tr class="border-b border-surface1">
               <th class="py-2 pr-6 text-left text-subtext0 font-normal"></th>
               <th class="py-2 pr-6 text-left font-bold text-green">DearSQL</th>
-              <th class="py-2 pr-6 text-left text-subtext0 font-normal">TablePlus</th>
+              <th class="py-2 pr-6 text-left text-subtext0 font-normal"
+                >TablePlus</th
+              >
               <th class="py-2 text-left text-subtext0 font-normal">DBeaver</th>
             </tr>
           </thead>
@@ -414,15 +430,28 @@ const currentYear = new Date().getFullYear();
 
 <!-- Footer -->
 <footer class="border-t border-surface1 py-4 px-4 text-xs text-subtext0">
-  <div class="max-w-2xl mx-auto flex flex-wrap items-center justify-between gap-y-2">
+  <div
+    class="max-w-2xl mx-auto flex flex-wrap items-center justify-between gap-y-2"
+  >
     <p>&copy; {currentYear} DearSQL</p>
     <div class="flex flex-wrap gap-x-3 gap-y-1">
-      [<a href="https://www.threads.net/@dunkbingg" target="_blank" class="hover:text-text">threads</a>]
-      [<a href="https://x.com/dunkbingg" target="_blank" class="hover:text-text">x</a>]
-      [<a href="mailto:bing@db99.dev" class="hover:text-text">email</a>]
-      &nbsp;·&nbsp;
-      [<a href="/privacy" class="hover:text-text">privacy</a>]
-      [<a href="/terms" class="hover:text-text">terms</a>]
+      [<a
+        href="https://github.com/dunkbing/dearsql"
+        target="_blank"
+        class="hover:text-text">github</a
+      >] [<a
+        href="https://www.threads.net/@dunkbingg"
+        target="_blank"
+        class="hover:text-text">threads</a
+      >] [<a
+        href="https://x.com/dunkbingg"
+        target="_blank"
+        class="hover:text-text">x</a
+      >] [<a href="mailto:bing@db99.dev" class="hover:text-text">email</a>]
+      &nbsp;·&nbsp; [<a href="/privacy" class="hover:text-text">privacy</a>] [<a
+        href="/terms"
+        class="hover:text-text">terms</a
+      >]
     </div>
   </div>
 </footer>
