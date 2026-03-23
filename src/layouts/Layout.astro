@@ -9,7 +9,7 @@ interface Props {
 
 const {
   title,
-  description = "A modern desktop SQL client for SQLite, PostgreSQL, MySQL, and Redis. Native performance with a clean, intuitive interface.",
+  description = "DearSQL is a fast, native desktop SQL client for SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, and MSSQL. No Electron, no bloat. Free tier available.",
   image = "/sc.webp",
 } = Astro.props;
 
@@ -26,6 +26,7 @@ const imageURL = new URL(image, Astro.site);
     <link rel="apple-touch-icon" href="/icon-hero.webp" />
     <link rel="canonical" href={canonicalURL} />
     <meta name="description" content={description} />
+    <meta name="keywords" content="SQL client, database manager, SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, MSSQL, desktop app, native, macOS, Linux, Windows" />
     <meta name="generator" content={Astro.generator} />
     <meta
       name="theme-color"
@@ -48,9 +49,12 @@ const imageURL = new URL(image, Astro.site);
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@dunkbingg" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={imageURL} />
+
+    <slot name="head" />
   </head>
   <body>
     <header class="bg-crust border-b border-surface1">

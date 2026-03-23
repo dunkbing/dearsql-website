@@ -1,0 +1,75 @@
+---
+import Layout from "../layouts/Layout.astro";
+import "../styles/global.css";
+const currentYear = new Date().getFullYear();
+---
+
+<Layout
+  title="Terms of Service — DearSQL"
+  description="DearSQL terms of service."
+>
+  <main class="max-w-2xl mx-auto px-4 py-6 text-sm">
+    <h1 class="text-xl font-bold mb-1">## Terms of Service</h1>
+    <p class="text-subtext0 text-xs mb-6">Last updated: March 2026</p>
+
+    <div class="space-y-6 text-subtext0">
+      <section>
+        <h2 class="font-bold text-text mb-2">### License</h2>
+        <p>
+          DearSQL is licensed per individual user. A Pro license grants one person the right to use DearSQL on their own devices. You may not share, resell, or redistribute a license key.
+        </p>
+        <p class="mt-2">
+          The free tier is available to anyone without a license key and is subject to usage limits (3 saved connections, 1 workspace).
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-bold text-text mb-2">### Permitted use</h2>
+        <ul class="space-y-1 ml-2">
+          <li>- Personal and commercial use is permitted</li>
+          <li>- You may use DearSQL to connect to any database you are authorized to access</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="font-bold text-text mb-2">### Prohibited use</h2>
+        <ul class="space-y-1 ml-2">
+          <li>- Reverse engineering, decompiling, or modifying the application</li>
+          <li>- Redistributing or reselling the software or license keys</li>
+          <li>- Using the software to access databases without authorization</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="font-bold text-text mb-2">### Warranty disclaimer</h2>
+        <p>
+          DearSQL is provided "as is" without warranty of any kind. We are not liable for data loss, damages, or interruptions caused by use of the software. Always maintain your own database backups.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-bold text-text mb-2">### Changes</h2>
+        <p>
+          We may update these terms at any time. Continued use of the software constitutes acceptance of the current terms.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-bold text-text mb-2">### Contact</h2>
+        <p><a href="mailto:bing@db99.dev">bing@db99.dev</a></p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="border-t border-surface1 py-4 px-4 text-xs text-subtext0">
+    <div class="max-w-2xl mx-auto flex flex-wrap items-center justify-between gap-y-2">
+      <p>&copy; {currentYear} DearSQL</p>
+      <div class="flex flex-wrap gap-x-3 gap-y-1">
+        [<a href="/" class="hover:text-text">home</a>]
+        &nbsp;·&nbsp;
+        [<a href="/privacy" class="hover:text-text">privacy</a>]
+        [<a href="/terms" class="hover:text-text">terms</a>]
+      </div>
+    </div>
+  </footer>
+</Layout>
