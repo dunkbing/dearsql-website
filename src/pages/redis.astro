@@ -1,8 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-const currentYear = new Date().getFullYear();
-
 const features = [
   {
     title: "Command Editor",
@@ -73,16 +71,4 @@ const features = [
       <a href="/" class="text-sm">&lt;- back to home</a>
     </section>
   </main>
-
-  <!-- Footer -->
-  <footer class="border-t border-surface1 py-3 px-4">
-    <div class="max-w-2xl mx-auto flex items-center justify-between text-sm text-subtext0">
-      <p>&copy; {currentYear} DearSQL</p>
-      <div class="flex gap-3">
-        [<a href="https://www.threads.net/@dunkbingg" target="_blank">threads</a>]
-        [<a href="https://x.com/dunkbingg" target="_blank">x</a>]
-        [<a href="mailto:bing@db99.dev">email</a>]
-      </div>
-    </div>
-  </footer>
 </Layout>

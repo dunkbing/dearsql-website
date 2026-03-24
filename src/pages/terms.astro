@@ -1,7 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
-const currentYear = new Date().getFullYear();
 ---
 
 <Layout
@@ -66,27 +65,6 @@ const currentYear = new Date().getFullYear();
           constitutes acceptance of the current terms.
         </p>
       </section>
-
-      <section>
-        <h2 class="font-bold text-text mb-2">### Contact</h2>
-        <p><a href="mailto:bing@db99.dev">bing@db99.dev</a></p>
-      </section>
     </div>
   </main>
-
-  <footer class="border-t border-surface1 py-4 px-4 text-xs text-subtext0">
-    <div
-      class="max-w-2xl mx-auto flex flex-wrap items-center justify-between gap-y-2"
-    >
-      <p>&copy; {currentYear} DearSQL</p>
-      <div class="flex flex-wrap gap-x-3 gap-y-1">
-        [<a href="/" class="hover:text-text">home</a>] [<a
-          href="https://github.com/dunkbing/dearsql"
-          target="_blank"
-          class="hover:text-text">github</a
-        >] &nbsp;·&nbsp; [<a href="/privacy" class="hover:text-text">privacy</a
-        >] [<a href="/terms" class="hover:text-text">terms</a>]
-      </div>
-    </div>
-  </footer>
 </Layout>

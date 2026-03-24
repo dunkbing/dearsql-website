@@ -2,7 +2,6 @@
 import Layout from "../layouts/Layout.astro";
 import { releases } from "../data/releases";
 
-const currentYear = new Date().getFullYear();
 ---
 
 <Layout title="Changelog - DearSQL">
@@ -29,11 +28,4 @@ const currentYear = new Date().getFullYear();
     </div>
   </main>
 
-  <!-- Footer -->
-  <footer class="border-t border-surface1 py-3 px-4 mt-6">
-    <div class="max-w-2xl mx-auto flex items-center justify-between text-sm text-subtext0">
-      <p>&copy; {currentYear} DearSQL</p>
-      <a href="mailto:bing@db99.dev">contact</a>
-    </div>
-  </footer>
 </Layout>

@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import Footer from "../components/Footer.astro";
 
 interface Props {
   title: string;
@@ -26,7 +27,10 @@ const imageURL = new URL(image, Astro.site);
     <link rel="apple-touch-icon" href="/icon-hero.webp" />
     <link rel="canonical" href={canonicalURL} />
     <meta name="description" content={description} />
-    <meta name="keywords" content="SQL client, database manager, SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, MSSQL, desktop app, native, macOS, Linux, Windows" />
+    <meta
+      name="keywords"
+      content="SQL client, database manager, SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, MSSQL, desktop app, native, macOS, Linux, Windows"
+    />
     <meta name="generator" content={Astro.generator} />
     <meta
       name="theme-color"
@@ -55,31 +59,83 @@ const imageURL = new URL(image, Astro.site);
     <meta name="twitter:image" content={imageURL} />
 
     <slot name="head" />
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      is:inline
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=AW-17863164815"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "AW-17863164815");
+    </script>
+    <script is:inline>
+      gtag("event", "conversion", {
+        send_to: "AW-17863164815/rk7iCPGZ3YocEI-H6cVC",
+        value: 1.0,
+        currency: "VND",
+      });
+    </script>
   </head>
   <body>
     <header class="bg-crust border-b border-surface1">
-      <nav class="max-w-2xl mx-auto px-4 py-2 flex flex-wrap items-center gap-x-1 gap-y-1 text-sm">
-        <a href="/" class="font-bold text-text no-underline flex items-center gap-2 mr-2">
+      <nav
+        class="max-w-2xl mx-auto px-4 py-2 flex flex-wrap items-center gap-x-1 gap-y-1 text-sm"
+      >
+        <a
+          href="/"
+          class="font-bold text-text no-underline flex items-center gap-2 mr-2"
+        >
           <img src="/icon.webp" alt="" width="16" height="16" />
           DearSQL
         </a>
-        {Astro.url.pathname === "/changelog" ? (
-          <>
-            [<a href="/#features" class="no-underline hover:underline">features</a>
-            | <span class="font-bold text-text">changelog</span>
-            | <a href="https://github.com/dunkbing/dearsql/issues/new" target="_blank" class="no-underline hover:underline">report bug</a>]
-          </>
-        ) : (
-          <>
-            [<a href="/#features" class="no-underline hover:underline">features</a>
-            | <a href="/changelog" class="no-underline hover:underline">changelog</a>
-            | <a href="https://github.com/dunkbing/dearsql/issues/new" target="_blank" class="no-underline hover:underline">report bug</a>]
-          </>
-        )}
+        {
+          Astro.url.pathname === "/changelog" ? (
+            <>
+              [
+              <a href="/#features" class="no-underline hover:underline">
+                features
+              </a>
+              | <span class="font-bold text-text">changelog</span>|{" "}
+              <a
+                href="https://github.com/dunkbing/dearsql/issues/new"
+                target="_blank"
+                class="no-underline hover:underline"
+              >
+                report bug
+              </a>
+              ]
+            </>
+          ) : (
+            <>
+              [
+              <a href="/#features" class="no-underline hover:underline">
+                features
+              </a>
+              |{" "}
+              <a href="/changelog" class="no-underline hover:underline">
+                changelog
+              </a>
+              |{" "}
+              <a
+                href="https://github.com/dunkbing/dearsql/issues/new"
+                target="_blank"
+                class="no-underline hover:underline"
+              >
+                report bug
+              </a>
+              ]
+            </>
+          )
+        }
       </nav>
     </header>
 
     <slot />
-
+    <Footer />
   </body>
 </html>
