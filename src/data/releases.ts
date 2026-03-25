@@ -17,6 +17,21 @@ export interface Release {
 
 export const releases: Release[] = [
   {
+    version: "0.3.5",
+    date: "2026-03-25",
+    changes: ["Bug fixes."],
+    sparkle: {
+      edSignature:
+        "WCP9E0Bc+A1N6RKMJFwjeiRDa5oPmddGsdlwp9MnHFCMNCsaN87Oxo5fMjkWkx0tARvBn8d8tDugrfnFLcKVAA==",
+      length: 9973571,
+    },
+    windows: {
+      edSignature:
+        "0eMZpXb2GDAT0uzvSmVb15oTIS0cYG8ZppO/0R0xyu88hR+2O2oVgAnvAU34wqVxxy0nbbS6VKJi5pm99LS4Dw==",
+      length: 7360512,
+    },
+  },
+  {
     version: "0.3.3",
     date: "2026-03-22",
     changes: ["Fixed saving scripts."],
