@@ -9,11 +9,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "13.0.2",
-    "@astrojs/sitemap": "3.7.1",
-    "@sentry/browser": "^10.45.0",
+    "@astrojs/cloudflare": "13.1.6",
+    "@astrojs/sitemap": "3.7.2",
+    "@sentry/browser": "^10.47.0",
     "@tailwindcss/vite": "^4.2.2",
-    "astro": "6.0.2",
+    "astro": "6.1.2",
     "tailwindcss": "^4.2.2"
   }
 }

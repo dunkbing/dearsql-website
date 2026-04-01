@@ -1,19 +1,11 @@
 ---
-import { R2_BASE } from "../data/releases";
+import { appImageUrl, dmgUrl, msiUrl, releases } from "../data/releases";
 import Layout from "../layouts/Layout.astro";
 
-const macDmgUrl = `${R2_BASE}/DearSQL-0.3.6.dmg`;
-const winMsiUrl = `${R2_BASE}/DearSQL-0.3.6-x64.msi`;
-
-let appImageUrl = `${R2_BASE}/DearSQL-0.3.6-x86_64.AppImage`;
-try {
-  const res = await fetch(`${R2_BASE}/version.json`);
-  if (res.ok) {
-    const data = await res.json();
-    const url = data?.downloads?.["appimage-x86_64"]?.url;
-    if (url) appImageUrl = url;
-  }
-} catch {}
+const latestRelease = releases[0];
+const macDmgUrl = dmgUrl(latestRelease.version);
+const linuxAppImageUrl = appImageUrl(latestRelease.version);
+const winMsiUrl = msiUrl(latestRelease.version);
 
 function formatSize(bytes: number): string {
   const mb = bytes / (1024 * 1024);
@@ -32,14 +24,14 @@ async function getFileSize(url: string): Promise<string | null> {
 
 const [macSize, linuxSize, winSize] = await Promise.all([
   getFileSize(macDmgUrl),
-  getFileSize(appImageUrl),
+  getFileSize(linuxAppImageUrl),
   getFileSize(winMsiUrl),
 ]);
 
 const features = [
   "Syntax highlighting, autocomplete, and query history.",
   "Browse and edit table data inline. Changes generate proper SQL before committing.",
-  "SQLite, PostgreSQL, MySQL, MongoDB, Redis, and Oracle in one app.",
+  "SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, and MSSQL in one app.",
   "Saved connections with encrypted credentials.",
   "Schema browser — tables, views, indexes, and more.",
   "Native C++ with Metal on macOS, OpenGL on Linux, and DirectX on Windows.",
@@ -128,7 +120,7 @@ const currentYear = new Date().getFullYear();
         </a>
         <div class="border-b border-surface1">
           <a
-            href={appImageUrl}
+            href={linuxAppImageUrl}
             class="flex items-center px-3 pt-2 pb-1 hover:bg-surface1 no-underline gap-2"
           >
             <span
@@ -311,7 +303,7 @@ const currentYear = new Date().getFullYear();
     <section id="databases" class="pb-6 border-t border-surface1 pt-4">
       <h2 class="font-bold mb-2">## Supported Databases</h2>
       <p class="text-sm text-subtext0">
-        SQLite, PostgreSQL, MySQL, MariaDB, Redis, MongoDB, Oracle.
+        SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, MSSQL.
       </p>
     </section>
 
@@ -353,6 +345,7 @@ const currentYear = new Date().getFullYear();
           </ul>
           <div class="px-3 pb-3">
             <a
+              id="buy-now-link"
               href="https://buy.polar.sh/polar_cl_IpYdAWiNljfzsXgatypm2mg40Mm2c4hB0DcVX1L9P6p"
               class="block text-center bg-green text-crust font-bold px-3 py-1.5 no-underline hover:opacity-90 text-xs mt-2"
             >
@@ -362,5 +355,34 @@ const currentYear = new Date().getFullYear();
         </div>
       </div>
     </section>
+
+    <script>
+      const buyNowLink = document.getElementById("buy-now-link");
+      buyNowLink?.addEventListener("click", (event) => {
+        event.preventDefault();
+        const url = buyNowLink.getAttribute("href");
+        const track = (
+          window as Window & {
+            gtag?: (...args: unknown[]) => void;
+          }
+        ).gtag;
+        const navigate = () => {
+          if (url) window.location.href = url;
+        };
+
+        if (typeof track === "function") {
+          track("event", "conversion", {
+            send_to: "AW-17863164815/rk7iCPGZ3YocEI-H6cVC",
+            value: 35.0,
+            currency: "USD",
+            event_callback: navigate,
+          });
+          setTimeout(navigate, 1000);
+          return;
+        }
+
+        navigate();
+      });
+    </script>
   </main>
 </Layout>

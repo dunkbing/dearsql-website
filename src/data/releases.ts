@@ -227,6 +227,10 @@ export function msiUrl(version: string): string {
   return `${R2_BASE}/DearSQL-${version}-x64.msi`;
 }
 
+export function appImageUrl(version: string): string {
+  return `${R2_BASE}/DearSQL-${version}-x86_64.AppImage`;
+}
+
 // format ISO date to RFC 822 for Sparkle
 export function toRfc822(isoDate: string): string {
   const d = new Date(isoDate + "T00:00:00Z");
