@@ -17,6 +17,36 @@ export interface Release {
 
 export const releases: Release[] = [
   {
+    version: "0.3.6",
+    date: "2026-03-31",
+    changes: ["Bug fixes."],
+    sparkle: {
+      edSignature:
+        "SRieqOdy4VUO0guyiv7UGb4xus+hRnhcfYV+FYadMzf3pNqUhtGGDtkdqpaIoOlFM0wdAxXa4/Arvz76BwlCAA==",
+      length: 9989952,
+    },
+    windows: {
+      edSignature:
+        "nWHpQz6VOrrcbuCb4V/S00G/QGed3SMyNWXM+9Urbus6wvu5bFRUK+pR7Xdy26WJZ8VrWzq0Pri8/PloneCcBw==",
+      length: 7376896,
+    },
+  },
+  {
+    version: "0.3.5",
+    date: "2026-03-25",
+    changes: ["Bug fixes."],
+    sparkle: {
+      edSignature:
+        "WCP9E0Bc+A1N6RKMJFwjeiRDa5oPmddGsdlwp9MnHFCMNCsaN87Oxo5fMjkWkx0tARvBn8d8tDugrfnFLcKVAA==",
+      length: 9973571,
+    },
+    windows: {
+      edSignature:
+        "0eMZpXb2GDAT0uzvSmVb15oTIS0cYG8ZppO/0R0xyu88hR+2O2oVgAnvAU34wqVxxy0nbbS6VKJi5pm99LS4Dw==",
+      length: 7360512,
+    },
+  },
+  {
     version: "0.3.3",
     date: "2026-03-22",
     changes: ["Fixed saving scripts."],
