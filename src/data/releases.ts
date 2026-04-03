@@ -17,6 +17,25 @@ export interface Release {
 
 export const releases: Release[] = [
   {
+    version: "0.3.7",
+    date: "2026-04-03",
+    changes: [
+      "Make tables selectable.",
+      "Update app colorscheme.",
+      "Bug fixes.",
+    ],
+    sparkle: {
+      edSignature:
+        "MMMENJaEdAxe/v80rST2R8BJQV9w7NS/Yj28qxetA6/YYubn6VQBMhplXpWMRadlbwWRBQj6EKdMiqHBZJgSAQ==",
+      length: 10004011,
+    },
+    windows: {
+      edSignature:
+        "UEwHcACQrc5mKSYKAVLYAS15bb45rMqkIm2zljYlvI5Pz5OZEFGtXGDer6nIa/QasyE+9PJqPnBc12ynAgZ1DQ==",
+      length: 7385088,
+    },
+  },
+  {
     version: "0.3.6",
     date: "2026-03-31",
     changes: ["Bug fixes."],
