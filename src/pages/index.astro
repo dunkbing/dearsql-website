@@ -74,6 +74,57 @@ const currentYear = new Date().getFullYear();
       screenshot: "https://dearsql.dev/sc.webp",
     })}
   />
+  <script
+    is:inline
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "What databases does DearSQL support?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "DearSQL supports SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, and MSSQL — all in one native desktop app.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Is DearSQL free?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. The free tier includes all database types and core features with up to 3 saved connections and 1 workspace. The Pro license ($35 one-time) unlocks unlimited connections and workspaces.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What platforms does DearSQL run on?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "DearSQL runs natively on macOS (Metal), Linux (OpenGL), and Windows (DirectX). It is built with C++ and ImGui — no Electron or JVM.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Does DearSQL support SSH tunneling?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. DearSQL supports SSH tunneling for all server-type databases, allowing you to connect through a bastion/jump host with password or private key authentication.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Does DearSQL support TLS/SSL connections?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. All server-type backends support TLS/SSL encryption with configurable modes including disable, prefer, require, verify-ca, and verify-full depending on the database.",
+          },
+        },
+      ],
+    })}
+  />
   <main class="max-w-2xl mx-auto px-4 py-6">
     <!-- Hero -->
     <section class="pb-6">

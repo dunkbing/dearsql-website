@@ -1,10 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { releases } from "../data/releases";
-
 ---
 
-<Layout title="Changelog - DearSQL">
+<Layout
+  title="Changelog - DearSQL"
+  description="Release history for DearSQL. See what's new in each version — new database support, features, bug fixes, and improvements."
+  breadcrumbs={[
+    { name: "Home", url: "/" },
+    { name: "Changelog", url: "/changelog" },
+  ]}
+>
   <main class="max-w-2xl mx-auto px-4 py-6">
     <h1 class="text-xl font-bold mb-1">## Changelog</h1>
     <p class="text-subtext0 text-sm mb-6">What's new in DearSQL.</p>
@@ -27,5 +33,4 @@ import { releases } from "../data/releases";
       }
     </div>
   </main>
-
 </Layout>

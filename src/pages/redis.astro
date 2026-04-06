@@ -23,12 +23,22 @@ const features = [
 <Layout
   title="DearSQL - Redis Features"
   description="Browse keys, execute commands, monitor Pub/Sub channels, and edit data inline — all from a native desktop Redis client."
+  breadcrumbs={[
+    { name: "Home", url: "/" },
+    { name: "Redis", url: "/redis" },
+  ]}
 >
   <main class="max-w-2xl mx-auto px-4 py-6">
     <!-- Hero -->
     <section class="pb-6">
       <div class="flex items-center gap-3 mb-3">
-        <img src="/icons/redis.svg" alt="Redis" class="w-6 h-6" />
+        <img
+          src="/icons/redis.svg"
+          alt="Redis"
+          width="24"
+          height="24"
+          class="w-6 h-6"
+        />
         <h1 class="text-xl font-bold">Redis</h1>
       </div>
       <p class="text-subtext0 text-sm">
@@ -45,7 +55,14 @@ const features = [
           <h2 class="font-bold mb-2">## {feature.title}</h2>
           <p class="text-subtext0 text-sm mb-4">{feature.desc}</p>
           <div class="border border-surface1 overflow-hidden">
-            <img src={feature.screenshot} alt={feature.title} class="w-full" loading="lazy" />
+            <img
+              src={feature.screenshot}
+              alt={feature.title}
+              width="2560"
+              height="1600"
+              class="w-full h-auto"
+              loading="lazy"
+            />
           </div>
         </section>
       ))
@@ -57,7 +74,9 @@ const features = [
       <ul class="space-y-1 text-sm text-subtext0">
         <li>- TLS/SSL support for secure connections.</li>
         <li>- SSH tunneling for Redis behind a bastion host.</li>
-        <li>- Color-coded key types (string, list, set, hash, zset, stream).</li>
+        <li>
+          - Color-coded key types (string, list, set, hash, zset, stream).
+        </li>
         <li>- Inline editing for key names, values, and TTL.</li>
         <li>- Add new keys with type selection via dropdown.</li>
         <li>- Memory usage per key displayed in the browser.</li>

@@ -2,16 +2,23 @@
 import "../styles/global.css";
 import Footer from "../components/Footer.astro";
 
+interface BreadcrumbItem {
+  name: string;
+  url: string;
+}
+
 interface Props {
   title: string;
   description?: string;
   image?: string;
+  breadcrumbs?: BreadcrumbItem[];
 }
 
 const {
   title,
   description = "DearSQL is a fast, native desktop SQL client for SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, and MSSQL. No Electron, no bloat. Free tier available.",
   image = "/sc.webp",
+  breadcrumbs = [],
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -57,6 +64,25 @@ const imageURL = new URL(image, Astro.site);
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={imageURL} />
+
+    {
+      breadcrumbs.length > 0 && (
+        <script
+          is:inline
+          type="application/ld+json"
+          set:html={JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: breadcrumbs.map((item, i) => ({
+              "@type": "ListItem",
+              position: i + 1,
+              name: item.name,
+              item: new URL(item.url, Astro.site).href,
+            })),
+          })}
+        />
+      )
+    }
 
     <slot name="head" />
 
