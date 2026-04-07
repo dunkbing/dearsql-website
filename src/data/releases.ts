@@ -1,4 +1,5 @@
-export const R2_BASE = "https://pub-b590ba39b15741d1bd6a1b4bffc11e87.r2.dev";
+export const GITHUB_RELEASE_BASE =
+  "https://github.com/dunkbing/dearsql/releases/download";
 
 export interface SparkleInfo {
   edSignature: string;
@@ -239,15 +240,15 @@ export const releases: Release[] = [
 ];
 
 export function dmgUrl(version: string): string {
-  return `${R2_BASE}/DearSQL-${version}.dmg`;
+  return `${GITHUB_RELEASE_BASE}/v${version}/DearSQL.dmg`;
 }
 
 export function msiUrl(version: string): string {
-  return `${R2_BASE}/DearSQL-${version}-x64.msi`;
+  return `${GITHUB_RELEASE_BASE}/v${version}/DearSQL-x64.msi`;
 }
 
 export function appImageUrl(version: string): string {
-  return `${R2_BASE}/DearSQL-${version}-x86_64.AppImage`;
+  return `${GITHUB_RELEASE_BASE}/v${version}/DearSQL-x86_64.AppImage`;
 }
 
 // format ISO date to RFC 822 for Sparkle
