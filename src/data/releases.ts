@@ -18,6 +18,28 @@ export interface Release {
 
 export const releases: Release[] = [
   {
+    version: "0.4.0",
+    date: "2026-04-07",
+    changes: [
+      "Fix filter auto-complete.",
+      "Fix Japanese/Chinese fonts.",
+      "Display routines/functions node.",
+      "Add routine viewer tab.",
+      "Show/hide db from the list.",
+      "Improve save dialog: SQL editor, editable SQL, cmd+s shortcut.",
+    ],
+    sparkle: {
+      edSignature:
+        "4tLbUmzziB6Mm+Rq6ktJyXfTclMitLdMTODAElTJ4I3zcwQP4VwoQOLCO908u7T4UHQ3mflVi+VqFzFe+t7kAQ==",
+      length: 10504016,
+    },
+    windows: {
+      edSignature:
+        "AwwpLUCRFDUlPoQw1pruEEBPe9jjKLpGzSuoMX/vv0DauYAVsLY3lYQMlZxPuPCqTElZNmyH5ryV1JxcOHkOBw==",
+      length: 7802880,
+    },
+  },
+  {
     version: "0.3.7",
     date: "2026-04-03",
     changes: [
