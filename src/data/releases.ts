@@ -18,6 +18,27 @@ export interface Release {
 
 export const releases: Release[] = [
   {
+    version: "0.4.1",
+    date: "2026-04-08",
+    changes: [
+      "Render boolean cells as checkboxes instead of t/f strings.",
+      "Show 1 line for table cell only.",
+      "Fix auto-complete input: anchor popup to input, not end-icon button.",
+      "Fix text editor: correct line numbers and click hit-test when scrolled.",
+      "Fix text editor: jump to line edge on up/down at first/last line.",
+    ],
+    sparkle: {
+      edSignature:
+        "9BzhftAbIDwOk9IsXO85Rm9Wd5nVbrYkd5NyqHYFisrkAo3AQ2F3jqY5BNhkymc5YHdWvkLsbI32WKugz4exAg==",
+      length: 10515734,
+    },
+    windows: {
+      edSignature:
+        "aToEY09ORdbqEoO+qE5xRZGNigMBFIUGQQu/LPx3sWRnmyHt4WTEW1qFAfSU4u/qJsj5TdnFVPhTRFcxWw3CCQ==",
+      length: 7811072,
+    },
+  },
+  {
     version: "0.4.0",
     date: "2026-04-07",
     changes: [
