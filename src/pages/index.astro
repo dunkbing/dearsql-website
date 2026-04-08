@@ -358,6 +358,162 @@ const currentYear = new Date().getFullYear();
       </p>
     </section>
 
+    <!-- Comparison -->
+    <section id="comparison" class="pb-6 border-t border-surface1 pt-4">
+      <h2 class="font-bold mb-2">## How it compares</h2>
+      <p class="text-xs text-subtext0 mb-3">
+        Quick snapshot vs. other popular SQL clients. Got a correction?{" "}
+        <a href="mailto:dunkbingg@gmail.com">let us know</a>.
+      </p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-xs border border-surface1 border-collapse">
+          <thead>
+            <tr class="bg-surface0 text-text">
+              <th
+                class="text-left font-bold px-2 py-1.5 border-b border-surface1"
+                >feature</th
+              >
+              <th
+                class="text-left font-bold px-2 py-1.5 border-b border-l border-surface1 text-green"
+                >DearSQL</th
+              >
+              <th
+                class="text-left font-bold px-2 py-1.5 border-b border-l border-surface1"
+                >TablePlus</th
+              >
+              <th
+                class="text-left font-bold px-2 py-1.5 border-b border-l border-surface1"
+                >DBeaver</th
+              >
+              <th
+                class="text-left font-bold px-2 py-1.5 border-b border-l border-surface1"
+                >DataGrip</th
+              >
+            </tr>
+          </thead>
+          <tbody class="text-subtext0">
+            <tr>
+              <td class="px-2 py-1.5 border-b border-surface1"
+                >native (no Electron/JVM)</td
+              >
+              <td
+                class="px-2 py-1.5 border-b border-l border-surface1 text-green"
+                >yes (C++)</td
+              >
+              <td class="px-2 py-1.5 border-b border-l border-surface1">yes</td>
+              <td class="px-2 py-1.5 border-b border-l border-surface1"
+                >no (JVM)</td
+              >
+              <td class="px-2 py-1.5 border-b border-l border-surface1"
+                >no (JVM)</td
+              >
+            </tr>
+            <tr>
+              <td class="px-2 py-1.5 border-b border-surface1">free tier</td>
+              <td
+                class="px-2 py-1.5 border-b border-l border-surface1 text-green"
+                >yes</td
+              >
+              <td class="px-2 py-1.5 border-b border-l border-surface1"
+                >trial</td
+              >
+              <td class="px-2 py-1.5 border-b border-l border-surface1"
+                >yes (CE)</td
+              >
+              <td class="px-2 py-1.5 border-b border-l border-surface1"
+                >trial</td
+              >
+            </tr>
+            <tr>
+              <td class="px-2 py-1.5 border-b border-surface1"
+                >one-time purchase</td
+              >
+              <td
+                class="px-2 py-1.5 border-b border-l border-surface1 text-green"
+                >$35</td
+              >
+              <td class="px-2 py-1.5 border-b border-l border-surface1">$89+</td
+              >
+              <td class="px-2 py-1.5 border-b border-l border-surface1"
+                >sub only (EE)</td
+              >
+              <td class="px-2 py-1.5 border-b border-l border-surface1"
+                >sub only</td
+              >
+            </tr>
+            <tr>
+              <td class="px-2 py-1.5 border-b border-surface1"
+                >SQL + NoSQL in one app</td
+              >
+              <td
+                class="px-2 py-1.5 border-b border-l border-surface1 text-green"
+                >yes</td
+              >
+              <td class="px-2 py-1.5 border-b border-l border-surface1"
+                >partial</td
+              >
+              <td class="px-2 py-1.5 border-b border-l border-surface1">yes</td>
+              <td class="px-2 py-1.5 border-b border-l border-surface1"
+                >partial</td
+              >
+            </tr>
+            <tr>
+              <td class="px-2 py-1.5 border-b border-surface1">SSH tunneling</td
+              >
+              <td
+                class="px-2 py-1.5 border-b border-l border-surface1 text-green"
+                >yes</td
+              >
+              <td class="px-2 py-1.5 border-b border-l border-surface1">yes</td>
+              <td class="px-2 py-1.5 border-b border-l border-surface1">yes</td>
+              <td class="px-2 py-1.5 border-b border-l border-surface1">yes</td>
+            </tr>
+            <tr>
+              <td class="px-2 py-1.5 border-b border-surface1">AI assistant</td>
+              <td
+                class="px-2 py-1.5 border-b border-l border-surface1 text-green"
+                >built-in</td
+              >
+              <td class="px-2 py-1.5 border-b border-l border-surface1">no</td>
+              <td class="px-2 py-1.5 border-b border-l border-surface1"
+                >plugin</td
+              >
+              <td class="px-2 py-1.5 border-b border-l border-surface1"
+                >built-in</td
+              >
+            </tr>
+            <tr>
+              <td class="px-2 py-1.5 border-b border-surface1"
+                >macOS / Linux / Windows</td
+              >
+              <td
+                class="px-2 py-1.5 border-b border-l border-surface1 text-green"
+                >all three</td
+              >
+              <td class="px-2 py-1.5 border-b border-l border-surface1"
+                >all three</td
+              >
+              <td class="px-2 py-1.5 border-b border-l border-surface1"
+                >all three</td
+              >
+              <td class="px-2 py-1.5 border-b border-l border-surface1"
+                >all three</td
+              >
+            </tr>
+            <tr>
+              <td class="px-2 py-1.5">telemetry</td>
+              <td class="px-2 py-1.5 border-l border-surface1 text-green"
+                >none</td
+              >
+              <td class="px-2 py-1.5 border-l border-surface1">opt-out</td>
+              <td class="px-2 py-1.5 border-l border-surface1">opt-out</td>
+              <td class="px-2 py-1.5 border-l border-surface1">opt-out</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
     <!-- Pricing -->
     <section id="pricing" class="pb-6 border-t border-surface1 pt-4">
       <h2 class="font-bold mb-4">## Pricing</h2>
@@ -406,34 +562,5 @@ const currentYear = new Date().getFullYear();
         </div>
       </div>
     </section>
-
-    <script>
-      const buyNowLink = document.getElementById("buy-now-link");
-      buyNowLink?.addEventListener("click", (event) => {
-        event.preventDefault();
-        const url = buyNowLink.getAttribute("href");
-        const track = (
-          window as Window & {
-            gtag?: (...args: unknown[]) => void;
-          }
-        ).gtag;
-        const navigate = () => {
-          if (url) window.location.href = url;
-        };
-
-        if (typeof track === "function") {
-          track("event", "conversion", {
-            send_to: "AW-17863164815/rk7iCPGZ3YocEI-H6cVC",
-            value: 35.0,
-            currency: "USD",
-            event_callback: navigate,
-          });
-          setTimeout(navigate, 1000);
-          return;
-        }
-
-        navigate();
-      });
-    </script>
   </main>
 </Layout>

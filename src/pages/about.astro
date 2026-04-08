@@ -1,0 +1,89 @@
+---
+import Layout from "../layouts/Layout.astro";
+import "../styles/global.css";
+---
+
+<Layout
+  title="About — DearSQL"
+  description="About DearSQL — a fast, native desktop SQL client built for developers who care about speed and simplicity."
+  breadcrumbs={[
+    { name: "Home", url: "/" },
+    { name: "About", url: "/about" },
+  ]}
+>
+  <main class="max-w-2xl mx-auto px-4 py-6 text-sm">
+    <h1 class="text-xl font-bold mb-1">## About</h1>
+    <p class="text-subtext0 text-xs mb-6">The story behind DearSQL</p>
+
+    <div class="space-y-6 text-subtext0">
+      <section>
+        <h2 class="font-bold text-text mb-2">### What is DearSQL?</h2>
+        <p>
+          DearSQL is a fast, native desktop SQL client for SQLite, PostgreSQL,
+          MySQL, MariaDB, MongoDB, Redis, Oracle, MSSQL, and Redshift. Built in
+          modern C++ with ImGui, it runs natively on macOS, Linux, and Windows
+          — no Electron, no bloat, no compromises.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-bold text-text mb-2">### Why we built it</h2>
+        <p>
+          Most SQL clients are either bloated Electron apps that eat hundreds
+          of megabytes of RAM, or legacy tools stuck in the past. We wanted
+          something that starts instantly, feels snappy on every keystroke,
+          and treats your machine with respect.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-bold text-text mb-2">### What makes it different</h2>
+        <ul class="mt-2 space-y-1 ml-2">
+          <li>
+            - <span class="text-text">Native performance</span> — built in C++20
+            with direct database driver APIs. No JavaScript runtime.
+          </li>
+          <li>
+            - <span class="text-text">One app, many databases</span> — connect
+            to SQL and NoSQL backends from a single unified interface.
+          </li>
+          <li>
+            - <span class="text-text">Secure by default</span> — TLS/SSL support
+            for every backend, SSH tunneling via the system ssh binary, and
+            encrypted credential storage at rest.
+          </li>
+          <li>
+            - <span class="text-text">AI assistant</span> — optional Claude-powered
+            chat panel for writing queries and understanding schemas.
+          </li>
+          <li>
+            - <span class="text-text">Privacy-first</span> — no telemetry, no
+            analytics, no tracking. Your queries and credentials never leave
+            your machine.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="font-bold text-text mb-2">### Pricing</h2>
+        <p>
+          DearSQL is free to use with up to 3 saved connections and 1 workspace.
+          The Pro tier is a one-time purchase with unlimited connections and
+          workspaces — no subscriptions, no recurring fees.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-bold text-text mb-2">### Get in touch</h2>
+        <p>
+          Found a bug, have a feature request, or just want to say hi? Reach
+          out via <a href="mailto:dunkbingg@gmail.com">email</a> or open an
+          issue on <a
+            href="https://github.com/dunkbing/dearsql"
+            target="_blank">GitHub</a
+          >.
+        </p>
+      </section>
+    </div>
+  </main>
+</Layout>

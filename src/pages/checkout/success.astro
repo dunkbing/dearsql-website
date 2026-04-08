@@ -1,0 +1,95 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import "../../styles/global.css";
+---
+
+<Layout
+  title="Thanks for your purchase — DearSQL"
+  description="Your DearSQL Pro license is on its way. Check your email for activation instructions."
+  breadcrumbs={[
+    { name: "Home", url: "/" },
+    { name: "Checkout", url: "/checkout/success" },
+  ]}
+>
+  <!-- Google Ads tag (conversion tracking — purchase) -->
+  <script
+    is:inline
+    async
+    slot="head"
+    src="https://www.googletagmanager.com/gtag/js?id=AW-17863164815"></script>
+  <script is:inline slot="head">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "AW-17863164815");
+    gtag("event", "conversion", {
+      send_to: "AW-17863164815/rk7iCPGZ3YocEI-H6cVC",
+      value: 35.0,
+      currency: "USD",
+      transaction_id: new URLSearchParams(window.location.search).get(
+        "checkout_id",
+      ),
+    });
+  </script>
+
+  <!-- noindex this page — it's a transactional landing -->
+  <meta slot="head" name="robots" content="noindex, nofollow" />
+
+  <main class="max-w-2xl mx-auto px-4 py-6 text-sm">
+    <h1 class="text-xl font-bold mb-1 text-green">
+      ## Thanks for your purchase!
+    </h1>
+    <p class="text-subtext0 text-xs mb-6">
+      Your DearSQL Pro license is on its way.
+    </p>
+
+    <div class="space-y-6 text-subtext0">
+      <section>
+        <h2 class="font-bold text-text mb-2">### What happens next</h2>
+        <ul class="mt-2 space-y-1 ml-2">
+          <li>
+            - <span class="text-text">Check your email</span> — Polar will send your
+            license key and receipt within a few minutes. Check spam if it doesn't
+            show up.
+          </li>
+          <li>
+            - <span class="text-text">Open DearSQL</span> — go to Settings → License
+            and paste your license key to activate Pro.
+          </li>
+          <li>
+            - <span class="text-text">You're done</span> — unlimited connections and
+            workspaces are unlocked immediately after activation.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="font-bold text-text mb-2">### Don't have DearSQL yet?</h2>
+        <p>
+          <a href="/#install">Download it here</a> — the license activates on first
+          launch once you paste your key.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-bold text-text mb-2">### Something wrong?</h2>
+        <p>
+          If your license key doesn't arrive within 15 minutes, or you hit any
+          activation trouble, email <a href="mailto:dunkbingg@gmail.com"
+            >dunkbingg@gmail.com</a
+          > with your purchase email and we'll sort it out.
+        </p>
+      </section>
+
+      <div class="pt-2">
+        <a
+          href="/"
+          class="inline-block border border-surface1 px-3 py-1.5 text-xs text-text no-underline hover:bg-surface0"
+          >&larr; back to home</a
+        >
+      </div>
+    </div>
+  </main>
+</Layout>

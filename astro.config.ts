@@ -8,7 +8,11 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: "https://dearsql.dev",
   trailingSlash: "never",
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      filter: (page) => !page.includes("/checkout/"),
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },
