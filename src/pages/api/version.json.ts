@@ -1,5 +1,7 @@
 import type { APIRoute } from "astro";
 
+export const prerender = true;
+
 const GITHUB_REPO = "dunkbing/dearsql";
 const LATEST_RELEASE_URL = `https://api.github.com/repos/${GITHUB_REPO}/releases/latest`;
 const VERSION_ASSET_NAME = "version.json";
