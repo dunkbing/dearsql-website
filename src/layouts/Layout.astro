@@ -99,43 +99,19 @@ const imageURL = new URL(image, Astro.site);
           DearSQL
         </a>
         {
-          Astro.url.pathname === "/changelog" ? (
-            <>
-              [
-              <a href="/#features" class="no-underline hover:underline">
-                features
-              </a>
-              | <span class="font-bold text-text">changelog</span>|{" "}
-              <a
-                href="https://github.com/dunkbing/dearsql/issues/new"
-                target="_blank"
-                class="no-underline hover:underline"
-              >
-                report bug
-              </a>
-              ]
-            </>
-          ) : (
-            <>
-              [
-              <a href="/#features" class="no-underline hover:underline">
-                features
-              </a>
-              |{" "}
-              <a href="/changelog" class="no-underline hover:underline">
-                changelog
-              </a>
-              |{" "}
-              <a
-                href="https://github.com/dunkbing/dearsql/issues/new"
-                target="_blank"
-                class="no-underline hover:underline"
-              >
-                report bug
-              </a>
-              ]
-            </>
-          )
+          (() => {
+            const path = Astro.url.pathname;
+            const link = (href: string, label: string) =>
+              path === href || (href !== "/" && path.startsWith(href))
+                ? <span class="font-bold text-text">{label}</span>
+                : <a href={href} class="no-underline hover:underline">{label}</a>;
+            return (
+              <>
+                [ {link("/#features", "features")} | {link("/compare", "compare")} | {link("/changelog", "changelog")} |{" "}
+                <a href="https://github.com/dunkbing/dearsql/issues/new" target="_blank" class="no-underline hover:underline">report bug</a> ]
+              </>
+            );
+          })()
         }
       </nav>
     </header>
