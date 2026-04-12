@@ -18,6 +18,26 @@ export interface Release {
 
 export const releases: Release[] = [
   {
+    version: "0.4.2",
+    date: "2026-04-12",
+    changes: [
+      "Add auto-increment support to table editor.",
+      "Optimize GTK cursor updates on Linux.",
+      "Add date/time picker for table cell editing.",
+      "Fix menu popover styles.",
+    ],
+    sparkle: {
+      edSignature:
+        "mGvMX0JrTDqAi+hOOq+VhdoWwF048RSz8n1GMwNCoBa337vg9k9UkPQtvpeI1bXuOaLGUluwN696QaetEHLdCg==",
+      length: 10534275,
+    },
+    windows: {
+      edSignature:
+        "hF6rhXnSl1hW4zU8hCpPRxMrRXGF8TmUCgrW0Q8csz0CnCg0W15as63Q01t4pPepum/NYqriYycZ63fzzXvMCg==",
+      length: 7999488,
+    },
+  },
+  {
     version: "0.4.1",
     date: "2026-04-08",
     changes: [
