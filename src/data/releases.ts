@@ -23,8 +23,8 @@ export const releases: Release[] = [
     changes: ["Refine UI.", "Bug fixes."],
     sparkle: {
       edSignature:
-        "TvdPr6RJnVoxuzW0qyJjnW6pJ7dUiU86OC5qOZkw22MgpLan8QszWW5jRkAhbssQdhThmgQvcHjlpI1agxyCBw==",
-      length: 10534248,
+        "uBCNuvdq/AGBos2DdUEojuNlrqO0oeUrHf3JfaH0BHPSJKqUrVNipwc+wwRKcNYcG760fYJMynlSmHFy/z2DAA==",
+      length: 10534225,
     },
     windows: {
       edSignature:
