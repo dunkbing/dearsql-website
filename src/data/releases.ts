@@ -18,6 +18,21 @@ export interface Release {
 
 export const releases: Release[] = [
   {
+    version: "0.4.3",
+    date: "2026-04-14",
+    changes: ["Refine UI.", "Bug fixes."],
+    sparkle: {
+      edSignature:
+        "TvdPr6RJnVoxuzW0qyJjnW6pJ7dUiU86OC5qOZkw22MgpLan8QszWW5jRkAhbssQdhThmgQvcHjlpI1agxyCBw==",
+      length: 10534248,
+    },
+    windows: {
+      edSignature:
+        "XQsI6smDpn3kfH2ZiohGjj2U7ZLxZJVAGQXycrAaJ9jMkqs8uVioM7dwP1yx2bqRvWhWfJD4jUub5XbO8CDQBw==",
+      length: 7942144,
+    },
+  },
+  {
     version: "0.4.2",
     date: "2026-04-12",
     changes: [
