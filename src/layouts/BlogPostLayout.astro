@@ -1,0 +1,38 @@
+---
+import Layout from "./Layout.astro";
+
+const { frontmatter } = Astro.props;
+const { title, description, pubDate } = frontmatter;
+---
+
+<Layout
+  title={`${title} — DearSQL Blog`}
+  description={description}
+  breadcrumbs={[
+    { name: "Home", url: "/" },
+    { name: "Blog", url: "/blog" },
+    { name: title, url: Astro.url.pathname },
+  ]}
+>
+  <main class="max-w-2xl mx-auto px-4 py-6 text-sm">
+    <a href="/blog" class="text-subtext0 text-xs">&lt;- back to blog</a>
+
+    <h1 class="text-xl font-bold mt-4 mb-1">## {title}</h1>
+    <p class="text-subtext0 text-xs mb-6">
+      <time datetime={pubDate}>{pubDate}</time>
+    </p>
+
+    <article class="blog-post text-subtext0 space-y-4">
+      <slot />
+    </article>
+  </main>
+</Layout>
+
+<style is:global>
+  .blog-post h2 { color: var(--text); font-weight: bold; margin-top: 1.5rem; }
+  .blog-post h3 { color: var(--text); font-weight: bold; margin-top: 1rem; }
+  .blog-post ul { padding-left: 1.25rem; list-style: disc; }
+  .blog-post code { background: var(--surface0); padding: 0 0.25rem; }
+  .blog-post pre { background: var(--crust); border: 1px solid var(--surface1); padding: 1rem 1.25rem; overflow-x: auto; margin: 1rem 0; line-height: 1.6; }
+  .blog-post pre code { background: transparent; padding: 0; }
+</style>

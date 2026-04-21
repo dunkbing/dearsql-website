@@ -1,0 +1,75 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+interface PostFrontmatter {
+  title: string;
+  description?: string;
+  pubDate: string;
+  author?: string;
+  tags?: string[];
+}
+
+interface PostModule {
+  frontmatter: PostFrontmatter;
+  url?: string;
+  file: string;
+}
+
+const postImports = import.meta.glob<PostModule>("./*.md", { eager: true });
+const posts = Object.values(postImports)
+  .filter((p): p is PostModule & { url: string } => typeof p.url === "string")
+  .sort(
+    (a, b) =>
+      new Date(b.frontmatter.pubDate).getTime() -
+      new Date(a.frontmatter.pubDate).getTime(),
+  );
+---
+
+<Layout
+  title="Blog — DearSQL"
+  description="Notes, tutorials, and deep dives from the DearSQL team — C++, database internals, and building a native SQL client."
+  breadcrumbs={[
+    { name: "Home", url: "/" },
+    { name: "Blog", url: "/blog" },
+  ]}
+>
+  <main class="max-w-2xl mx-auto px-4 py-6 text-sm">
+    <h1 class="text-xl font-bold mb-1">## Blog</h1>
+    <p class="text-subtext0 text-xs mb-6">
+      Notes, tutorials, and deep dives from the DearSQL team.
+    </p>
+
+    {
+      posts.length === 0 ? (
+        <p class="text-subtext0">No posts yet.</p>
+      ) : (
+        <ul class="space-y-6">
+          {posts.map((post) => (
+            <li class="border-t border-surface1 pt-4 first:border-t-0 first:pt-0">
+              <h2 class="font-bold mb-1">
+                <a href={post.url} class="no-underline hover:underline">
+                  {post.frontmatter.title}
+                </a>
+              </h2>
+              <p class="text-subtext0 text-xs mb-2">
+                <time datetime={post.frontmatter.pubDate}>
+                  {post.frontmatter.pubDate}
+                </time>
+                {post.frontmatter.author && <> · {post.frontmatter.author}</>}
+                {post.frontmatter.tags && post.frontmatter.tags.length > 0 && (
+                  <> · {post.frontmatter.tags.map((t) => <span>#{t} </span>)}</>
+                )}
+              </p>
+              {post.frontmatter.description && (
+                <p class="text-subtext0">{post.frontmatter.description}</p>
+              )}
+              <p class="mt-2">
+                <a href={post.url} class="text-sm">read -&gt;</a>
+              </p>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </main>
+</Layout>
