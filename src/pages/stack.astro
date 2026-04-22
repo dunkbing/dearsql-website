@@ -1,0 +1,134 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+interface Dep {
+  name: string;
+  desc: string;
+  url: string;
+}
+
+interface Group {
+  title: string;
+  deps: Dep[];
+}
+
+const groups: Group[] = [
+  {
+    title: "Core",
+    deps: [
+      { name: "C++20", desc: "std::format, ranges, concepts.", url: "https://en.cppreference.com/w/cpp/20" },
+      { name: "CMake", desc: "Build system (≥ 3.23).", url: "https://cmake.org/" },
+      { name: "vcpkg", desc: "Dependency manager for third-party libraries.", url: "https://vcpkg.io/" },
+    ],
+  },
+  {
+    title: "UI",
+    deps: [
+      { name: "Dear ImGui", desc: "Immediate-mode GUI — every pixel of the app.", url: "https://github.com/ocornut/imgui" },
+      { name: "imgui-node-editor", desc: "Node graph widget for schema diagrams.", url: "https://github.com/thedmd/imgui-node-editor" },
+      { name: "IconFontCppHeaders", desc: "C++ headers for icon fonts.", url: "https://github.com/juliettef/IconFontCppHeaders" },
+      { name: "stb_image", desc: "PNG decoding for embedded database icons.", url: "https://github.com/nothings/stb" },
+    ],
+  },
+  {
+    title: "Rendering",
+    deps: [
+      { name: "Metal", desc: "GPU backend on macOS.", url: "https://developer.apple.com/metal/" },
+      { name: "OpenGL", desc: "GPU backend on Linux.", url: "https://www.opengl.org/" },
+      { name: "DirectX 11", desc: "GPU backend on Windows.", url: "https://learn.microsoft.com/en-us/windows/win32/direct3d11/" },
+    ],
+  },
+  {
+    title: "Database drivers",
+    deps: [
+      { name: "sqlite3", desc: "SQLite, bundled.", url: "https://www.sqlite.org/" },
+      { name: "libpq", desc: "PostgreSQL and Redshift.", url: "https://www.postgresql.org/docs/current/libpq.html" },
+      { name: "MariaDB Connector/C", desc: "MySQL and MariaDB.", url: "https://mariadb.com/kb/en/mariadb-connector-c/" },
+      { name: "mongocxx", desc: "MongoDB C++ driver.", url: "https://github.com/mongodb/mongo-cxx-driver" },
+      { name: "hiredis + hiredis_ssl", desc: "Redis with TLS.", url: "https://github.com/redis/hiredis" },
+      { name: "FreeTDS", desc: "Microsoft SQL Server.", url: "https://www.freetds.org/" },
+      { name: "Oracle ODPI-C", desc: "Oracle OCI wrapper.", url: "https://oracle.github.io/odpi/" },
+    ],
+  },
+  {
+    title: "SQL tooling",
+    deps: [
+      { name: "tree-sitter", desc: "Incremental parser for syntax highlighting.", url: "https://tree-sitter.github.io/" },
+      { name: "tree-sitter-sql", desc: "SQL grammar.", url: "https://github.com/DerekStride/tree-sitter-sql" },
+      { name: "tree-sitter-json", desc: "JSON grammar for MongoDB editor.", url: "https://github.com/tree-sitter/tree-sitter-json" },
+      { name: "sql-parser", desc: "SQL parser for formatting and static analysis.", url: "https://github.com/hyrise/sql-parser" },
+      { name: "csv2", desc: "Fast CSV reader/writer.", url: "https://github.com/p-ranav/csv2" },
+    ],
+  },
+  {
+    title: "Security & networking",
+    deps: [
+      { name: "OpenSSL", desc: "TLS for every backend.", url: "https://www.openssl.org/" },
+      { name: "system ssh", desc: "SSH tunneling via the system ssh binary.", url: "https://www.openssh.com/" },
+    ],
+  },
+  {
+    title: "Platform integration",
+    deps: [
+      { name: "Sparkle", desc: "Auto-update on macOS.", url: "https://sparkle-project.org/" },
+      { name: "WinSparkle", desc: "Auto-update on Windows.", url: "https://winsparkle.org/" },
+      { name: "AppImage", desc: "Self-contained Linux binary + auto-update.", url: "https://appimage.org/" },
+    ],
+  },
+  {
+    title: "Infrastructure",
+    deps: [
+      { name: "spdlog", desc: "Fast C++ logging.", url: "https://github.com/gabime/spdlog" },
+      { name: "GoogleTest", desc: "Test suite for database backends.", url: "https://github.com/google/googletest" },
+      { name: "Sentry", desc: "Crash and error reporting.", url: "https://sentry.io/" },
+      { name: "Polar.sh", desc: "License activation and checkout.", url: "https://polar.sh/" },
+    ],
+  },
+  {
+    title: "This website",
+    deps: [
+      { name: "Astro", desc: "Static site generator.", url: "https://astro.build/" },
+      { name: "Tailwind CSS", desc: "Styling.", url: "https://tailwindcss.com/" },
+      { name: "Bun", desc: "Package manager and runtime.", url: "https://bun.sh/" },
+      { name: "Cloudflare Workers", desc: "Hosting and edge runtime.", url: "https://workers.cloudflare.com/" },
+    ],
+  },
+];
+---
+
+<Layout
+  title="Stack — DearSQL"
+  description="Every library, tool, and service DearSQL is built on — C++20, Dear ImGui, and a dozen database drivers."
+  breadcrumbs={[
+    { name: "Home", url: "/" },
+    { name: "Stack", url: "/stack" },
+  ]}
+>
+  <main class="max-w-2xl mx-auto px-4 py-6 text-sm">
+    <h1 class="text-xl font-bold mb-1">## Stack</h1>
+    <p class="text-subtext0 text-xs mb-6">
+      Everything DearSQL is built on.
+    </p>
+
+    <div class="space-y-6 text-subtext0">
+      {
+        groups.map((g) => (
+          <section>
+            <h2 class="font-bold text-text mb-2">### {g.title}</h2>
+            <ul class="space-y-1 ml-2">
+              {g.deps.map((d) => (
+                <li>
+                  -{" "}
+                  <a href={d.url} target="_blank" class="text-text">
+                    {d.name}
+                  </a>{" "}
+                  — {d.desc}
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))
+      }
+    </div>
+  </main>
+</Layout>

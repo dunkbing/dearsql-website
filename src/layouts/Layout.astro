@@ -84,10 +84,23 @@ const imageURL = new URL(image, Astro.site);
       )
     }
 
+    <style>
+      .site-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+      }
+      body {
+        padding-top: 3rem;
+      }
+    </style>
+
     <slot name="head" />
   </head>
   <body>
-    <header class="bg-crust border-b border-surface1">
+    <header class="site-header bg-crust border-b border-surface1">
       <nav
         class="max-w-2xl mx-auto px-4 py-2 flex flex-wrap items-center gap-x-1 gap-y-1 text-sm"
       >
@@ -107,7 +120,7 @@ const imageURL = new URL(image, Astro.site);
                 : <a href={href} class="no-underline hover:underline">{label}</a>;
             return (
               <>
-                [ {link("/#features", "features")} | {link("/compare", "compare")} | {link("/changelog", "changelog")} | {link("/blog", "blog")} |{" "}
+                [ {link("/#features", "features")} | {link("/compare", "compare")} | {link("/changelog", "changelog")} |{" "}
                 <a href="https://github.com/dunkbing/dearsql/issues/new" target="_blank" class="no-underline hover:underline">report bug</a> ]
               </>
             );
