@@ -18,6 +18,21 @@ export interface Release {
 
 export const releases: Release[] = [
   {
+    version: "0.4.4",
+    date: "2026-04-22",
+    changes: ["Add table cells selection."],
+    sparkle: {
+      edSignature:
+        "/9hxzx6m22f9WkaFyVMXlv9WV1fNAaAM0SH85nuoRhMoFXNRuYILiUTgzVHkF+FOa+OPSEvFXEfAyhn+N3FnCg==",
+      length: 10533095,
+    },
+    windows: {
+      edSignature:
+        "Uznd31v74P0cCb0sxDUEhWjxK2u2c6uoUsnxOZd+URN906TtAvCvnrpEWWjkCBeGnvlh30eKgNDIlDvW2PblBg==",
+      length: 7950336,
+    },
+  },
+  {
     version: "0.4.3",
     date: "2026-04-14",
     changes: ["Refine UI.", "Bug fixes."],
