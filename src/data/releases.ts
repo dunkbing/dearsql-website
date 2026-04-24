@@ -18,6 +18,21 @@ export interface Release {
 
 export const releases: Release[] = [
   {
+    version: "0.4.5",
+    date: "2026-04-24",
+    changes: ["Add Postgres backup and restore options."],
+    sparkle: {
+      edSignature:
+        "4qYto2zaB4uB7eFjkP7gl7uqB4mjrdwBkOZFezrJASdJCjCJfvXxhQH85rytRlT7H6TVgIYtc/5G9W2Y3BxbCw==",
+      length: 10553697,
+    },
+    windows: {
+      edSignature:
+        "IHO5I2yDNpZFkHlldtwF/EmjehTnjs799oZ8jctxMJVDDrqjvIhdgIGwABT1UK8MvAteLK7Gmdu3SHftskyHBA==",
+      length: 7970816,
+    },
+  },
+  {
     version: "0.4.4",
     date: "2026-04-22",
     changes: ["Add table cells selection."],
