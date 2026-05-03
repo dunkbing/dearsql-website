@@ -18,6 +18,28 @@ export interface Release {
 
 export const releases: Release[] = [
   {
+    version: "0.4.6",
+    date: "2026-05-03",
+    changes: [
+      "Cassandra support.",
+      "Sequence viewers for PostgreSQL and SQLite.",
+      "Schema filter badge in the sidebar for PostgreSQL and MSSQL.",
+      "Diagram UI improvements.",
+      "Table view: horizontal scroll now tracks correctly during arrow-key cell navigation.",
+      "Table view: bool-cell click reliability.",
+    ],
+    sparkle: {
+      edSignature:
+        "725MnE5wgwPnzdmYRAN/qv0NoRebARbgporuAg4lL3htoMnmjU1Xo0sDNxXPdhcBWhXykOTOnIBBYBbhoofPBg==",
+      length: 11410819,
+    },
+    windows: {
+      edSignature:
+        "TTKZmyrDE5cdz3TX7qcK1RQDk53SO8ZPsoA1zERjABLdieVw4bEalsKn7KbjyZwOPyZNpnnGCxVubx52hOCtAg==",
+      length: 8445952,
+    },
+  },
+  {
     version: "0.4.5",
     date: "2026-04-24",
     changes: ["Add Postgres backup and restore options."],
