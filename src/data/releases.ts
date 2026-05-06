@@ -18,6 +18,26 @@ export interface Release {
 
 export const releases: Release[] = [
   {
+    version: "0.4.7",
+    date: "2026-05-06",
+    changes: [
+      "Fix CJK (Chinese/Japanese/Korean) rendering in sidebar.",
+      "Fix MySQL: force TCP protocol and correct sslmode verify semantics.",
+      "Fix CSV: async file load and tighter toolbar.",
+      "Show full error messages.",
+    ],
+    sparkle: {
+      edSignature:
+        "S+QEAKzrO6UA1NmKeS2gc9fCvDXlmnRgr4MjeNS4XrCnlPgnQDIYk1dr5n9LQmVHPRQ9ROAxHaIvxhiFugWZCQ==",
+      length: 11411836,
+    },
+    windows: {
+      edSignature:
+        "uvJeoS/RbENaRh8eoHMc9cufT+/RoNm1d78ttq2YDAZ6P1pynd/ryJlufAUMEzvxVMtUz4VJMtH33pgQLu98Cg==",
+      length: 8450048,
+    },
+  },
+  {
     version: "0.4.6",
     date: "2026-05-03",
     changes: [
