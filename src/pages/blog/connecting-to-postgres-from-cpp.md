@@ -3,6 +3,7 @@ layout: ../../layouts/BlogPostLayout.astro
 title: "Connecting to PostgreSQL from C++ with libpq"
 description: "How DearSQL talks to PostgreSQL in a few hundred lines of C++ — connection string, PQsendQuery, and a tiny RAII wrapper."
 pubDate: "2026-04-21"
+author: "dunkbing"
 ---
 
 DearSQL is a native SQL client written in C++20. For PostgreSQL we use `libpq` directly — no ORM, no wrapper library. libpq is small, stable, and gives us control over multi-statement results and cancellation. Here's the short version of what our Postgres backend actually does.

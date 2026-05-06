@@ -3,6 +3,7 @@ layout: ../../layouts/BlogPostLayout.astro
 title: "Connecting to MySQL from C++ with libmysqlclient"
 description: "How DearSQL talks to MySQL and MariaDB in a few hundred lines of C++ — mysql_real_connect, multi-statement queries, and fetching rows."
 pubDate: "2026-04-22"
+author: "dunkbing"
 ---
 
 DearSQL uses the MariaDB Connector/C (drop-in for `libmysqlclient`) to talk to both MySQL and MariaDB. Same C API, works against either server. Here's the short version of the client path.

@@ -54,26 +54,38 @@ const currentYear = new Date().getFullYear();
       name: "DearSQL",
       applicationCategory: "DeveloperApplication",
       operatingSystem: "macOS, Linux, Windows",
+      softwareVersion: latestRelease.version,
+      description:
+        "Fast, native desktop SQL client for SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, MSSQL, and Redshift. Built with C++ and ImGui. No Electron, no JVM.",
+      url: "https://dearsql.dev/",
+      downloadUrl: "https://dearsql.dev/",
+      screenshot: "https://dearsql.dev/sc.webp",
+      publisher: {
+        "@type": "Organization",
+        name: "DearSQL",
+        url: "https://dearsql.dev",
+      },
       offers: [
         {
           "@type": "Offer",
+          name: "Free",
           price: "0",
           priceCurrency: "USD",
-          name: "Free",
+          availability: "https://schema.org/InStock",
+          url: "https://dearsql.dev/",
         },
         {
           "@type": "Offer",
+          name: "Pro",
           price: "35",
           priceCurrency: "USD",
-          name: "Pro",
+          availability: "https://schema.org/InStock",
+          url: "https://buy.polar.sh/polar_cl_IpYdAWiNljfzsXgatypm2mg40Mm2c4hB0DcVX1L9P6p",
         },
       ],
-      description:
-        "Fast, native desktop SQL client for SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, and MSSQL. Built with C++ and ImGui.",
-      url: "https://dearsql.dev",
-      screenshot: "https://dearsql.dev/sc.webp",
     })}
   />
+  <link rel="preload" as="image" href="/sc.webp" fetchpriority="high" slot="head" />
   <script
     is:inline
     type="application/ld+json"
@@ -136,7 +148,7 @@ const currentYear = new Date().getFullYear();
         >
       </p>
       <h1 class="text-xl font-bold mb-2">
-        Native SQL client for macOS, Linux & Windows.
+        DearSQL — Native SQL client for macOS, Linux & Windows.
       </h1>
       <p class="text-sm mb-1">
         <span class="line-through text-subtext0">AI-powered</span>
@@ -145,13 +157,16 @@ const currentYear = new Date().getFullYear();
       <p class="text-subtext0 text-sm mb-2">
         No Electron. No JVM. No bloat. Built with C++.
       </p>
-      <div class="flex flex-wrap gap-x-3 gap-y-0.5 text-xs text-subtext0 mb-5">
+      <div class="flex flex-wrap gap-x-3 gap-y-0.5 text-xs text-subtext0 mb-3">
         <span
-          >* SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, MSSQL</span
+          >* SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, MSSQL, Redshift</span
         >
         <span>* SSH tunneling & TLS</span>
         <span>* AI assistant</span>
       </div>
+      <p class="text-sm text-subtext0 mb-5">
+        DearSQL connects to SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, <a href="/redis" class="hover:underline">Redis</a>, Oracle, MSSQL, and Redshift from a single app. Browse schemas, edit table data inline, write queries with full syntax highlighting, and route connections through SSH tunnels or TLS/SSL — all from a native C++ interface that starts in under a second. <a href="/compare" class="hover:underline">Compare DearSQL to TablePlus, DBeaver, and DataGrip →</a>
+      </p>
 
       <!-- Downloads -->
       <div class="border border-surface1 bg-surface0 text-sm mt-4">
@@ -281,7 +296,7 @@ const currentYear = new Date().getFullYear();
       >
         <img
           src="/sc.webp"
-          alt="DearSQL on macOS"
+          alt="DearSQL SQL client on macOS — PostgreSQL schema browser"
           width="1400"
           height="913"
           fetchpriority="high"
@@ -294,10 +309,10 @@ const currentYear = new Date().getFullYear();
       >
         <img
           src="/sc_gtk.webp"
-          alt="DearSQL on Linux"
+          alt="DearSQL PostgreSQL query editor on Linux"
           width="1400"
           height="783"
-          fetchpriority="high"
+          loading="lazy"
           class="w-full h-auto"
         />
       </div>
@@ -307,10 +322,10 @@ const currentYear = new Date().getFullYear();
       >
         <img
           src="/sc_win.webp"
-          alt="DearSQL on Windows"
+          alt="DearSQL MySQL table browser on Windows"
           width="1400"
           height="913"
-          fetchpriority="high"
+          loading="lazy"
           class="w-full h-auto"
         />
       </div>
@@ -354,8 +369,35 @@ const currentYear = new Date().getFullYear();
     <section id="databases" class="pb-6 border-t border-surface1 pt-4">
       <h2 class="font-bold mb-2">## Supported Databases</h2>
       <p class="text-sm text-subtext0">
-        SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, MSSQL.
+        SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, <a href="/redis" class="hover:underline">Redis</a>, Oracle, MSSQL, Redshift.
       </p>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="pb-6 border-t border-surface1 pt-4">
+      <h2 class="font-bold mb-3">## FAQ</h2>
+      <div class="space-y-4 text-sm">
+        <div>
+          <p class="font-bold text-text">What databases does DearSQL support?</p>
+          <p class="text-subtext0 mt-1">SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, MSSQL, and Redshift — all in one native desktop app. No need to switch between tools.</p>
+        </div>
+        <div>
+          <p class="font-bold text-text">Is DearSQL free?</p>
+          <p class="text-subtext0 mt-1">Yes. The free tier includes all database types and core features with up to 3 saved connections and 2 workspaces. The Pro license ($35 one-time) unlocks unlimited connections and workspaces.</p>
+        </div>
+        <div>
+          <p class="font-bold text-text">What platforms does DearSQL run on?</p>
+          <p class="text-subtext0 mt-1">DearSQL runs natively on macOS (Metal), Linux (OpenGL), and Windows (DirectX). Built with C++ and ImGui — no Electron, no JVM, starts in under a second.</p>
+        </div>
+        <div>
+          <p class="font-bold text-text">Does DearSQL support SSH tunneling?</p>
+          <p class="text-subtext0 mt-1">Yes. All server-type databases support SSH tunneling through a bastion or jump host, with password or private key authentication.</p>
+        </div>
+        <div>
+          <p class="font-bold text-text">Does DearSQL support TLS/SSL?</p>
+          <p class="text-subtext0 mt-1">Yes. All server-type backends support TLS/SSL with configurable modes — disable, prefer, require, verify-ca, and verify-full — depending on the database.</p>
+        </div>
+      </div>
     </section>
 
     <!-- Pricing -->

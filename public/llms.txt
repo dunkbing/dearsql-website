@@ -1,0 +1,43 @@
+# DearSQL
+
+> DearSQL is a fast, native desktop SQL client built with C++ and ImGui. It connects to SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, MSSQL, and Redshift from a single app. Available for macOS, Linux, and Windows. No Electron, no JVM — starts in under a second.
+
+## Product
+
+- [Homepage](https://dearsql.dev/)
+- [Changelog](https://dearsql.dev/changelog)
+- [Compare vs TablePlus, DBeaver, DataGrip, Beekeeper Studio](https://dearsql.dev/compare)
+- [Redis client features](https://dearsql.dev/redis)
+- [Tech stack](https://dearsql.dev/stack)
+
+## About
+
+- [About DearSQL](https://dearsql.dev/about)
+- [Privacy Policy](https://dearsql.dev/privacy)
+- [Terms of Service](https://dearsql.dev/terms)
+
+## Blog
+
+- [Connecting to PostgreSQL from C++ with libpq](https://dearsql.dev/blog/connecting-to-postgres-from-cpp)
+- [Connecting to MySQL from C++ with libmysqlclient](https://dearsql.dev/blog/connecting-to-mysql-from-cpp)
+- [A simple todo app with Dear ImGui and CMake](https://dearsql.dev/blog/simple-todo-app-with-imgui-and-cmake)
+
+## Pricing
+
+Free tier: all database types and core features, up to 3 saved connections and 2 workspaces. No credit card required.
+Pro: $35 one-time purchase — unlimited connections and workspaces, all current and future features.
+
+## Supported Databases
+
+SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, MSSQL, Redshift.
+
+## Key Features
+
+- Syntax highlighting, autocomplete, and query history
+- Browse and edit table data inline — changes generate proper SQL before committing
+- Schema browser: tables, views, indexes, sequences, and more
+- SSH tunneling for all server-type databases (password or private key auth)
+- TLS/SSL support with configurable modes per database (disable, prefer, require, verify-ca, verify-full)
+- Saved connections with AES-encrypted credentials
+- AI assistant for writing and explaining queries
+- Native rendering: Metal on macOS, OpenGL on Linux, DirectX on Windows

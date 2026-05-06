@@ -2,7 +2,8 @@
 import Layout from "./Layout.astro";
 
 const { frontmatter } = Astro.props;
-const { title, description, pubDate } = frontmatter;
+const { title, description, pubDate, author } = frontmatter;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <Layout
@@ -14,12 +15,45 @@ const { title, description, pubDate } = frontmatter;
     { name: title, url: Astro.url.pathname },
   ]}
 >
+  <script
+    is:inline
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: title,
+      description: description,
+      datePublished: pubDate,
+      url: canonicalURL.href,
+      image: "https://dearsql.dev/sc.webp",
+      author: {
+        "@type": "Person",
+        name: author || "dunkbing",
+        url: "https://github.com/dunkbing",
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "DearSQL",
+        url: "https://dearsql.dev",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://dearsql.dev/icon.webp",
+        },
+      },
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": canonicalURL.href,
+      },
+    })}
+  />
   <main class="max-w-2xl mx-auto px-4 py-6 text-sm">
     <a href="/blog" class="text-subtext0 text-xs">&lt;- back to blog</a>
 
     <h1 class="text-xl font-bold mt-4 mb-1">## {title}</h1>
     <p class="text-subtext0 text-xs mb-6">
       <time datetime={pubDate}>{pubDate}</time>
+      {author && <span class="ml-2">· {author}</span>}
     </p>
 
     <article class="blog-post text-subtext0 space-y-4">

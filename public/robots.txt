@@ -2,4 +2,16 @@ User-agent: *
 Allow: /
 Disallow: /checkout/
 
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
 Sitemap: https://dearsql.dev/sitemap-index.xml

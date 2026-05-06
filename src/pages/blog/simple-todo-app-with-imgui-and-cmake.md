@@ -3,6 +3,7 @@ layout: ../../layouts/BlogPostLayout.astro
 title: "A simple todo app with Dear ImGui and CMake"
 description: "Wire up Dear ImGui, GLFW, and OpenGL with CMake, then build a minimal todo app in about 80 lines of C++."
 pubDate: "2026-04-23"
+author: "dunkbing"
 ---
 
 DearSQL's entire UI is built on [Dear ImGui](https://github.com/ocornut/imgui) — no Electron, no web runtime, just a C++ immediate-mode GUI. ImGui has a reputation for being tricky to set up, but that's mostly because it ships as source files rather than a library. Once the CMake is out of the way, writing widgets is a joy.
