@@ -1,4 +1,5 @@
 ---
+import { FREE_SAVED_CONNECTIONS, FREE_WORKSPACES } from "../data/limits";
 import { appImageUrl, dmgUrl, msiUrl, releases } from "../data/releases";
 import Layout from "../layouts/Layout.astro";
 
@@ -107,7 +108,7 @@ const currentYear = new Date().getFullYear();
           name: "Is DearSQL free?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Yes. The free tier includes all database types and core features with up to 3 saved connections and 2 workspaces. The Pro license ($35 one-time) unlocks unlimited connections and workspaces.",
+            text: `Yes. The free tier includes all database types and core features with up to ${FREE_SAVED_CONNECTIONS} saved connections and ${FREE_WORKSPACES} workspaces. The Pro license ($35 one-time) unlocks unlimited connections and workspaces.`,
           },
         },
         {
@@ -383,7 +384,7 @@ const currentYear = new Date().getFullYear();
         </div>
         <div>
           <p class="font-bold text-text">Is DearSQL free?</p>
-          <p class="text-subtext0 mt-1">Yes. The free tier includes all database types and core features with up to 3 saved connections and 2 workspaces. The Pro license ($35 one-time) unlocks unlimited connections and workspaces.</p>
+          <p class="text-subtext0 mt-1">Yes. The free tier includes all database types and core features with up to {FREE_SAVED_CONNECTIONS} saved connections and {FREE_WORKSPACES} workspaces. The Pro license ($35 one-time) unlocks unlimited connections and workspaces.</p>
         </div>
         <div>
           <p class="font-bold text-text">What platforms does DearSQL run on?</p>
@@ -414,8 +415,8 @@ const currentYear = new Date().getFullYear();
             <span class="text-2xl font-bold">$0</span>
           </div>
           <ul class="px-3 py-2 space-y-1 text-subtext0">
-            <li>- 10 saved connections</li>
-            <li>- 2 workspaces</li>
+            <li>- {FREE_SAVED_CONNECTIONS} saved connections</li>
+            <li>- {FREE_WORKSPACES} workspaces</li>
             <li>- all database types</li>
             <li>- all core features</li>
           </ul>

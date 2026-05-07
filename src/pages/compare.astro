@@ -1,4 +1,5 @@
 ---
+import { FREE_SAVED_CONNECTIONS } from "../data/limits";
 import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
 
@@ -73,7 +74,7 @@ const comparisons: Record<string, ComparisonData> = {
       { feature: "app telemetry", dearsql: "none", competitor: "opt-out", highlight: true },
     ],
     pricing: [
-      { feature: "free tier", dearsql: "yes (3 connections)", competitor: "limited (2 tabs)", highlight: true },
+      { feature: "free tier", dearsql: `yes (${FREE_SAVED_CONNECTIONS} connections)`, competitor: "limited (2 tabs)", highlight: true },
       { feature: "one-time purchase", dearsql: "$35", competitor: "$99 (1yr updates)", highlight: true },
       { feature: "subscription required", dearsql: "no", competitor: "no" },
       { feature: "NoSQL in free tier", dearsql: "yes", competitor: "yes (limited)" },
@@ -112,7 +113,7 @@ const comparisons: Record<string, ComparisonData> = {
       { feature: "app telemetry", dearsql: "none", competitor: "opt-out", highlight: true },
     ],
     pricing: [
-      { feature: "free tier", dearsql: "yes (3 connections)", competitor: "yes (Community Edition)" },
+      { feature: "free tier", dearsql: `yes (${FREE_SAVED_CONNECTIONS} connections)`, competitor: "yes (Community Edition)" },
       { feature: "one-time purchase", dearsql: "$35", competitor: "no (subscription)", highlight: true },
       { feature: "NoSQL in free tier", dearsql: "yes", competitor: "no (paid only)", highlight: true },
     ],
@@ -151,7 +152,7 @@ const comparisons: Record<string, ComparisonData> = {
       { feature: "app telemetry", dearsql: "none", competitor: "opt-out", highlight: true },
     ],
     pricing: [
-      { feature: "free tier", dearsql: "yes (3 connections)", competitor: "non-commercial only" },
+      { feature: "free tier", dearsql: `yes (${FREE_SAVED_CONNECTIONS} connections)`, competitor: "non-commercial only" },
       { feature: "one-time purchase", dearsql: "$35", competitor: "no ($229/yr)", highlight: true },
       { feature: "subscription required", dearsql: "no", competitor: "yes", highlight: true },
     ],
@@ -187,7 +188,7 @@ const comparisons: Record<string, ComparisonData> = {
       { feature: "app telemetry", dearsql: "none", competitor: "opt-out", highlight: true },
     ],
     pricing: [
-      { feature: "free tier", dearsql: "yes (3 connections)", competitor: "yes (Community Edition)" },
+      { feature: "free tier", dearsql: `yes (${FREE_SAVED_CONNECTIONS} connections)`, competitor: "yes (Community Edition)" },
       { feature: "one-time purchase", dearsql: "$35", competitor: "$249 (1yr updates)", highlight: true },
       { feature: "NoSQL in free tier", dearsql: "yes", competitor: "no", highlight: true },
     ],
