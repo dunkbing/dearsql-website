@@ -1,0 +1,88 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { competitors } from "../../data/comparisons";
+---
+
+<Layout
+  title="Compare DearSQL — vs TablePlus, DBeaver, DataGrip & More"
+  description="See how DearSQL compares to TablePlus, DBeaver, DataGrip, and Beekeeper Studio on features, performance, database support, and pricing."
+  breadcrumbs={[
+    { name: "Home", url: "/" },
+    { name: "Compare", url: "/compare" },
+  ]}
+>
+  <script
+    is:inline
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "How does DearSQL compare to TablePlus?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Both are native desktop apps. DearSQL costs $35 one-time vs TablePlus at $99 with only 1 year of updates. DearSQL includes a built-in AI assistant and zero telemetry.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How does DearSQL compare to DBeaver?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "DearSQL is a native C++ app with instant startup and low memory usage. DBeaver is Java-based with slow JVM startup and 500MB+ memory. DearSQL includes NoSQL (MongoDB, Redis) in the free tier; DBeaver requires a paid license for NoSQL.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How does DearSQL compare to DataGrip?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "DearSQL is a $35 one-time purchase. DataGrip requires a $229/year subscription. DearSQL starts instantly with low memory; DataGrip uses 1GB+ RAM. DataGrip offers IDE features like refactoring and VCS integration.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How does DearSQL compare to Beekeeper Studio?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "DearSQL is native C++ with instant startup; Beekeeper Studio is Electron-based with Chromium overhead. DearSQL supports MongoDB and Redis in the free tier; Beekeeper Studio Community does not. DearSQL costs $35 vs Beekeeper's $249.",
+          },
+        },
+      ],
+    })}
+  />
+
+  <main class="max-w-2xl mx-auto px-4 py-6 text-sm">
+    <h1 class="text-xl font-bold mb-1">## Compare DearSQL</h1>
+    <p class="text-subtext0 text-xs mb-6">
+      See how DearSQL stacks up against other popular database clients on features, performance, and pricing.
+    </p>
+
+    <div class="space-y-3">
+      {competitors.map((c) => (
+        <a
+          href={`/compare/${c.id}`}
+          class="block border border-surface1 bg-surface0 hover:bg-surface1 no-underline"
+        >
+          <div class="px-3 py-2 border-b border-surface1 flex items-center justify-between">
+            <span>
+              <span class="font-bold text-green">DearSQL</span>
+              <span class="text-subtext0"> vs </span>
+              <span class="font-bold text-text">{c.name}</span>
+            </span>
+            <span class="text-subtext0 text-xs">compare &rarr;</span>
+          </div>
+          <p class="px-3 py-2 text-subtext0 text-xs">{c.summary}</p>
+        </a>
+      ))}
+    </div>
+
+    <p class="text-xs text-subtext0 mt-6">
+      * Comparisons verified <time datetime="2026-05">May 2026</time>. Got a correction?{" "}
+      <a href="mailto:dunkbingg@gmail.com">let us know</a>.
+    </p>
+  </main>
+</Layout>
