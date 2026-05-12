@@ -1,39 +1,13 @@
----
-import { FREE_SAVED_CONNECTIONS } from "../data/limits";
-import Layout from "../layouts/Layout.astro";
-import "../styles/global.css";
+import { FREE_SAVED_CONNECTIONS } from "./limits";
 
-const competitors = [
-  {
-    id: "tableplus",
-    name: "TablePlus",
-    tagline: "Two native database clients compared on features, pricing, and platform support.",
-  },
-  {
-    id: "dbeaver",
-    name: "DBeaver",
-    tagline: "A native C++ app vs a Java-based universal tool.",
-  },
-  {
-    id: "datagrip",
-    name: "DataGrip",
-    tagline: "A lightweight database client vs a full JetBrains IDE.",
-  },
-  {
-    id: "beekeeper",
-    name: "Beekeeper Studio",
-    tagline: "Native C++ app vs Electron.",
-  },
-];
-
-interface Row {
+export interface Row {
   feature: string;
   dearsql: string;
   competitor: string;
   highlight?: boolean;
 }
 
-interface ComparisonData {
+export interface ComparisonData {
   architecture: Row[];
   databases: Row[];
   platforms: Row[];
@@ -41,7 +15,108 @@ interface ComparisonData {
   pricing: Row[];
 }
 
-const comparisons: Record<string, ComparisonData> = {
+export interface Competitor {
+  id: string;
+  name: string;
+  tagline: string;
+  summary: string;
+  title: string;
+  description: string;
+  faq: Array<{ q: string; a: string }>;
+}
+
+export const competitors: Competitor[] = [
+  {
+    id: "tableplus",
+    name: "TablePlus",
+    tagline: "Two native database clients compared on features, pricing, and platform support.",
+    summary: `Both are native apps. DearSQL is $35 one-time vs $99 (1yr updates). Built-in AI assistant and zero telemetry. Free tier with ${FREE_SAVED_CONNECTIONS} connections.`,
+    title: "DearSQL vs TablePlus — 2026 Comparison",
+    description: `Compare DearSQL and TablePlus on pricing, database support, features, and platforms. DearSQL is $35 one-time with ${FREE_SAVED_CONNECTIONS} free connections; TablePlus costs $99 with limited update coverage.`,
+    faq: [
+      {
+        q: "Is DearSQL cheaper than TablePlus?",
+        a: "Yes. DearSQL is $35 as a one-time purchase with all future updates included. TablePlus costs $99 and only covers 1 year of updates — further updates require purchasing again.",
+      },
+      {
+        q: "Does DearSQL support the same databases as TablePlus?",
+        a: "Yes. Both support SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, MSSQL, and Redshift.",
+      },
+      {
+        q: "Is DearSQL a good TablePlus alternative?",
+        a: `Yes. DearSQL is a native desktop SQL client available for macOS, Linux, and Windows — just like TablePlus. Key advantages: $35 vs $99 pricing, built-in AI assistant, ${FREE_SAVED_CONNECTIONS}-connection free tier, and zero app telemetry.`,
+      },
+    ],
+  },
+  {
+    id: "dbeaver",
+    name: "DBeaver",
+    tagline: "A native C++ app vs a Java-based universal tool.",
+    summary: "DearSQL starts instantly with low memory. DBeaver uses 500MB+ RAM with JVM startup. NoSQL is included in DearSQL's free tier; DBeaver requires a paid plan.",
+    title: "DearSQL vs DBeaver — 2026 Comparison",
+    description: "Compare DearSQL and DBeaver on performance, database support, and pricing. DearSQL is a native C++ app with instant startup; DBeaver is Java/Eclipse-based with 500MB+ memory usage.",
+    faq: [
+      {
+        q: "Is DearSQL faster than DBeaver?",
+        a: "Yes. DearSQL is a native C++ app that starts instantly with low memory usage. DBeaver is Java/Eclipse-based with JVM startup overhead and 500MB+ RAM usage during normal operation.",
+      },
+      {
+        q: "Does DearSQL include NoSQL in the free tier unlike DBeaver?",
+        a: "Yes. DearSQL includes MongoDB and Redis in the free tier. DBeaver Community Edition does not include NoSQL support — an Enterprise license is required.",
+      },
+      {
+        q: "Is DearSQL a good DBeaver alternative?",
+        a: "Yes, especially for developers who want native performance, NoSQL support without a paid plan, and a $35 one-time price vs DBeaver's subscription model. DearSQL starts instantly; DBeaver has slow JVM launch times.",
+      },
+    ],
+  },
+  {
+    id: "datagrip",
+    name: "DataGrip",
+    tagline: "A lightweight database client vs a full JetBrains IDE.",
+    summary: "DearSQL is $35 one-time. DataGrip requires $229/year. DearSQL starts instantly; DataGrip is a full IDE with project indexing and 1GB+ RAM usage.",
+    title: "DearSQL vs DataGrip — 2026 Comparison",
+    description: "Compare DearSQL and DataGrip on pricing, performance, and features. DearSQL costs $35 once; DataGrip requires a $229/year JetBrains subscription with heavy JVM resource usage.",
+    faq: [
+      {
+        q: "How much does DearSQL cost compared to DataGrip?",
+        a: "DearSQL is a $35 one-time purchase. DataGrip requires a $229/year subscription. Over 3 years, DearSQL costs $35 vs $687 for DataGrip.",
+      },
+      {
+        q: "Is DearSQL less resource-intensive than DataGrip?",
+        a: "Significantly so. DearSQL is a native C++ app with instant startup and low memory usage. DataGrip is built on the JetBrains platform — it uses 1GB+ RAM and has slow startup due to JVM initialization and project indexing.",
+      },
+      {
+        q: "Is DearSQL a good DataGrip alternative?",
+        a: "Yes for most use cases. DearSQL covers query editing, schema browsing, inline data editing, and SSH tunneling without the IDE overhead or subscription cost. DataGrip offers more advanced features like code refactoring and VCS integration.",
+      },
+    ],
+  },
+  {
+    id: "beekeeper",
+    name: "Beekeeper Studio",
+    tagline: "Native C++ app vs Electron.",
+    summary: "DearSQL is native C++ with instant startup. Beekeeper Studio is Electron-based with Chromium memory overhead. DearSQL includes MongoDB and Redis; Beekeeper does not in the free tier.",
+    title: "DearSQL vs Beekeeper Studio — 2026 Comparison",
+    description: "Compare DearSQL and Beekeeper Studio on performance, database support, and pricing. DearSQL is native C++ with instant startup; Beekeeper Studio is Electron-based with Chromium overhead.",
+    faq: [
+      {
+        q: "How does DearSQL compare to Beekeeper Studio on performance?",
+        a: "DearSQL is built with native C++ and starts instantly with low memory usage. Beekeeper Studio is built on Electron, which bundles Chromium and Node.js, resulting in high memory usage and slower startup.",
+      },
+      {
+        q: "Does DearSQL support more databases than Beekeeper Studio?",
+        a: "Yes. DearSQL supports MongoDB and Redis, which Beekeeper Studio Community edition does not. Oracle requires a paid Beekeeper Studio license; DearSQL includes Oracle in the free tier.",
+      },
+      {
+        q: "Is DearSQL a good Beekeeper Studio alternative?",
+        a: "Yes. DearSQL offers native performance vs Beekeeper's Electron overhead, includes MongoDB and Redis in the free tier, and costs $35 one-time vs Beekeeper's $249 (1 year of updates). Both support macOS, Linux, and Windows.",
+      },
+    ],
+  },
+];
+
+export const comparisons: Record<string, ComparisonData> = {
   tableplus: {
     architecture: [
       { feature: "architecture", dearsql: "native (C++/ImGui)", competitor: "native (C++/Cocoa)", highlight: true },
@@ -194,175 +269,3 @@ const comparisons: Record<string, ComparisonData> = {
     ],
   },
 };
----
-
-<Layout
-  title="Compare DearSQL — vs TablePlus, DBeaver, DataGrip & More"
-  description="See how DearSQL compares to TablePlus, DBeaver, DataGrip, and Beekeeper Studio on features, performance, database support, and pricing."
-  breadcrumbs={[
-    { name: "Home", url: "/" },
-    { name: "Compare", url: "/compare" },
-  ]}
->
-  <script
-    is:inline
-    type="application/ld+json"
-    slot="head"
-    set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: [
-        {
-          "@type": "Question",
-          name: "How does DearSQL compare to TablePlus?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Both are native desktop apps. DearSQL costs $35 one-time vs TablePlus at $99 with only 1 year of updates. DearSQL includes a built-in AI assistant and zero telemetry. Both support the same databases and platforms.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "How does DearSQL compare to DBeaver?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "DearSQL is a native C++ app with instant startup and low memory usage. DBeaver is Java-based with slow JVM startup and 500MB+ memory. DearSQL includes NoSQL (MongoDB, Redis) in the free tier; DBeaver requires a paid license for NoSQL.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "How does DearSQL compare to DataGrip?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "DearSQL is a $35 one-time purchase. DataGrip requires a $229/year subscription. DearSQL starts instantly with low memory; DataGrip requires JVM startup and uses 1GB+ RAM. DataGrip offers more IDE-like features like refactoring and VCS integration.",
-          },
-        },
-      ],
-    })}
-  />
-
-  <main class="max-w-2xl mx-auto px-4 py-6 text-sm">
-    <h1 class="text-xl font-bold mb-1">## Compare</h1>
-    <p class="text-subtext0 text-xs mb-6">
-      See how DearSQL stacks up against other popular database clients.
-    </p>
-
-    <!-- Competitor selector -->
-    <div class="flex flex-wrap gap-2 mb-6">
-      {competitors.map((c) => (
-        <button
-          class="comp-tab border border-surface1 bg-surface0 px-3 py-1.5 text-xs hover:bg-surface1 no-underline"
-          data-comp={c.id}
-          style="cursor:pointer;font-family:inherit;font-size:inherit;"
-        >
-          vs {c.name}
-        </button>
-      ))}
-    </div>
-
-    <!-- Comparison panels -->
-    {competitors.map((c) => {
-      const data = comparisons[c.id];
-      const sections = [
-        { title: "Architecture & Performance", rows: data.architecture },
-        { title: "Database Support", rows: data.databases },
-        { title: "Platform Support", rows: data.platforms },
-        { title: "Features", rows: data.features },
-        { title: "Pricing", rows: data.pricing },
-      ];
-
-      return (
-        <div id={`comp-${c.id}`} class="comp-panel hidden">
-          <div class="border border-surface1 bg-surface0 mb-6">
-            <div class="px-3 py-2 border-b border-surface1">
-              <span class="font-bold text-green">&gt; DearSQL</span>
-              <span class="text-subtext0"> vs </span>
-              <span class="font-bold">{c.name}</span>
-            </div>
-            <p class="px-3 py-2 text-subtext0 text-xs">{c.tagline}</p>
-          </div>
-
-          {sections.map((section) => (
-            <section class="mb-6">
-              <h2 class="font-bold mb-2">### {section.title}</h2>
-              <div class="overflow-x-auto">
-                <table class="w-full text-xs border border-surface1 border-collapse">
-                  <thead>
-                    <tr class="bg-surface0 text-text">
-                      <th class="text-left font-bold px-2 py-1.5 border-b border-surface1 w-2/5">
-                        feature
-                      </th>
-                      <th class="text-left font-bold px-2 py-1.5 border-b border-l border-surface1 text-green w-[30%]">
-                        DearSQL
-                      </th>
-                      <th class="text-left font-bold px-2 py-1.5 border-b border-l border-surface1 w-[30%]">
-                        {c.name}
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody class="text-subtext0">
-                    {section.rows.map((row, i) => (
-                      <tr>
-                        <td class={`px-2 py-1.5 ${i < section.rows.length - 1 ? "border-b border-surface1" : ""}`}>
-                          {row.feature}
-                        </td>
-                        <td class={`px-2 py-1.5 border-l border-surface1 ${row.highlight ? "text-green" : ""} ${i < section.rows.length - 1 ? "border-b" : ""}`}>
-                          {row.dearsql}
-                        </td>
-                        <td class={`px-2 py-1.5 border-l border-surface1 ${i < section.rows.length - 1 ? "border-b" : ""}`}>
-                          {row.competitor}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </section>
-          ))}
-
-          <!-- CTA -->
-          <div class="border border-green bg-surface0 p-4 text-center mb-6">
-            <p class="font-bold mb-2">Ready to try DearSQL?</p>
-            <div class="flex justify-center gap-3">
-              <a href="/" class="bg-green text-crust font-bold px-4 py-1.5 no-underline hover:opacity-90 text-xs">
-                download free &rarr;
-              </a>
-              <a href="/#pricing" class="border border-surface1 px-4 py-1.5 no-underline hover:bg-surface1 text-xs">
-                view pricing
-              </a>
-            </div>
-          </div>
-        </div>
-      );
-    })}
-
-    <p class="text-xs text-subtext0 mt-4">
-      * Comparisons verified <time datetime="2026-05">May 2026</time>. Got a correction?{" "}
-      <a href="mailto:dunkbingg@gmail.com">let us know</a>.
-    </p>
-  </main>
-</Layout>
-
-<script>
-  const tabs = document.querySelectorAll<HTMLButtonElement>(".comp-tab");
-  const panels = document.querySelectorAll<HTMLDivElement>(".comp-panel");
-
-  function activate(id: string) {
-    tabs.forEach((t) => {
-      const active = t.dataset.comp === id;
-      t.style.color = active ? "var(--crust)" : "";
-      t.style.backgroundColor = active ? "var(--green)" : "";
-      t.style.borderColor = active ? "var(--green)" : "";
-      t.style.fontWeight = active ? "bold" : "";
-    });
-    panels.forEach((p) => {
-      p.classList.toggle("hidden", p.id !== `comp-${id}`);
-    });
-  }
-
-  tabs.forEach((btn) => {
-    btn.addEventListener("click", () => activate(btn.dataset.comp!));
-  });
-
-  // default to first tab
-  activate("tableplus");
-</script>

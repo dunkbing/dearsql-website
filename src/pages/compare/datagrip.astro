@@ -1,0 +1,83 @@
+---
+import ComparisonTable from "../../components/ComparisonTable.astro";
+import Layout from "../../layouts/Layout.astro";
+import { comparisons, competitors } from "../../data/comparisons";
+
+const comp = competitors.find((c) => c.id === "datagrip")!;
+const data = comparisons.datagrip;
+const sections = [
+  { title: "Architecture & Performance", rows: data.architecture },
+  { title: "Database Support", rows: data.databases },
+  { title: "Platform Support", rows: data.platforms },
+  { title: "Features", rows: data.features },
+  { title: "Pricing", rows: data.pricing },
+];
+const otherComps = competitors.filter((c) => c.id !== "datagrip");
+---
+
+<Layout
+  title={comp.title}
+  description={comp.description}
+  breadcrumbs={[
+    { name: "Home", url: "/" },
+    { name: "Compare", url: "/compare" },
+    { name: comp.name, url: `/compare/${comp.id}` },
+  ]}
+>
+  <script
+    is:inline
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: comp.faq.map((item) => ({
+        "@type": "Question",
+        name: item.q,
+        acceptedAnswer: { "@type": "Answer", text: item.a },
+      })),
+    })}
+  />
+
+  <main class="max-w-2xl mx-auto px-4 py-6 text-sm">
+    <a href="/compare" class="text-subtext0 text-xs">&lt;- all comparisons</a>
+    <h1 class="text-xl font-bold mt-4 mb-1">## DearSQL vs {comp.name}</h1>
+    <p class="text-subtext0 text-xs mb-6">{comp.tagline}</p>
+
+    <ComparisonTable
+      competitorName={comp.name}
+      tagline={comp.tagline}
+      sections={sections}
+    />
+
+    <!-- FAQ -->
+    <section class="mb-6 border-t border-surface1 pt-4">
+      <h2 class="font-bold mb-3">## FAQ</h2>
+      <div class="space-y-4">
+        {comp.faq.map((item) => (
+          <div>
+            <p class="font-bold text-text">{item.q}</p>
+            <p class="text-subtext0 mt-1">{item.a}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Cross-links -->
+    <section class="border-t border-surface1 pt-4">
+      <p class="text-subtext0 text-xs mb-2">also compare:</p>
+      <div class="flex flex-wrap gap-2">
+        {otherComps.map((c) => (
+          <a href={`/compare/${c.id}`} class="border border-surface1 px-2 py-1 text-xs hover:bg-surface0 no-underline">
+            vs {c.name}
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <p class="text-xs text-subtext0 mt-4">
+      * Comparisons verified <time datetime="2026-05">May 2026</time>. Got a correction?{" "}
+      <a href="mailto:dunkbingg@gmail.com">let us know</a>.
+    </p>
+  </main>
+</Layout>
