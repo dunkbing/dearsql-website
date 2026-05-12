@@ -18,6 +18,24 @@ export interface Release {
 
 export const releases: Release[] = [
   {
+    version: "0.4.8",
+    date: "2026-05-12",
+    changes: [
+      "Show table size in sidebar for PostgreSQL and SQLite.",
+      "Fix sidebar: keep scrollbar from shifting layout.",
+    ],
+    sparkle: {
+      edSignature:
+        "POItYG0cZFNPW++xyP7uhFeNGaef1aa4VEiCzifi4LtBQRJBgP23gq247vscy+/tuzOVdaRvkxm+ZfT3u7cPBw==",
+      length: 11416314,
+    },
+    windows: {
+      edSignature:
+        "dQzJSv+2f7ByrzCXdtHHxiikL3rZcGEBj1ON6bZPAaW+aMWnpxXpogV1bieYWExlH0EkKTMfnnRFARrmxw5TCw==",
+      length: 8454144,
+    },
+  },
+  {
     version: "0.4.7",
     date: "2026-05-06",
     changes: [
