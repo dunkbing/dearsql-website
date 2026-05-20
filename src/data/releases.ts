@@ -18,6 +18,27 @@ export interface Release {
 
 export const releases: Release[] = [
   {
+    version: "0.4.9",
+    date: "2026-05-20",
+    changes: [
+      "Add table cell context menu.",
+      "Add duplicate/delete row buttons.",
+      "Add cell copy/paste shortcuts and selected-cell border.",
+      "Add total row count badge.",
+      "Fix: bundle modern type2-runtime in AppImage.",
+    ],
+    sparkle: {
+      edSignature:
+        "R2ZR7ocd7ftCgrTN6zr/L/cQU8F8DuakBkQI/GyojRaVjaLRPy7G1F7G/balbC5BptD5HVbWuboWC227rHr1CA==",
+      length: 11424799,
+    },
+    windows: {
+      edSignature:
+        "67nkjsn6SUDDLeIvdL3edT1xfBtZDM3+tDbVi1Jf5aQdsFupNQu6FmmOek1nnJZ2cJhCyPS9ir+33pdYZEm+Dw==",
+      length: 8466432,
+    },
+  },
+  {
     version: "0.4.8",
     date: "2026-05-12",
     changes: [
