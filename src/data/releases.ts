@@ -18,6 +18,25 @@ export interface Release {
 
 export const releases: Release[] = [
   {
+    version: "0.4.10",
+    date: "2026-05-21",
+    changes: [
+      "Replace platform-specific connection dialogs with a unified ImGui dialog.",
+      "MSSQL: display SQL Server PRINT messages in query results.",
+      "Add connection URL parsing.",
+    ],
+    sparkle: {
+      edSignature:
+        "+QX9OUXtDS4jHo7hF4XJbWqQ9MuP4W/Goz5fBZb3R2xp+gQgP9HEimVzotYhQmdCgUsfe+3K3vKOC0bOzps1Bg==",
+      length: 11443851,
+    },
+    windows: {
+      edSignature:
+        "DxuG/iwQW3YcWWMSGZ0zTPdtbOHd2L82VdcVWe7tvOChqIViIdQVRZm+6i4KGFa8Sm5rKM2C5YOCP3cBPbnLAg==",
+      length: 8486912,
+    },
+  },
+  {
     version: "0.4.9",
     date: "2026-05-20",
     changes: [
