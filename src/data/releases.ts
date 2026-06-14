@@ -18,6 +18,21 @@ export interface Release {
 
 export const releases: Release[] = [
   {
+    version: "0.4.12",
+    date: "2026-06-15",
+    changes: ["Fix save/load shader."],
+    sparkle: {
+      edSignature:
+        "ZPiZycD3D+H5bzEJhjqnHZ7k9X34bAjVZMz8N/7WEuExealI5jGt6g8D7v8JdyLpq1gzAD1+KcdBLM854jHuDg==",
+      length: 14634418,
+    },
+    windows: {
+      edSignature:
+        "gugVS8AMDyXLpd+0nb/fM6t6WTtPKGNAUjhGOV9+eeaqb08SV4CBpMyfbFnUcGNm7XAw5QAaGGsMgYTFpj6LCw==",
+      length: 8482816,
+    },
+  },
+  {
     version: "0.4.11",
     date: "2026-06-14",
     changes: ["Add custom shader."],
