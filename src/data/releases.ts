@@ -18,6 +18,27 @@ export interface Release {
 
 export const releases: Release[] = [
   {
+    version: "0.4.13",
+    date: "2026-08-10",
+    changes: [
+      "Add query timing waterfall for PostgreSQL and MySQL.",
+      "SSH: support private key passphrase and surface SSH errors.",
+      "MySQL: connect without a default schema when no database is given.",
+      "Show last shader error.",
+      "Fix database drop by deferring it out of the render loop.",
+    ],
+    sparkle: {
+      edSignature:
+        "a5gG7dRHlkHV56uK+JIkfgx62y00ZSGY9wpOpnTFtTJKFHsRZSFKrrSO4j86QWGKLLkXhml1yXJZRz9MJ4AXBA==",
+      length: 14639702,
+    },
+    windows: {
+      edSignature:
+        "bFrVx5jPsmOVLWeRAgpJR/Is6cTzFHV0GvwFyP6v2IfyrkVZHg/sm/lvo8+5ew4leN3yJtTAvHOr2uMk7trgDA==",
+      length: 8491008,
+    },
+  },
+  {
     version: "0.4.12",
     date: "2026-06-15",
     changes: ["Fix save/load shader."],
