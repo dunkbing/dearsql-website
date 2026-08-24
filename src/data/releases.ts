@@ -18,6 +18,27 @@ export interface Release {
 
 export const releases: Release[] = [
   {
+    version: "0.4.14",
+    date: "2026-08-24",
+    changes: [
+      "MySQL: import and export a whole database as a SQL dump.",
+      "Add multi-row deletion and select all.",
+      "Encrypt saved credentials with a per-install OS keystore secret.",
+      "UI polish: tab bar, buttons, controls, dialogs, and smaller scrollbar.",
+      "Fix light-mode table buttons.",
+    ],
+    sparkle: {
+      edSignature:
+        "LZ/2L6TmNX6cVIJvVvfrcodAMVYMd8IZJHj9dK6newktWEV/VTZS6uQeguR1NABUGe3RtzxtXrim46zwxkzHBQ==",
+      length: 14686971,
+    },
+    windows: {
+      edSignature:
+        "shjnoWmInyyfnEOQQDlCFRGnuK/Wxm0FRtbdXUxkI+mppADcKYaZ3vB6CUnmZUF3Xc01zCeUwoytHFkVhSA3BQ==",
+      length: 8523776,
+    },
+  },
+  {
     version: "0.4.13",
     date: "2026-08-10",
     changes: [
