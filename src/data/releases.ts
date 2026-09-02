@@ -18,6 +18,118 @@ export interface Release {
 
 export const releases: Release[] = [
   {
+    version: "0.4.14",
+    date: "2026-08-24",
+    changes: [
+      "MySQL: import and export a whole database as a SQL dump.",
+      "Add multi-row deletion and select all.",
+      "Encrypt saved credentials with a per-install OS keystore secret.",
+      "UI polish: tab bar, buttons, controls, dialogs, and smaller scrollbar.",
+      "Fix light-mode table buttons.",
+    ],
+    sparkle: {
+      edSignature:
+        "LZ/2L6TmNX6cVIJvVvfrcodAMVYMd8IZJHj9dK6newktWEV/VTZS6uQeguR1NABUGe3RtzxtXrim46zwxkzHBQ==",
+      length: 14686971,
+    },
+    windows: {
+      edSignature:
+        "shjnoWmInyyfnEOQQDlCFRGnuK/Wxm0FRtbdXUxkI+mppADcKYaZ3vB6CUnmZUF3Xc01zCeUwoytHFkVhSA3BQ==",
+      length: 8523776,
+    },
+  },
+  {
+    version: "0.4.13",
+    date: "2026-08-10",
+    changes: [
+      "Add query timing waterfall for PostgreSQL and MySQL.",
+      "SSH: support private key passphrase and surface SSH errors.",
+      "MySQL: connect without a default schema when no database is given.",
+      "Show last shader error.",
+      "Fix database drop by deferring it out of the render loop.",
+    ],
+    sparkle: {
+      edSignature:
+        "a5gG7dRHlkHV56uK+JIkfgx62y00ZSGY9wpOpnTFtTJKFHsRZSFKrrSO4j86QWGKLLkXhml1yXJZRz9MJ4AXBA==",
+      length: 14639702,
+    },
+    windows: {
+      edSignature:
+        "bFrVx5jPsmOVLWeRAgpJR/Is6cTzFHV0GvwFyP6v2IfyrkVZHg/sm/lvo8+5ew4leN3yJtTAvHOr2uMk7trgDA==",
+      length: 8491008,
+    },
+  },
+  {
+    version: "0.4.12",
+    date: "2026-06-15",
+    changes: ["Fix save/load shader."],
+    sparkle: {
+      edSignature:
+        "ZPiZycD3D+H5bzEJhjqnHZ7k9X34bAjVZMz8N/7WEuExealI5jGt6g8D7v8JdyLpq1gzAD1+KcdBLM854jHuDg==",
+      length: 14634418,
+    },
+    windows: {
+      edSignature:
+        "gugVS8AMDyXLpd+0nb/fM6t6WTtPKGNAUjhGOV9+eeaqb08SV4CBpMyfbFnUcGNm7XAw5QAaGGsMgYTFpj6LCw==",
+      length: 8482816,
+    },
+  },
+  {
+    version: "0.4.11",
+    date: "2026-06-14",
+    changes: ["Add custom shader."],
+    sparkle: {
+      edSignature:
+        "5aK+KV7wXG9TJcr24XczfEi6wJwcs/zKQPmdLyh3z/cKfgnWkPwgw6iKLYuQtMrO+7plHTW6zPUhJ9SckpDNDA==",
+      length: 14634241,
+    },
+    windows: {
+      edSignature:
+        "OrPgtZfdztHDCBKT6ocx1J/Qjg1cDsyK0+Bv3GL5avnTDkw89pjfFEOQdkUDThSOjPnpd8SAa1GLbDOlqrcyBg==",
+      length: 8482816,
+    },
+  },
+  {
+    version: "0.4.10",
+    date: "2026-05-21",
+    changes: [
+      "Replace platform-specific connection dialogs with a unified ImGui dialog.",
+      "MSSQL: display SQL Server PRINT messages in query results.",
+      "Add connection URL parsing.",
+    ],
+    sparkle: {
+      edSignature:
+        "+QX9OUXtDS4jHo7hF4XJbWqQ9MuP4W/Goz5fBZb3R2xp+gQgP9HEimVzotYhQmdCgUsfe+3K3vKOC0bOzps1Bg==",
+      length: 11443851,
+    },
+    windows: {
+      edSignature:
+        "DxuG/iwQW3YcWWMSGZ0zTPdtbOHd2L82VdcVWe7tvOChqIViIdQVRZm+6i4KGFa8Sm5rKM2C5YOCP3cBPbnLAg==",
+      length: 8486912,
+    },
+  },
+  {
+    version: "0.4.9",
+    date: "2026-05-20",
+    changes: [
+      "Add table cell context menu.",
+      "Add duplicate/delete row buttons.",
+      "Add cell copy/paste shortcuts and selected-cell border.",
+      "Add total row count badge.",
+      "Fix: bundle modern type2-runtime in AppImage.",
+    ],
+    sparkle: {
+      edSignature:
+        "R2ZR7ocd7ftCgrTN6zr/L/cQU8F8DuakBkQI/GyojRaVjaLRPy7G1F7G/balbC5BptD5HVbWuboWC227rHr1CA==",
+      length: 11424799,
+    },
+    windows: {
+      edSignature:
+        "67nkjsn6SUDDLeIvdL3edT1xfBtZDM3+tDbVi1Jf5aQdsFupNQu6FmmOek1nnJZ2cJhCyPS9ir+33pdYZEm+Dw==",
+      length: 8466432,
+    },
+  },
+  {
     version: "0.4.8",
     date: "2026-05-12",
     changes: [

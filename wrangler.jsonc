@@ -1,6 +1,6 @@
 {
   "name": "dearsql",
-  "compatibility_date": "2026-01-30",
+  "compatibility_date": "2026-07-09",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
   "assets": {
     "binding": "ASSETS",

@@ -1,5 +1,5 @@
 {
-  "name": "website",
+  "name": "dearsql-website",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -9,10 +9,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "13.3.0",
-    "@astrojs/sitemap": "3.7.2",
-    "@tailwindcss/vite": "^4.2.4",
-    "astro": "6.2.1",
-    "tailwindcss": "^4.2.4"
+    "@astrojs/cloudflare": "^14.1.7",
+    "@astrojs/sitemap": "3.7.3",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.1.6",
+    "tailwindcss": "^4.3.3"
   }
 }
