@@ -171,12 +171,21 @@ const currentYear = new Date().getFullYear();
 
       <!-- Downloads -->
       <div class="border border-surface1 bg-surface0 text-sm mt-4">
-        <p class="font-bold text-green px-3 py-2 border-b border-surface1">
-          &gt; Downloads
-        </p>
+        <div
+          class="flex items-center justify-between px-3 py-2 border-b border-surface1"
+        >
+          <p class="font-bold text-green">&gt; Downloads</p>
+          <p class="text-xs text-subtext0">
+            v{latestRelease.version} &middot; <a
+              href="/changelog"
+              class="hover:underline">changelog</a
+            >
+          </p>
+        </div>
         <a
           href={macDmgUrl}
-          class="flex items-center px-3 py-2 border-b border-surface1 hover:bg-surface1 no-underline gap-2"
+          data-os="mac"
+          class="os-row flex items-center px-3 py-2 border-b border-surface1 hover:bg-surface1 no-underline gap-2"
         >
           <span
             ><span class="text-subtext0">* </span>macOS <span
@@ -184,11 +193,13 @@ const currentYear = new Date().getFullYear();
             ></span
           >
           {macSize && <span class="text-subtext0 text-xs">[{macSize}]</span>}
+          <span class="os-hint hidden text-xs text-green">&larr; your system</span>
         </a>
         <div class="border-b border-surface1">
           <a
             href={linuxAppImageUrl}
-            class="flex items-center px-3 pt-2 pb-1 hover:bg-surface1 no-underline gap-2"
+            data-os="linux"
+            class="os-row flex items-center px-3 pt-2 pb-1 hover:bg-surface1 no-underline gap-2"
           >
             <span
               ><span class="text-subtext0">* </span>Linux <span
@@ -200,6 +211,9 @@ const currentYear = new Date().getFullYear();
                 <span class="text-subtext0 text-xs">[{linuxSize}]</span>
               )
             }
+            <span class="os-hint hidden text-xs text-green"
+              >&larr; your system</span
+            >
           </a>
           <div class="flex items-center gap-2 px-3 pb-2">
             <span class="text-subtext0 text-xs">or:</span>
@@ -232,7 +246,8 @@ const currentYear = new Date().getFullYear();
         </div>
         <a
           href={winMsiUrl}
-          class="flex items-center px-3 py-2 hover:bg-surface1 no-underline gap-2"
+          data-os="windows"
+          class="os-row flex items-center px-3 py-2 hover:bg-surface1 no-underline gap-2"
         >
           <span
             ><span class="text-subtext0">* </span>Windows <span
@@ -240,8 +255,28 @@ const currentYear = new Date().getFullYear();
             ></span
           >
           {winSize && <span class="text-subtext0 text-xs">[{winSize}]</span>}
+          <span class="os-hint hidden text-xs text-green">&larr; your system</span>
         </a>
       </div>
+      <script>
+        // mark the row matching the visitor's platform. android also reports
+        // "Linux", so it has to be excluded before the linux check.
+        const ua = navigator.userAgent;
+        const os = /Mac|iPhone|iPad/.test(ua)
+          ? "mac"
+          : /Win/.test(ua)
+            ? "windows"
+            : /Linux|X11/.test(ua) && !/Android/.test(ua)
+              ? "linux"
+              : null;
+        if (os) {
+          const row = document.querySelector<HTMLElement>(
+            `.os-row[data-os="${os}"]`,
+          );
+          row?.querySelector(".os-hint")?.classList.remove("hidden");
+          row?.classList.add("bg-surface1");
+        }
+      </script>
       <script>
         const btn = document.getElementById("copy-install-cmd");
         const copyIcon = document.getElementById("copy-icon");

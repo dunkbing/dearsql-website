@@ -1,0 +1,40 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getDocSections } from "./_nav";
+
+const sections = getDocSections();
+---
+
+<Layout
+  title="Docs — DearSQL"
+  description="How to use DearSQL: connections, browsing data, the SQL editor, the AI assistant, and import/export."
+  breadcrumbs={[
+    { name: "Home", url: "/" },
+    { name: "Docs", url: "/docs" },
+  ]}
+>
+  <main class="max-w-2xl mx-auto px-4 py-6 text-sm">
+    <h1 class="text-xl font-bold mb-1">## Docs</h1>
+    <p class="text-subtext0 text-xs mb-6">
+      How to use DearSQL, one feature at a time.
+    </p>
+
+    {
+      sections.map((section) => (
+        <section class="mb-6">
+          <h2 class="text-text font-bold mb-2">{section.name}</h2>
+          <ul class="space-y-3">
+            {section.pages.map((page) => (
+              <li>
+                <a href={page.url} class="text-text hover:underline">
+                  {page.title}
+                </a>
+                <p class="text-subtext0 text-xs">{page.description}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+  </main>
+</Layout>
