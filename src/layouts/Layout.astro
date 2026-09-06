@@ -36,6 +36,13 @@ const imageURL = new URL(image, Astro.site);
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
     <link rel="apple-touch-icon" href="/appicon.png" />
     <link rel="canonical" href={canonicalURL} />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/fonts/plex-mono-400.woff2"
+      crossorigin
+    />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <meta name="yandex-verification" content="a3dc6b36fae5ab26" />
