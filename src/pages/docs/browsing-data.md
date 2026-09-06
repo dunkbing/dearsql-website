@@ -35,6 +35,12 @@ It autocompletes column names and SQL keywords as you type. Press Enter or click
 
 You can also right-click a cell and filter by its value, which appends the right condition — including `IS NULL` for null cells — instead of making you type it.
 
+## Following foreign keys
+
+Right-click a cell in a foreign-key column and choose **Go to *table*** — the referenced table opens in a new tab, filtered to the matching row. It's the quickest way to answer "which customer is this order for?" without writing a join.
+
+The entry only appears on columns that actually have a foreign key, and not on null cells. Foreign keys are read from the database on connect, so SQLite, PostgreSQL, MySQL and MariaDB all support it.
+
 ## Editing
 
 Cells are editable in place. Edited cells are highlighted, and nothing is sent to the database until you save:
@@ -47,6 +53,8 @@ Cells are editable in place. Edited cells are highlighted, and nothing is sent t
 Saving opens a confirmation dialog containing the exact SQL DearSQL is about to run — `INSERT`s, `UPDATE`s and `DELETE`s, in order. **The SQL is editable**, so if a generated statement isn't what you want, fix it before it runs. Nothing executes until you press Execute.
 
 Statements are keyed on the table's primary key. For a table without one, DearSQL matches on all column values, which is safe but can match more than one row if you have exact duplicates.
+
+On a [read-only connection](/docs/connections) none of this is available: cells can't be edited, the add, duplicate and delete buttons are disabled, and the toolbar shows a **Read-only** marker.
 
 ## Inspector
 

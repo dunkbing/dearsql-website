@@ -34,6 +34,17 @@ Connections are lazy: adding one saves it, and expanding it in the sidebar is wh
 
 **Refresh** on a connection reconnects and reloads its schema. **Disconnect** closes it without removing it.
 
+## Read-only connections
+
+Tick **Read-only connection** in the dialog to stop the app writing to that database. It applies to every engine, including SQLite and DuckDB files, and is remembered with the connection.
+
+With it on:
+
+- The SQL editor runs `SELECT`, `SHOW`, `EXPLAIN`, `DESCRIBE`, `WITH` and `PRAGMA`, and refuses anything else with an explanation instead of executing it.
+- Table data can't be edited, and the add, duplicate and delete row buttons are disabled.
+
+This guards against slips — a stray edit in the grid, a `DELETE` you meant to run somewhere else. It is not a security boundary: it stops DearSQL from issuing the statement, but it doesn't change what your database user is allowed to do. For a real guarantee on production, connect as a user with only `SELECT` granted.
+
 ## SSL / TLS
 
 Every server backend supports encryption, with the modes that engine actually offers:

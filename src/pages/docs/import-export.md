@@ -18,6 +18,12 @@ Right-click a table and choose an export format:
 | CSV | Spreadsheets, and anything that eats delimited text |
 | JSON | Feeding an API or a script |
 | SQL | `INSERT` statements to replay elsewhere |
+| Markdown | Pasting into a pull request, an issue, or notes |
+| HTML | A standalone page you can open in a browser or paste into a document |
+
+Markdown escapes pipes and turns newlines into `<br>`, so a table with awkward content still renders. HTML is written as a complete, self-contained document rather than a bare fragment.
+
+Selecting several tables exports them all — one file each into a folder you pick, except SQL, which writes a single file.
 
 ## SQL dumps
 
