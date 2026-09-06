@@ -39,7 +39,7 @@ You can also right-click a cell and filter by its value, which appends the right
 
 Foreign-key columns are marked with a key icon in the header — hover it to see which table the column references — and their values are coloured like links.
 
-Right-click one of those cells and choose **Go to *table*** — the referenced table opens in a new tab, filtered to the matching row. It's the quickest way to answer "which customer is this order for?" without writing a join.
+Hover or select one of those cells and a small jump button appears at its right edge — click it and the referenced table opens in a new tab, filtered to the matching row. It's the quickest way to answer "which customer is this order for?" without writing a join. The same thing is on the right-click menu as **Go to *table***.
 
 The entry only appears on columns that actually have a foreign key, and not on null cells. Foreign keys are read from the database on connect, so SQLite, PostgreSQL, MySQL and MariaDB all support it.
 
