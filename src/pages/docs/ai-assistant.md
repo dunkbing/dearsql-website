@@ -47,6 +47,10 @@ DearSQL doesn't handle agent credentials — each agent uses its own login. If a
 
 For the **API key** backend, open the gear icon and paste an Anthropic, OpenAI or Gemini key. It's stored with your other DearSQL settings.
 
+## Choosing a model
+
+When an ACP agent publishes a model selector, DearSQL shows it beside the agent picker. Choose a model and DearSQL applies it to the current agent session. The available names and choices come from the agent itself, so different versions of Claude Code, Codex, Gemini, and custom agents can expose different options. If no second picker appears, that agent does not support model selection through ACP; use its own configuration instead.
+
 ## What you see during a turn
 
 An agent reports more than plain text, and the panel renders each kind:
@@ -65,7 +69,7 @@ Agents carry their own file and shell tools that don't go through DearSQL. To ke
 
 ## Notes
 
-- Agents are supported on macOS and Linux. On Windows the tab still works with an API key.
+- Agents and API-key chat are supported on macOS, Linux and Windows.
 - Starting an agent takes a few seconds. DearSQL launches it as soon as you open the Assistant tab, so it's usually ready by the time you've typed, and shows "Starting *agent*..." until it is.
 - `/new` restarts the session; the transcript and pinned context are cleared with `/clear`.
 
