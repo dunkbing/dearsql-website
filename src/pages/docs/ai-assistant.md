@@ -31,13 +31,18 @@ DearSQL looks for an agent in this order:
 
 1. A binary you downloaded through DearSQL (see below).
 2. The agent's own binary on your `PATH`.
-3. A package runner — `npx`, then `bunx`, `pnpm dlx`, `yarn dlx`, `uvx`.
+3. The Bun runtime you downloaded through DearSQL (see below).
+4. A package runner — `npx`, then `bunx`, `pnpm dlx`, `yarn dlx`, `uvx`.
 
 If none of those work, the panel says so and offers to install the agent with whichever package manager you have (`npm`, `bun`, `pnpm` or `yarn`), showing the exact command it will run.
 
-## Agents without Node
+## No Node installed?
 
-The three built-in agents are published as npm packages, so they need a JavaScript runtime. If you don't have one, the panel offers a list of **agents that run without Node** — Amp, Goose, Cursor and others from the official ACP registry that ship a prebuilt binary.
+The three built-in agents are published as npm packages, so they need a JavaScript runtime. If you don't have one, DearSQL handles it.
+
+**Bun is downloaded for you.** The first time you pick such an agent with no runtime around, DearSQL fetches a pinned [Bun](https://bun.sh) release for your platform (about 25 MB), **verifies its SHA-256** against the release checksums, and keeps it in `~/.dearsql/agents/bun/`. Nothing else on your machine changes: no global install, no `~/.bun`, no `PATH` edits. The agent runs through it from then on, and the message you were sending goes out as soon as the download finishes. If the download fails, the panel shows why and offers a retry.
+
+**Agents that run without Node.** The panel also lists agents from the official ACP registry that ship a prebuilt binary — Amp, Goose, Cursor and others.
 
 Downloading one fetches the archive for your platform, **verifies its SHA-256**, and unpacks it into `~/.dearsql/agents/`. Nothing is unpacked if the checksum doesn't match. Once installed, the agent appears in the dropdown like any other.
 
