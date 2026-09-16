@@ -13,38 +13,37 @@ DearSQL's sidebar has two tabs: **Databases** and **Assistant**. The Assistant t
 
 It can talk to two different kinds of backend:
 
-- **A coding agent** — Claude Code, Gemini CLI, Codex, or any command that speaks the [Agent Client Protocol](https://agentclientprotocol.com). These are real agents: they stream their thinking, call tools, and ask permission before acting.
+- **A coding agent** — Claude Code, Gemini CLI, Codex, Cursor or Google Antigravity, over the [Agent Client Protocol](https://agentclientprotocol.com). These are real agents: they stream their thinking, call tools, and ask permission before acting.
 - **An API key** — Anthropic, OpenAI or Gemini, straight over HTTPS. No install, no agent process, but no tools either.
 
 ## Picking an agent
 
-The dropdown at the top of the tab lists the built-in agents, plus **Custom agent** and **API key**. Your choice is remembered between launches.
+The dropdown at the top of the tab lists the agents, plus **API key**. Your choice is remembered between launches.
 
 | Agent | What DearSQL launches |
 |---|---|
 | Claude Code | `claude-agent-acp`, or `@agentclientprotocol/claude-agent-acp` via a package runner |
 | Gemini CLI | `gemini --experimental-acp`, or `@google/gemini-cli` |
 | Codex | `codex-acp`, or `@zed-industries/codex-acp` |
-| Custom agent | Whatever command you type, as long as it speaks ACP over stdio |
+| Cursor | `cursor-agent acp`, or the prebuilt binary from the ACP registry |
+| Google Antigravity | The prebuilt binary from the ACP registry |
 
 DearSQL looks for an agent in this order:
 
-1. A binary you downloaded through DearSQL (see below).
+1. A binary DearSQL downloaded for you (see below).
 2. The agent's own binary on your `PATH`.
-3. The Bun runtime you downloaded through DearSQL (see below).
+3. The Bun runtime DearSQL downloaded for you (see below).
 4. A package runner — `npx`, then `bunx`, `pnpm dlx`, `yarn dlx`, `uvx`.
 
 If none of those work, the panel says so and offers to install the agent with whichever package manager you have (`npm`, `bun`, `pnpm` or `yarn`), showing the exact command it will run.
 
-## No Node installed?
+## Nothing installed?
 
-The three built-in agents are published as npm packages, so they need a JavaScript runtime. If you don't have one, DearSQL handles it.
+DearSQL gets what the agent needs by itself. Both downloads land in `~/.dearsql/agents/` and change nothing else on your machine: no global install, no `PATH` edits. The message you were sending goes out as soon as the download finishes, and if it fails the panel shows why and offers a retry.
 
-**Bun is downloaded for you.** The first time you pick such an agent with no runtime around, DearSQL fetches a pinned [Bun](https://bun.sh) release for your platform (about 25 MB), **verifies its SHA-256** against the release checksums, and keeps it in `~/.dearsql/agents/bun/`. Nothing else on your machine changes: no global install, no `~/.bun`, no `PATH` edits. The agent runs through it from then on, and the message you were sending goes out as soon as the download finishes. If the download fails, the panel shows why and offers a retry.
+**Cursor and Google Antigravity** ship as prebuilt binaries. The first time you pick one that isn't on your `PATH`, DearSQL looks it up in the official ACP registry and fetches the archive for your platform. No Node needed.
 
-**Agents that run without Node.** The panel also lists agents from the official ACP registry that ship a prebuilt binary — Amp, Goose, Cursor and others.
-
-Downloading one fetches the archive for your platform, **verifies its SHA-256**, and unpacks it into `~/.dearsql/agents/`. Nothing is unpacked if the checksum doesn't match. Once installed, the agent appears in the dropdown like any other.
+**Claude Code, Gemini CLI and Codex** are npm packages, so they need a JavaScript runtime. If you don't have one, DearSQL fetches a pinned [Bun](https://bun.sh) release for your platform (about 25 MB), **verifies its SHA-256** against the release checksums, and runs the agent through it from then on.
 
 ## Signing in
 
@@ -54,7 +53,7 @@ For the **API key** backend, open the gear icon and paste an Anthropic, OpenAI o
 
 ## Choosing a model
 
-When an ACP agent publishes a model selector, DearSQL shows it beside the agent picker. Choose a model and DearSQL applies it to the current agent session. The available names and choices come from the agent itself, so different versions of Claude Code, Codex, Gemini, and custom agents can expose different options. If no second picker appears, that agent does not support model selection through ACP; use its own configuration instead.
+When an ACP agent publishes a model selector, DearSQL shows it beside the agent picker. Choose a model and DearSQL applies it to the current agent session. The available names and choices come from the agent itself, so different agents, and different versions of the same agent, can expose different options. If no second picker appears, that agent does not support model selection through ACP; use its own configuration instead.
 
 ## What you see during a turn
 
