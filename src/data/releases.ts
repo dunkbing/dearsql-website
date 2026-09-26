@@ -18,6 +18,28 @@ export interface Release {
 
 export const releases: Release[] = [
   {
+    version: "0.5.0",
+    date: "2026-09-26",
+    changes: [
+      "Add DuckDB backend, with CSV file support.",
+      "AI: sidebar tab driving Claude Code, Gemini CLI, Codex, Cursor and Antigravity over ACP, with model selection.",
+      "Follow foreign keys to the referenced row.",
+      "Add read-only connections.",
+      "Export to Markdown and HTML.",
+      "Windows: enable Snap Layouts for the title bar.",
+    ],
+    sparkle: {
+      edSignature:
+        "QqXmLEk5KYQvXBIzBfBJmL4p91UAQPtx2Lg6S5LvwKbH7HY0ctmy35PfTwauxzyLBDBpUnV0JOtfxKoli4lMCA==",
+      length: 27133168,
+    },
+    windows: {
+      edSignature:
+        "c4/QnqbUh6JD2K4eGRk24pefSdmbVC9OrQ5z9OHG2vwn+leCWpc46f58NxOGEixuEIKx0C23VtjmBsdXIInrDg==",
+      length: 15994880,
+    },
+  },
+  {
     version: "0.4.14",
     date: "2026-08-24",
     changes: [
