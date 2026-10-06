@@ -1,0 +1,111 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const faq = [
+  {
+    q: "Is there a GUI for DuckDB?",
+    a: "Yes. DearSQL is a native desktop GUI for DuckDB on macOS, Linux and Windows. Open a .duckdb file to browse its tables and views, edit rows inline, and run SQL with autocomplete.",
+  },
+  {
+    q: "How do I query a CSV file with SQL?",
+    a: "In DearSQL, right-click the sidebar and choose Open CSV File. The file is loaded through DuckDB, so it behaves like a table: browse, sort and filter it, or write SQL against it in the editor. No import step or server is needed.",
+  },
+  {
+    q: "Is DearSQL's DuckDB support free?",
+    a: "Yes. DuckDB and CSV files work in the free tier, along with every other database DearSQL supports. Pro is a $35 one-time purchase for unlimited saved connections and workspaces.",
+  },
+];
+---
+
+<Layout
+  title="DuckDB GUI Client — Query DuckDB and CSV Files with SQL | DearSQL"
+  description="A native desktop GUI for DuckDB. Open .duckdb files and CSV files, browse tables, edit data inline, and run SQL with autocomplete. Free on macOS, Linux and Windows."
+  breadcrumbs={[
+    { name: "Home", url: "/" },
+    { name: "DuckDB", url: "/duckdb" },
+  ]}
+>
+  <script
+    is:inline
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faq.map((item) => ({
+        "@type": "Question",
+        name: item.q,
+        acceptedAnswer: { "@type": "Answer", text: item.a },
+      })),
+    })}
+  />
+
+  <main class="max-w-2xl mx-auto px-4 py-6">
+    <section class="pb-6">
+      <div class="flex items-center gap-3 mb-3">
+        <img src="/icons/duckdb.png" alt="DuckDB" width="24" height="24" class="w-6 h-6" />
+        <h1 class="text-xl font-bold">DuckDB &amp; CSV</h1>
+      </div>
+      <p class="text-subtext0 text-sm">
+        A native desktop GUI for DuckDB. Open a <code>.duckdb</code> file or a plain CSV,
+        browse it like any other database, and query it with SQL — no server, no import
+        step, no Electron.
+      </p>
+    </section>
+
+    <section class="pb-6 border-t border-surface1 pt-4">
+      <h2 class="font-bold mb-2 before:content-['##_']">DuckDB files</h2>
+      <p class="text-subtext0 text-sm mb-4">
+        Add a DuckDB connection and pick the file with the file browser. Its tables and views
+        show up in the sidebar; double-click one to open it in the table viewer, where you
+        can sort, filter and edit rows inline. Changes are turned into SQL you can review
+        before they are committed. Tick <span class="text-text">Read-only connection</span>
+        to make sure nothing gets written to the file.
+      </p>
+      <div class="border border-surface1 overflow-hidden">
+        <img src="/docs/table-grid.png" alt="The DearSQL table viewer with sorting and filters" class="w-full h-auto" loading="lazy" />
+      </div>
+    </section>
+
+    <section class="pb-6 border-t border-surface1 pt-4">
+      <h2 class="font-bold mb-2 before:content-['##_']">Query CSV files with SQL</h2>
+      <p class="text-subtext0 text-sm mb-4">
+        Right-click the sidebar and choose <span class="text-text">Open CSV File...</span>.
+        DearSQL loads the file through DuckDB, so it behaves like a table: browse it, sort
+        it, filter it, and write SQL against it in the editor. You can also import a CSV
+        into an existing table from the table's context menu, and export any table to CSV,
+        JSON or SQL.
+      </p>
+      <div class="border border-surface1 overflow-hidden">
+        <img src="/docs/sql-editor.png" alt="The DearSQL SQL editor with query results" class="w-full h-auto" loading="lazy" />
+      </div>
+    </section>
+
+    <section class="pb-6 border-t border-surface1 pt-4">
+      <h2 class="font-bold mb-2 before:content-['##_']">Highlights</h2>
+      <ul class="space-y-1 text-sm text-subtext0">
+        <li>- SQL editor with syntax highlighting, autocomplete and multi-statement results.</li>
+        <li>- Foreign keys are read from the file, so you can jump to referenced rows.</li>
+        <li>- Ask an AI agent (Claude Code, Codex, Gemini CLI, Cursor) about your data; it can read the schema and run read-only queries.</li>
+        <li>- The same app also covers SQLite, PostgreSQL, MySQL, MongoDB, Redis and more.</li>
+        <li>- Free tier included; Pro is $35 one-time.</li>
+      </ul>
+    </section>
+
+    <section class="pb-6 border-t border-surface1 pt-4">
+      <h2 class="font-bold mb-3 before:content-['##_']">FAQ</h2>
+      <div class="space-y-4 text-sm">
+        {faq.map((item) => (
+          <div>
+            <p class="font-bold text-text">{item.q}</p>
+            <p class="text-subtext0 mt-1">{item.a}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="pb-6 border-t border-surface1 pt-4 text-sm">
+      <a href="/">&lt;- download DearSQL</a> · <a href="/docs/import-export">import &amp; export docs</a>
+    </section>
+  </main>
+</Layout>
