@@ -50,7 +50,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <main class="max-w-2xl mx-auto px-4 py-6 text-sm">
     <a href="/blog" class="text-subtext0 text-xs">&lt;- back to blog</a>
 
-    <h1 class="text-xl font-bold mt-4 mb-1">## {title}</h1>
+    <h1 class="text-xl font-bold mt-4 mb-1 before:content-['##_']">{title}</h1>
     <p class="text-subtext0 text-xs mb-6">
       <time datetime={pubDate}>{pubDate}</time>
       {author && <span class="ml-2">· {author}</span>}

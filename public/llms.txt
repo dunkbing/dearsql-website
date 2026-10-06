@@ -1,6 +1,6 @@
 # DearSQL
 
-> DearSQL is a fast, native desktop SQL client built with C++ and ImGui. It connects to SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, MSSQL, and Redshift from a single app. Available for macOS, Linux, and Windows. No Electron, no JVM — starts in under a second.
+> DearSQL is a fast, native desktop SQL client built with C++ and ImGui. It connects to SQLite, DuckDB, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, MSSQL, Cassandra, and Redshift from a single app. Available for macOS, Linux, and Windows. No Electron, no JVM — starts in under a second.
 
 ## Product
 
@@ -9,6 +9,17 @@
 - [Compare vs TablePlus, DBeaver, DataGrip, Beekeeper Studio](https://dearsql.dev/compare)
 - [Redis client features](https://dearsql.dev/redis)
 - [Tech stack](https://dearsql.dev/stack)
+
+## Docs
+
+- [Docs overview](https://dearsql.dev/docs)
+- [Connections](https://dearsql.dev/docs/connections): connect to SQLite, DuckDB, PostgreSQL, MySQL, MongoDB, Redis and more, over SSL or an SSH tunnel
+- [Browsing data](https://dearsql.dev/docs/browsing-data): the sidebar tree, table viewer, filtering, inline editing and the inspector panel
+- [SQL editor](https://dearsql.dev/docs/sql-editor): run queries, read multi-statement results, keep scripts around
+- [Import and export](https://dearsql.dev/docs/import-export): SQL dumps for MySQL and PostgreSQL, plus CSV files
+- [AI assistant](https://dearsql.dev/docs/ai-assistant): use Claude Code, Gemini CLI, Codex, Cursor or an API key inside the app
+- [AI context and commands](https://dearsql.dev/docs/ai-context): pin tables with @, run commands with /
+- [AI database tools](https://dearsql.dev/docs/ai-database-tools): let the agent search your schema, run read-only queries and open connections
 
 ## About
 
@@ -29,7 +40,7 @@ Pro: $35 one-time purchase — unlimited connections and workspaces, all current
 
 ## Supported Databases
 
-SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, MSSQL, Redshift.
+SQLite, DuckDB, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, MSSQL, Cassandra, Redshift.
 
 ## Key Features
 
@@ -39,5 +50,7 @@ SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, MSSQL, Redshift.
 - SSH tunneling for all server-type databases (password or private key auth)
 - TLS/SSL support with configurable modes per database (disable, prefer, require, verify-ca, verify-full)
 - Saved connections with AES-encrypted credentials
-- AI assistant for writing and explaining queries
+- AI assistant: run Claude Code, Gemini CLI, Codex, Cursor or Google Antigravity inside the app (Agent Client Protocol), or use an Anthropic/OpenAI/Gemini API key
+- Agent database tools (MCP): the agent can list tables, run read-only queries and open saved connections
+- SQL dump import/export for MySQL and PostgreSQL, CSV import/export, and querying CSV files with DuckDB
 - Native rendering: Metal on macOS, OpenGL on Linux, DirectX on Windows

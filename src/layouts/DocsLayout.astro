@@ -49,7 +49,7 @@ const path = Astro.url.pathname.replace(/\/$/, "");
       </nav>
 
       <div class="min-w-0 flex-1">
-        <h1 class="text-xl font-bold mb-1">## {title}</h1>
+        <h1 class="text-xl font-bold mb-1 before:content-['##_']">{title}</h1>
         {description && <p class="text-subtext0 text-xs mb-6">{description}</p>}
         <article class="docs-page text-subtext0 space-y-4">
           <slot />

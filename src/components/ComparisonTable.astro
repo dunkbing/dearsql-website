@@ -26,7 +26,7 @@ const { competitorName, tagline, sections } = Astro.props;
 
 {sections.map((section) => (
   <section class="mb-6">
-    <h2 class="font-bold mb-2">### {section.title}</h2>
+    <h2 class="font-bold mb-2 before:content-['###_']">{section.title}</h2>
     <div class="overflow-x-auto">
       <table class="w-full text-xs border border-surface1 border-collapse">
         <thead>

@@ -105,7 +105,7 @@ const groups: Group[] = [
   ]}
 >
   <main class="max-w-2xl mx-auto px-4 py-6 text-sm">
-    <h1 class="text-xl font-bold mb-1">## Stack</h1>
+    <h1 class="text-xl font-bold mb-1 before:content-['##_']">Stack</h1>
     <p class="text-subtext0 text-xs mb-6">
       Everything DearSQL is built on.
     </p>
@@ -114,7 +114,7 @@ const groups: Group[] = [
       {
         groups.map((g) => (
           <section>
-            <h2 class="font-bold text-text mb-2">### {g.title}</h2>
+            <h2 class="font-bold text-text mb-2 before:content-['###_']">{g.title}</h2>
             <ul class="space-y-1 ml-2">
               {g.deps.map((d) => (
                 <li>

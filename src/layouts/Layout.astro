@@ -16,7 +16,7 @@ interface Props {
 
 const {
   title,
-  description = "DearSQL is a fast, native desktop SQL client for SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, and MSSQL. No Electron, no bloat. Free tier available.",
+  description = "Fast, native desktop SQL client for SQLite, DuckDB, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, MSSQL, Oracle, Cassandra and Redshift. No Electron. Free tier.",
   image = "/sc.webp",
   breadcrumbs = [],
 } = Astro.props;
@@ -117,7 +117,7 @@ const imageURL = new URL(image, Astro.site);
         name: "DearSQL",
         url: "https://dearsql.dev/",
         description:
-          "DearSQL is a fast, native desktop SQL client for SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, MSSQL, and Redshift. No Electron, no JVM.",
+          "DearSQL is a fast, native desktop SQL client for SQLite, DuckDB, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, MSSQL, Cassandra, and Redshift. No Electron, no JVM.",
         publisher: {
           "@type": "Organization",
           name: "DearSQL",

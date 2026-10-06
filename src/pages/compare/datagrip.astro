@@ -41,7 +41,7 @@ const otherComps = competitors.filter((c) => c.id !== "datagrip");
 
   <main class="max-w-2xl mx-auto px-4 py-6 text-sm">
     <a href="/compare" class="text-subtext0 text-xs">&lt;- all comparisons</a>
-    <h1 class="text-xl font-bold mt-4 mb-1">## DearSQL vs {comp.name}</h1>
+    <h1 class="text-xl font-bold mt-4 mb-1 before:content-['##_']">DearSQL vs {comp.name}</h1>
     <p class="text-subtext0 text-xs mb-6">{comp.tagline}</p>
 
     <ComparisonTable
@@ -52,7 +52,7 @@ const otherComps = competitors.filter((c) => c.id !== "datagrip");
 
     <!-- FAQ -->
     <section class="mb-6 border-t border-surface1 pt-4">
-      <h2 class="font-bold mb-3">## FAQ</h2>
+      <h2 class="font-bold mb-3 before:content-['##_']">FAQ</h2>
       <div class="space-y-4">
         {comp.faq.map((item) => (
           <div>

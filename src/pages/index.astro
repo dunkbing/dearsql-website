@@ -32,7 +32,7 @@ const [macSize, linuxSize, winSize] = await Promise.all([
 const features = [
   "Syntax highlighting, autocomplete, and query history.",
   "Browse and edit table data inline. Changes generate proper SQL before committing.",
-  "SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, and MSSQL in one app.",
+  "SQLite, DuckDB, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, MSSQL, Cassandra, and Redshift in one app.",
   "Saved connections with encrypted credentials.",
   "Schema browser — tables, views, indexes, and more.",
   "Native C++ with Metal on macOS, OpenGL on Linux, and DirectX on Windows.",
@@ -43,7 +43,7 @@ const currentYear = new Date().getFullYear();
 
 <Layout
   title="DearSQL — Native Desktop SQL Client for macOS, Linux & Windows"
-  description="DearSQL is a fast, native desktop SQL client. Connect to SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, and MSSQL. No Electron, no bloat. Free tier available."
+  description="Fast, native desktop SQL client for SQLite, DuckDB, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, MSSQL, Oracle, Cassandra and Redshift. No Electron. Free tier."
 >
   <script
     is:inline
@@ -57,7 +57,7 @@ const currentYear = new Date().getFullYear();
       operatingSystem: "macOS, Linux, Windows",
       softwareVersion: latestRelease.version,
       description:
-        "Fast, native desktop SQL client for SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, MSSQL, and Redshift. Built with C++ and ImGui. No Electron, no JVM.",
+        "Fast, native desktop SQL client for SQLite, DuckDB, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, MSSQL, Cassandra, and Redshift. Built with C++ and ImGui. No Electron, no JVM.",
       url: "https://dearsql.dev/",
       downloadUrl: "https://dearsql.dev/",
       screenshot: "https://dearsql.dev/sc.webp",
@@ -100,7 +100,7 @@ const currentYear = new Date().getFullYear();
           name: "What databases does DearSQL support?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "DearSQL supports SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, and MSSQL — all in one native desktop app.",
+            text: "DearSQL supports SQLite, DuckDB, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, MSSQL, Cassandra, and Redshift — all in one native desktop app.",
           },
         },
         {
@@ -160,13 +160,13 @@ const currentYear = new Date().getFullYear();
       </p>
       <div class="flex flex-wrap gap-x-3 gap-y-0.5 text-xs text-subtext0 mb-3">
         <span
-          >* SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, MSSQL, Redshift</span
+          >* SQLite, DuckDB, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, MSSQL, Cassandra, Redshift</span
         >
         <span>* SSH tunneling & TLS</span>
         <span>* AI assistant</span>
       </div>
       <p class="text-sm text-subtext0 mb-5">
-        DearSQL connects to SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, <a href="/redis" class="hover:underline">Redis</a>, Oracle, MSSQL, and Redshift from a single app. Browse schemas, edit table data inline, write queries with full syntax highlighting, and route connections through SSH tunnels or TLS/SSL — all from a native C++ interface that starts in under a second. <a href="/compare" class="hover:underline">Compare DearSQL to TablePlus, DBeaver, and DataGrip →</a>
+        DearSQL connects to SQLite, DuckDB, PostgreSQL, MySQL, MariaDB, MongoDB, <a href="/redis" class="hover:underline">Redis</a>, Oracle, MSSQL, Cassandra, and Redshift from a single app. Browse schemas, edit table data inline, write queries with full syntax highlighting, and route connections through SSH tunnels or TLS/SSL — all from a native C++ interface that starts in under a second. <a href="/compare" class="hover:underline">Compare DearSQL to TablePlus, DBeaver, and DataGrip →</a>
       </p>
 
       <!-- Downloads -->
@@ -395,7 +395,7 @@ const currentYear = new Date().getFullYear();
 
     <!-- Features -->
     <section id="features" class="pb-6 border-t border-surface1 pt-4">
-      <h2 class="font-bold mb-2">## Features</h2>
+      <h2 class="font-bold mb-2 before:content-['##_']">Features</h2>
       <ul class="text-sm text-subtext0 space-y-1">
         {features.map((f) => <li>- {f}</li>)}
       </ul>
@@ -403,19 +403,19 @@ const currentYear = new Date().getFullYear();
 
     <!-- Databases -->
     <section id="databases" class="pb-6 border-t border-surface1 pt-4">
-      <h2 class="font-bold mb-2">## Supported Databases</h2>
+      <h2 class="font-bold mb-2 before:content-['##_']">Supported Databases</h2>
       <p class="text-sm text-subtext0">
-        SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, <a href="/redis" class="hover:underline">Redis</a>, Oracle, MSSQL, Redshift.
+        SQLite, DuckDB, PostgreSQL, MySQL, MariaDB, MongoDB, <a href="/redis" class="hover:underline">Redis</a>, Oracle, MSSQL, Cassandra, Redshift.
       </p>
     </section>
 
     <!-- FAQ -->
     <section id="faq" class="pb-6 border-t border-surface1 pt-4">
-      <h2 class="font-bold mb-3">## FAQ</h2>
+      <h2 class="font-bold mb-3 before:content-['##_']">FAQ</h2>
       <div class="space-y-4 text-sm">
         <div>
           <p class="font-bold text-text">What databases does DearSQL support?</p>
-          <p class="text-subtext0 mt-1">SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, MSSQL, and Redshift — all in one native desktop app. No need to switch between tools.</p>
+          <p class="text-subtext0 mt-1">SQLite, DuckDB, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, MSSQL, Cassandra, and Redshift — all in one native desktop app. No need to switch between tools.</p>
         </div>
         <div>
           <p class="font-bold text-text">Is DearSQL free?</p>
@@ -438,7 +438,7 @@ const currentYear = new Date().getFullYear();
 
     <!-- Pricing -->
     <section id="pricing" class="pb-6 border-t border-surface1 pt-4">
-      <h2 class="font-bold mb-4">## Pricing</h2>
+      <h2 class="font-bold mb-4 before:content-['##_']">Pricing</h2>
       <div class="grid grid-cols-2 gap-3 text-sm">
         <!-- Free -->
         <div class="border border-surface1 bg-surface0">

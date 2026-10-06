@@ -45,7 +45,7 @@ scripts/            - build/deploy helpers
 - **Styling** uses Tailwind utility classes with a Catppuccin-inspired palette:
   - `text-text`, `text-subtext0`, `border-surface1`, etc.
   - Page content is typically wrapped in `<main class="max-w-2xl mx-auto px-4 py-6 text-sm">`.
-- **Section headers** use literal markdown-style prefixes (`##`, `###`) inside `<h1>`/`<h2>` tags for the terminal-ish aesthetic — match this style when adding new pages.
+- **Section headers** get their markdown-style prefix from CSS, not text: `<h1 class="... before:content-['##_']">Title</h1>` (`###_` for subsections), so crawlers and AI engines read a clean heading. Match this when adding new pages.
 - **Links** to external sites use `target="_blank"`. Internal links are plain.
 - **New footer links**: update `src/components/Footer.astro`.
 
@@ -96,5 +96,5 @@ Deployment is handled via `wrangler` against Cloudflare Workers — check `wrang
 
 - Do not introduce JavaScript frameworks (React/Vue/Svelte) unless asked — the site is intentionally static-first.
 - Do not add analytics or tracking scripts. The privacy policy promises none.
-- Keep new pages consistent with the existing terminal/markdown aesthetic (`##` / `###` in headings, `[link]` brackets in the footer, monospace-friendly spacing).
+- Keep new pages consistent with the existing terminal/markdown aesthetic (`##` / `###` heading prefixes via `before:content`, `[link]` brackets in the footer, monospace-friendly spacing).
 - `public/` assets are served at the site root; reference them with absolute paths (`/icon-hero.webp`).
