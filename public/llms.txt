@@ -35,7 +35,7 @@
 
 ## Pricing
 
-Free tier: all database types and core features, up to 3 saved connections and 2 workspaces. No credit card required.
+Free tier: all database types and core features, up to 10 saved connections and 2 workspaces. No credit card required.
 Pro: $35 one-time purchase — unlimited connections and workspaces, all current and future features.
 
 ## Supported Databases

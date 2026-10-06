@@ -30,21 +30,21 @@ export const competitors: Competitor[] = [
     id: "tableplus",
     name: "TablePlus",
     tagline: "Two native database clients compared on features, pricing, and platform support.",
-    summary: `Both are native apps. DearSQL is $35 one-time vs $99 (1yr updates). Built-in AI assistant and zero telemetry. Free tier with ${FREE_SAVED_CONNECTIONS} connections.`,
+    summary: `Both are native apps. DearSQL is $35 one-time with lifetime updates vs $99 (1yr updates). Zero telemetry. Free tier with ${FREE_SAVED_CONNECTIONS} connections.`,
     title: "DearSQL vs TablePlus — 2026 Comparison",
     description: `Compare DearSQL and TablePlus on pricing, database support, features, and platforms. DearSQL is $35 one-time with ${FREE_SAVED_CONNECTIONS} free connections; TablePlus costs $99 with limited update coverage.`,
     faq: [
       {
         q: "Is DearSQL cheaper than TablePlus?",
-        a: "Yes. DearSQL is $35 as a one-time purchase with all future updates included. TablePlus costs $99 and only covers 1 year of updates — further updates require purchasing again.",
+        a: "Yes. DearSQL is $35 as a one-time purchase with all future updates included. TablePlus costs $99 for a perpetual license with 1 year of updates; updates after that need a $59 renewal per device.",
       },
       {
         q: "Does DearSQL support the same databases as TablePlus?",
-        a: "Yes. Both support SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, MSSQL, and Redshift.",
+        a: "Mostly. Both support SQLite, DuckDB, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, MSSQL, Redshift, and Cassandra. TablePlus supports Oracle on macOS only; DearSQL supports it on every platform.",
       },
       {
         q: "Is DearSQL a good TablePlus alternative?",
-        a: `Yes. DearSQL is a native desktop SQL client available for macOS, Linux, and Windows — just like TablePlus. Key advantages: $35 vs $99 pricing, built-in AI assistant, ${FREE_SAVED_CONNECTIONS}-connection free tier, and zero app telemetry.`,
+        a: `Yes. DearSQL is a native desktop SQL client available for macOS, Linux, and Windows — just like TablePlus. Key advantages: $35 vs $99 pricing with lifetime updates, a ${FREE_SAVED_CONNECTIONS}-connection free tier, Oracle on every platform, and zero app telemetry.`,
       },
     ],
   },
@@ -62,7 +62,7 @@ export const competitors: Competitor[] = [
       },
       {
         q: "Does DearSQL include NoSQL in the free tier unlike DBeaver?",
-        a: "Yes. DearSQL includes MongoDB and Redis in the free tier. DBeaver Community Edition does not include NoSQL support — an Enterprise license is required.",
+        a: "Yes. DearSQL includes MongoDB and Redis in the free tier. DBeaver Community Edition does not include NoSQL support — a paid license (Lite or higher) is required.",
       },
       {
         q: "Is DearSQL a good DBeaver alternative?",
@@ -74,13 +74,13 @@ export const competitors: Competitor[] = [
     id: "datagrip",
     name: "DataGrip",
     tagline: "A lightweight database client vs a full JetBrains IDE.",
-    summary: "DearSQL is $35 one-time. DataGrip requires $229/year. DearSQL starts instantly; DataGrip is a full IDE with project indexing and 1GB+ RAM usage.",
+    summary: "DearSQL is $35 one-time. DataGrip is a subscription: $109/year for individuals, $259/year for organizations. DearSQL starts instantly; DataGrip is a full IDE with project indexing and 1GB+ RAM usage.",
     title: "DearSQL vs DataGrip — 2026 Comparison",
-    description: "Compare DearSQL and DataGrip on pricing, performance, and features. DearSQL costs $35 once; DataGrip requires a $229/year JetBrains subscription with heavy JVM resource usage.",
+    description: "Compare DearSQL and DataGrip on pricing, performance, and features. DearSQL costs $35 once; DataGrip is a JetBrains subscription ($109/year individual, $259/year organization) with heavy JVM resource usage.",
     faq: [
       {
         q: "How much does DearSQL cost compared to DataGrip?",
-        a: "DearSQL is a $35 one-time purchase. DataGrip requires a $229/year subscription. Over 3 years, DearSQL costs $35 vs $687 for DataGrip.",
+        a: "DearSQL is a $35 one-time purchase. DataGrip is a subscription: $109/year for individuals (cheaper in years 2 and 3) or $259/year per user for organizations. Over 3 years, DearSQL costs $35 vs $261 (individual) or $777 (organization) for DataGrip.",
       },
       {
         q: "Is DearSQL less resource-intensive than DataGrip?",
@@ -96,7 +96,7 @@ export const competitors: Competitor[] = [
     id: "beekeeper",
     name: "Beekeeper Studio",
     tagline: "Native C++ app vs Electron.",
-    summary: "DearSQL is native C++ with instant startup. Beekeeper Studio is Electron-based with Chromium memory overhead. DearSQL includes MongoDB and Redis; Beekeeper does not in the free tier.",
+    summary: "DearSQL is native C++ with instant startup. Beekeeper Studio is Electron-based with Chromium memory overhead. DearSQL includes MongoDB, Oracle, DuckDB, and Cassandra for free; Beekeeper needs a paid plan for them.",
     title: "DearSQL vs Beekeeper Studio — 2026 Comparison",
     description: "Compare DearSQL and Beekeeper Studio on performance, database support, and pricing. DearSQL is native C++ with instant startup; Beekeeper Studio is Electron-based with Chromium overhead.",
     faq: [
@@ -106,11 +106,11 @@ export const competitors: Competitor[] = [
       },
       {
         q: "Does DearSQL support more databases than Beekeeper Studio?",
-        a: "Yes. DearSQL supports MongoDB and Redis, which Beekeeper Studio Community edition does not. Oracle requires a paid Beekeeper Studio license; DearSQL includes Oracle in the free tier.",
+        a: "In the free tier, yes. DearSQL includes MongoDB, Oracle, DuckDB, and Cassandra for free; Beekeeper Studio Community Edition does not, and they need a paid Beekeeper license. Both include Redis for free.",
       },
       {
         q: "Is DearSQL a good Beekeeper Studio alternative?",
-        a: "Yes. DearSQL offers native performance vs Beekeeper's Electron overhead, includes MongoDB and Redis in the free tier, and costs $35 one-time vs Beekeeper's $249 (1 year of updates). Both support macOS, Linux, and Windows.",
+        a: "Yes. DearSQL offers native performance vs Beekeeper's Electron overhead, includes MongoDB and Oracle in the free tier, and costs $35 one-time vs Beekeeper's subscription (from $9/user/month, billed yearly). Both support macOS, Linux, and Windows.",
       },
     ],
   },
@@ -119,23 +119,25 @@ export const competitors: Competitor[] = [
 export const comparisons: Record<string, ComparisonData> = {
   tableplus: {
     architecture: [
-      { feature: "architecture", dearsql: "native (C++/ImGui)", competitor: "native (C++/Cocoa)", highlight: true },
+      { feature: "architecture", dearsql: "native (C++/ImGui)", competitor: "native", highlight: true },
       { feature: "startup time", dearsql: "instant", competitor: "fast" },
       { feature: "memory usage", dearsql: "low", competitor: "low" },
     ],
     databases: [
       { feature: "SQLite", dearsql: "yes", competitor: "yes" },
+      { feature: "DuckDB", dearsql: "yes", competitor: "yes" },
       { feature: "PostgreSQL", dearsql: "yes", competitor: "yes" },
       { feature: "MySQL / MariaDB", dearsql: "yes", competitor: "yes" },
-      { feature: "MongoDB", dearsql: "yes", competitor: "yes" },
+      { feature: "MongoDB", dearsql: "yes", competitor: "yes (beta)" },
       { feature: "Redis", dearsql: "yes", competitor: "yes" },
-      { feature: "Oracle", dearsql: "yes", competitor: "yes" },
+      { feature: "Oracle", dearsql: "yes", competitor: "macOS only", highlight: true },
       { feature: "MSSQL", dearsql: "yes", competitor: "yes" },
       { feature: "Redshift", dearsql: "yes", competitor: "yes" },
+      { feature: "Cassandra", dearsql: "yes", competitor: "yes" },
     ],
     platforms: [
       { feature: "macOS", dearsql: "yes", competitor: "yes" },
-      { feature: "Linux", dearsql: "yes", competitor: "yes" },
+      { feature: "Linux", dearsql: "yes", competitor: "yes (fewer databases)" },
       { feature: "Windows", dearsql: "yes", competitor: "yes" },
     ],
     features: [
@@ -145,12 +147,12 @@ export const comparisons: Record<string, ComparisonData> = {
       { feature: "autocomplete", dearsql: "yes", competitor: "yes" },
       { feature: "inline data editing", dearsql: "yes", competitor: "yes" },
       { feature: "dark mode", dearsql: "yes", competitor: "yes" },
-      { feature: "AI assistant", dearsql: "built-in", competitor: "no", highlight: true },
+      { feature: "AI assistant", dearsql: "built-in", competitor: "built-in" },
       { feature: "app telemetry", dearsql: "none", competitor: "opt-out", highlight: true },
     ],
     pricing: [
-      { feature: "free tier", dearsql: `yes (${FREE_SAVED_CONNECTIONS} connections)`, competitor: "limited (2 tabs)", highlight: true },
-      { feature: "one-time purchase", dearsql: "$35", competitor: "$99 (1yr updates)", highlight: true },
+      { feature: "free tier", dearsql: `yes (${FREE_SAVED_CONNECTIONS} connections)`, competitor: "trial (2 tabs, 2 windows)", highlight: true },
+      { feature: "one-time purchase", dearsql: "$35", competitor: "$99 (1yr updates, $59 renewal)", highlight: true },
       { feature: "subscription required", dearsql: "no", competitor: "no" },
       { feature: "NoSQL in free tier", dearsql: "yes", competitor: "yes (limited)" },
     ],
@@ -163,6 +165,7 @@ export const comparisons: Record<string, ComparisonData> = {
     ],
     databases: [
       { feature: "SQLite", dearsql: "yes", competitor: "yes" },
+      { feature: "DuckDB", dearsql: "yes", competitor: "yes" },
       { feature: "PostgreSQL", dearsql: "yes", competitor: "yes" },
       { feature: "MySQL / MariaDB", dearsql: "yes", competitor: "yes" },
       { feature: "MongoDB", dearsql: "yes", competitor: "yes (paid)" },
@@ -170,6 +173,7 @@ export const comparisons: Record<string, ComparisonData> = {
       { feature: "Oracle", dearsql: "yes", competitor: "yes" },
       { feature: "MSSQL", dearsql: "yes", competitor: "yes" },
       { feature: "Redshift", dearsql: "yes", competitor: "yes" },
+      { feature: "Cassandra", dearsql: "yes", competitor: "yes (paid)" },
     ],
     platforms: [
       { feature: "macOS", dearsql: "yes", competitor: "yes" },
@@ -184,8 +188,8 @@ export const comparisons: Record<string, ComparisonData> = {
       { feature: "inline data editing", dearsql: "yes", competitor: "yes" },
       { feature: "ER diagrams", dearsql: "no", competitor: "yes" },
       { feature: "native UI feel", dearsql: "yes", competitor: "no (Java UI)", highlight: true },
-      { feature: "AI assistant", dearsql: "built-in", competitor: "paid only", highlight: true },
-      { feature: "app telemetry", dearsql: "none", competitor: "opt-out", highlight: true },
+      { feature: "AI assistant", dearsql: "built-in", competitor: "basic (free), advanced (paid)" },
+      { feature: "app telemetry", dearsql: "none", competitor: "optional", highlight: true },
     ],
     pricing: [
       { feature: "free tier", dearsql: `yes (${FREE_SAVED_CONNECTIONS} connections)`, competitor: "yes (Community Edition)" },
@@ -201,6 +205,7 @@ export const comparisons: Record<string, ComparisonData> = {
     ],
     databases: [
       { feature: "SQLite", dearsql: "yes", competitor: "yes" },
+      { feature: "DuckDB", dearsql: "yes", competitor: "yes" },
       { feature: "PostgreSQL", dearsql: "yes", competitor: "yes" },
       { feature: "MySQL / MariaDB", dearsql: "yes", competitor: "yes" },
       { feature: "MongoDB", dearsql: "yes", competitor: "yes" },
@@ -208,6 +213,7 @@ export const comparisons: Record<string, ComparisonData> = {
       { feature: "Oracle", dearsql: "yes", competitor: "yes" },
       { feature: "MSSQL", dearsql: "yes", competitor: "yes" },
       { feature: "Redshift", dearsql: "yes", competitor: "yes" },
+      { feature: "Cassandra", dearsql: "yes", competitor: "yes" },
     ],
     platforms: [
       { feature: "macOS", dearsql: "yes", competitor: "yes" },
@@ -222,14 +228,14 @@ export const comparisons: Record<string, ComparisonData> = {
       { feature: "inline data editing", dearsql: "yes", competitor: "yes" },
       { feature: "refactoring tools", dearsql: "no", competitor: "yes" },
       { feature: "version control", dearsql: "no", competitor: "yes" },
-      { feature: "AI assistant", dearsql: "built-in", competitor: "built-in" },
+      { feature: "AI assistant", dearsql: "built-in", competitor: "built-in (full quota is paid)" },
       { feature: "learning curve", dearsql: "low", competitor: "moderate", highlight: true },
-      { feature: "app telemetry", dearsql: "none", competitor: "opt-out", highlight: true },
+      { feature: "app telemetry", dearsql: "none", competitor: "opt-in (required on free license)", highlight: true },
     ],
     pricing: [
       { feature: "free tier", dearsql: `yes (${FREE_SAVED_CONNECTIONS} connections)`, competitor: "non-commercial only" },
-      { feature: "one-time purchase", dearsql: "$35", competitor: "no ($229/yr)", highlight: true },
-      { feature: "subscription required", dearsql: "no", competitor: "yes", highlight: true },
+      { feature: "one-time purchase", dearsql: "$35", competitor: "no ($109/yr individual, $259/yr org)", highlight: true },
+      { feature: "subscription required", dearsql: "no", competitor: "yes (fallback license after 12 months)", highlight: true },
     ],
   },
   beekeeper: {
@@ -240,13 +246,15 @@ export const comparisons: Record<string, ComparisonData> = {
     ],
     databases: [
       { feature: "SQLite", dearsql: "yes", competitor: "yes" },
+      { feature: "DuckDB", dearsql: "yes", competitor: "yes (paid)", highlight: true },
       { feature: "PostgreSQL", dearsql: "yes", competitor: "yes" },
       { feature: "MySQL / MariaDB", dearsql: "yes", competitor: "yes" },
-      { feature: "MongoDB", dearsql: "yes", competitor: "no", highlight: true },
-      { feature: "Redis", dearsql: "yes", competitor: "no", highlight: true },
+      { feature: "MongoDB", dearsql: "yes", competitor: "yes (paid)", highlight: true },
+      { feature: "Redis", dearsql: "yes", competitor: "yes" },
       { feature: "Oracle", dearsql: "yes", competitor: "yes (paid)", highlight: true },
       { feature: "MSSQL", dearsql: "yes", competitor: "yes" },
       { feature: "Redshift", dearsql: "yes", competitor: "yes" },
+      { feature: "Cassandra", dearsql: "yes", competitor: "yes (paid)", highlight: true },
     ],
     platforms: [
       { feature: "macOS", dearsql: "yes", competitor: "yes" },
@@ -259,13 +267,13 @@ export const comparisons: Record<string, ComparisonData> = {
       { feature: "syntax highlighting", dearsql: "yes", competitor: "yes" },
       { feature: "autocomplete", dearsql: "yes", competitor: "yes" },
       { feature: "inline data editing", dearsql: "yes", competitor: "yes" },
-      { feature: "AI assistant", dearsql: "built-in", competitor: "no", highlight: true },
-      { feature: "app telemetry", dearsql: "none", competitor: "opt-out", highlight: true },
+      { feature: "AI assistant", dearsql: "built-in", competitor: "paid plans only", highlight: true },
+      { feature: "app telemetry", dearsql: "none", competitor: "opt-in" },
     ],
     pricing: [
       { feature: "free tier", dearsql: `yes (${FREE_SAVED_CONNECTIONS} connections)`, competitor: "yes (Community Edition)" },
-      { feature: "one-time purchase", dearsql: "$35", competitor: "$249 (1yr updates)", highlight: true },
-      { feature: "NoSQL in free tier", dearsql: "yes", competitor: "no", highlight: true },
+      { feature: "one-time purchase", dearsql: "$35", competitor: "no (from $9/user/mo, yearly)", highlight: true },
+      { feature: "NoSQL in free tier", dearsql: "yes", competitor: "Redis only", highlight: true },
     ],
   },
 };
