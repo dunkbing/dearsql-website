@@ -21,6 +21,8 @@ src/
     terms.astro      - terms of service
     changelog.astro  - changelog
     redis.astro      - redis-specific landing
+    duckdb.astro     - duckdb & csv landing
+    compare/         - index + [id].astro, one page per competitor in src/data/comparisons.ts (bump CHECKED when re-verified)
     appcast.xml.ts   - Sparkle appcast feed
     docs/            - user documentation (see below)
       index.astro       - docs landing
