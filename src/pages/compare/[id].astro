@@ -1,10 +1,14 @@
 ---
 import ComparisonTable from "../../components/ComparisonTable.astro";
 import Layout from "../../layouts/Layout.astro";
-import { comparisons, competitors } from "../../data/comparisons";
+import { CHECKED, comparisons, competitors } from "../../data/comparisons";
 
-const comp = competitors.find((c) => c.id === "dbeaver")!;
-const data = comparisons.dbeaver;
+export function getStaticPaths() {
+  return competitors.map((c) => ({ params: { id: c.id } }));
+}
+
+const comp = competitors.find((c) => c.id === Astro.params.id)!;
+const data = comparisons[comp.id];
 const sections = [
   { title: "Architecture & Performance", rows: data.architecture },
   { title: "Database Support", rows: data.databases },
@@ -12,7 +16,7 @@ const sections = [
   { title: "Features", rows: data.features },
   { title: "Pricing", rows: data.pricing },
 ];
-const otherComps = competitors.filter((c) => c.id !== "dbeaver");
+const otherComps = competitors.filter((c) => c.id !== comp.id);
 ---
 
 <Layout
@@ -76,8 +80,11 @@ const otherComps = competitors.filter((c) => c.id !== "dbeaver");
     </section>
 
     <p class="text-xs text-subtext0 mt-4">
-      * Comparisons verified <time datetime="2026-05">May 2026</time>. Got a correction?{" "}
-      <a href="mailto:dunkbingg@gmail.com">let us know</a>.
+      * Last checked <time datetime={CHECKED.iso}>{CHECKED.label}</time> against {comp.name}'s
+      own pages:{" "}
+      {comp.sources.map((s, i) => (
+        <>{i > 0 && ", "}<a href={s.url} target="_blank" rel="noopener">{s.label}</a></>
+      ))}. Got a correction? <a href="mailto:dunkbingg@gmail.com">let us know</a>.
     </p>
   </main>
 </Layout>

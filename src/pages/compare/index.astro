@@ -1,11 +1,11 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import { competitors } from "../../data/comparisons";
+import { CHECKED, competitors } from "../../data/comparisons";
 ---
 
 <Layout
-  title="Compare DearSQL — vs TablePlus, DBeaver, DataGrip & More"
-  description="See how DearSQL compares to TablePlus, DBeaver, DataGrip, and Beekeeper Studio on features, performance, database support, and pricing."
+  title="Compare DearSQL — vs TablePlus, DBeaver, DataGrip, Navicat & More"
+  description="See how DearSQL compares to TablePlus, DBeaver, DataGrip, Beekeeper Studio, DbGate and Navicat on features, performance, database support, and pricing."
   breadcrumbs={[
     { name: "Home", url: "/" },
     { name: "Compare", url: "/compare" },
@@ -18,40 +18,11 @@ import { competitors } from "../../data/comparisons";
     set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "FAQPage",
-      mainEntity: [
-        {
-          "@type": "Question",
-          name: "How does DearSQL compare to TablePlus?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Both are native desktop apps. DearSQL costs $35 one-time with lifetime updates vs TablePlus at $99 with 1 year of updates ($59 to renew). DearSQL supports Oracle on every platform and has zero telemetry.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "How does DearSQL compare to DBeaver?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "DearSQL is a native C++ app with instant startup and low memory usage. DBeaver is Java-based with slow JVM startup and 500MB+ memory. DearSQL includes NoSQL (MongoDB, Redis) in the free tier; DBeaver requires a paid license for NoSQL.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "How does DearSQL compare to DataGrip?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "DearSQL is a $35 one-time purchase. DataGrip is a subscription: $109/year for individuals, $259/year for organizations. DearSQL starts instantly with low memory; DataGrip uses 1GB+ RAM. DataGrip offers IDE features like refactoring and VCS integration.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "How does DearSQL compare to Beekeeper Studio?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "DearSQL is native C++ with instant startup; Beekeeper Studio is Electron-based with Chromium overhead. DearSQL includes MongoDB, Oracle, DuckDB, and Cassandra in the free tier; Beekeeper Studio needs a paid plan for them. DearSQL costs $35 once vs Beekeeper's subscription from $9/user/month.",
-          },
-        },
-      ],
+      mainEntity: competitors.map((c) => ({
+        "@type": "Question",
+        name: `How does DearSQL compare to ${c.name}?`,
+        acceptedAnswer: { "@type": "Answer", text: c.summary },
+      })),
     })}
   />
 
@@ -81,7 +52,7 @@ import { competitors } from "../../data/comparisons";
     </div>
 
     <p class="text-xs text-subtext0 mt-6">
-      * Comparisons verified <time datetime="2026-05">May 2026</time>. Got a correction?{" "}
+      * Last checked <time datetime={CHECKED.iso}>{CHECKED.label}</time>; sources are linked on each page. Got a correction?{" "}
       <a href="mailto:dunkbingg@gmail.com">let us know</a>.
     </p>
   </main>

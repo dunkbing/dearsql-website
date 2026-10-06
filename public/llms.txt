@@ -6,7 +6,7 @@
 
 - [Homepage](https://dearsql.dev/)
 - [Changelog](https://dearsql.dev/changelog)
-- [Compare vs TablePlus, DBeaver, DataGrip, Beekeeper Studio](https://dearsql.dev/compare)
+- [Compare vs TablePlus, DBeaver, DataGrip, Beekeeper Studio, DbGate, Navicat](https://dearsql.dev/compare)
 - [Redis client features](https://dearsql.dev/redis)
 - [Tech stack](https://dearsql.dev/stack)
 

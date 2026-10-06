@@ -23,14 +23,24 @@ export interface Competitor {
   title: string;
   description: string;
   faq: Array<{ q: string; a: string }>;
+  sources: Array<{ label: string; url: string }>;
 }
+
+// bump when the competitor facts below are re-verified
+export const CHECKED = { iso: "2026-10", label: "October 2026" };
 
 export const competitors: Competitor[] = [
   {
     id: "tableplus",
+    sources: [
+      { label: "pricing", url: "https://tableplus.com/pricing" },
+      { label: "changelog", url: "https://tableplus.com/osx/changelog" },
+      { label: "docs", url: "https://docs.tableplus.com" },
+      { label: "privacy", url: "https://tableplus.com/privacy" },
+    ],
     name: "TablePlus",
     tagline: "Two native database clients compared on features, pricing, and platform support.",
-    summary: `Both are native apps. DearSQL is $35 one-time with lifetime updates vs $99 (1yr updates). Zero telemetry. Free tier with ${FREE_SAVED_CONNECTIONS} connections.`,
+    summary: `Both are native apps. DearSQL is $35 one-time with lifetime updates vs $99 (1yr updates). Free tier with ${FREE_SAVED_CONNECTIONS} connections.`,
     title: "DearSQL vs TablePlus — 2026 Comparison",
     description: `Compare DearSQL and TablePlus on pricing, database support, features, and platforms. DearSQL is $35 one-time with ${FREE_SAVED_CONNECTIONS} free connections; TablePlus costs $99 with limited update coverage.`,
     faq: [
@@ -44,12 +54,18 @@ export const competitors: Competitor[] = [
       },
       {
         q: "Is DearSQL a good TablePlus alternative?",
-        a: `Yes. DearSQL is a native desktop SQL client available for macOS, Linux, and Windows — just like TablePlus. Key advantages: $35 vs $99 pricing with lifetime updates, a ${FREE_SAVED_CONNECTIONS}-connection free tier, Oracle on every platform, and zero app telemetry.`,
+        a: `Yes. DearSQL is a native desktop SQL client available for macOS, Linux, and Windows — just like TablePlus. Key advantages: $35 vs $99 pricing with lifetime updates, a ${FREE_SAVED_CONNECTIONS}-connection free tier, and Oracle on every platform.`,
       },
     ],
   },
   {
     id: "dbeaver",
+    sources: [
+      { label: "editions", url: "https://dbeaver.com/edition/" },
+      { label: "pricing", url: "https://dbeaver.com/buy/" },
+      { label: "Community Edition", url: "https://dbeaver.io/" },
+      { label: "usage statistics", url: "https://dbeaver.com/docs/dbeaver/Statistics-Collection/" },
+    ],
     name: "DBeaver",
     tagline: "A native C++ app vs a Java-based universal tool.",
     summary: "DearSQL starts instantly with low memory. DBeaver uses 500MB+ RAM with JVM startup. NoSQL is included in DearSQL's free tier; DBeaver requires a paid plan.",
@@ -72,6 +88,12 @@ export const competitors: Competitor[] = [
   },
   {
     id: "datagrip",
+    sources: [
+      { label: "pricing", url: "https://www.jetbrains.com/datagrip/buy/" },
+      { label: "features", url: "https://www.jetbrains.com/datagrip/" },
+      { label: "non-commercial license", url: "https://blog.jetbrains.com/datagrip/2025/10/01/datagrip-is-now-free-for-non-commercial-use/" },
+      { label: "usage statistics", url: "https://www.jetbrains.com/help/datagrip/settings-usage-statistics.html" },
+    ],
     name: "DataGrip",
     tagline: "A lightweight database client vs a full JetBrains IDE.",
     summary: "DearSQL is $35 one-time. DataGrip is a subscription: $109/year for individuals, $259/year for organizations. DearSQL starts instantly; DataGrip is a full IDE with project indexing and 1GB+ RAM usage.",
@@ -94,6 +116,11 @@ export const competitors: Competitor[] = [
   },
   {
     id: "beekeeper",
+    sources: [
+      { label: "pricing", url: "https://www.beekeeperstudio.io/pricing" },
+      { label: "supported databases", url: "https://docs.beekeeperstudio.io/docs/first-page" },
+      { label: "security & telemetry", url: "https://docs.beekeeperstudio.io/user_guide/security/" },
+    ],
     name: "Beekeeper Studio",
     tagline: "Native C++ app vs Electron.",
     summary: "DearSQL is native C++ with instant startup. Beekeeper Studio is Electron-based with Chromium memory overhead. DearSQL includes MongoDB, Oracle, DuckDB, and Cassandra for free; Beekeeper needs a paid plan for them.",
@@ -111,6 +138,62 @@ export const competitors: Competitor[] = [
       {
         q: "Is DearSQL a good Beekeeper Studio alternative?",
         a: "Yes. DearSQL offers native performance vs Beekeeper's Electron overhead, includes MongoDB and Oracle in the free tier, and costs $35 one-time vs Beekeeper's subscription (from $9/user/month, billed yearly). Both support macOS, Linux, and Windows.",
+      },
+    ],
+  },
+  {
+    id: "dbgate",
+    sources: [
+      { label: "editions", url: "https://www.dbgate.io/compare/" },
+      { label: "pricing", url: "https://www.dbgate.io/pricing/" },
+      { label: "changelog", url: "https://github.com/dbgate/dbgate/blob/master/CHANGELOG.md" },
+    ],
+    name: "DbGate",
+    tagline: "Native C++ app vs an open-source Electron client.",
+    summary: "DbGate Community is free, open source and covers NoSQL. DearSQL is native C++ instead of Electron, and its AI assistant comes with a $35 one-time license; DbGate's AI is in Premium at $120/year.",
+    title: "DearSQL vs DbGate — 2026 Comparison",
+    description: "Compare DearSQL and DbGate on performance, database support, AI and pricing. DearSQL is a native C++ app for $35 once; DbGate is a free Electron client with a $120/year Premium edition.",
+    faq: [
+      {
+        q: "Is DbGate free?",
+        a: "Yes. DbGate Community Edition is free and open source (GPL-3.0) with unlimited connections, and it includes MongoDB and Redis. AI features, Redshift and some advanced settings need DbGate Premium, a subscription at $12/month or $120/year.",
+      },
+      {
+        q: "How is DearSQL different from DbGate?",
+        a: "DearSQL is a native C++ app rather than Electron, so it starts faster and uses less memory. Its AI assistant (Claude Code, Codex, Gemini CLI, Cursor or your own API key) is included in a $35 one-time license instead of a yearly subscription.",
+      },
+      {
+        q: "Is DearSQL a good DbGate alternative?",
+        a: "If you want a lighter native app and AI without a subscription, yes. If you need a fully free open-source tool, a web/server edition, or ER diagrams, DbGate Community is a strong choice.",
+      },
+    ],
+  },
+  {
+    id: "navicat",
+    sources: [
+      { label: "Navicat Premium", url: "https://www.navicat.com/en/products/navicat-premium" },
+      { label: "Premium Lite", url: "https://www.navicat.com/en/products/navicat-premium-lite" },
+      { label: "feature matrix", url: "https://www.navicat.com/en/products/navicat-premium-feature-matrix" },
+      { label: "store", url: "https://www.navicat.com/en/store/navicat-premium" },
+      { label: "subscription plans", url: "https://www.navicat.com/en/store/navicat-premium-plan" },
+    ],
+    name: "Navicat",
+    tagline: "A lightweight native client vs an enterprise database suite.",
+    summary: "Navicat Premium is a full suite (data modeling, sync, BI) from $1,499 perpetual or $749.99/year. DearSQL is a lightweight native client for $35 once, with DuckDB, Cassandra and AI included.",
+    title: "DearSQL vs Navicat — 2026 Comparison",
+    description: "Compare DearSQL and Navicat Premium on pricing, database support and features. DearSQL is $35 one-time; Navicat Premium costs $1,499 perpetual or $749.99/year, with a free Premium Lite edition.",
+    faq: [
+      {
+        q: "How much does Navicat cost compared to DearSQL?",
+        a: "Navicat Premium Standard costs $1,499 for a perpetual license with 1 year of maintenance, or $749.99/year as a subscription. DearSQL is $35 one-time with all future updates. Navicat also offers a free Premium Lite edition without AI or data modeling.",
+      },
+      {
+        q: "Does DearSQL support databases Navicat doesn't?",
+        a: "Yes. DearSQL supports DuckDB and Cassandra, which Navicat Premium and Premium Lite do not. Both cover SQLite, PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Oracle, SQL Server and Redshift.",
+      },
+      {
+        q: "Is DearSQL a good Navicat alternative?",
+        a: "For querying, browsing and editing data, yes, at a fraction of the price. Navicat goes further with data modeling, data sync, scheduling and BI; if you rely on those, DearSQL does not replace them.",
       },
     ],
   },
@@ -148,7 +231,7 @@ export const comparisons: Record<string, ComparisonData> = {
       { feature: "inline data editing", dearsql: "yes", competitor: "yes" },
       { feature: "dark mode", dearsql: "yes", competitor: "yes" },
       { feature: "AI assistant", dearsql: "built-in", competitor: "built-in" },
-      { feature: "app telemetry", dearsql: "none", competitor: "opt-out", highlight: true },
+      { feature: "app telemetry", dearsql: "crash reports only", competitor: "opt-out" },
     ],
     pricing: [
       { feature: "free tier", dearsql: `yes (${FREE_SAVED_CONNECTIONS} connections)`, competitor: "trial (2 tabs, 2 windows)", highlight: true },
@@ -189,7 +272,7 @@ export const comparisons: Record<string, ComparisonData> = {
       { feature: "ER diagrams", dearsql: "no", competitor: "yes" },
       { feature: "native UI feel", dearsql: "yes", competitor: "no (Java UI)", highlight: true },
       { feature: "AI assistant", dearsql: "built-in", competitor: "basic (free), advanced (paid)" },
-      { feature: "app telemetry", dearsql: "none", competitor: "optional", highlight: true },
+      { feature: "app telemetry", dearsql: "crash reports only", competitor: "optional" },
     ],
     pricing: [
       { feature: "free tier", dearsql: `yes (${FREE_SAVED_CONNECTIONS} connections)`, competitor: "yes (Community Edition)" },
@@ -230,7 +313,7 @@ export const comparisons: Record<string, ComparisonData> = {
       { feature: "version control", dearsql: "no", competitor: "yes" },
       { feature: "AI assistant", dearsql: "built-in", competitor: "built-in (full quota is paid)" },
       { feature: "learning curve", dearsql: "low", competitor: "moderate", highlight: true },
-      { feature: "app telemetry", dearsql: "none", competitor: "opt-in (required on free license)", highlight: true },
+      { feature: "app telemetry", dearsql: "crash reports only", competitor: "opt-in (required on free license)" },
     ],
     pricing: [
       { feature: "free tier", dearsql: `yes (${FREE_SAVED_CONNECTIONS} connections)`, competitor: "non-commercial only" },
@@ -268,12 +351,91 @@ export const comparisons: Record<string, ComparisonData> = {
       { feature: "autocomplete", dearsql: "yes", competitor: "yes" },
       { feature: "inline data editing", dearsql: "yes", competitor: "yes" },
       { feature: "AI assistant", dearsql: "built-in", competitor: "paid plans only", highlight: true },
-      { feature: "app telemetry", dearsql: "none", competitor: "opt-in" },
+      { feature: "app telemetry", dearsql: "crash reports only", competitor: "opt-in" },
     ],
     pricing: [
       { feature: "free tier", dearsql: `yes (${FREE_SAVED_CONNECTIONS} connections)`, competitor: "yes (Community Edition)" },
       { feature: "one-time purchase", dearsql: "$35", competitor: "no (from $9/user/mo, yearly)", highlight: true },
       { feature: "NoSQL in free tier", dearsql: "yes", competitor: "Redis only", highlight: true },
+    ],
+  },
+  dbgate: {
+    architecture: [
+      { feature: "architecture", dearsql: "native (C++/ImGui)", competitor: "Electron (Node.js)", highlight: true },
+      { feature: "startup time", dearsql: "instant", competitor: "slower (Electron)", highlight: true },
+      { feature: "memory usage", dearsql: "low", competitor: "higher (Chromium)", highlight: true },
+    ],
+    databases: [
+      { feature: "SQLite", dearsql: "yes", competitor: "yes" },
+      { feature: "DuckDB", dearsql: "yes", competitor: "yes" },
+      { feature: "PostgreSQL", dearsql: "yes", competitor: "yes" },
+      { feature: "MySQL / MariaDB", dearsql: "yes", competitor: "yes" },
+      { feature: "MongoDB", dearsql: "yes", competitor: "yes" },
+      { feature: "Redis", dearsql: "yes", competitor: "yes" },
+      { feature: "Oracle", dearsql: "yes", competitor: "yes" },
+      { feature: "MSSQL", dearsql: "yes", competitor: "yes" },
+      { feature: "Redshift", dearsql: "yes", competitor: "yes (paid)", highlight: true },
+      { feature: "Cassandra", dearsql: "yes", competitor: "yes" },
+    ],
+    platforms: [
+      { feature: "macOS", dearsql: "yes", competitor: "yes" },
+      { feature: "Linux", dearsql: "yes", competitor: "yes" },
+      { feature: "Windows", dearsql: "yes", competitor: "yes" },
+      { feature: "web / server edition", dearsql: "no", competitor: "yes" },
+    ],
+    features: [
+      { feature: "SSH tunneling", dearsql: "yes", competitor: "yes" },
+      { feature: "TLS/SSL", dearsql: "yes", competitor: "yes" },
+      { feature: "syntax highlighting", dearsql: "yes", competitor: "yes" },
+      { feature: "autocomplete", dearsql: "yes", competitor: "yes" },
+      { feature: "inline data editing", dearsql: "yes", competitor: "yes" },
+      { feature: "ER diagrams", dearsql: "no", competitor: "yes" },
+      { feature: "AI assistant", dearsql: "built-in", competitor: "Premium only", highlight: true },
+      { feature: "app telemetry", dearsql: "crash reports only", competitor: "opt-in usage analytics" },
+    ],
+    pricing: [
+      { feature: "free tier", dearsql: `yes (${FREE_SAVED_CONNECTIONS} connections)`, competitor: "yes (open source, unlimited)" },
+      { feature: "one-time purchase", dearsql: "$35", competitor: "no ($120/yr Premium)", highlight: true },
+      { feature: "NoSQL in free tier", dearsql: "yes", competitor: "yes" },
+    ],
+  },
+  navicat: {
+    architecture: [
+      { feature: "architecture", dearsql: "native (C++/ImGui)", competitor: "native" },
+      { feature: "scope", dearsql: "SQL client", competitor: "full suite (modeling, sync, BI)" },
+    ],
+    databases: [
+      { feature: "SQLite", dearsql: "yes", competitor: "yes" },
+      { feature: "DuckDB", dearsql: "yes", competitor: "no", highlight: true },
+      { feature: "PostgreSQL", dearsql: "yes", competitor: "yes" },
+      { feature: "MySQL / MariaDB", dearsql: "yes", competitor: "yes" },
+      { feature: "MongoDB", dearsql: "yes", competitor: "yes" },
+      { feature: "Redis", dearsql: "yes", competitor: "yes" },
+      { feature: "Oracle", dearsql: "yes", competitor: "yes" },
+      { feature: "MSSQL", dearsql: "yes", competitor: "yes" },
+      { feature: "Redshift", dearsql: "yes", competitor: "yes" },
+      { feature: "Cassandra", dearsql: "yes", competitor: "no", highlight: true },
+    ],
+    platforms: [
+      { feature: "macOS", dearsql: "yes", competitor: "yes" },
+      { feature: "Linux", dearsql: "yes", competitor: "yes" },
+      { feature: "Windows", dearsql: "yes", competitor: "yes" },
+    ],
+    features: [
+      { feature: "SSH tunneling", dearsql: "yes", competitor: "yes" },
+      { feature: "TLS/SSL", dearsql: "yes", competitor: "yes" },
+      { feature: "syntax highlighting", dearsql: "yes", competitor: "yes" },
+      { feature: "autocomplete", dearsql: "yes", competitor: "yes" },
+      { feature: "inline data editing", dearsql: "yes", competitor: "yes" },
+      { feature: "ER diagrams", dearsql: "no", competitor: "yes" },
+      { feature: "data modeling", dearsql: "no", competitor: "Premium only" },
+      { feature: "AI assistant", dearsql: "built-in", competitor: "Premium only (not in Lite)", highlight: true },
+    ],
+    pricing: [
+      { feature: "free tier", dearsql: `yes (${FREE_SAVED_CONNECTIONS} connections)`, competitor: "yes (Premium Lite)" },
+      { feature: "one-time purchase", dearsql: "$35", competitor: "$1,499 (1yr maintenance)", highlight: true },
+      { feature: "subscription", dearsql: "none", competitor: "$749.99/yr", highlight: true },
+      { feature: "NoSQL in free tier", dearsql: "yes", competitor: "yes" },
     ],
   },
 };
