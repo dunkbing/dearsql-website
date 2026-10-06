@@ -48,7 +48,7 @@ Your saved connections, passwords and SSH tunnels are the app's own, so anything
 
 ## Database tools for your coding agent
 
-`dearsql --mcp` runs the same [database tools](/docs/ai-database-tools) the AI tab uses, for any agent that speaks [MCP](https://modelcontextprotocol.io) — Claude Code, Codex, Cursor and others:
+`dearsql --mcp` runs the same [database tools](/docs/ai-database-tools) the assistant chat uses, for any agent that speaks [MCP](https://modelcontextprotocol.io) — Claude Code, Codex, Cursor and others:
 
 ```bash
 claude mcp add dearsql -- dearsql --mcp

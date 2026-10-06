@@ -43,4 +43,4 @@ Results appear below the editor in the same grid used for browsing tables, so so
 
 ## Assistant
 
-Each editor also has its own AI chat panel for quick "write me this query" work, separate from the app-level [Assistant tab](/docs/ai-assistant). Code blocks it produces have an **Insert** button that drops the SQL straight into the editor.
+Each editor also has its own AI chat panel for quick "write me this query" work, separate from the [assistant chat](/docs/ai-assistant) you open from a connection. Code blocks it produces have an **Insert** button that drops the SQL straight into the editor.

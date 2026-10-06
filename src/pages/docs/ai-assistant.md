@@ -1,15 +1,15 @@
 ---
 layout: ../../layouts/DocsLayout.astro
 title: "AI assistant"
-description: "Pick a coding agent or an API key, and what the Assistant tab can do."
+description: "Open a chat on a connection, pick a coding agent or an API key, and pick up earlier chats."
 section: "AI assistant"
 sectionOrder: 2
 order: 1
 ---
 
-DearSQL's sidebar has two tabs: **Databases** and **Assistant**. The Assistant tab is a chat panel that lives at the app level, so it stays put as you move between tables and editors.
+Right-click a connection in the sidebar and choose **Open Assistant** to open a chat tab for it. The agent works against that connection by default (and opens it if it is closed), but it can still look at any other connection you have. Open as many chats as you like; each runs in its own tab and keeps going while you switch to other tabs.
 
-<img src="/docs/assistant-panel.png" alt="The Assistant tab, with the agent picker at the top and the message box at the bottom" width="480" />
+<img src="/docs/assistant-panel.png" alt="A chat tab, with the agent picker at the top and the message box at the bottom" width="480" />
 
 It can talk to two different kinds of backend:
 
@@ -74,9 +74,9 @@ Agents carry their own file and shell tools that don't go through DearSQL. To ke
 ## Notes
 
 - Agents and API-key chat are supported on macOS, Linux and Windows.
-- Starting an agent takes a few seconds. DearSQL launches it as soon as you open the Assistant tab, so it's usually ready by the time you've typed, and shows "Starting *agent*..." until it is.
+- Starting an agent takes a few seconds. DearSQL launches it as soon as you open a chat, so it's usually ready by the time you've typed, and shows "Starting *agent*..." until it is.
 - `/new` restarts the session; the transcript and pinned context are cleared with `/clear`.
 
-## Earlier sessions
+## Chat history
 
-The clock button in the header lists your recent conversations with the selected backend; pick one to continue it, or right-click to delete it. `+` starts a new one. With an API key the transcript is stored by DearSQL. With a coding agent the agent keeps its own history, and DearSQL asks it to reload the session — agents that can't (or have since discarded it) start fresh and say so. Sessions older than 90 days are dropped.
+Each connection has a **Chat History** node in the sidebar, under the connection, listing its recent chats newest first. Click one to reopen it in a tab (or jump to the tab if it is already open), or right-click it to delete it. In a chat, the clock button lists the same connection's chats for the selected backend, and `+` starts a new one. With an API key the transcript is stored by DearSQL. With a coding agent the agent keeps its own history, and DearSQL asks it to reload the session — agents that can't (or have since discarded it) start fresh and say so. Sessions older than 90 days are dropped.

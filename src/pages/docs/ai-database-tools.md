@@ -22,7 +22,7 @@ DearSQL does this by running a small [MCP](https://modelcontextprotocol.io) serv
 | `list_connections` | Lists your saved connections, which are open, and the databases on them |
 | `connect` | Opens one of your saved connections by name |
 
-The agent works on whatever you've selected in the sidebar unless it names another connection or database. It's told to look names up with `search_schema` and `describe_table` before writing SQL, so it doesn't guess column names, and when a query still trips over a misspelled table it gets back "did you mean …" suggestions instead of a bare error.
+The agent works on the connection the chat was opened from (or a table you pinned with `@`) unless it names another connection or database. It's told to look names up with `search_schema` and `describe_table` before writing SQL, so it doesn't guess column names, and when a query still trips over a misspelled table it gets back "did you mean …" suggestions instead of a bare error.
 
 You'll see each call appear in the transcript as it happens, and can expand it to read what came back.
 
