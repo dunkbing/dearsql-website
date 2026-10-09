@@ -21,11 +21,23 @@ Multi-statement scripts are supported. Each statement's result comes back separa
 
 ## Writing
 
-The editor has syntax highlighting, and autocomplete for keywords and the names of tables and columns in the connected database. While the completion popup is open:
+The editor has syntax highlighting, and autocomplete that reads the statement you are writing against the connected database's schema:
+
+- **Aliases**: after `FROM users u`, typing `u.` lists the columns of `users`.
+- **CTEs and subqueries**: `WITH recent AS (...)` and `FROM (SELECT ...) t` offer `recent` and `t` as tables, with the columns they produce.
+- **The current statement only**: in a script with several statements, suggestions come from the one under the cursor.
+- **Not in strings or comments**: nothing pops up while you type inside quotes or after `--`.
+- **Your database's dialect**: keywords and functions match the engine, so `ILIKE` is offered on PostgreSQL but not on MySQL.
+- **Quoting**: a name that needs quotes, such as one with spaces or capitals on PostgreSQL, is inserted already quoted.
+- **Types**: columns are listed with their type.
+
+While the completion popup is open:
 
 - **Up / Down** move through the suggestions
 - **Tab** or **Enter** accepts
 - **Escape** dismisses
+
+The same completion works outside the app: in the [terminal UI](/docs/command-line#the-terminal-ui)'s SQL tab, and in Neovim, Helix, VS Code or Emacs through [`dearsql --lsp`](/docs/command-line#sql-completion-in-your-editor).
 
 **Format** reformats the buffer — indentation, keyword casing, and line breaks — using the same tree-sitter grammar that drives the highlighting, so it understands the statement rather than guessing with regexes.
 
