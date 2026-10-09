@@ -25,6 +25,8 @@ Markdown escapes pipes and turns newlines into `<br>`, so a table with awkward c
 
 Selecting several tables exports them all — one file each into a folder you pick, except SQL, which writes a single file.
 
+An export runs in the background, so the app stays usable while a large table is written. A progress panel at the bottom of the window counts tables and rows, and its **Cancel** button stops the export (the file left behind is incomplete). When it finishes you get a summary of what was written.
+
 ## SQL dumps
 
 MySQL and PostgreSQL databases can be dumped to, and restored from, plain SQL — from the database's context menu.
@@ -43,4 +45,4 @@ PostgreSQL additionally keeps the external **Backup** and **Restore** menus, whi
 
 Open a CSV directly with **Open CSV File...** in the sidebar's context menu. DearSQL loads it through DuckDB, so the file behaves like a table: browse it, sort it, filter it, and run SQL against it.
 
-Tables can also be **imported** from a CSV file, from the table's context menu.
+Tables can also be **imported** from a CSV file, from the table's context menu. The first line of the file must name the columns; empty values are inserted as NULL. The import runs in the background with a progress panel and a **Cancel** button. Rows are sent in batches, and a row the database rejects is skipped rather than stopping the import. The summary at the end reports how many rows were inserted, how many failed, and the first error. Rows inserted before a cancel stay in the table.
