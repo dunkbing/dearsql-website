@@ -17,13 +17,16 @@ Right-click a table and choose an export format:
 |---|---|
 | CSV | Spreadsheets, and anything that eats delimited text |
 | JSON | Feeding an API or a script |
-| SQL | `INSERT` statements to replay elsewhere |
+| SQL | The table's `CREATE TABLE` followed by `INSERT` statements, to recreate it elsewhere |
+| DDL (structure only) | Just the `CREATE TABLE` and its indexes — for a pull request, a design doc, or setting up another environment |
 | Markdown | Pasting into a pull request, an issue, or notes |
 | HTML | A standalone page you can open in a browser or paste into a document |
 
 Markdown escapes pipes and turns newlines into `<br>`, so a table with awkward content still renders. HTML is written as a complete, self-contained document rather than a bare fragment.
 
-Selecting several tables exports them all — one file each into a folder you pick, except SQL, which writes a single file.
+Selecting several tables exports them all — one file each into a folder you pick, except SQL and DDL, which write a single file.
+
+To grab one table's definition without saving a file, choose **Copy DDL** from the same menu; it goes straight to the clipboard. The inspector's [DDL tab](/docs/browsing-data#inspector) shows it too.
 
 An export runs in the background, so the app stays usable while a large table is written. A progress panel at the bottom of the window counts tables and rows, and its **Cancel** button stops the export (the file left behind is incomplete). When it finishes you get a summary of what was written.
 

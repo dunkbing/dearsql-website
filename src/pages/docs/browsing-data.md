@@ -60,10 +60,11 @@ On a [read-only connection](/docs/connections) none of this is available: cells 
 
 ## Inspector
 
-The strip on the right opens the inspector, which has two tabs:
+The strip on the right opens the inspector, which has three tabs:
 
 - **Value** — the selected cell in a larger editor, for JSON, long text, or anything that doesn't fit a grid cell. Edit and Apply, or Revert.
 - **Metadata** — the table's columns with their types, nullability and primary keys, filterable by name.
+- **DDL** — the table's `CREATE TABLE` statement with its constraints and indexes, ready to copy. It is the server's own definition where it has one (`SHOW CREATE TABLE` on MySQL, `DBMS_METADATA` on Oracle, the stored SQL on SQLite and DuckDB); PostgreSQL's is rebuilt from its catalog, including identity and generated columns, check constraints and comments. Views, MongoDB collections and Redis keys don't have one.
 
 ## CSV files
 
