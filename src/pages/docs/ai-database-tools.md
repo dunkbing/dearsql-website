@@ -36,9 +36,11 @@ SELECT 1; DROP TABLE users   -- rejected
 
 On Redis it accepts read commands (`GET`, `HGETALL`, `SCAN`, `INFO` …), and on MongoDB read commands such as `find`, `aggregate` and `countDocuments` — but not a pipeline that writes with `$out` or `$merge`.
 
-Results come back 50 rows at a time. If there are more, the agent can ask for the next page without re-running the query; a single query stops at 1,000 rows, so a careless `SELECT *` on a huge table can't flood the conversation.
+In the app, the agent can never write. To let a coding agent make changes from a terminal, start the server with `dearsql --mcp --allow-writes` (see [Command line](/docs/command-line#letting-the-agent-make-changes)).
 
-`connect` is the one tool that changes DearSQL itself, and naming a closed connection in any other tool opens it the same way. It only opens connections you've already saved — it can't invent new ones, and it can't change their settings.
+Results come back 50 rows at a time. If there are more, the agent can ask for the next page without re-running the query; a page also stops at about 30 KB of text (the result says so), and a single query stops at 1,000 rows, so a careless `SELECT *` on a huge table can't flood the conversation.
+
+`connect` is the one tool that changes DearSQL itself, and naming a closed connection in any other tool opens it the same way. In the app it only opens connections you've already saved — it can't invent new ones, and it can't change their settings. With `dearsql --mcp` in a terminal, the agent can also pass a connection URL or a SQLite, DuckDB or CSV file path to `connect`; that connection lasts until the server stops and is never saved.
 
 ## Turning it off
 

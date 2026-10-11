@@ -80,7 +80,17 @@ The agent can then search your schema, describe tables and run read-only queries
 claude mcp add shop -- dearsql --mcp postgres://me@localhost/shop
 ```
 
-The same rules apply as in the app: writes are rejected, and results come back a page at a time.
+The same rules apply as in the app: writes are rejected unless you allow them (below), and results come back a page at a time.
+
+### Letting the agent make changes
+
+To let the agent run `INSERT`, `UPDATE`, `DELETE` or schema changes, add `--allow-writes`:
+
+```bash
+claude mcp add dearsql -- dearsql --mcp --allow-writes
+```
+
+This adds an `execute_sql` tool, marked as destructive. Agents such as Claude Code and Codex ask you to approve each call and show you the statement, so check it before you approve. Don't set the tool to always allowed. The agent still reads through `run_query`, which stays read-only. Without the flag, `execute_sql` doesn't exist.
 
 ## SQL completion in your editor
 
