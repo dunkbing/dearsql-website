@@ -52,6 +52,15 @@ main() {
         exit 1
     fi
 
+    # sed leaves the manifest untouched when this arch has no entry
+    case "$url" in
+        http*) ;;
+        *)
+            echo "No DearSQL build for ${platform_key} in v${version} yet."
+            exit 1
+            ;;
+    esac
+
     echo "Installing DearSQL v${version} for ${platform_key}..."
 
     tmpfile=$(mktemp)

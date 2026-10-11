@@ -18,6 +18,31 @@ export interface Release {
 
 export const releases: Release[] = [
   {
+    version: "0.6.0",
+    date: "2026-10-11",
+    changes: [
+      "Command line: dearsql --tui terminal client, --mcp server for agents, and --lsp for editors.",
+      "Schema-aware SQL completion: aliases, CTEs, dialect keywords and column types.",
+      "Table DDL: Copy DDL, Export → DDL, and a DDL tab in the table inspector.",
+      "AI: assistant chats per connection with chat history; rebuilt agent database tools.",
+      "Colour and tag connections, and group the sidebar by tag.",
+      "Export and CSV import run in the background with progress and cancel.",
+      "PostgreSQL: stream large results instead of loading them whole.",
+      "Linux: ARM64 (aarch64) AppImage.",
+      "Fix UI freezes when closing tabs or disconnecting during slow queries.",
+    ],
+    sparkle: {
+      edSignature:
+        "YiqIPuQIzO7OSyIQUIo4mUEGqYho+MRpi9n0qqURizSR/UnQTo+UsDVd/I6TokE5tBpW6iJ9oI19mW6KxgASAw==",
+      length: 29118418,
+    },
+    windows: {
+      edSignature:
+        "EJG4sWbR9TTiaEOPxOZ87OAex+K33YFzmqIIxvrijRnEal5ugOJbueI7nGjZa4w03qs+Al4A7UXm3h685VyGDA==",
+      length: 17203200,
+    },
+  },
+  {
     version: "0.5.0",
     date: "2026-09-26",
     changes: [
@@ -549,8 +574,11 @@ export function msiUrl(version: string): string {
   return `${GITHUB_RELEASE_BASE}/v${version}/DearSQL-x64.msi`;
 }
 
-export function appImageUrl(version: string): string {
-  return `${GITHUB_RELEASE_BASE}/v${version}/DearSQL-x86_64.AppImage`;
+export function appImageUrl(
+  version: string,
+  arch: "x86_64" | "aarch64" = "x86_64",
+): string {
+  return `${GITHUB_RELEASE_BASE}/v${version}/DearSQL-${arch}.AppImage`;
 }
 
 // format ISO date to RFC 822 for Sparkle

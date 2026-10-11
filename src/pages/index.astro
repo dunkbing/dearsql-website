@@ -6,6 +6,7 @@ import Layout from "../layouts/Layout.astro";
 const latestRelease = releases[0];
 const macDmgUrl = dmgUrl(latestRelease.version);
 const linuxAppImageUrl = appImageUrl(latestRelease.version);
+const linuxArmAppImageUrl = appImageUrl(latestRelease.version, "aarch64");
 const winMsiUrl = msiUrl(latestRelease.version);
 
 function formatSize(bytes: number): string {
@@ -206,7 +207,7 @@ const currentYear = new Date().getFullYear();
           >
             <span
               ><span class="text-subtext0">* </span>Linux <span
-                class="text-subtext0">(AppImage)</span
+                class="text-subtext0">(AppImage, x86_64)</span
               ></span
             >
             {
@@ -219,6 +220,10 @@ const currentYear = new Date().getFullYear();
             >
           </a>
           <div class="flex items-center gap-2 px-3 pb-2">
+            <span class="text-subtext0 text-xs">or:</span>
+            <a href={linuxArmAppImageUrl} class="text-xs hover:underline"
+              >ARM64 (aarch64)</a
+            >
             <span class="text-subtext0 text-xs">or:</span>
             <div
               class="flex items-center gap-1.5 bg-crust border border-surface1 px-2 py-0.5 text-xs font-mono"
