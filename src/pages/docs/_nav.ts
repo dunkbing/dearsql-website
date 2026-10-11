@@ -59,3 +59,36 @@ export function getDocSections(): DocSection[] {
   }
   return ordered;
 }
+
+export interface DocSource extends DocPage {
+  section: string;
+  markdown: string; // body without frontmatter, links made absolute
+}
+
+const SITE = "https://dearsql.dev";
+
+// every docs page as plain markdown, in nav order: served as /docs/<page>.md
+// and concatenated into /llms-full.txt for agents
+export function getDocSources(): DocSource[] {
+  const raw = import.meta.glob<string>("./*.md", {
+    query: "?raw",
+    import: "default",
+    eager: true,
+  });
+  const byUrl = new Map(
+    Object.entries(raw).map(([path, text]) => [
+      "/docs/" + path.slice(2, -3),
+      text
+        .replace(/^---\n[\s\S]*?\n---\n+/, "")
+        .replace(/\]\(\//g, `](${SITE}/`)
+        .replace(/src="\//g, `src="${SITE}/`),
+    ]),
+  );
+  return getDocSections().flatMap((section) =>
+    section.pages.map((page) => ({
+      ...page,
+      section: section.name,
+      markdown: byUrl.get(page.url) ?? "",
+    })),
+  );
+}

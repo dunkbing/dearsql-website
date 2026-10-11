@@ -16,10 +16,26 @@ DearSQL is one program with several ways in:
 | `dearsql --tui` | Browse and query in the terminal |
 | `dearsql --mcp` | Gives a coding agent your database tools |
 | `dearsql --lsp` | SQL completion and hover in your editor |
+| `dearsql --version` | Prints the version |
 
-## Installing the `dearsql` command
+## Installing from a terminal
 
-Open **Settings** (the gear in the title bar) and click **Install 'dearsql' Command** under **Command Line**.
+On macOS (Apple silicon) and Linux (x86_64 or ARM64), one command installs the app and the `dearsql` command, with no prompts, so a coding agent can run it too:
+
+```bash
+curl -fsSL https://dearsql.dev/install.sh | sh
+```
+
+- On macOS it puts DearSQL.app in `/Applications` (or `~/Applications` if that folder isn't writable), after checking the download is signed by DearSQL's developer, and links `~/.local/bin/dearsql` to it.
+- On Linux it installs the AppImage as `~/.local/bin/dearsql`, after checking its SHA-256, and adds a desktop entry.
+
+Run it again to update. If `~/.local/bin` isn't on your `PATH`, the script prints the line to add. Check the install with `dearsql --version`.
+
+On Windows, download the MSI from the [home page](/).
+
+## Installing the `dearsql` command from the app
+
+If you installed the app by hand, open **Settings** (the gear in the title bar) and click **Install 'dearsql' Command** under **Command Line**.
 
 - On macOS this links `/usr/local/bin/dearsql` to the app. If that folder needs administrator rights, macOS asks for your password once.
 - On Linux it links `~/.local/bin/dearsql` to the AppImage. Make sure `~/.local/bin` is on your `PATH`.
@@ -55,6 +71,8 @@ Your saved connections, passwords and SSH tunnels are the app's own, so anything
 claude mcp add dearsql -- dearsql --mcp
 codex mcp add dearsql -- dearsql --mcp
 ```
+
+Or let the agent set itself up: ask it to *"read https://dearsql.dev/llms.txt, install DearSQL and register its MCP server"*. That file links every docs page as plain markdown (add `.md` to any docs URL, or fetch them all at once from `/llms-full.txt`).
 
 The agent can then search your schema, describe tables and run read-only queries against your saved connections, opening them when it needs one. To limit it to a single database, name it after `--mcp`:
 

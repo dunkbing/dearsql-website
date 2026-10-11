@@ -24,9 +24,12 @@ src/
     duckdb.astro     - duckdb & csv landing
     compare/         - index + [id].astro, one page per competitor in src/data/comparisons.ts (bump CHECKED when re-verified)
     appcast.xml.ts   - Sparkle appcast feed
+    llms.txt.ts      - /llms.txt for agents, generated from the docs frontmatter (no hand-kept list)
+    llms-full.txt.ts - every docs page concatenated as plain markdown
     docs/            - user documentation (see below)
       index.astro       - docs landing
-      _nav.ts           - builds the sidebar nav from page frontmatter
+      _nav.ts           - builds the sidebar nav from page frontmatter; getDocSources() for raw markdown
+      [page].md.ts      - /docs/<page>.md, each page as plain markdown
       *.md              - one page per feature area
     api/             - API route handlers
   layouts/
