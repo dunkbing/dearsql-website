@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/DocsLayout.astro
 title: "Database tools"
-description: "Let the agent search your schema, run read-only queries, and open connections itself."
+description: "Let the agent search your schema, run queries, make changes you approve, and open or add connections."
 section: "AI assistant"
 sectionOrder: 2
 order: 3
@@ -21,6 +21,8 @@ DearSQL does this by running a small [MCP](https://modelcontextprotocol.io) serv
 | `list_tables` | Lists every table and view with its size |
 | `list_connections` | Lists your saved connections, which are open, and the databases on them |
 | `connect` | Opens one of your saved connections by name |
+| `execute_sql` | Runs a change (`INSERT`, `UPDATE`, `DELETE`, schema changes) **after you approve it** |
+| `add_connection` | Saves a new connection from a URL or file **after you approve it**, then opens it |
 
 The agent works on the connection the chat was opened from (or a table you pinned with `@`) unless it names another connection or database. It's told to look names up with `search_schema` and `describe_table` before writing SQL, so it doesn't guess column names, and when a query still trips over a misspelled table it gets back "did you mean …" suggestions instead of a bare error.
 
@@ -28,7 +30,7 @@ You'll see each call appear in the transcript as it happens, and can expand it t
 
 ## What's allowed
 
-`run_query` only accepts read-only statements — `SELECT`, `SHOW`, `EXPLAIN`, `DESCRIBE`, `WITH`, `PRAGMA` and friends. Anything that writes is rejected before it reaches your database, including a write hidden after a semicolon:
+`run_query` only accepts read-only statements — `SELECT`, `SHOW`, `EXPLAIN`, `DESCRIBE`, `WITH`, `PRAGMA` and friends. Anything that writes is rejected before it reaches your database (changes go through `execute_sql`, below), including a write hidden after a semicolon:
 
 ```sql
 SELECT 1; DROP TABLE users   -- rejected
@@ -36,11 +38,21 @@ SELECT 1; DROP TABLE users   -- rejected
 
 On Redis it accepts read commands (`GET`, `HGETALL`, `SCAN`, `INFO` …), and on MongoDB read commands such as `find`, `aggregate` and `countDocuments` — but not a pipeline that writes with `$out` or `$merge`.
 
-In the app, the agent can never write. To let a coding agent make changes from a terminal, start the server with `dearsql --mcp --allow-writes` (see [Command line](/docs/command-line#letting-the-agent-make-changes)).
+## Changes need your approval
+
+When the agent wants to change something, it calls `execute_sql` and the chat shows the statement and the connection with three buttons:
+
+- **Run** runs it once and the agent gets the affected row count.
+- **Allow for this chat** runs it and lets later changes on that connection run without asking, until you close the chat. It isn't offered for connections whose tag starts with `prod`; those always ask.
+- **Reject** tells the agent no, and nothing reaches the database.
+
+A connection marked **Read-only connection** in its settings never accepts a change from the agent. An unanswered request is rejected after 5 minutes.
+
+In a terminal, `dearsql --mcp` only offers `execute_sql` with `--allow-writes`, and your agent asks before each call instead (see [Command line](/docs/command-line#letting-the-agent-make-changes)).
 
 Results come back 50 rows at a time. If there are more, the agent can ask for the next page without re-running the query; a page also stops at about 30 KB of text (the result says so), and a single query stops at 1,000 rows, so a careless `SELECT *` on a huge table can't flood the conversation.
 
-`connect` is the one tool that changes DearSQL itself, and naming a closed connection in any other tool opens it the same way. In the app it only opens connections you've already saved — it can't invent new ones, and it can't change their settings. With `dearsql --mcp` in a terminal, the agent can also pass a connection URL or a SQLite, DuckDB or CSV file path to `connect`; that connection lasts until the server stops and is never saved.
+`connect` opens a saved connection, and naming a closed connection in any other tool opens it the same way. To add one you haven't saved — say, a database the agent just started in Docker — it calls `add_connection` with a URL or a file path, and the chat asks you before saving it (the password isn't shown). Saved connections count toward the free tier's limit like any other. With `dearsql --mcp` in a terminal there's no app to ask, so `connect` takes a connection URL or a SQLite, DuckDB or CSV file path instead; that connection lasts until the server stops and is never saved.
 
 ## Turning it off
 

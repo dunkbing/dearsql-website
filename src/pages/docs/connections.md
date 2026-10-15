@@ -36,7 +36,7 @@ Connections are lazy: adding one saves it, and expanding it in the sidebar is wh
 
 ## Read-only connections
 
-Tick **Read-only connection** in the dialog to stop the app writing to that database. It applies to every engine, including SQLite and DuckDB files, and is remembered with the connection.
+Tick **Read-only connection** in the dialog to stop the app writing to that database. It applies to every engine, including SQLite and DuckDB files, and is remembered with the connection. The [database tools](/docs/ai-database-tools) respect it too: an agent can't change a read-only connection, even with your approval.
 
 With it on:
 

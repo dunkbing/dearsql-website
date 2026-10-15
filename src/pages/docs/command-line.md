@@ -80,7 +80,7 @@ The agent can then search your schema, describe tables and run read-only queries
 claude mcp add shop -- dearsql --mcp postgres://me@localhost/shop
 ```
 
-The same rules apply as in the app: writes are rejected unless you allow them (below), and results come back a page at a time.
+Unlike the app, there is no approval button here: writes are rejected unless you allow them (below). Results come back a page at a time, as in the app.
 
 ### Letting the agent make changes
 
