@@ -51,6 +51,8 @@ dearsql --tui postgres://me@localhost/shop      # or a connection URL
 dearsql --tui ~/data/orders.duckdb              # or a SQLite, DuckDB or CSV file
 ```
 
+<img src="/docs/tui-data.png" alt="dearsql --tui with a SQLite file open: the connection tree on the left and the customers table's rows on the right" width="800" />
+
 The left pane is the same tree as the app's sidebar: connections, databases, schemas, tables. Use the arrow keys to move, **→** to expand, **←** to collapse, and **Enter** to open a table.
 
 The right pane has three tabs:
@@ -58,6 +60,12 @@ The right pane has three tabs:
 - **F2 Data** shows the table's rows. Scroll them with the arrow keys and **Page Up**/**Page Down**.
 - **F3 Structure** shows columns, keys, indexes and foreign keys.
 - **F4 SQL** is a query editor. **F5** runs it against the database you last opened. **Ctrl+Space** shows completions for keywords, tables and columns, the same ones the app suggests; the list also opens by itself after a `.`, so `u.` after `FROM users u` lists the columns of `users`. While the list is open, **↑**/**↓** pick an entry, **Tab** or **Enter** inserts it, and **Esc** closes it.
+
+<img src="/docs/tui-structure.png" alt="The Structure tab for the orders table: columns with types and nullability, and a foreign key to customers" width="800" />
+
+<img src="/docs/tui-sql.png" alt="The SQL tab with a three-line join query and its results below" width="800" />
+
+<img src="/docs/tui-complete.png" alt="Completion after c. in the SQL tab, listing the customers columns with their types" width="800" />
 
 **Tab** switches between the panes (when no completion list is open), and **q** quits.
 
