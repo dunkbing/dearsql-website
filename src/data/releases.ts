@@ -18,6 +18,29 @@ export interface Release {
 
 export const releases: Release[] = [
   {
+    version: "0.7.0",
+    date: "2026-11-04",
+    changes: [
+      "AI: the agent can change data and add connections after you approve it in the chat; production connections always ask.",
+      "dearsql --mcp: connect by URL or file, --allow-writes to let agents run changes, and dearsql --version.",
+      "PostgreSQL: much faster table list on large schemas.",
+      "PostgreSQL: real type names for enums, domains, extension types and arrays.",
+      "SQLite: BLOBs and values with NUL bytes load intact.",
+      "Clearer buttons in dialogs; custom background shaders removed; smaller downloads.",
+      "macOS: sharp app icon at small sizes.",
+    ],
+    sparkle: {
+      edSignature:
+        "rbn4r0zWQpvVIVxMqNdOc6fXlwWc/8UfkKpOFGGCQvhTVMFCHHJe9BYdDo5lmtHgU1Tpx9h8FcX9nNTtRmtgBg==",
+      length: 22112813,
+    },
+    windows: {
+      edSignature:
+        "oI0f3Wo3hfeKPvMXebXTJFyo++aqy+X9gayqef5OupSVGwBQRvr2uEj4vYynGbnX1pKVmLiM7DOkz6a4phSeBA==",
+      length: 17231872,
+    },
+  },
+  {
     version: "0.6.0",
     date: "2026-10-11",
     changes: [
