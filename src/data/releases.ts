@@ -18,6 +18,24 @@ export interface Release {
 
 export const releases: Release[] = [
   {
+    version: "0.7.1",
+    date: "2026-11-04",
+    changes: [
+      "SQL Server (macOS, Windows): the Encrypt option now really encrypts the connection, so Azure SQL connects.",
+      "Linux: the AppImage now runs on Ubuntu 22.04 and other systems with glibc 2.35.",
+    ],
+    sparkle: {
+      edSignature:
+        "haHttjzhO9aHTbglyTKAfiVfgVZdvJmY93tCdZuV6DxsJHtY+QSoWCO8t4j5RGIKSppySZvqb942Hav2wU5iDA==",
+      length: 22114014,
+    },
+    windows: {
+      edSignature:
+        "sivbBGiESmJRuzEEjU6ocB06NNK48rqsgPP9br6kZCRcNhssJ6VkBO886kJKB+xUmslNGn9l24+OIKoi/fX+BA==",
+      length: 17223680,
+    },
+  },
+  {
     version: "0.7.0",
     date: "2026-11-04",
     changes: [
