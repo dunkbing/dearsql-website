@@ -18,6 +18,27 @@ export interface Release {
 
 export const releases: Release[] = [
   {
+    version: "0.7.2",
+    date: "2026-11-07",
+    changes: [
+      "Command line: your agent's database tools run as plain commands too (dearsql search, describe, query and more), and dearsql --tui has a new look.",
+      "Uses noticeably less memory, and the download is smaller.",
+      "Saved passwords are encrypted with a key kept in a file in ~/.dearsql, so the Keychain no longer asks for access. Switch back in Settings → Security; installs already on the Keychain stay on it.",
+      "New font (JetBrains Mono), clearer table headers and centred row numbers.",
+      "Cassandra: fixed a crash when disconnecting while the keyspace list was loading.",
+    ],
+    sparkle: {
+      edSignature:
+        "xVafyTT08FAsfgNbuycoW8O8JEVBddWQ+VZm5qPdO3k1mhXKdNGSCyLtwUwQGZth5Hub8UBeS30ELdADqAo2AQ==",
+      length: 18704979,
+    },
+    windows: {
+      edSignature:
+        "6GAu/K9HmKcQ5rz4k749uQ0bH77a5WGKmIvhtwJ05jGi1eq2KK1Hq8l1oOpxFcTgg/WUsaRFlaR0rAMQa9kGCg==",
+      length: 15253504,
+    },
+  },
+  {
     version: "0.7.1",
     date: "2026-11-04",
     changes: [
