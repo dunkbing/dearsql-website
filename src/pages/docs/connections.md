@@ -53,9 +53,12 @@ Every server backend supports encryption, with the modes that engine actually of
 |---|---|
 | PostgreSQL | disable, allow, prefer, require, verify-ca, verify-full |
 | MySQL / MariaDB | disable, prefer, require, verify-ca, verify-full |
+| SQL Server | Off, Encrypt, Encrypt + Verify, Strict |
 | MongoDB, Redis | Off, TLS, TLS + Verify CA |
 
 The default is `prefer` where the engine has one — encrypted if the server supports it, without failing if it doesn't. Choosing `verify-ca` or `verify-full` reveals a field for your CA certificate.
+
+On SQL Server, Encrypt encrypts the connection without checking who is on the other end. Encrypt + Verify also checks the server's certificate and that it was issued for the host you typed, against the CA certificate you give or, if you leave that empty, the ones your system trusts; a self-signed server certificate is refused unless you point at it. Strict is the newer TDS 8.0 encryption (SQL Server 2022 and Azure SQL) with the same checks.
 
 ## SSH tunnels
 
