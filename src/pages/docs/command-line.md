@@ -15,6 +15,7 @@ DearSQL is one program with several ways in:
 | `dearsql my.db` | Opens the app with that file |
 | `dearsql --tui` | Browse and query in the terminal |
 | `dearsql --mcp` | Gives a coding agent your database tools |
+| `dearsql query …` | The same tools as one-off commands |
 | `dearsql --lsp` | SQL completion and hover in your editor |
 | `dearsql --version` | Prints the version |
 
@@ -99,6 +100,31 @@ claude mcp add dearsql -- dearsql --mcp --allow-writes
 ```
 
 This adds an `execute_sql` tool, marked as destructive. Agents such as Claude Code and Codex ask you to approve each call and show you the statement, so check it before you approve. Don't set the tool to always allowed. The agent still reads through `run_query`, which stays read-only. Without the flag, `execute_sql` doesn't exist.
+
+## Database tools as commands
+
+An agent that can run shell commands doesn't need MCP at all: every database tool is also a `dearsql` command, with the same results.
+
+```bash
+dearsql search -c shop.sqlite "order user"
+dearsql describe -c shop.sqlite orders
+dearsql query -c postgres://me@localhost/shop "SELECT status, count(*) FROM orders GROUP BY 1"
+echo "SELECT * FROM orders LIMIT 5" | dearsql query -c prod
+```
+
+| Command | Tool |
+|---|---|
+| `dearsql connections` | `list_connections` |
+| `dearsql connect <name>` | `connect` |
+| `dearsql search <words>` | `search_schema` |
+| `dearsql describe <table>` | `describe_table` |
+| `dearsql tables` | `list_tables` |
+| `dearsql query <sql>` | `run_query` (read-only) |
+| `dearsql exec <sql>` | `execute_sql` |
+
+`-c` takes a saved connection name, a URL or a file, and `-d` picks the database; set `DEARSQL_CONNECTION` to skip `-c` on every call. SQL can also come on stdin. When a result ends with `cursor: …`, run the same command again with `--cursor` to get the next page. `dearsql tools` prints every command with its options and the guidance the MCP server gives agents, so pointing an agent at it is enough to get started. The tool names work as commands too (`dearsql run_query`).
+
+`query` only runs read-only statements. `exec` runs changes, so leave it out of any command allowlist you give the agent and approve each call. Connections marked read-only in DearSQL refuse it.
 
 ## SQL completion in your editor
 
