@@ -66,6 +66,6 @@ Worth knowing when deciding:
 
 - Query results are sent to whichever model provider your agent uses. Read-only still means the contents of those rows leave your machine.
 - The server listens only on `127.0.0.1` and every request must carry a bearer token that's generated fresh for each session and shared only with the agent DearSQL launched.
-- Letting the agent open connections means it can trigger the side effects of connecting, such as an SSH tunnel or a keychain prompt.
+- Letting the agent open connections means it can trigger the side effects of connecting, such as an SSH tunnel, or a keychain prompt if you keep the encryption key there.
 
 If you're working against production, it's reasonable to leave this off and pin schema by hand with `@`.

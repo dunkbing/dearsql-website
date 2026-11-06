@@ -70,6 +70,6 @@ The tunnel uses your system `ssh`, so your existing config, keys and known hosts
 
 ## How credentials are stored
 
-Saved connections live in `~/.dearsql/connections.db`. Passwords — for both the database and SSH — are encrypted with AES-256-GCM using a key derived from a per-install secret held in your operating system's keystore: Keychain on macOS, Credential Manager on Windows, Secret Service on Linux, with a `0600` file as fallback.
+Saved connections live in `~/.dearsql/connections.db`. Passwords — for both the database and SSH — are encrypted with AES-256-GCM using a key derived from a per-install secret. By default that secret lives in `~/.dearsql/master.key`, a file only your user can read. To keep it in your operating system's keystore instead (Keychain on macOS, Credential Manager on Windows, Secret Service on Linux), turn on **Settings → Security → Keep the encryption key in the Keychain**; DearSQL moves the key there and deletes the file, and turning it off moves it back. The keystore may ask for permission when DearSQL reads the key.
 
-DearSQL never writes credentials to disk in plain text, and the encrypted values are useless without the keystore entry.
+DearSQL never writes credentials to disk in plain text, and the encrypted values are useless without the key.
