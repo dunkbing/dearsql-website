@@ -46,6 +46,6 @@ PostgreSQL additionally keeps the external **Backup** and **Restore** menus, whi
 
 ## CSV files
 
-Open a CSV directly with **Open CSV File...** in the sidebar's context menu. DearSQL loads it through DuckDB, so the file behaves like a table: browse it, sort it, filter it, and run SQL against it.
+Open a CSV directly with **Open CSV File...** in the sidebar's context menu to edit it in place and filter or query it with SQL — see [CSV files](/docs/csv-files).
 
 Tables can also be **imported** from a CSV file, from the table's context menu. The first line of the file must name the columns; empty values are inserted as NULL. The import runs in the background with a progress panel and a **Cancel** button. Rows are sent in batches, and a row the database rejects is skipped rather than stopping the import. The summary at the end reports how many rows were inserted, how many failed, and the first error. Rows inserted before a cancel stay in the table.

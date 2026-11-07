@@ -68,4 +68,4 @@ The strip on the right opens the inspector, which has three tabs:
 
 ## CSV files
 
-DearSQL opens CSV files directly — **Open CSV File...** from the sidebar's context menu. The file is loaded through DuckDB, so you can query it with SQL like any other table. Double-click the file node to view its contents.
+DearSQL opens CSV files in their own editor — **Open CSV File...** from the sidebar's context menu, then double-click the file. Edits are saved back in the file's own format, and DuckDB lets you filter and query it with SQL. See [CSV files](/docs/csv-files).

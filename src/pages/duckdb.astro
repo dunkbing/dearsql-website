@@ -8,7 +8,7 @@ const faq = [
   },
   {
     q: "How do I query a CSV file with SQL?",
-    a: "In DearSQL, right-click the sidebar and choose Open CSV File. The file is loaded through DuckDB, so it behaves like a table: browse, sort and filter it, or write SQL against it in the editor. No import step or server is needed.",
+    a: "In DearSQL, right-click the sidebar and choose Open CSV File. The file opens in a CSV editor, and DuckDB exposes it as a view, so you can filter it with a SQL WHERE condition or query, join and aggregate it in the SQL editor. No import step or server is needed.",
   },
   {
     q: "Is DearSQL's DuckDB support free?",
@@ -71,10 +71,12 @@ const faq = [
       <h2 class="font-bold mb-2 before:content-['##_']">Query CSV files with SQL</h2>
       <p class="text-subtext0 text-sm mb-4">
         Right-click the sidebar and choose <span class="text-text">Open CSV File...</span>.
-        DearSQL loads the file through DuckDB, so it behaves like a table: browse it, sort
-        it, filter it, and write SQL against it in the editor. You can also import a CSV
-        into an existing table from the table's context menu, and export any table to CSV,
-        JSON or SQL.
+        The file opens in a CSV editor that saves it back in its own delimiter, quoting,
+        line breaks and encoding, with sorting and undo. DuckDB reads the saved file as a
+        view, so you can filter rows with a SQL
+        <code>WHERE</code> condition or query the file in the SQL editor. You can also import
+        a CSV into an existing table from the table's context menu, and export any table to
+        CSV, JSON or SQL.
       </p>
       <div class="border border-surface1 overflow-hidden">
         <img src="/docs/sql-editor.png" alt="The DearSQL SQL editor with query results" class="w-full h-auto" loading="lazy" />
