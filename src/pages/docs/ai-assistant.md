@@ -9,7 +9,7 @@ order: 1
 
 Right-click a connection in the sidebar and choose **Open Assistant** to open a chat tab for it. The agent works against that connection by default (and opens it if it is closed), but it can still look at any other connection you have. Open as many chats as you like; each runs in its own tab and keeps going while you switch to other tabs.
 
-<img src="/docs/assistant-panel.png" alt="A chat tab, with the agent picker at the top and the message box at the bottom" width="480" />
+<img src="/docs/assistant-panel.png" alt="A chat tab, with the agent picker at the top and the message box at the bottom" width="800" />
 
 It can talk to two different kinds of backend:
 

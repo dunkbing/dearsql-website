@@ -11,7 +11,7 @@ order: 1
 
 Right-click a table and choose an export format:
 
-<img src="/docs/table-menu.png" alt="A table's context menu with the Export submenu open on CSV, JSON and SQL" width="440" />
+<img src="/docs/table-menu.png" alt="A table's context menu with the Export submenu open on CSV, JSON, SQL, DDL, Markdown and HTML" width="440" />
 
 | Format | Good for |
 |---|---|

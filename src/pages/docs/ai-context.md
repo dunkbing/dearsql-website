@@ -20,7 +20,7 @@ Type `@` anywhere in the message box to open the context picker. It lists, acros
 
 Filter by typing; the picker matches both the object name and the database it belongs to. Move with the arrow keys, accept with **Tab** or **Enter**, or click. Press **Escape** to dismiss.
 
-<img src="/docs/assistant-context-picker.png" alt="The @ picker listing databases and their tables, with the owning database in muted text" width="480" />
+<img src="/docs/assistant-context-picker.png" alt="The @ picker listing databases and their tables, with the owning database in muted text" width="800" />
 
 Each pick becomes a chip above the message box. Click the **×** on a chip to drop it.
 
@@ -44,7 +44,7 @@ Type `/` as the **first** character of a message to open the command picker. It 
 
 The list combines DearSQL's own commands with whatever the agent publishes — Claude Code, for example, exposes dozens.
 
-<img src="/docs/assistant-commands.png" alt="The / command picker showing /clear and /new with their descriptions" width="480" />
+<img src="/docs/assistant-commands.png" alt="The / command picker showing /clear and /new with their descriptions" width="800" />
 
 | Command | What it does |
 |---|---|
