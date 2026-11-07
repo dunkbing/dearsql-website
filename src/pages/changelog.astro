@@ -21,7 +21,7 @@ import { releases } from "../data/releases";
           <article class:list={[i > 0 && "border-t border-surface1 pt-6"]}>
             <div class="flex items-baseline gap-3 mb-2">
               <h2 class="font-bold">v{release.version}</h2>
-              <span class="text-sm text-subtext0">{release.date}</span>
+              <span class="text-sm text-subtext0">{release.date || "upcoming"}</span>
             </div>
             <ul class="space-y-1 text-sm text-subtext0">
               {release.changes.map((change) => (

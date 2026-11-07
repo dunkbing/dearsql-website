@@ -3,7 +3,8 @@ import { FREE_SAVED_CONNECTIONS, FREE_WORKSPACES } from "../data/limits";
 import { appImageUrl, dmgUrl, msiUrl, releases } from "../data/releases";
 import Layout from "../layouts/Layout.astro";
 
-const latestRelease = releases[0];
+// the newest shipped release: an upcoming entry has no date yet
+const latestRelease = releases.find((r) => r.date)!;
 const macDmgUrl = dmgUrl(latestRelease.version);
 const linuxAppImageUrl = appImageUrl(latestRelease.version);
 const linuxArmAppImageUrl = appImageUrl(latestRelease.version, "aarch64");

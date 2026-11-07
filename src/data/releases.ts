@@ -17,6 +17,19 @@ export interface Release {
 }
 
 export const releases: Release[] = [
+  // no date yet = upcoming: download links skip it, the changelog says "upcoming", and with
+  // no signatures the appcast skips it too. fill in date and signatures at release
+  {
+    version: "0.7.3",
+    date: "",
+    changes: [
+      "CSV files open in a spreadsheet-style editor: edit cells, paste blocks from a spreadsheet, insert and delete rows, undo, and save back in the file's own format. Filter rows with a SQL condition.",
+      "S3-compatible object storage: browse buckets on Amazon S3, Cloudflare R2, MinIO, Wasabi and other S3 services, with upload, download, delete and share links.",
+      "New connection types: TiDB and CockroachDB.",
+      "Command line: dearsql connect with a URL or file saves the connection, so it shows up in the app too.",
+      "Ctrl+Tab lists just your tabs and matches the other menus; menus and dropdowns are roomier.",
+    ],
+  },
   {
     version: "0.7.2",
     date: "2026-11-07",
