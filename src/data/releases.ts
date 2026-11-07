@@ -23,8 +23,10 @@ export const releases: Release[] = [
     version: "0.7.4",
     date: "",
     changes: [
+      "SQL editor: a play icon next to each statement runs just that statement; hovering it outlines what will run.",
       "Query plans: Explain in the SQL editor shows the plan as a tree on PostgreSQL, MySQL and SQLite. Analyze adds real row counts and per-step timings, with the slow steps and bad estimates highlighted.",
       "Assistant: agents found on your PATH start when DearSQL is opened from the Dock or Finder.",
+      "Assistant: the chat input lines up with the conversation instead of running edge to edge.",
       "SQL editor: selected text is easier to see, and errors such as a write on a read-only connection show in the results again.",
       "SQL editor: syntax checking uses the database's own parser on PostgreSQL, SQLite and DuckDB, so valid queries such as ::casts, RETURNING and ON CONFLICT are no longer flagged. Other engines are no longer checked.",
     ],

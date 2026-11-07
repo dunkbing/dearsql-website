@@ -15,6 +15,10 @@ Open an editor from a database's context menu — **New SQL Editor** — or from
 
 **Run** executes the whole buffer. If you have text selected, it runs **only the selection** — handy for stepping through a long script one statement at a time.
 
+To run one statement of a script without selecting it, click the green play icon in the margin next to its first line. Hovering the icon outlines the statement in green, so you can see exactly what will run. Semicolons inside strings and comments don't split statements.
+
+![Hovering a statement's play icon outlines what it will run](/docs/sql-run-statement.png)
+
 While a query runs the button becomes **Cancel**, so a slow query never locks up the app; DearSQL keeps rendering and you can keep working in other tabs.
 
 Multi-statement scripts are supported. Each statement's result comes back separately, so a script that mixes `SELECT`s with `UPDATE`s shows both the rows and the affected-row counts, in order.
