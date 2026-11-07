@@ -27,6 +27,7 @@ export const releases: Release[] = [
       "S3-compatible object storage: browse buckets on Amazon S3, Cloudflare R2, MinIO, Wasabi and other S3 services, with upload, download, delete and share links.",
       "New connection types: TiDB and CockroachDB.",
       "Command line: dearsql connect with a URL or file saves the connection, so it shows up in the app too.",
+      "Assistant chat: select and copy any message text, tables and Mermaid diagrams render, and SQL code blocks are highlighted with a copy icon.",
       "18 themes to pick from in Settings: One, Ayu, Gruvbox, VS Code, Catppuccin, Solarized and GitHub in dark and light, plus Tokyo Night, Nord and Dracula.",
       "Ctrl+Tab lists just your tabs and matches the other menus; menus and dropdowns are roomier.",
     ],

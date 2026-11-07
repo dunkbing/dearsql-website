@@ -59,7 +59,7 @@ When an ACP agent publishes a model selector, DearSQL shows it beside the agent 
 
 An agent reports more than plain text, and the panel renders each kind:
 
-- **Assistant text**, with markdown — headings, lists, and code blocks with a Copy button.
+- **Assistant text**, with markdown — headings, lists, tables, links, Mermaid diagrams, and SQL code blocks highlighted as in the editor. Drag over any text to select it and press Cmd+C (Ctrl+C), or right-click for Copy and Copy as Markdown; code blocks have line numbers, and the copy icon at their top right copies the whole block.
 - **Thinking**, collapsed behind a "Thinking..." toggle.
 - **Tool calls**, as a row with a spinner that resolves to a tick or a cross. Click one to expand its output.
 - **Plans**, as a checklist that updates as the agent works.
@@ -79,4 +79,4 @@ Agents carry their own file and shell tools that don't go through DearSQL. To ke
 
 ## Chat history
 
-Each connection has a **Chat History** node in the sidebar, under the connection, listing its recent chats newest first. Click one to reopen it in a tab (or jump to the tab if it is already open), or right-click it to delete it. In a chat, the clock button lists the same connection's chats for the selected backend, and `+` starts a new one. With an API key the transcript is stored by DearSQL. With a coding agent the agent keeps its own history, and DearSQL asks it to reload the session — agents that can't (or have since discarded it) start fresh and say so. Sessions older than 90 days are dropped.
+Each connection has a **Chat History** node in the sidebar, under the connection, listing its recent chats newest first. Click one to reopen it in a tab (or jump to the tab if it is already open), or right-click it to delete it. Right-click the connection and choose **Open Assistant** for a new chat; in a chat, `/new` starts a fresh session. With an API key the transcript is stored by DearSQL. With a coding agent the agent keeps its own history, and DearSQL asks it to reload the session — agents that can't (or have since discarded it) start fresh and say so. Sessions older than 90 days are dropped.
