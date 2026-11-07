@@ -41,7 +41,7 @@ The same completion works outside the app: in the [terminal UI](/docs/command-li
 
 **Format** reformats the buffer — indentation, keyword casing, and line breaks — using the same tree-sitter grammar that drives the highlighting, so it understands the statement rather than guessing with regexes.
 
-Syntax problems are underlined as you type, without running anything.
+On PostgreSQL, SQLite and DuckDB, syntax errors show next to the toolbar as you type, with the line they are on, without running anything. They come from the database's own parser, so a query the database accepts is never flagged. Other engines aren't checked: their parsers only exist inside the server, and a guess would flag valid queries.
 
 ## Query plans
 
