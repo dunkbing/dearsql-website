@@ -115,12 +115,14 @@ echo "SELECT * FROM orders LIMIT 5" | dearsql query -c prod
 | Command | Tool |
 |---|---|
 | `dearsql connections` | `list_connections` |
-| `dearsql connect <name>` | `connect` |
+| `dearsql connect <name or URL>` | `connect` |
 | `dearsql search <words>` | `search_schema` |
 | `dearsql describe <table>` | `describe_table` |
 | `dearsql tables` | `list_tables` |
 | `dearsql query <sql>` | `run_query` (read-only) |
 | `dearsql exec <sql>` | `execute_sql` |
+
+`dearsql connect` with a URL or a file checks the connection and saves it to the app's connection list (the current workspace), unless it is saved already; on the free tier it stops saving at the connection limit. A URL or file passed with `-c` is only used for that command.
 
 `-c` takes a saved connection name, a URL or a file, and `-d` picks the database; set `DEARSQL_CONNECTION` to skip `-c` on every call. SQL can also come on stdin. When a result ends with `cursor: …`, run the same command again with `--cursor` to get the next page. `dearsql tools` prints every command with its options and the guidance the MCP server gives agents, so pointing an agent at it is enough to get started. The tool names work as commands too (`dearsql run_query`).
 
