@@ -28,7 +28,8 @@ export const releases: Release[] = [
       "Assistant: agents found on your PATH start when DearSQL is opened from the Dock or Finder.",
       "Assistant: the chat input lines up with the conversation instead of running edge to edge.",
       "SQL editor: selected text is easier to see, and errors such as a write on a read-only connection show in the results again.",
-      "SQL editor: syntax checking uses the database's own parser on PostgreSQL, SQLite and DuckDB, so valid queries such as ::casts, RETURNING and ON CONFLICT are no longer flagged. Other engines are no longer checked.",
+      "SQL editor: syntax checking uses the database's own parser on PostgreSQL, SQLite, DuckDB, CockroachDB and SQL Server, so valid queries such as ::casts, RETURNING and ON CONFLICT are no longer flagged. Other engines are no longer checked.",
+      "SQL Server: a failed query shows the server's error instead of \"General SQL Server error: Check messages from the SQL Server\".",
     ],
   },
   {

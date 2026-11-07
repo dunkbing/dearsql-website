@@ -45,7 +45,7 @@ The same completion works outside the app: in the [terminal UI](/docs/command-li
 
 **Format** reformats the buffer — indentation, keyword casing, and line breaks — using the same tree-sitter grammar that drives the highlighting, so it understands the statement rather than guessing with regexes.
 
-On PostgreSQL, SQLite and DuckDB, syntax errors show next to the toolbar as you type, with the line they are on, without running anything. They come from the database's own parser, so a query the database accepts is never flagged. Other engines aren't checked: their parsers only exist inside the server, and a guess would flag valid queries.
+On PostgreSQL, SQLite, DuckDB, CockroachDB and SQL Server, syntax errors show next to the toolbar as you type, with the line they are on, without running anything. They come from the database's own parser, so a query the database accepts is never flagged, and a table that doesn't exist yet isn't an error. CockroachDB and SQL Server check on the server in parse-only mode, so their errors appear a moment after you stop typing, and only while connected. Other engines aren't checked: their only syntax checks also look up tables, and would flag a statement for a missing table rather than a mistake in it.
 
 ## Query plans
 
