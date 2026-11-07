@@ -17,7 +17,7 @@ Open an editor from a database's context menu — **New SQL Editor** — or from
 
 To run one statement of a script without selecting it, click the green play icon in the margin next to its first line. Hovering the icon outlines the statement in green, so you can see exactly what will run. Semicolons inside strings and comments don't split statements.
 
-![Hovering a statement's play icon outlines what it will run](/docs/sql-run-statement.png)
+<img src="/docs/sql-run-statement.png" alt="Hovering a statement's play icon outlines what it will run" width="800" />
 
 While a query runs the button becomes **Cancel**, so a slow query never locks up the app; DearSQL keeps rendering and you can keep working in other tabs.
 
@@ -45,7 +45,9 @@ The same completion works outside the app: in the [terminal UI](/docs/command-li
 
 **Format** reformats the buffer — indentation, keyword casing, and line breaks — using the same tree-sitter grammar that drives the highlighting, so it understands the statement rather than guessing with regexes.
 
-On PostgreSQL, MySQL, MariaDB, SQL Server, SQLite, DuckDB, CockroachDB and TiDB, syntax errors show next to the toolbar as you type, with the line they are on, without running anything. They come from the database's own parser, so a query the database accepts is never flagged, and a table that doesn't exist yet isn't an error. MySQL, MariaDB, TiDB, SQL Server and CockroachDB check on the server without running anything, so their errors appear a moment after you stop typing, and only while connected. On MySQL, MariaDB and TiDB, checking stops at the first `CREATE PROCEDURE`, `FUNCTION`, `TRIGGER` or `EVENT`. Other engines (Oracle, Redshift, MongoDB and so on) aren't checked: their only syntax checks also look up tables, and would flag a statement for a missing table rather than a mistake in it.
+On PostgreSQL, MySQL, MariaDB, SQL Server, SQLite, DuckDB, CockroachDB and TiDB, syntax errors show as you type, without running anything: the word where the database stopped reading is underlined in red (hover it for the message), and the message also shows next to the toolbar with its line number. Editing the text clears the underline until the next check. They come from the database's own parser, so a query the database accepts is never flagged, and a table that doesn't exist yet isn't an error. MySQL, MariaDB, TiDB, SQL Server and CockroachDB check on the server without running anything, so their errors appear a moment after you stop typing, and only while connected. On MySQL, MariaDB and TiDB, checking stops at the first `CREATE PROCEDURE`, `FUNCTION`, `TRIGGER` or `EVENT`. Other engines (Oracle, Redshift, MongoDB and so on) aren't checked: their only syntax checks also look up tables, and would flag a statement for a missing table rather than a mistake in it.
+
+<img src="/docs/sql-syntax-error.png" alt="A typo underlined in the SQL editor" width="800" />
 
 ## Query plans
 
