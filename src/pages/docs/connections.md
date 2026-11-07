@@ -20,6 +20,8 @@ Right-click the sidebar and choose **Add Database Connection**, or use the **+**
 | PostgreSQL | Databases and schemas |
 | Redshift | Uses the PostgreSQL backend |
 | MySQL / MariaDB | One backend covers both |
+| TiDB | Uses the MySQL backend; port 4000 |
+| CockroachDB | Uses the PostgreSQL backend; port 26257, database `defaultdb` (Backup/Restore through `pg_dump` is not offered) |
 | MongoDB | Collections instead of tables |
 | Redis | Keys, with a command console and pub/sub |
 | SQL Server | Databases and schemas |
@@ -51,8 +53,8 @@ Every server backend supports encryption, with the modes that engine actually of
 
 | Backend | Modes |
 |---|---|
-| PostgreSQL | disable, allow, prefer, require, verify-ca, verify-full |
-| MySQL / MariaDB | disable, prefer, require, verify-ca, verify-full |
+| PostgreSQL, CockroachDB | disable, allow, prefer, require, verify-ca, verify-full |
+| MySQL / MariaDB / TiDB | disable, prefer, require, verify-ca, verify-full |
 | SQL Server | Off, Encrypt, Encrypt + Verify, Strict |
 | MongoDB, Redis | Off, TLS, TLS + Verify CA |
 
