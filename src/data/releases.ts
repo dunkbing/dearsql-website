@@ -21,7 +21,7 @@ export const releases: Release[] = [
   // no signatures the appcast skips it too. fill in date and signatures at release
   {
     version: "0.7.3",
-    date: "",
+    date: "2026-11-08",
     changes: [
       "CSV files open in a spreadsheet-style editor: edit cells, paste blocks from a spreadsheet, insert and delete rows, undo, and save back in the file's own format. Filter rows with a SQL condition.",
       "S3-compatible object storage: browse buckets on Amazon S3, Cloudflare R2, MinIO, Wasabi and other S3 services, with upload, download, delete and share links.",
@@ -31,6 +31,16 @@ export const releases: Release[] = [
       "18 themes to pick from in Settings: One, Ayu, Gruvbox, VS Code, Catppuccin, Solarized and GitHub in dark and light, plus Tokyo Night, Nord and Dracula.",
       "Ctrl+Tab lists just your tabs and matches the other menus; menus and dropdowns are roomier.",
     ],
+    sparkle: {
+      edSignature:
+        "eRfLN3Q///YP1f7xolwpCdcvascvVY+h+of4zl0R+9s2RG9Jbh0LsH5PBlDgof6wDyhcKdlG6yol9L8Bm8ziDA==",
+      length: 19998922,
+    },
+    windows: {
+      edSignature:
+        "Ha4G/Cu2EUohQVQn9xR1N5sZwjxfgPHtXtciL8eG6XgKd8EhTt87rPhfHPHcws80At04gjI0oAQWK3v7I1XTCw==",
+      length: 16740352,
+    },
   },
   {
     version: "0.7.2",
