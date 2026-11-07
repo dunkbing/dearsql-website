@@ -20,6 +20,15 @@ export const releases: Release[] = [
   // no date yet = upcoming: download links skip it, the changelog says "upcoming", and with
   // no signatures the appcast skips it too. fill in date and signatures at release
   {
+    version: "0.7.4",
+    date: "",
+    changes: [
+      "Query plans: Explain in the SQL editor shows the plan as a tree on PostgreSQL, MySQL and SQLite. Analyze adds real row counts and per-step timings, with the slow steps and bad estimates highlighted.",
+      "Assistant: agents found on your PATH start when DearSQL is opened from the Dock or Finder.",
+      "SQL editor: selected text is easier to see, and errors such as a write on a read-only connection show in the results again.",
+    ],
+  },
+  {
     version: "0.7.3",
     date: "2026-11-08",
     changes: [

@@ -43,6 +43,18 @@ The same completion works outside the app: in the [terminal UI](/docs/command-li
 
 Syntax problems are underlined as you type, without running anything.
 
+## Query plans
+
+**Explain** shows how the database will run the statement under the cursor, or the selection if you have one, without running it. The plan opens below the editor as a tree: each step, the table and index it uses, the rows the planner expects and its cost. Hover a step for the rest of what the database reports, such as filter and join conditions and sort keys.
+
+![The plan of a join on PostgreSQL, with real timings](/docs/sql-explain.png)
+
+Tick **Analyze** to run the statement and see what really happened: actual rows next to the estimates, how many times each step ran, and the time each step took by itself. A bar shows each step's share of the total, and steps taking 30% or more turn red, so the slow part stands out. Row counts the planner got wrong by ten times or more are highlighted: that usually means stale statistics or a missing index. Because it runs the statement, Analyze only works for read queries.
+
+**Raw** shows the plan exactly as the database returned it, for pasting into other tools.
+
+Query plans are available on PostgreSQL, MySQL 8.0.16 and later (Analyze from 8.0.18), and SQLite. SQLite reports the plan's shape only, without estimates or timings.
+
 ## Scripts
 
 An editor can be saved as a script with **Cmd+S** (**Ctrl+S** on Linux and Windows). Scripts live in `~/.dearsql/scripts` as ordinary `.sql` files — nothing proprietary, so you can keep them in a git repo or edit them elsewhere.
