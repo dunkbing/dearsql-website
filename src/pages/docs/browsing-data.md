@@ -62,6 +62,19 @@ Cells are editable in place. Edited cells are highlighted, and nothing is sent t
 
 Saving opens a confirmation dialog containing the exact SQL DearSQL is about to run — `INSERT`s, `UPDATE`s and `DELETE`s, in order. **The SQL is editable**, so if a generated statement isn't what you want, fix it before it runs. Nothing executes until you press Execute.
 
+### Delete preview
+
+When the changes delete rows, the dialog also shows what that does to rows in other tables that point at them through foreign keys, counted on the database before anything runs:
+
+- **Deleted too**: rows removed by `ON DELETE CASCADE`, followed down the chain (orders, then their order items), up to three levels deep.
+- **Set to NULL** or **to its default**: rows whose reference is cleared by `ON DELETE SET NULL` or `SET DEFAULT`.
+- **The delete will fail** (in red): rows still referencing them through a key with `RESTRICT` or `NO ACTION`, the default. Delete or repoint those first.
+
+<img src="/docs/delete-preview.png" alt="The save dialog listing an invoice that blocks the delete, the orders and order items it cascades to, and reviews set to NULL" width="800" />
+
+Counts deeper in a cascade say "up to", since a row reachable along two paths is counted on each. Only foreign keys in the same schema are followed. SQLite applies these rules only when `PRAGMA foreign_keys` is on for the connection; when it's off, the dialog says so and lists the rows that would be left pointing at deleted ones.
+
+
 Statements are keyed on the table's primary key. For a table without one, DearSQL matches on all column values, which is safe but can match more than one row if you have exact duplicates.
 
 On a [read-only connection](/docs/connections) none of this is available: cells can't be edited, the add, duplicate and delete buttons are disabled, and the toolbar shows a **Read-only** marker.

@@ -31,6 +31,7 @@ export const releases: Release[] = [
       "SQL editor: syntax checking uses the database's own parser on PostgreSQL, MySQL, MariaDB, SQL Server, SQLite, DuckDB, CockroachDB and TiDB, so valid queries such as ::casts, RETURNING and ON CONFLICT are no longer flagged. Other engines are no longer checked.",
       "SQL editor: Opt+Backspace deletes a word and Cmd+Backspace the rest of the line (Ctrl+Backspace and Ctrl+Shift+Backspace on Linux and Windows).",
       "SQL editor: typing in long scripts is faster, and an idle editor no longer re-highlights its whole text every frame.",
+      "Delete preview: saving deletes shows the rows foreign keys reach in other tables, deleted by a cascade, set to NULL, or blocking the delete.",
       "Open Quickly: press ⌘P (Ctrl+P) to jump to any loaded table or view by name.",
       "SQL editor: query parameters. Write :name in a query and DearSQL asks for the values before running.",
       "Sidebar: schemas with around 1,000 tables and views open in a quarter of a second and scroll smoothly.",
