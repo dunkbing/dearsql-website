@@ -72,7 +72,7 @@ When the changes delete rows, the dialog also shows what that does to rows in ot
 
 <img src="/docs/delete-preview.png" alt="The save dialog listing an invoice that blocks the delete, the orders and order items it cascades to, and reviews set to NULL" width="800" />
 
-Counts deeper in a cascade say "up to", since a row reachable along two paths is counted on each. Only foreign keys in the same schema are followed. SQLite applies these rules only when `PRAGMA foreign_keys` is on for the connection; when it's off, the dialog says so and lists the rows that would be left pointing at deleted ones.
+Counts deeper in a cascade say "up to", since a row reachable along two paths is counted on each. Only foreign keys in the same schema are followed. DearSQL turns on SQLite's foreign key enforcement (`PRAGMA foreign_keys`, off in SQLite itself) for every connection, so cascades and blocked deletes work as declared. If you turn it off with the pragma, the dialog says so and lists the rows that would be left pointing at deleted ones.
 
 Statements are keyed on the table's primary key. For a table without one, DearSQL matches on all column values, which is safe but can match more than one row if you have exact duplicates.
 
