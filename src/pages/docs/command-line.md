@@ -121,6 +121,9 @@ echo "SELECT * FROM orders LIMIT 5" | dearsql query -c prod
 | `dearsql tables` | `list_tables` |
 | `dearsql query <sql>` | `run_query` (read-only) |
 | `dearsql exec <sql>` | `execute_sql` |
+| `dearsql list_objects` | `list_objects` (S3: buckets, or one folder with `--bucket`, `--prefix`) |
+| `dearsql read_object <bucket> <key>` | `read_object` (S3: the start of a file as text) |
+| `dearsql copy_object`, `delete_object`, `upload_object`, `download_object` | the same S3 writes; `copy_object --move` moves |
 
 `dearsql connect` with a URL or a file checks the connection and saves it to the app's connection list (the current workspace), unless it is saved already; on the free tier it stops saving at the connection limit. A URL or file passed with `-c` is only used for that command.
 

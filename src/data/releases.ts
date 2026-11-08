@@ -33,6 +33,8 @@ export const releases: Release[] = [
       "SQL editor: typing in long scripts is faster, and an idle editor no longer re-highlights its whole text every frame.",
       "SQLite: foreign keys are enforced by default, so ON DELETE CASCADE and blocked deletes work as declared (SQLite itself leaves them off).",
       "Charts: query results and tables can be drawn as bar, line, area, scatter or pie charts, with grouping by the X column.",
+      "S3 browser: a Type column, multi-select, and Copy, Cut, Paste and Delete on the selection (server-side copies, across buckets of a connection).",
+      "S3 from the terminal: `dearsql list_objects`, `read_object` and copy, delete, upload and download commands, also served to coding agents over MCP.",
       "JSON view: results and tables switch between the grid and the rows as JSON.",
       "Delete preview: saving deletes shows the rows foreign keys reach in other tables, deleted by a cascade, set to NULL, or blocking the delete.",
       "Open Quickly: press ⌘P (Ctrl+P) to jump to any loaded table or view by name.",
