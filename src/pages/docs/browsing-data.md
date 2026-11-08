@@ -13,6 +13,14 @@ Double-click a table to open it in a viewer tab.
 
 <img src="/docs/sidebar-tree.png" alt="The Databases sidebar with a connection expanded into Tables, Views, Sequences and Queries" width="440" />
 
+### Open Quickly
+
+Press **⌘P** (**Ctrl+P** on Windows and Linux) and type part of a name to jump to a table or view without scrolling the tree. Matching forgives case, underscores and small typos, so `chlid` still finds `child`. Use ↑ and ↓ to pick a result, then press Enter to open it; Esc closes the list. Each result shows which connection, database and schema it belongs to.
+
+It searches what the sidebar has already loaded, so expand a database first if its tables are missing.
+
+<img src="/docs/open-quickly.png" alt="Open Quickly listing invoices and invoice_items for the typed text inv" width="440" />
+
 ## The grid
 
 <img src="/docs/table-grid.png" alt="A table open in the grid, with the filter box above and paging controls below" width="800" />

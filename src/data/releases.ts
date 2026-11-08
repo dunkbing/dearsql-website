@@ -29,6 +29,7 @@ export const releases: Release[] = [
       "Assistant: the chat input lines up with the conversation instead of running edge to edge.",
       "SQL editor: selected text is easier to see, and errors such as a write on a read-only connection show in the results again.",
       "SQL editor: syntax checking uses the database's own parser on PostgreSQL, MySQL, MariaDB, SQL Server, SQLite, DuckDB, CockroachDB and TiDB, so valid queries such as ::casts, RETURNING and ON CONFLICT are no longer flagged. Other engines are no longer checked.",
+      "Open Quickly: press ⌘P (Ctrl+P) to jump to any loaded table or view by name.",
       "SQL editor: query parameters. Write :name in a query and DearSQL asks for the values before running.",
       "Sidebar: schemas with around 1,000 tables and views open in a quarter of a second and scroll smoothly.",
       "A frame-rate counter in the bottom-right corner.",
