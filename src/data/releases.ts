@@ -20,6 +20,16 @@ export const releases: Release[] = [
   // no date yet = upcoming: download links skip it, the changelog says "upcoming", and with
   // no signatures the appcast skips it too. fill in date and signatures at release
   {
+    version: "0.7.5",
+    date: "",
+    changes: [
+      "Compare Schema With: pick two databases of the same kind (dev and production, or two schemas) and get a script that would make the first match the second. Nothing runs until you click Run.",
+      "Profile Columns: a table's nulls, distinct values, min and max per column, in one quick query over the first 100,000 rows.",
+      "Coding agents: profile_table and diff_schema do the same over MCP and as dearsql commands.",
+      "Index review suggests DROP INDEX ... ON table on MySQL and SQL Server.",
+    ],
+  },
+  {
     version: "0.7.4",
     date: "",
     changes: [

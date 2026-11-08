@@ -136,6 +136,8 @@ echo "SELECT * FROM orders LIMIT 5" | dearsql query -c prod
 | `dearsql explain_query <sql>` | `explain_query` (the plan, with warnings; `--analyze true` runs a read-only query) |
 | `dearsql review_indexes` | `review_indexes` (`--table` for one) |
 | `dearsql explain_finding <code>` | `explain_finding` |
+| `dearsql profile_table <table>` | `profile_table` (`--sample` rows) |
+| `dearsql diff_schema --other-database <db>` | `diff_schema` (`--other-connection` for another server) |
 | `dearsql exec <sql>` | `execute_sql` |
 | `dearsql list_objects` | `list_objects` (S3: buckets, or one folder with `--bucket`, `--prefix`) |
 | `dearsql read_object <bucket> <key>` | `read_object` (S3: the start of a file as text) |

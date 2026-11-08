@@ -21,6 +21,8 @@ DearSQL does this by running a small [MCP](https://modelcontextprotocol.io) serv
 | `explain_query` | Shows a statement's query plan without running it, with warnings for full scans, repeated scans and big sorts (PostgreSQL, MySQL 8, SQLite) |
 | `review_indexes` | Checks the schema for foreign keys with no index and indexes another index already covers, with a statement to consider |
 | `explain_finding` | Explains a warning code from `explain_query` or `review_indexes`: what it means, how to confirm it, the usual fix, and when to leave it |
+| `profile_table` | Per column of a table: how many values are null, how many distinct, the smallest and largest, and the most common values, over the first 100,000 rows |
+| `diff_schema` | Compares two databases' tables, columns, indexes and foreign keys and lists the statements that would make the first match the second, without running them |
 | `list_tables` | Lists every table and view with its size |
 | `list_connections` | Lists your saved connections, which are open, and the databases on them |
 | `connect` | Opens one of your saved connections by name |
@@ -30,6 +32,8 @@ DearSQL does this by running a small [MCP](https://modelcontextprotocol.io) serv
 When a query is slow, the agent can call `explain_query` instead of guessing. It gets the plan as a short indented tree, with the filter and join conditions, and a list of warnings from fixed rules: a full scan that reads 100,000 rows to keep 2,000, a table read in full once per row of a join, a sort that spilled to disk, or (with `analyze`, read-only statements only) a row estimate ten times off. The warnings are hints to check, not verdicts; an index the agent wants to add still goes through `execute_sql` and your approval.
 
 `review_indexes` looks at the schema instead of a query: a foreign key with no index makes joins on it and deletes of the referenced rows scan the whole table, and an index whose columns lead another's (or duplicate them) costs every write for nothing. Each finding and plan warning carries a code such as `[unindexed-fk]`, and `explain_finding` returns the same fixed explanation every time, so the agent quotes it rather than improvising. These checks read only the schema and the plan, never your data.
+
+`profile_table` is the exception that reads data on purpose: before writing a filter, the agent can see that `status` has four values and which is most common, or that half of `deleted_at` is empty. It reads the first 100,000 rows (not a random sample) in one query, so it stays cheap on big tables. `diff_schema` compares two databases, say your dev and production copies, and returns a script: new tables first, then column and index changes, drops last. Nothing runs; the agent shows you the script and applies only what you pick, through `execute_sql` and your approval.
 
 Two ready-made workflows come with the tools as MCP prompts, which clients like Claude Code offer as slash commands: **diagnose-slow-query** (explain, confirm each warning, review the tables' indexes, then report the fix without running it) and **review-schema** (a prioritized index review).
 

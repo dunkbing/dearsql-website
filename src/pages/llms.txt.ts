@@ -33,6 +33,7 @@ The same tools over MCP (\`dearsql --mcp\`) and as shell commands (\`dearsql <to
 - \`run_query\`: one read-only statement; rows as compact text, with a cursor for more.
 - \`explain_query\`: the query plan plus rule-based warnings (filtered full scans, scans repeated per join row, big sorts, misestimates); PostgreSQL, MySQL 8, SQLite.
 - \`review_indexes\`: foreign keys with no index, indexes another covers. \`explain_finding <code>\`: the fixed explanation of any \`[code]\` in a result.
+- \`profile_table\`: per column null %, distinct, min/max and common values (first 100,000 rows). \`diff_schema\`: statements that would make one database's schema match another's; nothing runs.
 - \`execute_sql\`: a change, with \`--allow-writes\` (MCP) or as \`dearsql exec\`; the user approves it.
 - MCP prompts \`diagnose-slow-query\` and \`review-schema\`. Claude Code plugin: \`/plugin install dearsql --marketplace dunkbing/dearsql\` (MCP server + skill); the skill alone: https://raw.githubusercontent.com/dunkbing/dearsql/main/plugins/dearsql/skills/dearsql/SKILL.md
 - \`list_objects\`, \`read_object\` (+ \`copy_object\`, \`delete_object\`, \`upload_object\`, \`download_object\` with writes): S3-compatible object storage connections.

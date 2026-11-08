@@ -88,6 +88,14 @@ The strip on the right opens the inspector, which has three tabs:
 - **Metadata** — the table's columns with their types, nullability and primary keys, filterable by name.
 - **DDL** — the table's `CREATE TABLE` statement with its constraints and indexes, ready to copy. It is the server's own definition where it has one (`SHOW CREATE TABLE` on MySQL, `DBMS_METADATA` on Oracle, the stored SQL on SQLite and DuckDB); PostgreSQL's is rebuilt from its catalog, including identity and generated columns, check constraints and comments. Views, MongoDB collections and Redis keys don't have one.
 
+## Profiling a table
+
+Right-click a table and choose **Profile Columns** to see what its data looks like: a SQL editor opens and runs one query that lists every column with its number of nulls, distinct values, smallest and largest value. It reads the first 100,000 rows (not a random sample), so it stays quick on big tables, and the query is right there to edit (a `WHERE`, or a bigger `LIMIT`). Columns whose type has no order (booleans, UUIDs, JSON) leave min and max empty.
+
+## Comparing two databases
+
+Right-click a database (a schema on PostgreSQL and SQL Server) and choose **Compare Schema With**, then pick another open database of the same kind: your dev copy against production, or two schemas. DearSQL reads both and opens a script that would make the first one match the second: new tables first, then added, changed and dropped columns and indexes, dropped tables last, each with a comment saying what differs. Nothing runs until you click Run, so delete what you don't want first; drops lose data. Indexes count as the same when they cover the same columns, whatever their names. Views aren't compared, and where SQLite can't change a column in place the comment says so instead of a statement.
+
 ## CSV files
 
 DearSQL opens CSV files in their own editor — **Open CSV File...** from the sidebar's context menu, then double-click the file. Edits are saved back in the file's own format, and DuckDB lets you filter and query it with SQL. See [CSV files](/docs/csv-files).
