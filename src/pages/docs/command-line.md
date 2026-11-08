@@ -81,6 +81,19 @@ claude mcp add dearsql -- dearsql --mcp
 codex mcp add dearsql -- dearsql --mcp
 ```
 
+In Claude Code, the DearSQL plugin does the registration for you and adds a skill that teaches the agent the workflow: search the schema before writing SQL, explain a slow query before suggesting an index, and leave every change to you:
+
+```
+/plugin install dearsql --marketplace dunkbing/dearsql
+```
+
+Codex reads the same skill from `~/.agents/skills`:
+
+```bash
+mkdir -p ~/.agents/skills/dearsql
+curl -fsSL https://raw.githubusercontent.com/dunkbing/dearsql/main/plugins/dearsql/skills/dearsql/SKILL.md -o ~/.agents/skills/dearsql/SKILL.md
+```
+
 Or let the agent set itself up: ask it to *"read https://dearsql.dev/llms.txt, install DearSQL and register its MCP server"*. That file links every docs page as plain markdown (add `.md` to any docs URL, or fetch them all at once from `/llms-full.txt`).
 
 The agent can then search your schema, describe tables and run read-only queries against your saved connections, opening them when it needs one. To limit it to a single database, name it after `--mcp`:
@@ -121,6 +134,8 @@ echo "SELECT * FROM orders LIMIT 5" | dearsql query -c prod
 | `dearsql tables` | `list_tables` |
 | `dearsql query <sql>` | `run_query` (read-only) |
 | `dearsql explain_query <sql>` | `explain_query` (the plan, with warnings; `--analyze true` runs a read-only query) |
+| `dearsql review_indexes` | `review_indexes` (`--table` for one) |
+| `dearsql explain_finding <code>` | `explain_finding` |
 | `dearsql exec <sql>` | `execute_sql` |
 | `dearsql list_objects` | `list_objects` (S3: buckets, or one folder with `--bucket`, `--prefix`) |
 | `dearsql read_object <bucket> <key>` | `read_object` (S3: the start of a file as text) |

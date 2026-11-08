@@ -55,4 +55,4 @@ dearsql list_objects -c "My R2" --bucket exports --prefix 2026/
 dearsql read_object -c "My R2" exports 2026/06/orders.csv --max-bytes 2000
 ```
 
-In the app's assistant chat, the agent doesn't have these tools yet.
+The agent in DearSQL's assistant chat has them too, and asks for your approval before copying, moving, deleting or uploading.
