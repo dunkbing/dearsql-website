@@ -46,7 +46,7 @@ If you move the app later, click the button again to point the command at the ne
 
 ## Upgrading
 
-`dearsql upgrade` checks for a newer release and, if there is one, installs it over the copy you ran it from. It needs `curl`, which macOS, Linux and Windows 10 and later have.
+`dearsql upgrade` checks for a newer release and, if there is one, installs it over the copy you ran it from.
 
 - On macOS it downloads the new DearSQL.app, checks it's signed by DearSQL's developer, and replaces the app wherever it is, keeping your `dearsql` link as it is. If the app's folder isn't writable (an `/Applications` owned by an administrator), it says so and leaves the old app in place.
 - On Linux it downloads the AppImage, checks its SHA-256 and replaces the one you ran.

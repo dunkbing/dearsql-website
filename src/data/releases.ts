@@ -24,6 +24,7 @@ export const releases: Release[] = [
     date: "",
     changes: [
       "`dearsql upgrade` installs the latest release from the terminal, over the copy you run it from.",
+      "Claude Code, Gemini CLI and Codex now always run on DearSQL's own Bun runtime, downloaded the first time, so an older Node from a version manager no longer makes them quit right after starting. When an agent does quit, the chat shows its last output.",
     ],
   },
   {
