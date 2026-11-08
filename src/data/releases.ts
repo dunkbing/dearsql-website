@@ -29,6 +29,8 @@ export const releases: Release[] = [
       "Assistant: the chat input lines up with the conversation instead of running edge to edge.",
       "SQL editor: selected text is easier to see, and errors such as a write on a read-only connection show in the results again.",
       "SQL editor: syntax checking uses the database's own parser on PostgreSQL, MySQL, MariaDB, SQL Server, SQLite, DuckDB, CockroachDB and TiDB, so valid queries such as ::casts, RETURNING and ON CONFLICT are no longer flagged. Other engines are no longer checked.",
+      "Sidebar: schemas with around 1,000 tables and views open in a quarter of a second and scroll smoothly.",
+      "A frame-rate counter in the bottom-right corner.",
       "SQL editor: syntax errors are underlined where the database stopped reading, with the message on hover.",
       "SQL Server: a failed query shows the server's error instead of \"General SQL Server error: Check messages from the SQL Server\".",
     ],
