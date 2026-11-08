@@ -82,15 +82,18 @@ On a [read-only connection](/docs/connections) none of this is available: cells 
 
 ## Inspector
 
-The strip on the right opens the inspector, which has three tabs:
+The strip on the right opens the inspector, which has four tabs:
 
 - **Value** — the selected cell in a larger editor, for JSON, long text, or anything that doesn't fit a grid cell. Edit and Apply, or Revert.
 - **Metadata** — the table's columns with their types, nullability and primary keys, filterable by name.
 - **DDL** — the table's `CREATE TABLE` statement with its constraints and indexes, ready to copy. It is the server's own definition where it has one (`SHOW CREATE TABLE` on MySQL, `DBMS_METADATA` on Oracle, the stored SQL on SQLite and DuckDB, `DESCRIBE TABLE` on Cassandra 4+ and ScyllaDB, with the table's options and its indexes); PostgreSQL's is rebuilt from its catalog, including identity and generated columns, check constraints and comments. Views, MongoDB collections and Redis keys don't have one.
+- **Profile** — what the data in each column looks like: how much of it is null, how many distinct values, the smallest and largest, and for columns with only a few values, the most common ones with their counts. It reads the first 100,000 rows (not a random sample) when you first open the tab; **Refresh** reads again.
+
+<img src="/docs/inspector-profile.png" alt="The inspector's Profile tab listing each column of an orders table with its null share, distinct count, range and most common values" width="440" />
 
 ## Profiling a table
 
-Right-click a table and choose **Profile Columns** to see what its data looks like: a SQL editor opens and runs one query that lists every column with its number of nulls, distinct values, smallest and largest value. It reads the first 100,000 rows (not a random sample), so it stays quick on big tables, and the query is right there to edit (a `WHERE`, or a bigger `LIMIT`). Columns whose type has no order (booleans, UUIDs, JSON) leave min and max empty.
+The inspector's **Profile** tab (above) is the quick look. For the query itself, right-click a table and choose **Profile Columns**: a SQL editor opens and runs one query that lists every column with its number of nulls, distinct values, smallest and largest value. It reads the first 100,000 rows (not a random sample), so it stays quick on big tables, and the query is right there to edit (a `WHERE`, or a bigger `LIMIT`). Columns whose type has no order (booleans, UUIDs, JSON) leave min and max empty.
 
 ## Reviewing indexes
 

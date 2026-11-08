@@ -20,22 +20,15 @@ export const releases: Release[] = [
   // no date yet = upcoming: download links skip it, the changelog says "upcoming", and with
   // no signatures the appcast skips it too. fill in date and signatures at release
   {
-    version: "0.7.5",
-    date: "",
-    changes: [
-      "ScyllaDB connections, on the Cassandra backend: keyspaces, tables, CQL editor and completion.",
-      "Review Indexes: a database's unindexed foreign keys and redundant indexes, with the statements to fix them, opened as a script.",
-      "Cassandra and ScyllaDB: table DDL from the server's own DESCRIBE, and TLS + Verify CA now refuses to connect without a CA file instead of skipping the check.",
-      "Compare Schema With: pick two databases of the same kind (dev and production, or two schemas) and get a script that would make the first match the second. Nothing runs until you click Run.",
-      "Profile Columns: a table's nulls, distinct values, min and max per column, in one quick query over the first 100,000 rows.",
-      "Coding agents: profile_table and diff_schema do the same over MCP and as dearsql commands.",
-      "Index review suggests DROP INDEX ... ON table on MySQL and SQL Server.",
-    ],
-  },
-  {
     version: "0.7.4",
     date: "",
     changes: [
+      "Compare Schema With: pick two databases of the same kind (dev and production, or two schemas) and get a script that would make the first match the second. Nothing runs until you click Run.",
+      "Review Indexes: a database's unindexed foreign keys and redundant indexes, with the statements to fix them, opened as a script.",
+      "Profile: a table's nulls, distinct values, min and max and most common values per column, in the inspector's new Profile tab or as a query from the table's menu (Profile Columns).",
+      "ScyllaDB connections, on the Cassandra backend: keyspaces, tables, CQL editor and completion.",
+      "Cassandra and ScyllaDB: TLS + Verify Host checks each node's certificate, TLS + Verify CA refuses to connect without a CA file instead of skipping the check, and table DDL comes from the server's own DESCRIBE.",
+      "Coding agents: profile_table and diff_schema, over MCP and as dearsql commands.",
       "Query plans: Explain in the SQL editor shows the plan as a tree on PostgreSQL, MySQL and SQLite, and flags likely problems: full scans a filter mostly throws away, tables scanned once per join row, big or spilled sorts. Analyze adds real row counts and per-step timings, with slow steps and bad estimates highlighted.",
       "Charts: query results and tables can be drawn as bar, line, area, scatter or pie charts, with grouping by the X column.",
       "JSON view: results and tables switch between the grid and the rows as JSON.",

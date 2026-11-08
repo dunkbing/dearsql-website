@@ -57,13 +57,14 @@ Every server backend supports encryption, with the modes that engine actually of
 | PostgreSQL, CockroachDB | disable, allow, prefer, require, verify-ca, verify-full |
 | MySQL / MariaDB / TiDB | disable, prefer, require, verify-ca, verify-full |
 | SQL Server | Off, Encrypt, Encrypt + Verify, Strict |
-| MongoDB, Redis, Cassandra, ScyllaDB | Off, TLS, TLS + Verify CA |
+| MongoDB, Redis | Off, TLS, TLS + Verify CA |
+| Cassandra, ScyllaDB | Off, TLS, TLS + Verify CA, TLS + Verify Host |
 
 The default is `prefer` where the engine has one — encrypted if the server supports it, without failing if it doesn't. Choosing `verify-ca` or `verify-full` reveals a field for your CA certificate.
 
 On SQL Server, Encrypt encrypts the connection without checking who is on the other end. Encrypt + Verify also checks the server's certificate and that it was issued for the host you typed, against the CA certificate you give or, if you leave that empty, the ones your system trusts; a self-signed server certificate is refused unless you point at it. Strict is the newer TDS 8.0 encryption (SQL Server 2022 and Azure SQL) with the same checks.
 
-On Cassandra and ScyllaDB, TLS encrypts without checking the server, and TLS + Verify CA checks its certificate against the CA file you give. That file is required: the Cassandra driver doesn't read the certificates your system trusts. Managed services such as ScyllaDB Cloud and DataStax Astra need TLS on.
+On Cassandra and ScyllaDB, TLS encrypts without checking the server, and TLS + Verify CA checks its certificate against the CA file you give. That file is required: the Cassandra driver doesn't read the certificates your system trusts. TLS + Verify Host also checks that each node's certificate was issued for that node. The driver talks to every node in the cluster by IP address, so with an IP as the host each certificate must list its node's IP; with a hostname, each node's IP is looked up in reverse DNS and the certificate must carry that name. Through an SSH tunnel the node is reached as 127.0.0.1, so use TLS + Verify CA there. Managed services such as ScyllaDB Cloud and DataStax Astra need TLS on.
 
 ## SSH tunnels
 
