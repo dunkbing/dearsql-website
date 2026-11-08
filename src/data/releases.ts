@@ -20,6 +20,13 @@ export const releases: Release[] = [
   // no date yet = upcoming: download links skip it, the changelog says "upcoming", and with
   // no signatures the appcast skips it too. fill in date and signatures at release
   {
+    version: "0.7.5",
+    date: "",
+    changes: [
+      "`dearsql upgrade` installs the latest release from the terminal, over the copy you run it from.",
+    ],
+  },
+  {
     version: "0.7.4",
     date: "2026-11-08",
     changes: [

@@ -18,6 +18,7 @@ DearSQL is one program with several ways in:
 | `dearsql query …` | The same tools as one-off commands |
 | `dearsql --lsp` | SQL completion and hover in your editor |
 | `dearsql --version` | Prints the version |
+| `dearsql upgrade` | Installs the latest release over this one |
 
 ## Installing from a terminal
 
@@ -30,7 +31,7 @@ curl -fsSL https://dearsql.dev/install.sh | sh
 - On macOS it puts DearSQL.app in `/Applications` (or `~/Applications` if that folder isn't writable), after checking the download is signed by DearSQL's developer, and links `~/.local/bin/dearsql` to it.
 - On Linux it installs the AppImage as `~/.local/bin/dearsql`, after checking its SHA-256, and adds a desktop entry.
 
-Run it again to update. If `~/.local/bin` isn't on your `PATH`, the script prints the line to add. Check the install with `dearsql --version`.
+To update later, run `dearsql upgrade` (from 0.7.5), or this script again. If `~/.local/bin` isn't on your `PATH`, the script prints the line to add. Check the install with `dearsql --version`.
 
 On Windows, download the MSI from the [home page](/).
 
@@ -42,6 +43,16 @@ If you installed the app by hand, open **Settings** (the gear in the title bar) 
 - On Linux it links `~/.local/bin/dearsql` to the AppImage. Make sure `~/.local/bin` is on your `PATH`.
 
 If you move the app later, click the button again to point the command at the new location.
+
+## Upgrading
+
+`dearsql upgrade` checks for a newer release and, if there is one, installs it over the copy you ran it from. It needs `curl`, which macOS, Linux and Windows 10 and later have.
+
+- On macOS it downloads the new DearSQL.app, checks it's signed by DearSQL's developer, and replaces the app wherever it is, keeping your `dearsql` link as it is. If the app's folder isn't writable (an `/Applications` owned by an administrator), it says so and leaves the old app in place.
+- On Linux it downloads the AppImage, checks its SHA-256 and replaces the one you ran.
+- On Windows it downloads the MSI and starts the installer, which shows its progress and replaces the app once `dearsql` has exited.
+
+Quit the app before upgrading on macOS and Linux; the running copy keeps the old version until it restarts. The app also updates itself: **Settings → Check for Updates...**.
 
 ## The terminal UI
 

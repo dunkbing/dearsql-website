@@ -99,9 +99,13 @@ The inspector's **Profile** tab (above) is the quick look. For the query itself,
 
 Right-click a database (a schema on PostgreSQL and SQL Server) and choose **Review Indexes**. DearSQL reads the tables (the first 200) and opens a script listing foreign keys with no index, which make joins and deletes on the referenced table scan the whole child table, and indexes another index already covers, which cost every write for nothing. Each finding says when it is fine to leave it, followed by the `CREATE INDEX` or `DROP INDEX` to consider. Nothing runs: keep the statements you want and click Run. These are rule-based hints, so check how the table is actually queried first; on a big production table, prefer `CREATE INDEX CONCURRENTLY` (PostgreSQL) or an online DDL.
 
+<img src="/docs/review-indexes.png" alt="An index review script: a CREATE INDEX for an unindexed foreign key and a DROP INDEX for an index another one covers, each under a comment saying when to leave it" width="800" />
+
 ## Comparing two databases
 
 Right-click a database (a schema on PostgreSQL and SQL Server) and choose **Compare Schema With**, then pick another open database of the same kind: your dev copy against production, or two schemas. DearSQL reads both and opens a script that would make the first one match the second: new tables first, then added, changed and dropped columns and indexes, dropped tables last, each with a comment saying what differs. Nothing runs until you click Run, so delete what you don't want first; drops lose data. Indexes count as the same when they cover the same columns, whatever their names. Views aren't compared, and where SQLite can't change a column in place the comment says so instead of a statement.
+
+<img src="/docs/schema-compare.png" alt="A schema comparison script that would make production match dev: a new refunds table, an added phone column and a new index, not yet run" width="800" />
 
 ## CSV files
 

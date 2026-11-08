@@ -4,7 +4,8 @@ set -eu
 # Downloads DearSQL and puts the `dearsql` command in ~/.local/bin.
 # Linux (x86_64, aarch64): the AppImage itself. macOS (Apple silicon):
 # DearSQL.app in /Applications (or ~/Applications) and a link to it.
-# Non-interactive, safe to re-run to update.
+# Non-interactive, safe to re-run to update. DEARSQL_TARGET replaces that copy
+# instead (the AppImage, or the .app bundle): `dearsql upgrade` sets it.
 # Usage: curl -fsSL https://dearsql.dev/install.sh | sh
 
 MANIFEST_URL="https://dearsql.dev/api/version.json"
@@ -44,7 +45,8 @@ main() {
             ;;
     esac
 
-    path_hint
+    # an upgrade runs the command it replaced
+    [ -n "${DEARSQL_TARGET:-}" ] || path_hint
 }
 
 install_linux() {
@@ -75,7 +77,10 @@ install_linux() {
 
     echo "Installing DearSQL v${version} for ${platform_key}..."
 
-    tmpfile=$(mktemp)
+    target="${DEARSQL_TARGET:-$BIN_DIR/dearsql}"
+    mkdir -p "$(dirname "$target")"
+    # same directory, so the move is a rename: a running AppImage can't be overwritten
+    tmpfile=$(mktemp "$(dirname "$target")/.dearsql.XXXXXX")
     trap 'rm -f "$tmpfile"' EXIT
 
     download "$tmpfile" "$url" || { echo "Failed to download binary."; exit 1; }
@@ -92,11 +97,9 @@ install_linux() {
         echo "Checksum verified."
     fi
 
-    # Install binary
-    mkdir -p "$BIN_DIR"
-    mv "$tmpfile" "$BIN_DIR/dearsql"
+    chmod 755 "$tmpfile"
+    mv "$tmpfile" "$target"
     trap - EXIT
-    chmod +x "$BIN_DIR/dearsql"
 
     # Install icon
     icon_dir="$HOME/.local/share/icons/hicolor/256x256/apps"
@@ -110,7 +113,7 @@ install_linux() {
         "[Desktop Entry]" \
         "Name=DearSQL" \
         "Comment=SQL Database Client" \
-        "Exec=$BIN_DIR/dearsql" \
+        "Exec=\"$target\"" \
         "Icon=$icon_dir/${APP_ID}.png" \
         "Terminal=false" \
         "Type=Application" \
@@ -120,7 +123,7 @@ install_linux() {
 
     (command -v update-desktop-database >/dev/null 2>&1 && update-desktop-database "$desktop_dir" 2>/dev/null) || true
 
-    echo "DearSQL v${version} installed to ${BIN_DIR}/dearsql"
+    echo "DearSQL v${version} installed to ${target}"
 }
 
 install_macos() {
@@ -149,20 +152,27 @@ install_macos() {
     fi
     echo "Signature verified."
 
-    if [ -w /Applications ]; then
-        app_dir="/Applications"
+    if [ -n "${DEARSQL_TARGET:-}" ]; then
+        dest="$DEARSQL_TARGET"
+    elif [ -w /Applications ]; then
+        dest="/Applications/DearSQL.app"
     else
-        app_dir="$HOME/Applications"
-        mkdir -p "$app_dir"
+        mkdir -p "$HOME/Applications"
+        dest="$HOME/Applications/DearSQL.app"
     fi
-    rm -rf "$app_dir/DearSQL.app"
-    ditto "$app" "$app_dir/DearSQL.app"
+    # copy first, so a failed copy leaves the old app in place
+    rm -rf "$dest.new"
+    ditto "$app" "$dest.new" || { echo "Could not write to $(dirname "$dest")."; exit 1; }
+    rm -rf "$dest"
+    mv "$dest.new" "$dest"
+    echo "DearSQL v${version} installed to ${dest}"
 
-    mkdir -p "$BIN_DIR"
-    ln -sf "$app_dir/DearSQL.app/Contents/MacOS/DearSQL" "$BIN_DIR/dearsql"
-
-    echo "DearSQL v${version} installed to ${app_dir}/DearSQL.app"
-    echo "Linked ${BIN_DIR}/dearsql"
+    # an upgrade keeps whatever link the user already has
+    if [ -z "${DEARSQL_TARGET:-}" ]; then
+        mkdir -p "$BIN_DIR"
+        ln -sf "$dest/Contents/MacOS/DearSQL" "$BIN_DIR/dearsql"
+        echo "Linked ${BIN_DIR}/dearsql"
+    fi
 }
 
 path_hint() {
