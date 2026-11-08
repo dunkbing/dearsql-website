@@ -18,11 +18,16 @@ DearSQL does this by running a small [MCP](https://modelcontextprotocol.io) serv
 | `search_schema` | Finds tables, views and columns by name. Forgiving: `user id`, `userId` and a typo like `usres` all find `users.user_id` |
 | `describe_table` | Shows one table's columns, types, keys, indexes and which tables point at it |
 | `run_query` | Runs a **read-only** query and returns the rows |
+| `explain_query` | Shows a statement's query plan without running it, with warnings for full scans, repeated scans and big sorts (PostgreSQL, MySQL 8, SQLite) |
 | `list_tables` | Lists every table and view with its size |
 | `list_connections` | Lists your saved connections, which are open, and the databases on them |
 | `connect` | Opens one of your saved connections by name |
 | `execute_sql` | Runs a change (`INSERT`, `UPDATE`, `DELETE`, schema changes) **after you approve it** |
 | `add_connection` | Saves a new connection from a URL or file **after you approve it**, then opens it |
+
+When a query is slow, the agent can call `explain_query` instead of guessing. It gets the plan as a short indented tree, with the filter and join conditions, and a list of warnings from fixed rules: a full scan that reads 100,000 rows to keep 2,000, a table read in full once per row of a join, a sort that spilled to disk, or (with `analyze`, read-only statements only) a row estimate ten times off. The warnings are hints to check, not verdicts; an index the agent wants to add still goes through `execute_sql` and your approval.
+
+In a terminal, `dearsql --mcp` also serves `list_objects` and `read_object` for your [S3 connections](/docs/s3-storage#from-the-terminal-and-coding-agents).
 
 The agent works on the connection the chat was opened from (or a table you pinned with `@`) unless it names another connection or database. It's told to look names up with `search_schema` and `describe_table` before writing SQL, so it doesn't guess column names, and when a query still trips over a misspelled table it gets back "did you mean …" suggestions instead of a bare error.
 

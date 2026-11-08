@@ -25,6 +25,16 @@ Install on macOS (Apple silicon) or Linux, non-interactively: \`curl -fsSL ${SIT
 
 ${docs}
 
+## Agent tools
+
+The same tools over MCP (\`dearsql --mcp\`) and as shell commands (\`dearsql <tool> -c <connection>\`, where a connection is a saved name, a URL or a database file; \`dearsql tools\` prints them all):
+
+- \`search_schema\`, \`describe_table\`, \`list_tables\`: find tables and columns (fuzzy), then their keys, indexes and foreign keys.
+- \`run_query\`: one read-only statement; rows as compact text, with a cursor for more.
+- \`explain_query\`: the query plan plus rule-based warnings (filtered full scans, scans repeated per join row, big sorts, misestimates); PostgreSQL, MySQL 8, SQLite.
+- \`execute_sql\`: a change, with \`--allow-writes\` (MCP) or as \`dearsql exec\`; the user approves it.
+- \`list_objects\`, \`read_object\` (+ \`copy_object\`, \`delete_object\`, \`upload_object\`, \`download_object\` with writes): S3-compatible object storage connections.
+
 ## Pricing
 
 Free: every database and feature, up to ${FREE_SAVED_CONNECTIONS} saved connections and ${FREE_WORKSPACES} workspaces. Pro: a one-time purchase that removes both limits.

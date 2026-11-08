@@ -42,7 +42,7 @@ Uploads, downloads and copies show their progress in the toolbar, and transfers 
 
 ### Selecting, copying and moving
 
-Click a row to select it, Cmd-click (Ctrl-click on Windows and Linux) to add or remove one, and Shift-click to select a range; Cmd-A selects everything listed. The toolbar's **Copy**, **Cut**, **Paste** and **Delete** buttons act on the selection, and so do Cmd-C, Cmd-X, Cmd-V and Delete (or Cmd-Backspace), and the same items in the right-click menu.
+Click a row to select it, Cmd-click (Ctrl-click on Windows and Linux) to add or remove one, and Shift-click to select a range, or drag across rows; Cmd-A selects everything listed and Escape clears the selection. The toolbar's **Copy**, **Cut**, **Paste** and **Delete** buttons act on the selection, and so do Cmd-C, Cmd-X, Cmd-V and Delete (or Cmd-Backspace), and the same items in the right-click menu.
 
 Copy or cut, open another folder or another bucket of the same connection, and paste: a copy keeps the originals, a cut moves them. Pasting a copy into the folder it came from names it `name copy.ext`. The copy happens on the server, so big files don't pass through your computer, except on the few S3-compatible gateways that refuse server-side copies, where DearSQL downloads and re-uploads each file instead.
 

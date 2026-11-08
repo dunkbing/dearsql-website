@@ -68,6 +68,8 @@ On PostgreSQL, MySQL, MariaDB, SQL Server, SQLite, DuckDB, CockroachDB and TiDB,
 
 Tick **Analyze** to run the statement and see what really happened: actual rows next to the estimates, how many times each step ran, and the time each step took by itself. A bar shows each step's share of the total, and steps taking 30% or more turn red, so the slow part stands out. Row counts the planner got wrong by ten times or more are highlighted: that usually means stale statistics or a missing index. Because it runs the statement, Analyze only works for read queries.
 
+Above the tree, DearSQL points out steps that often mean a missing index or a slow plan, with a warning icon on the step itself: a full table scan whose filter throws most of the rows away, a table scanned in full once per row of a join, a sort that spilled to disk or sorts more than 100,000 rows, a row count ten times off the estimate, and on SQLite a temporary index built on every run. These come from fixed rules over the plan, not from your data, so treat them as things to check.
+
 **Raw** shows the plan exactly as the database returned it, for pasting into other tools.
 
 Query plans are available on PostgreSQL, MySQL 8.0.16 and later (Analyze from 8.0.18), and SQLite. SQLite reports the plan's shape only, without estimates or timings.
