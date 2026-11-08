@@ -22,13 +22,13 @@ The dropdown at the top of the tab lists the agents, plus **API key**. Your choi
 
 | Agent | What DearSQL launches |
 |---|---|
-| Claude Code | `@agentclientprotocol/claude-agent-acp`, through DearSQL's own Bun |
-| Gemini CLI | `@google/gemini-cli --experimental-acp`, through DearSQL's own Bun |
-| Codex | `@zed-industries/codex-acp`, through DearSQL's own Bun |
+| Claude Code | `@agentclientprotocol/claude-agent-acp`, through Bun |
+| Gemini CLI | `@google/gemini-cli --experimental-acp`, through Bun |
+| Codex | `@zed-industries/codex-acp`, through Bun |
 | Cursor | `cursor-agent acp`, or the prebuilt binary from the ACP registry |
 | Google Antigravity | The prebuilt binary from the ACP registry |
 
-Claude Code, Gemini CLI and Codex always run on a Bun runtime DearSQL downloads for itself, never on your own Node, `npx` or a global install. These agents need Node 22 or newer, and a version manager often has an older Node active; with one, the agent would quit right after starting. Cursor runs from your `PATH` if it's there, otherwise from a binary DearSQL downloads.
+Claude Code, Gemini CLI and Codex run on [Bun](https://bun.sh): yours if it's installed, otherwise one DearSQL sets up for itself the first time (the chat says "Setting up Claude Code..." meanwhile). They never run on your Node, `npx` or a global install. These agents need Node 22 or newer, and a version manager often has an older Node active; with one, the agent would quit right after starting. Cursor runs from your `PATH` if it's there, otherwise from a binary DearSQL downloads.
 
 If an agent quits, the chat shows the last lines it printed, so you can see why.
 
@@ -38,7 +38,7 @@ DearSQL gets what the agent needs by itself. Both downloads land in `~/.dearsql/
 
 **Cursor and Google Antigravity** ship as prebuilt binaries. The first time you pick one that isn't on your `PATH`, DearSQL looks it up in the official ACP registry and fetches the archive for your platform. No Node needed.
 
-**Claude Code, Gemini CLI and Codex** are npm packages. The first time you pick one, DearSQL fetches a pinned [Bun](https://bun.sh) release for your platform (about 25 MB), **verifies its SHA-256** against the release checksums, and runs the agent through it from then on.
+**Claude Code, Gemini CLI and Codex** are npm packages. If you don't have Bun, the first time you pick one DearSQL fetches a pinned [Bun](https://bun.sh) release for your platform (about 25 MB), **verifies its SHA-256** against the release checksums, and runs the agent through it from then on.
 
 ## Signing in
 
