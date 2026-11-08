@@ -23,6 +23,14 @@ While a query runs the button becomes **Cancel**, so a slow query never locks up
 
 Multi-statement scripts are supported. Each statement's result comes back separately, so a script that mixes `SELECT`s with `UPDATE`s shows both the rows and the affected-row counts, in order.
 
+### Parameters
+
+Write `:name` where a value goes, such as `where id = :id`, and DearSQL asks for the values before running, one field per name. A name used twice gets one field. Press Enter to move to the next field; Enter in the last one runs the query. The values stay with the tab, so running again starts from what you typed last.
+
+Numbers and `NULL` go in as typed, and anything else as a quoted string, with quotes escaped for you. A quoted string works for dates and other types too, since the database converts it to the column's type. `:name` inside strings and comments is left alone, as are `::` casts and MySQL's `:=`. This works with Explain too.
+
+<img src="/docs/sql-parameters.png" alt="The query parameters dialog with a field for each :name in the query" width="440" />
+
 ## Writing
 
 The editor has syntax highlighting, and autocomplete that reads the statement you are writing against the connected database's schema:
