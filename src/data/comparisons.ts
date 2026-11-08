@@ -160,7 +160,7 @@ export const competitors: Competitor[] = [
       },
       {
         q: "How is DearSQL different from DbGate?",
-        a: "DearSQL is a native C++ app rather than Electron, so it starts faster and uses less memory. Its AI assistant (Claude Code, Codex, Gemini CLI, Cursor or your own API key) is included in a $35 one-time license instead of a yearly subscription.",
+        a: "DearSQL is a native C++ app rather than Electron, so it starts faster and uses less memory. Its AI assistant (Claude Code, Codex, Gemini CLI, Grok, Cursor or your own API key) is included in a $35 one-time license instead of a yearly subscription.",
       },
       {
         q: "Is DearSQL a good DbGate alternative?",

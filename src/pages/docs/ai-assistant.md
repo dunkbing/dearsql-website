@@ -13,7 +13,7 @@ Right-click a connection in the sidebar and choose **Open Assistant** to open a 
 
 It can talk to two different kinds of backend:
 
-- **A coding agent** — Claude Code, Gemini CLI, Codex, Cursor or Google Antigravity, over the [Agent Client Protocol](https://agentclientprotocol.com). These are real agents: they stream their thinking, call tools, and ask permission before acting.
+- **A coding agent** — Claude Code, Gemini CLI, Codex, Grok, Cursor or Google Antigravity, over the [Agent Client Protocol](https://agentclientprotocol.com). These are real agents: they stream their thinking, call tools, and ask permission before acting.
 - **An API key** — Anthropic, OpenAI or Gemini, straight over HTTPS. No install, no agent process, but no tools either.
 
 ## Picking an agent
@@ -25,10 +25,11 @@ The dropdown at the top of the tab lists the agents, plus **API key**. Your choi
 | Claude Code | `@agentclientprotocol/claude-agent-acp`, through Bun |
 | Gemini CLI | `@google/gemini-cli --acp`, through Bun |
 | Codex | `@agentclientprotocol/codex-acp`, through Bun |
+| Grok | `@xai-official/grok agent stdio`, through Bun |
 | Cursor | `cursor-agent acp`, or the prebuilt binary from the ACP registry |
 | Google Antigravity | The prebuilt binary from the ACP registry |
 
-Claude Code, Gemini CLI and Codex run on [Bun](https://bun.sh): yours if it's installed, otherwise one DearSQL sets up for itself the first time (the chat says "Setting up Claude Code..." meanwhile). They never run on your Node, `npx` or a global install. These agents need Node 22 or newer, and a version manager often has an older Node active; with one, the agent would quit right after starting. Cursor runs from your `PATH` if it's there, otherwise from a binary DearSQL downloads.
+Claude Code, Gemini CLI, Codex and Grok run on [Bun](https://bun.sh): yours if it's installed, otherwise one DearSQL sets up for itself the first time (the chat says "Setting up Claude Code..." meanwhile). They never run on your Node, `npx` or a global install. These agents need Node 22 or newer, and a version manager often has an older Node active; with one, the agent would quit right after starting. Cursor runs from your `PATH` if it's there, otherwise from a binary DearSQL downloads.
 
 If an agent quits, the chat shows the last lines it printed, so you can see why.
 
@@ -38,7 +39,7 @@ DearSQL gets what the agent needs by itself. Both downloads land in `~/.dearsql/
 
 **Cursor and Google Antigravity** ship as prebuilt binaries. The first time you pick one that isn't on your `PATH`, DearSQL looks it up in the official ACP registry and fetches the archive for your platform. No Node needed.
 
-**Claude Code, Gemini CLI and Codex** are npm packages. If you don't have Bun, the first time you pick one DearSQL fetches a pinned [Bun](https://bun.sh) release for your platform (about 25 MB), **verifies its SHA-256** against the release checksums, and runs the agent through it from then on.
+**Claude Code, Gemini CLI, Codex and Grok** are npm packages. If you don't have Bun, the first time you pick one DearSQL fetches a pinned [Bun](https://bun.sh) release for your platform (about 25 MB), **verifies its SHA-256** against the release checksums, and runs the agent through it from then on.
 
 ## Signing in
 
