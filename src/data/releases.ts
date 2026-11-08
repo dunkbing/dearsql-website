@@ -21,7 +21,7 @@ export const releases: Release[] = [
   // no signatures the appcast skips it too. fill in date and signatures at release
   {
     version: "0.7.4",
-    date: "",
+    date: "2026-11-08",
     changes: [
       "Compare Schema With: pick two databases of the same kind (dev and production, or two schemas) and get a script that would make the first match the second. Nothing runs until you click Run.",
       "Review Indexes: a database's unindexed foreign keys and redundant indexes, with the statements to fix them, opened as a script.",
@@ -53,6 +53,16 @@ export const releases: Release[] = [
       "PostgreSQL: index columns show in key order, not table order.",
       "SQL Server: a failed query shows the server's error instead of \"General SQL Server error: Check messages from the SQL Server\".",
     ],
+    sparkle: {
+      edSignature:
+        "H/xekIWU9IIjrIoPpHNA90X35wQRwaMPhsDUlhFQ05bm0xhuMs2AnSWS0KpijE/7lIbbcoPlcFhDtH3xs5UVDQ==",
+      length: 20511202,
+    },
+    windows: {
+      edSignature:
+        "ZLj5l8w4lMwFm56EpY8eM7l2ZEExmxFh0tBdP/ahK0I+s/IXlrkmW2FACvoxg8lqSRaPOWXESpusUmT6GFpwCA==",
+      length: 17186816,
+    },
   },
   {
     version: "0.7.3",
