@@ -80,7 +80,7 @@ A saved script remembers the connection, database and schema it was written agai
 
 ## Results
 
-Results appear below the editor in the same grid used for browsing tables, so sorting, resizing and copying behave identically. Every executed query is added to **History**, the collapsible panel at the bottom of the sidebar, with its row count and duration.
+Results appear below the editor in the same grid used for browsing tables, so sorting, resizing and copying behave identically. Under the grid, **Data** and **JSON** switch to the rows as a JSON array, with the row count and run time on the right. Drag the top edge of the results to resize them. Every executed query is added to **History**, the collapsible panel at the bottom of the sidebar, with its row count and duration.
 
 ## Assistant
 

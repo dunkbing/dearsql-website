@@ -25,7 +25,9 @@ It searches what the sidebar has already loaded, so expand a database first if i
 
 <img src="/docs/table-grid.png" alt="A table open in the grid, with the filter box above and paging controls below" width="800" />
 
-The table viewer pages through data rather than loading everything: pick 10 to 500 rows per page at the bottom, and move with the arrow buttons. The row count is the real total, not the size of the page.
+The table viewer pages through data rather than loading everything: pick 10 to 500 rows per page at the bottom right, and move with the arrow buttons. The row count is the real total, not the size of the page.
+
+**Data** and **JSON** at the bottom left switch between the grid and the page as a JSON array of objects, one per row: NULL as `null`, booleans as `true`/`false`, and numbers as numbers (values such as `007` stay strings). Select and copy from it like any text.
 
 Click a column header to sort. Sorting is done by the database, so it applies across every page, not just the rows on screen.
 

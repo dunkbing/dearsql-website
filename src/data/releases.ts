@@ -32,6 +32,7 @@ export const releases: Release[] = [
       "SQL editor: Opt+Backspace deletes a word and Cmd+Backspace the rest of the line (Ctrl+Backspace and Ctrl+Shift+Backspace on Linux and Windows).",
       "SQL editor: typing in long scripts is faster, and an idle editor no longer re-highlights its whole text every frame.",
       "SQLite: foreign keys are enforced by default, so ON DELETE CASCADE and blocked deletes work as declared (SQLite itself leaves them off).",
+      "JSON view: results and tables switch between the grid and the rows as JSON.",
       "Delete preview: saving deletes shows the rows foreign keys reach in other tables, deleted by a cascade, set to NULL, or blocking the delete.",
       "Open Quickly: press ⌘P (Ctrl+P) to jump to any loaded table or view by name.",
       "SQL editor: query parameters. Write :name in a query and DearSQL asks for the values before running.",
