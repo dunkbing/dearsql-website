@@ -32,7 +32,7 @@ export const releases: Release[] = [
       "Open Quickly: press ⌘P (Ctrl+P) to jump to any loaded table or view by name.",
       "SQL editor: query parameters. Write :name in a query and DearSQL asks for the values before running.",
       "Sidebar: schemas with around 1,000 tables and views open in a quarter of a second and scroll smoothly.",
-      "A frame-rate counter in the bottom-right corner.",
+      "A frame-rate counter in the bottom-right corner, with Settings → Performance to hide it, turn off VSync (macOS, Windows) and pick a frame rate limit.",
       "SQL editor: syntax errors are underlined where the database stopped reading, with the message on hover.",
       "SQL Server: a failed query shows the server's error instead of \"General SQL Server error: Check messages from the SQL Server\".",
     ],
