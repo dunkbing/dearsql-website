@@ -24,6 +24,8 @@ export const releases: Release[] = [
     date: "",
     changes: [
       "ScyllaDB connections, on the Cassandra backend: keyspaces, tables, CQL editor and completion.",
+      "Review Indexes: a database's unindexed foreign keys and redundant indexes, with the statements to fix them, opened as a script.",
+      "Cassandra and ScyllaDB: table DDL from the server's own DESCRIBE, and TLS + Verify CA now refuses to connect without a CA file instead of skipping the check.",
       "Compare Schema With: pick two databases of the same kind (dev and production, or two schemas) and get a script that would make the first match the second. Nothing runs until you click Run.",
       "Profile Columns: a table's nulls, distinct values, min and max per column, in one quick query over the first 100,000 rows.",
       "Coding agents: profile_table and diff_schema do the same over MCP and as dearsql commands.",

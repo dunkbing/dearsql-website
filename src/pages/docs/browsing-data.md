@@ -86,11 +86,15 @@ The strip on the right opens the inspector, which has three tabs:
 
 - **Value** — the selected cell in a larger editor, for JSON, long text, or anything that doesn't fit a grid cell. Edit and Apply, or Revert.
 - **Metadata** — the table's columns with their types, nullability and primary keys, filterable by name.
-- **DDL** — the table's `CREATE TABLE` statement with its constraints and indexes, ready to copy. It is the server's own definition where it has one (`SHOW CREATE TABLE` on MySQL, `DBMS_METADATA` on Oracle, the stored SQL on SQLite and DuckDB); PostgreSQL's is rebuilt from its catalog, including identity and generated columns, check constraints and comments. Views, MongoDB collections and Redis keys don't have one.
+- **DDL** — the table's `CREATE TABLE` statement with its constraints and indexes, ready to copy. It is the server's own definition where it has one (`SHOW CREATE TABLE` on MySQL, `DBMS_METADATA` on Oracle, the stored SQL on SQLite and DuckDB, `DESCRIBE TABLE` on Cassandra 4+ and ScyllaDB, with the table's options and its indexes); PostgreSQL's is rebuilt from its catalog, including identity and generated columns, check constraints and comments. Views, MongoDB collections and Redis keys don't have one.
 
 ## Profiling a table
 
 Right-click a table and choose **Profile Columns** to see what its data looks like: a SQL editor opens and runs one query that lists every column with its number of nulls, distinct values, smallest and largest value. It reads the first 100,000 rows (not a random sample), so it stays quick on big tables, and the query is right there to edit (a `WHERE`, or a bigger `LIMIT`). Columns whose type has no order (booleans, UUIDs, JSON) leave min and max empty.
+
+## Reviewing indexes
+
+Right-click a database (a schema on PostgreSQL and SQL Server) and choose **Review Indexes**. DearSQL reads the tables (the first 200) and opens a script listing foreign keys with no index, which make joins and deletes on the referenced table scan the whole child table, and indexes another index already covers, which cost every write for nothing. Each finding says when it is fine to leave it, followed by the `CREATE INDEX` or `DROP INDEX` to consider. Nothing runs: keep the statements you want and click Run. These are rule-based hints, so check how the table is actually queried first; on a big production table, prefer `CREATE INDEX CONCURRENTLY` (PostgreSQL) or an online DDL.
 
 ## Comparing two databases
 
