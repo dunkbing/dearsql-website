@@ -74,7 +74,6 @@ When the changes delete rows, the dialog also shows what that does to rows in ot
 
 Counts deeper in a cascade say "up to", since a row reachable along two paths is counted on each. Only foreign keys in the same schema are followed. SQLite applies these rules only when `PRAGMA foreign_keys` is on for the connection; when it's off, the dialog says so and lists the rows that would be left pointing at deleted ones.
 
-
 Statements are keyed on the table's primary key. For a table without one, DearSQL matches on all column values, which is safe but can match more than one row if you have exact duplicates.
 
 On a [read-only connection](/docs/connections) none of this is available: cells can't be edited, the add, duplicate and delete buttons are disabled, and the toolbar shows a **Read-only** marker.
