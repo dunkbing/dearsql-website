@@ -23,8 +23,8 @@ The dropdown at the top of the tab lists the agents, plus **API key**. Your choi
 | Agent | What DearSQL launches |
 |---|---|
 | Claude Code | `@agentclientprotocol/claude-agent-acp`, through Bun |
-| Gemini CLI | `@google/gemini-cli --experimental-acp`, through Bun |
-| Codex | `@zed-industries/codex-acp`, through Bun |
+| Gemini CLI | `@google/gemini-cli --acp`, through Bun |
+| Codex | `@agentclientprotocol/codex-acp`, through Bun |
 | Cursor | `cursor-agent acp`, or the prebuilt binary from the ACP registry |
 | Google Antigravity | The prebuilt binary from the ACP registry |
 
@@ -42,7 +42,12 @@ DearSQL gets what the agent needs by itself. Both downloads land in `~/.dearsql/
 
 ## Signing in
 
-DearSQL doesn't handle agent credentials — each agent uses its own login. If an agent reports an authentication error, the panel shows a hint for that agent, for example running `claude /login` in a terminal, or setting `ANTHROPIC_API_KEY`.
+DearSQL doesn't handle agent credentials — each agent uses its own login. When an agent needs you to sign in, the chat shows its sign-in options as buttons:
+
+- **Codex** (ChatGPT) and **Gemini CLI** (Google) open your browser. Finish there and the chat carries on.
+- **Claude Code** opens a Terminal window running `claude /login`. Sign in there, then click **Continue** in the chat.
+
+You can also sign in ahead of time from a terminal (`claude /login`, `codex login`, or run `gemini` once), or set `ANTHROPIC_API_KEY`, `OPENAI_API_KEY` or `GEMINI_API_KEY`.
 
 For the **API key** backend, open the gear icon and paste an Anthropic, OpenAI or Gemini key. It's stored with your other DearSQL settings.
 

@@ -25,6 +25,7 @@ export const releases: Release[] = [
     changes: [
       "`dearsql upgrade` installs the latest release from the terminal, over the copy you run it from.",
       "Claude Code, Gemini CLI and Codex now run on Bun (yours, or one DearSQL sets up the first time), so an older Node from a version manager no longer makes them quit right after starting. When an agent does quit, the chat shows its last output.",
+      "Agent sign-in: Codex moves to the maintained codex-acp package (the old one picked a model ChatGPT accounts can't use), and Claude Code's Log in with Claude opens a Terminal running claude /login, with Continue in the chat.",
     ],
   },
   {
