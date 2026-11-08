@@ -34,7 +34,7 @@ const [macSize, linuxSize, winSize] = await Promise.all([
 const features = [
   "Syntax highlighting, query history, and autocomplete that knows your schema, aliases and CTEs.",
   "Browse and edit table data inline. Changes generate proper SQL before committing.",
-  "SQLite, DuckDB, PostgreSQL, MySQL, MariaDB, TiDB, CockroachDB, MongoDB, Redis, Oracle, MSSQL, Cassandra, and Redshift in one app.",
+  "SQLite, DuckDB, PostgreSQL, MySQL, MariaDB, TiDB, CockroachDB, MongoDB, Redis, Oracle, MSSQL, Cassandra, ScyllaDB, and Redshift in one app.",
   "Saved connections with encrypted credentials.",
   "Schema browser — tables, views, indexes, and more.",
   "AI agents in the app: Claude Code, Codex, Gemini CLI, Cursor or your own API key. They can read your schema, run read-only queries, check query plans for missing indexes, and make changes only after you approve them.",
@@ -48,7 +48,7 @@ const currentYear = new Date().getFullYear();
 
 <Layout
   title="DearSQL — Native Desktop SQL Client for macOS, Linux & Windows"
-  description="Fast, native desktop SQL client for SQLite, DuckDB, PostgreSQL, MySQL, MariaDB, TiDB, CockroachDB, MongoDB, Redis, MSSQL, Oracle, Cassandra and Redshift. No Electron. Free tier."
+  description="Fast, native desktop SQL client for SQLite, DuckDB, PostgreSQL, MySQL, MariaDB, TiDB, CockroachDB, MongoDB, Redis, MSSQL, Oracle, Cassandra, ScyllaDB and Redshift. No Electron. Free tier."
 >
   <script
     is:inline
@@ -62,7 +62,7 @@ const currentYear = new Date().getFullYear();
       operatingSystem: "macOS, Linux, Windows",
       softwareVersion: latestRelease.version,
       description:
-        "Fast, native desktop SQL client for SQLite, DuckDB, PostgreSQL, MySQL, MariaDB, TiDB, CockroachDB, MongoDB, Redis, Oracle, MSSQL, Cassandra, and Redshift. Built with C++ and ImGui. No Electron, no JVM.",
+        "Fast, native desktop SQL client for SQLite, DuckDB, PostgreSQL, MySQL, MariaDB, TiDB, CockroachDB, MongoDB, Redis, Oracle, MSSQL, Cassandra, ScyllaDB, and Redshift. Built with C++ and ImGui. No Electron, no JVM.",
       url: "https://dearsql.dev/",
       downloadUrl: "https://dearsql.dev/",
       screenshot: "https://dearsql.dev/sc.webp",
@@ -105,7 +105,7 @@ const currentYear = new Date().getFullYear();
           name: "What databases does DearSQL support?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "DearSQL supports SQLite, DuckDB, PostgreSQL, MySQL, MariaDB, TiDB, CockroachDB, MongoDB, Redis, Oracle, MSSQL, Cassandra, and Redshift — all in one native desktop app — plus S3-compatible object storage (Amazon S3, Cloudflare R2, MinIO, Wasabi).",
+            text: "DearSQL supports SQLite, DuckDB, PostgreSQL, MySQL, MariaDB, TiDB, CockroachDB, MongoDB, Redis, Oracle, MSSQL, Cassandra, ScyllaDB, and Redshift — all in one native desktop app — plus S3-compatible object storage (Amazon S3, Cloudflare R2, MinIO, Wasabi).",
           },
         },
         {
@@ -165,13 +165,13 @@ const currentYear = new Date().getFullYear();
       </p>
       <div class="flex flex-wrap gap-x-3 gap-y-0.5 text-xs text-subtext0 mb-3">
         <span
-          >* SQLite, DuckDB, PostgreSQL, MySQL, MariaDB, TiDB, CockroachDB, MongoDB, Redis, Oracle, MSSQL, Cassandra, Redshift, S3 storage</span
+          >* SQLite, DuckDB, PostgreSQL, MySQL, MariaDB, TiDB, CockroachDB, MongoDB, Redis, Oracle, MSSQL, Cassandra, ScyllaDB, Redshift, S3 storage</span
         >
         <span>* SSH tunneling & TLS</span>
         <span>* <a href="/docs/ai-assistant" class="hover:underline">AI agents: Claude Code, Codex, Gemini CLI, Cursor</a></span>
       </div>
       <p class="text-sm text-subtext0 mb-5">
-        DearSQL connects to SQLite, <a href="/duckdb" class="hover:underline">DuckDB</a>, PostgreSQL, MySQL, MariaDB, TiDB, CockroachDB, MongoDB, <a href="/redis" class="hover:underline">Redis</a>, Oracle, MSSQL, Cassandra, and Redshift from a single app, and browses <a href="/docs/s3-storage" class="hover:underline">S3-compatible object storage</a> next to them. Browse schemas, edit table data inline, write queries with full syntax highlighting, and route connections through SSH tunnels or TLS/SSL — all from a native C++ interface that starts in under a second. <a href="/compare" class="hover:underline">Compare DearSQL to TablePlus, DBeaver, and DataGrip →</a>
+        DearSQL connects to SQLite, <a href="/duckdb" class="hover:underline">DuckDB</a>, PostgreSQL, MySQL, MariaDB, TiDB, CockroachDB, MongoDB, <a href="/redis" class="hover:underline">Redis</a>, Oracle, MSSQL, Cassandra, ScyllaDB, and Redshift from a single app, and browses <a href="/docs/s3-storage" class="hover:underline">S3-compatible object storage</a> next to them. Browse schemas, edit table data inline, write queries with full syntax highlighting, and route connections through SSH tunnels or TLS/SSL — all from a native C++ interface that starts in under a second. <a href="/compare" class="hover:underline">Compare DearSQL to TablePlus, DBeaver, and DataGrip →</a>
       </p>
 
       <!-- Downloads -->
@@ -414,7 +414,7 @@ const currentYear = new Date().getFullYear();
     <section id="databases" class="pb-6 border-t border-surface1 pt-4">
       <h2 class="font-bold mb-2 before:content-['##_']">Supported Databases</h2>
       <p class="text-sm text-subtext0">
-        SQLite, <a href="/duckdb" class="hover:underline">DuckDB</a>, PostgreSQL, MySQL, MariaDB, TiDB, CockroachDB, MongoDB, <a href="/redis" class="hover:underline">Redis</a>, Oracle, MSSQL, Cassandra, Redshift.
+        SQLite, <a href="/duckdb" class="hover:underline">DuckDB</a>, PostgreSQL, MySQL, MariaDB, TiDB, CockroachDB, MongoDB, <a href="/redis" class="hover:underline">Redis</a>, Oracle, MSSQL, Cassandra, ScyllaDB, Redshift.
       </p>
     </section>
 
@@ -424,7 +424,7 @@ const currentYear = new Date().getFullYear();
       <div class="space-y-4 text-sm">
         <div>
           <p class="font-bold text-text">What databases does DearSQL support?</p>
-          <p class="text-subtext0 mt-1">SQLite, DuckDB, PostgreSQL, MySQL, MariaDB, TiDB, CockroachDB, MongoDB, Redis, Oracle, MSSQL, Cassandra, and Redshift — all in one native desktop app, plus S3 buckets. No need to switch between tools.</p>
+          <p class="text-subtext0 mt-1">SQLite, DuckDB, PostgreSQL, MySQL, MariaDB, TiDB, CockroachDB, MongoDB, Redis, Oracle, MSSQL, Cassandra, ScyllaDB, and Redshift — all in one native desktop app, plus S3 buckets. No need to switch between tools.</p>
         </div>
         <div>
           <p class="font-bold text-text">Is DearSQL free?</p>

@@ -27,6 +27,7 @@ Right-click the sidebar and choose **Add Database Connection**, or use the **+**
 | SQL Server | Databases and schemas |
 | Oracle | Downloads the Instant Client on first use if it's missing |
 | Cassandra | Keyspaces |
+| ScyllaDB | Uses the Cassandra backend; port 9042, keyspaces. New keyspaces use `NetworkTopologyStrategy` with one replica, which ScyllaDB's tablets require |
 
 File-based databases only need a path. Server databases take the usual host, port, user, password and database.
 
