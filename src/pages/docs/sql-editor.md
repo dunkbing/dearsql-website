@@ -80,7 +80,21 @@ A saved script remembers the connection, database and schema it was written agai
 
 ## Results
 
-Results appear below the editor in the same grid used for browsing tables, so sorting, resizing and copying behave identically. Under the grid, **Data** and **JSON** switch to the rows as a JSON array, with the row count and run time on the right. Drag the top edge of the results to resize them. Every executed query is added to **History**, the collapsible panel at the bottom of the sidebar, with its row count and duration.
+Results appear below the editor in the same grid used for browsing tables, so sorting, resizing and copying behave identically. Under the grid, **Data**, **JSON** and **Chart** switch between the grid, the rows as a JSON array, and a chart of them, with the row count and run time on the right. Drag the top edge of the results to resize them. Every executed query is added to **History**, the collapsible panel at the bottom of the sidebar, with its row count and duration.
+
+### Charts
+
+**Chart** plots the result without leaving the editor. DearSQL picks a first chart from the columns: the first text column along the X axis, the numeric ones (except ids) as series, bars for text and a line for numbers. The row above the chart changes it:
+
+- **Type**: bar, line, area, scatter or pie. A pie shows the first Y column, its ten biggest slices and the rest as "Other".
+- **X**: any column, or the row number.
+- **Y**: one or more numeric columns, each drawn as a series.
+- **Group by X**: Sum, Average, Count, Min or Max of the rows that share an X value. It starts at Sum when X values repeat, so `select country, total from orders` charts one bar per country.
+
+Hover the chart for the exact values at that point; NULLs leave a gap. The table viewer's **Chart** tab works the same way on the page it shows.
+
+<img src="/docs/results-chart.png" alt="A query result shown as a bar chart of revenue and cost per month, with the chart type, X, Y and group-by pickers above it" width="800" />
+
 
 ## Assistant
 
