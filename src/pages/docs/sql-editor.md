@@ -57,6 +57,9 @@ On PostgreSQL, MySQL, MariaDB, SQL Server, SQLite, DuckDB, CockroachDB and TiDB,
 
 <img src="/docs/sql-syntax-error.png" alt="A typo underlined in the SQL editor" width="800" />
 
+**Opt+Backspace** deletes the word before the cursor and **Cmd+Backspace** deletes back to the start of the line (**Ctrl+Backspace** and **Ctrl+Shift+Backspace** on Linux and Windows). At the start of a line, either one joins it to the line above.
+
+
 ## Query plans
 
 **Explain** shows how the database will run the statement under the cursor, or the selection if you have one, without running it. The plan opens below the editor as a tree: each step, the table and index it uses, the rows the planner expects and its cost. Hover a step for the rest of what the database reports, such as filter and join conditions and sort keys.
