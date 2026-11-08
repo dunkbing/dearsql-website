@@ -21,14 +21,25 @@ export const releases: Release[] = [
   // no signatures the appcast skips it too. fill in date and signatures at release
   {
     version: "0.7.5",
-    date: "",
+    date: "2026-11-09",
     changes: [
+      "Grok (xAI's Grok Build) joins the coding agents in the chat.",
       "`dearsql upgrade` installs the latest release from the terminal, over the copy you run it from.",
       "Claude Code, Gemini CLI and Codex now run on Bun (yours, or one DearSQL sets up the first time), so an older Node from a version manager no longer makes them quit right after starting. When an agent does quit, the chat shows its last output.",
       "Agent sign-in: Codex moves to the maintained codex-acp package (the old one picked a model ChatGPT accounts can't use), and Claude Code's Log in with Claude opens a Terminal running claude /login, with Continue in the chat.",
-      "Grok (xAI's Grok Build) joins the coding agents in the chat.",
+      "Gemini's Log in with Google opens your browser even when DearSQL was started from an SSH session.",
       "The model you pick for an agent is remembered for its next chats, so Codex no longer starts on a model from its own config that your account can't use.",
     ],
+    sparkle: {
+      edSignature:
+        "hS9idiNmyfKilzZ48moFXu5e/hyzHMSQuiZZFPB4YSCudwMYS32wPNkNwDI3W4odYsTmgzZC2N2UF/cmjiqQAQ==",
+      length: 20512091,
+    },
+    windows: {
+      edSignature:
+        "7DnX7nO/EarLQSbZRZlvIV0fKC90cid4kHcm/J4X4g2fzodNDUaQlHSJ3FZ91dHkmPoWa2jewxEAjQPU8S+DCg==",
+      length: 17182720,
+    },
   },
   {
     version: "0.7.4",
