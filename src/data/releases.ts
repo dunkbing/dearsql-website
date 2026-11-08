@@ -43,6 +43,7 @@ export const releases: Release[] = [
       "A frame-rate counter in the bottom-right corner, with Settings → Performance to hide it, turn off VSync (macOS, Windows) and pick a frame rate limit.",
       "Assistant: agents found on your PATH start when DearSQL is opened from the Dock or Finder.",
       "Assistant: the chat input lines up with the conversation instead of running edge to edge.",
+      "Assistant: a reopened chat shows your messages as you typed them, without the schema DearSQL attached, and Chat History has New on its menu.",
       "PostgreSQL: index columns show in key order, not table order.",
       "SQL Server: a failed query shows the server's error instead of \"General SQL Server error: Check messages from the SQL Server\".",
     ],
