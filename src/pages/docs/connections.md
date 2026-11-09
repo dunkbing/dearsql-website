@@ -72,7 +72,7 @@ Any server connection can be routed through a bastion host. Enable **SSH tunnel*
 
 Authenticate with a **password** or a **private key** (with a passphrase if it has one). The host field autocompletes from your `~/.ssh/config`, so an alias you already use will work.
 
-The tunnel uses your system `ssh`, so your existing config, keys and known hosts apply. It's opened when the connection opens and closed with it.
+DearSQL opens the tunnel itself, so it works the same on macOS, Windows, Linux and iPad, with no `ssh` program needed. Host aliases from your `~/.ssh/config` resolve to their HostName, Port, User and IdentityFile. The server's key is checked against your `~/.ssh/known_hosts`: a new server is added on first connect, and a server whose key changed is refused. Jump hosts (`ProxyJump`) and ssh-agent aren't supported; give the key file instead. The tunnel opens when the connection opens and closes with it.
 
 ## How credentials are stored
 

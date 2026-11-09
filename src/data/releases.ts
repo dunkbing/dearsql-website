@@ -20,6 +20,13 @@ export const releases: Release[] = [
   // no date yet = upcoming: download links skip it, the changelog says "upcoming", and with
   // no signatures the appcast skips it too. fill in date and signatures at release
   {
+    version: "0.7.6",
+    date: "",
+    changes: [
+      "SSH tunnels run inside DearSQL instead of through the ssh program, so they work the same everywhere: password and passphrase-protected keys now work on Windows too, and many connections share one SSH session. ~/.ssh/config aliases and known_hosts still apply; jump hosts (ProxyJump) and ssh-agent are not supported.",
+    ],
+  },
+  {
     version: "0.7.5",
     date: "2026-11-09",
     changes: [
