@@ -121,7 +121,7 @@ const currentYear = new Date().getFullYear();
           name: "What platforms does DearSQL run on?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "DearSQL runs natively on macOS (Metal), Linux (OpenGL), and Windows (DirectX). It is built with C++ and ImGui — no Electron or JVM.",
+            text: "DearSQL runs natively on macOS (Metal), Linux (OpenGL), and Windows (DirectX). It is built with C++ and ImGui — no Electron or JVM. An iPad and iPhone app (Metal) is coming to the App Store.",
           },
         },
         {
@@ -266,6 +266,15 @@ const currentYear = new Date().getFullYear();
           {winSize && <span class="text-subtext0 text-xs">[{winSize}]</span>}
           <span class="os-hint hidden text-xs text-green">&larr; your system</span>
         </a>
+        <!-- link it to apps.apple.com/app/id6832471320 once the app is live -->
+        <div class="flex items-center px-3 py-2 gap-2">
+          <span
+            ><span class="text-subtext0">* </span>iPad &amp; iPhone <span
+              class="text-subtext0">(App Store)</span
+            ></span
+          >
+          <span class="text-subtext0 text-xs">coming soon</span>
+        </div>
       </div>
       <script>
         // mark the row matching the visitor's platform. android also reports
@@ -334,6 +343,14 @@ const currentYear = new Date().getFullYear();
           style="background:none;border:none;padding:0;cursor:pointer;font-family:inherit;font-size:inherit;color:var(--subtext0);"
           >Windows</button
         >
+        <span>|</span>
+        <button
+          id="tab-ipad"
+          class="tab-btn"
+          data-tab="ipad"
+          style="background:none;border:none;padding:0;cursor:pointer;font-family:inherit;font-size:inherit;color:var(--subtext0);"
+          >iPad</button
+        >
       </div>
       <div
         id="screenshot-macos"
@@ -372,6 +389,19 @@ const currentYear = new Date().getFullYear();
           height="913"
           loading="lazy"
           class="w-full h-auto"
+        />
+      </div>
+      <div
+        id="screenshot-ipad"
+        class="screenshot-panel hidden border border-surface1 overflow-hidden"
+      >
+        <img
+          src="/sc_ipad.webp"
+          alt="DearSQL on iPad — a SQLite table with the sidebar tree"
+          width="1032"
+          height="1376"
+          loading="lazy"
+          class="block w-full max-w-md mx-auto h-auto"
         />
       </div>
     </section>
@@ -432,7 +462,7 @@ const currentYear = new Date().getFullYear();
         </div>
         <div>
           <p class="font-bold text-text">What platforms does DearSQL run on?</p>
-          <p class="text-subtext0 mt-1">DearSQL runs natively on macOS (Metal), Linux (OpenGL), and Windows (DirectX). Built with C++ and ImGui — no Electron, no JVM, starts in under a second.</p>
+          <p class="text-subtext0 mt-1">DearSQL runs natively on macOS (Metal), Linux (OpenGL), and Windows (DirectX). Built with C++ and ImGui — no Electron, no JVM, starts in under a second. An iPad and iPhone app is coming to the App Store.</p>
         </div>
         <div>
           <p class="font-bold text-text">Does DearSQL support SSH tunneling?</p>
