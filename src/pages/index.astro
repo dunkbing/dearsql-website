@@ -280,7 +280,12 @@ const currentYear = new Date().getFullYear();
         // mark the row matching the visitor's platform. android also reports
         // "Linux", so it has to be excluded before the linux check.
         const ua = navigator.userAgent;
-        const os = /Mac|iPhone|iPad/.test(ua)
+        // ipad safari says "Macintosh": touch points tell it apart; no download fits a phone or tablet
+        const mobile =
+          /iPhone|iPad/.test(ua) || (/Mac/.test(ua) && navigator.maxTouchPoints > 1);
+        const os = mobile
+          ? null
+          : /Mac/.test(ua)
           ? "mac"
           : /Win/.test(ua)
             ? "windows"
