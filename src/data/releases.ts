@@ -25,6 +25,7 @@ export const releases: Release[] = [
     changes: [
       "SSH tunnels run inside DearSQL instead of through the ssh program, so they work the same everywhere: password and passphrase-protected keys now work on Windows too, and many connections share one SSH session. ~/.ssh/config aliases and known_hosts still apply; jump hosts (ProxyJump) and ssh-agent are not supported.",
       "On macOS the title bar is drawn in the app's theme: the sidebar toggle, new connection, workspace picker and settings sit in one row beside the window buttons, and a double-click on the empty bar zooms the window (or minimizes it, following your Dock settings).",
+      "`dearsql --mcp` sees connections saved after it started (with `dearsql connect` or in the app), so an agent can use them without restarting.",
     ],
   },
   {
