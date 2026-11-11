@@ -21,12 +21,25 @@ export const releases: Release[] = [
   // no signatures the appcast skips it too. fill in date and signatures at release
   {
     version: "0.7.6",
-    date: "",
+    date: "2026-11-11",
     changes: [
       "SSH tunnels run inside DearSQL instead of through the ssh program, so they work the same everywhere: password and passphrase-protected keys now work on Windows too, and many connections share one SSH session. ~/.ssh/config aliases and known_hosts still apply; jump hosts (ProxyJump) and ssh-agent are not supported.",
-      "On macOS the title bar is drawn in the app's theme: the sidebar toggle, new connection, workspace picker and settings sit in one row beside the window buttons, and a double-click on the empty bar zooms the window (or minimizes it, following your Dock settings).",
+      "The title bar is drawn in the app's theme on macOS, Windows and Linux: the sidebar toggle, new connection, workspace picker and settings sit in one row beside the window buttons, and a double-click on the empty bar zooms the window (on macOS, or minimizes it, following your Dock settings).",
+      "Alerts, prompts and the license dialog look the same on every platform, in the app's theme.",
+      "An idle window no longer redraws frames that haven't changed, so DearSQL uses less CPU and battery while you read results (macOS and Windows).",
+      "A new app icon: the orb on its own, without the dark square around it.",
       "`dearsql --mcp` sees connections saved after it started (with `dearsql connect` or in the app), so an agent can use them without restarting.",
     ],
+    sparkle: {
+      edSignature:
+        "12ge4//oQho2omDs3lAMXk0W9TRdk9PoAn1gGi9PzvES7qb8QrazxGRogPOnZ2SFyzF+9NbN4u/5+8RObx8pAg==",
+      length: 20203481,
+    },
+    windows: {
+      edSignature:
+        "hvCNX7RsO7o78TdA6L7JGxSwfpnWC8t/CakJRd2TJZILRW8G8VBRbssY6/L5u9+5dvZw6Lkzk50T4DsQ8fc8BQ==",
+      length: 17211392,
+    },
   },
   {
     version: "0.7.5",
