@@ -4,6 +4,9 @@ export const GITHUB_RELEASE_BASE =
 export interface SparkleInfo {
   edSignature: string;
   length: number;
+  // windows: msiexec arguments for the update (e.g. "/passive /norestart RELAUNCH=1"); set only when the
+  // release before it closes itself for the installer (its updater has the shutdown callback)
+  installerArguments?: string;
 }
 
 export interface Release {

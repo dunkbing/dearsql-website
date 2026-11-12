@@ -30,7 +30,7 @@ export const GET: APIRoute = () => {
         length="${r.windows.length}"
         type="application/octet-stream"
         sparkle:os="windows"
-      />`);
+${r.windows.installerArguments ? `        sparkle:installerArguments="${r.windows.installerArguments}"\n` : ""}      />`);
       }
 
       return `        <item>
