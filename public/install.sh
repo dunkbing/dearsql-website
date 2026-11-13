@@ -40,7 +40,7 @@ main() {
         Linux) install_linux ;;
         Darwin) install_macos ;;
         *)
-            echo "This installer supports Linux and macOS. On Windows, download the MSI from https://dearsql.dev"
+            echo "This installer supports Linux and macOS. On Windows, download the installer from https://dearsql.dev"
             exit 1
             ;;
     esac

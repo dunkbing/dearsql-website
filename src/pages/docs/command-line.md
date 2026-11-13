@@ -33,7 +33,7 @@ curl -fsSL https://dearsql.dev/install.sh | sh
 
 To update later, run `dearsql upgrade` (from 0.7.5), or this script again. If `~/.local/bin` isn't on your `PATH`, the script prints the line to add. Check the install with `dearsql --version`.
 
-On Windows, download the MSI from the [home page](/).
+On Windows, download the installer from the [home page](/).
 
 ## Installing the `dearsql` command from the app
 
@@ -50,7 +50,7 @@ If you move the app later, click the button again to point the command at the ne
 
 - On macOS it downloads the new DearSQL.app, checks it's signed by DearSQL's developer, and replaces the app wherever it is, keeping your `dearsql` link as it is. If the app's folder isn't writable (an `/Applications` owned by an administrator), it says so and leaves the old app in place.
 - On Linux it downloads the AppImage, checks its SHA-256 and replaces the one you ran.
-- On Windows it downloads the MSI and starts the installer, which shows its progress and replaces the app once `dearsql` has exited.
+- On Windows it downloads the installer and starts it, which shows its progress, closes the app if it is open and replaces it once `dearsql` has exited.
 
 Quit the app before upgrading on macOS and Linux; the running copy keeps the old version until it restarts. The app also updates itself: **Settings → Check for Updates...**.
 

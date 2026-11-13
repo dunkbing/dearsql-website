@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { releases, dmgUrl, msiUrl, toRfc822 } from "../data/releases";
+import { releases, dmgUrl, windowsUrl, toRfc822 } from "../data/releases";
 
 export const GET: APIRoute = () => {
   const items = releases
@@ -25,7 +25,7 @@ export const GET: APIRoute = () => {
 
       if (r.windows) {
         enclosures.push(`            <enclosure
-        url="${msiUrl(r.version)}"
+        url="${windowsUrl(r.version)}"
         sparkle:edSignature="${r.windows.edSignature}"
         length="${r.windows.length}"
         type="application/octet-stream"

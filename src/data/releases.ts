@@ -4,8 +4,8 @@ export const GITHUB_RELEASE_BASE =
 export interface SparkleInfo {
   edSignature: string;
   length: number;
-  // windows: msiexec arguments for the update (e.g. "/passive /norestart RELAUNCH=1"); set only when the
-  // release before it closes itself for the installer (its updater has the shutdown callback)
+  // windows: installer arguments WinSparkle passes when it runs the installer itself. apps from
+  // FIRST_SETUP_EXE on stage updates with their own arguments, so this is for older apps only
   installerArguments?: string;
 }
 
@@ -749,8 +749,24 @@ export function dmgUrl(version: string): string {
   return `${GITHUB_RELEASE_BASE}/v${version}/DearSQL.dmg`;
 }
 
-export function msiUrl(version: string): string {
-  return `${GITHUB_RELEASE_BASE}/v${version}/DearSQL-x64.msi`;
+// the first release whose windows download is the inno setup exe (per user, staged updates); it
+// removes the msi earlier releases shipped. set it to the real version if that isn't 0.7.7
+export const FIRST_SETUP_EXE = "0.7.7";
+
+function atLeast(version: string, min: string): boolean {
+  const a = version.split(".").map(Number);
+  const b = min.split(".").map(Number);
+  for (let i = 0; i < Math.max(a.length, b.length); i++) {
+    const d = (a[i] ?? 0) - (b[i] ?? 0);
+    if (d !== 0) return d > 0;
+  }
+  return true;
+}
+
+export function windowsUrl(version: string): string {
+  return atLeast(version, FIRST_SETUP_EXE)
+    ? `${GITHUB_RELEASE_BASE}/v${version}/DearSQL-x64-setup.exe`
+    : `${GITHUB_RELEASE_BASE}/v${version}/DearSQL-x64.msi`;
 }
 
 export function appImageUrl(
