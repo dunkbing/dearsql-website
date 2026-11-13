@@ -23,6 +23,29 @@ export const releases: Release[] = [
   // no date yet = upcoming: download links skip it, the changelog says "upcoming", and with
   // no signatures the appcast skips it too. fill in date and signatures at release
   {
+    version: "0.7.7",
+    date: "2026-11-14",
+    changes: [
+      "Windows: DearSQL installs with a setup program instead of an MSI. Updates now install in the background while you work and take effect when DearSQL restarts, with Restart Now or Later. Updating from 0.7.6 runs the setup once, keeping your install folder, shortcuts and settings.",
+      "Typing with an input method (Chinese, Japanese, Korean, Vietnamese) composes right in the field on macOS, Windows and Linux, with the usual underline and candidate window.",
+      "Colour emoji show in results, editors and the chat, and Korean text shows on every desktop. On macOS, Ctrl-Cmd-Space opens the emoji picker.",
+      "A refreshed theme: primary buttons in the accent colour, rounded menus and popups, and light-theme popups on white with a border.",
+      "SQL editor: Left and Right collapse a selection, typing after an undo clears redo, and the comment shortcut uses # in Redis.",
+      "Windows: on a machine without a usable GPU DearSQL draws in software instead of failing to start, and a minimized window draws nothing.",
+    ],
+    sparkle: {
+      edSignature:
+        "Yg4nh19mjiC96OiOjfJ5eprKjt5FA6VaEM7FGPJLSWxin3bE2huGrkN8kipFZcwIkRLcr6IGXgQZup10DHpwBg==",
+      length: 20227463,
+    },
+    // no installerArguments: 0.7.6 cannot close itself for a silent run, so its update shows the wizard
+    windows: {
+      edSignature:
+        "BUs0C+/zMRY/rVlu98pEGBWMaIGqJYvNHlwO+tG/KQhh818jgF6JQf00QBuTdI91BleUVAyrXXZ2ruPS91kcCg==",
+      length: 15567765,
+    },
+  },
+  {
     version: "0.7.6",
     date: "2026-11-11",
     changes: [
