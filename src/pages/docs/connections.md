@@ -31,6 +31,8 @@ Right-click the sidebar and choose **Add Database Connection**, or use the **+**
 
 File-based databases only need a path. Server databases take the usual host, port, user, password and database.
 
+You can also drop a SQLite (`.db`, `.sqlite`, `.sqlite3`), DuckDB (`.duckdb`, `.ddb`) or CSV file anywhere on the window to open it. On macOS and Linux the window is outlined while a file is dragged over it.
+
 ## Connecting
 
 Connections are lazy: adding one saves it, and expanding it in the sidebar is what actually connects. If a connection fails, the error from the driver is shown in place under the node rather than in a dialog you have to dismiss.
