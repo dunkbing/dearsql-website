@@ -67,7 +67,7 @@ A connection marked **Read-only connection** in its settings never accepts a cha
 
 In a terminal, `dearsql --mcp` only offers `execute_sql` with `--allow-writes`, and your agent asks before each call instead (see [Command line](/docs/command-line#letting-the-agent-make-changes)).
 
-Results come back 50 rows at a time. If there are more, the agent can ask for the next page without re-running the query; a page also stops at about 30 KB of text (the result says so), and a single query stops at 1,000 rows, so a careless `SELECT *` on a huge table can't flood the conversation.
+Results come back 50 rows at a time. If there are more, the agent can ask for the next page without re-running the query; a page also stops at about 30 KB of text (the result says so), and a single query stops at 1,000 rows, so a careless `SELECT *` on a huge table can't flood the conversation. Long values (a big JSON or text column) are cut at 200 characters, and the result says so; when you need the whole value, the agent can ask for it with `maxCellChars` set to 0 (`dearsql query --maxCellChars 0` in a terminal).
 
 `connect` opens a saved connection, and naming a closed connection in any other tool opens it the same way. To add one you haven't saved — say, a database the agent just started in Docker — it calls `add_connection` with a URL or a file path, and the chat asks you before saving it (the password isn't shown). Saved connections count toward the free tier's limit like any other. With `dearsql --mcp` in a terminal there's no app to ask, so `connect` takes a connection URL or a SQLite, DuckDB or CSV file path instead; that connection lasts until the server stops and is never saved.
 
