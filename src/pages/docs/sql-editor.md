@@ -19,7 +19,7 @@ To run one statement of a script without selecting it, click the green play icon
 
 <img src="/docs/sql-run-statement.png" alt="Hovering a statement's play icon outlines what it will run" width="800" />
 
-While a query runs the button becomes **Cancel**, so a slow query never locks up the app; DearSQL keeps rendering and you can keep working in other tabs.
+While a query runs, **Cancel** appears next to **Run**, so a slow query never locks up the app; DearSQL keeps rendering and you can keep working in other tabs. Cancel stops the query on the server and shows its error in the results. MongoDB, Redis and Cassandra cannot stop a running query, so after a few seconds the editor stops waiting and the query may still finish on the server.
 
 Multi-statement scripts are supported. Each statement's result comes back separately, so a script that mixes `SELECT`s with `UPDATE`s shows both the rows and the affected-row counts, in order.
 
