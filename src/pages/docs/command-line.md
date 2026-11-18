@@ -154,7 +154,7 @@ echo "SELECT * FROM orders LIMIT 5" | dearsql query -c prod
 | `dearsql read_object <bucket> <key>` | `read_object` (S3: the start of a file as text) |
 | `dearsql copy_object`, `delete_object`, `upload_object`, `download_object` | the same S3 writes; `copy_object --move` moves |
 
-`dearsql connect` with a URL or a file checks the connection and saves it to the app's connection list (the current workspace), unless it is saved already; on the free tier it stops saving at the connection limit. A URL or file passed with `-c` is only used for that command.
+`dearsql connect` with a URL or a file checks the connection and saves it to the app's connection list (the current workspace), unless it is saved already. It is saved under its host and database unless you name it: `dearsql connect "postgres://…" --save-as myapp_prod`. On the free tier it stops saving at the connection limit. A URL or file passed with `-c` is only used for that command.
 
 `-c` takes a saved connection name, a URL or a file, and `-d` picks the database; set `DEARSQL_CONNECTION` to skip `-c` on every call. SQL can also come on stdin. When a result ends with `cursor: …`, run the same command again with `--cursor` to get the next page. `dearsql tools` prints every command with its options and the guidance the MCP server gives agents, so pointing an agent at it is enough to get started. The tool names work as commands too (`dearsql run_query`).
 
