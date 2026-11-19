@@ -82,7 +82,7 @@ A saved script remembers the connection, database and schema it was written agai
 
 ## Results
 
-Results appear below the editor in the same grid used for browsing tables, so sorting, resizing and copying behave identically. Under the grid, **Data**, **JSON** and **Chart** switch between the grid, the rows as a JSON array, and a chart of them, with the row count and run time on the right. Drag the top edge of the results to resize them. Every executed query is added to **History**, the collapsible panel at the bottom of the sidebar, with its row count and duration.
+Results appear below the editor in the same grid used for browsing tables, so sorting, resizing and copying behave identically. Under the grid, **Data**, **JSON** and **Chart** switch between the grid, the rows as a JSON array, and a chart of them, with the row count and run time on the right. The **Excel** button next to them saves every result of the run as an Excel workbook, one sheet per result, with the same typing as [exporting a table](/docs/import-export) (desktop only). Drag the top edge of the results to resize them. Every executed query is added to **History**, the collapsible panel at the bottom of the sidebar, with its row count and duration.
 
 ### Charts
 

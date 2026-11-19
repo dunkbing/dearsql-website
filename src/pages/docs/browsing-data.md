@@ -53,6 +53,10 @@ Hover or select one of those cells and a small jump button appears at its right 
 
 The entry only appears on columns that actually have a foreign key, and not on null cells. Foreign keys are read from the database on connect, so SQLite, DuckDB, PostgreSQL, MySQL, MariaDB and SQL Server all support it.
 
+## Selecting cells
+
+Click a cell, then hold **Shift** and move to select a block: the arrow keys go one cell, **Page Up** / **Page Down** a screen, **Home** / **End** to the first or last column, and **Cmd** / **Ctrl** with an arrow to the edge of the table. Shift-click and dragging select a block too, and **Cmd+A** / **Ctrl+A** selects everything. **Cmd+C** / **Ctrl+C** copies the block as CSV.
+
 ## Editing
 
 Cells are editable in place. Edited cells are highlighted, and nothing is sent to the database until you save:

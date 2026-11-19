@@ -21,10 +21,13 @@ Right-click a table and choose an export format:
 | DDL (structure only) | Just the `CREATE TABLE` and its indexes — for a pull request, a design doc, or setting up another environment |
 | Markdown | Pasting into a pull request, an issue, or notes |
 | HTML | A standalone page you can open in a browser or paste into a document |
+| Excel workbook | Handing data to people who work in Excel (desktop only) |
 
 Markdown escapes pipes and turns newlines into `<br>`, so a table with awkward content still renders. HTML is written as a complete, self-contained document rather than a bare fragment.
 
-Selecting several tables exports them all — one file each into a folder you pick, except SQL and DDL, which write a single file.
+An Excel workbook keeps types: numbers and booleans are real Excel values, date and timestamp columns become Excel dates, and NULL is an empty cell. Text stays text, so `00123` keeps its zeros, and a number Excel would round (a 19-digit id, say) is written as text. The header row is bold, frozen and has filters. A table past Excel's 1,048,576 rows continues on a second sheet rather than being cut off.
+
+Selecting several tables exports them all — one file each into a folder you pick, except SQL and DDL, which write a single file, and Excel, which writes one workbook with a sheet per table.
 
 To grab one table's definition without saving a file, choose **Copy DDL** from the same menu; it goes straight to the clipboard. The inspector's [DDL tab](/docs/browsing-data#inspector) shows it too.
 

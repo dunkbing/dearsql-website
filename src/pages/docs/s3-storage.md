@@ -4,7 +4,7 @@ title: "S3 object storage"
 description: "Browse buckets on Amazon S3, Cloudflare R2, MinIO, Wasabi, VersityGW and other S3-compatible services: upload, download, copy, move, delete and share objects."
 section: "Data"
 sectionOrder: 3
-order: 3
+order: 4
 ---
 
 DearSQL connects to Amazon S3 and to any service that speaks the S3 API — Cloudflare R2, MinIO, Wasabi, VersityGW, Backblaze B2, DigitalOcean Spaces and others. Buckets show up in the sidebar next to your databases, and each one opens in a tab where you can browse folders and move files in and out.
