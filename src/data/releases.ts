@@ -23,6 +23,32 @@ export const releases: Release[] = [
   // no date yet = upcoming: download links skip it, the changelog says "upcoming", and with
   // no signatures the appcast skips it too. fill in date and signatures at release
   {
+    version: "0.8.0",
+    date: "2026-11-21",
+    changes: [
+      "Excel workbooks: open a .xlsx and query its sheets with SQL (each sheet is a table), import a sheet into a table, and export tables or query results to Excel with real numbers and dates, a bold header and filters.",
+      "Report-style sheets read correctly: the header is found below a title, empty side columns and blank rows are left out, and an error cell such as #N/A no longer turns a number column into text.",
+      "AI agents work with Excel too: they see how each sheet is laid out, and can save a query's rows as a spreadsheet (export_query, or `dearsql export report.xlsx \"SELECT ...\"`), with your approval in the chat.",
+      "Results and table grids draw up to 50x faster on wide results, and Shift with the arrow keys, Home/End and Page Up/Down extends the selection.",
+      "Cancel in the SQL editor stops the query on the server, not just the wait.",
+      "A System theme that follows the macOS light or dark appearance.",
+      "Faster paging through table data and faster table lists on MySQL.",
+      "Agent tools reconnect a dropped PostgreSQL session by themselves, and can read a long value whole.",
+      "`dearsql connect --save-as <name>` saves a connection under the name you choose.",
+      "The window is outlined while you drag files over it.",
+    ],
+    sparkle: {
+      edSignature:
+        "5eWIvplQcfLeCa4rl8Dto5K5hE1hBRHTRXWLoTJ10nN90bwFTa5TakJEpKLm+p/WTCtDpWM64L8KqhzZ2vwjAw==",
+      length: 20583865,
+    },
+    windows: {
+      edSignature:
+        "RlU21lZxgxNHrI0Qpew8PCiDzYu+2T1NTevE2HP1f8XihBK1dvKSeNvt4m1h8DauMWR7IkpLyxGRvaLFcgJMDQ==",
+      length: 15847875,
+    },
+  },
+  {
     version: "0.7.7",
     date: "2026-11-14",
     changes: [
