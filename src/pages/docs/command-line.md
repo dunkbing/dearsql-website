@@ -150,6 +150,7 @@ echo "SELECT * FROM orders LIMIT 5" | dearsql query -c prod
 | `dearsql profile_table <table>` | `profile_table` (`--sample` rows) |
 | `dearsql diff_schema --other-database <db>` | `diff_schema` (`--other-connection` for another server) |
 | `dearsql exec <sql>` | `execute_sql` |
+| `dearsql export <file.xlsx> <sql>` | `export_query` (a read-only query's rows as an Excel file; `--sheet` names the sheet, `--overwrite true` replaces a file) |
 | `dearsql list_objects` | `list_objects` (S3: buckets, or one folder with `--bucket`, `--prefix`) |
 | `dearsql read_object <bucket> <key>` | `read_object` (S3: the start of a file as text) |
 | `dearsql copy_object`, `delete_object`, `upload_object`, `download_object` | the same S3 writes; `copy_object --move` moves |

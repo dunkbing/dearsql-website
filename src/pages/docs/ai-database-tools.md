@@ -26,6 +26,7 @@ DearSQL does this by running a small [MCP](https://modelcontextprotocol.io) serv
 | `list_tables` | Lists every table and view with its size |
 | `list_connections` | Lists your saved connections, which are open, and the databases on them |
 | `connect` | Opens one of your saved connections by name |
+| `export_query` | Saves the rows of a read-only query as an Excel file (`.xlsx`) **after you approve the file** |
 | `execute_sql` | Runs a change (`INSERT`, `UPDATE`, `DELETE`, schema changes) **after you approve it** |
 | `add_connection` | Saves a new connection from a URL or file **after you approve it**, then opens it |
 
@@ -64,6 +65,8 @@ When the agent wants to change something, it calls `execute_sql` and the chat sh
 - **Reject** tells the agent no, and nothing reaches the database.
 
 A connection marked **Read-only connection** in its settings never accepts a change from the agent. An unanswered request is rejected after 5 minutes.
+
+Saving a spreadsheet with `export_query` asks the same way, showing the file and the query. Approving a file never lets the agent change a database, and the agent has to give a full path (`~/Desktop/report.xlsx`); it can't replace an existing file unless it asks to.
 
 In a terminal, `dearsql --mcp` only offers `execute_sql` with `--allow-writes`, and your agent asks before each call instead (see [Command line](/docs/command-line#letting-the-agent-make-changes)).
 
