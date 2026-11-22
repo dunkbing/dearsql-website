@@ -24,13 +24,23 @@ export const releases: Release[] = [
   // no signatures the appcast skips it too. fill in date and signatures at release
   {
     version: "0.8.1",
-    date: "",
+    date: "2026-11-22",
     changes: [
       "macOS: in-app updates work again. If 0.7.7 or an early download of 0.8.0 showed \"An error occurred while running the updater\", download DearSQL once from dearsql.dev; updates install by themselves after that.",
       "iCloud sync is now a choice in Settings → iCloud, off by default. If you synced before, turn it on there to keep syncing.",
       "The New Connection dialog opens instantly, even with many saved connections.",
       "The SQL and MongoDB editors give the full width to the editor and results: the Assistant side strip is gone. Open the assistant chat from a connection instead.",
     ],
+    sparkle: {
+      edSignature:
+        "xfdrnHwkAmLALiWY/dHk8Cqw0hakFYFR+h4je1kGguJRmlRmMmDaRGjknz2aFT+3pdLPvOVlXMi/pUxh0XCDAA==",
+      length: 20565586,
+    },
+    windows: {
+      edSignature:
+        "6Xzjig5dLWJfvNX4bgjm43cW3+y6R4XOLeBSEbozpHSHy7jWwKMxQ26FQJDGPIa9kC7PdEg+sAFZqhTYJMnkAA==",
+      length: 15840400,
+    },
   },
   {
     version: "0.8.0",
