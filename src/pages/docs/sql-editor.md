@@ -96,8 +96,3 @@ Results appear below the editor in the same grid used for browsing tables, so so
 Hover the chart for the exact values at that point; NULLs leave a gap. The table viewer's **Chart** tab works the same way on the page it shows.
 
 <img src="/docs/results-chart.png" alt="A query result shown as a bar chart of revenue and cost per month, with the chart type, X, Y and group-by pickers above it" width="800" />
-
-
-## Assistant
-
-Each editor also has its own AI chat panel for quick "write me this query" work, separate from the [assistant chat](/docs/ai-assistant) you open from a connection. Code blocks it produces have an **Insert** button that drops the SQL straight into the editor.

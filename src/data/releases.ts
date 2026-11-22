@@ -23,6 +23,16 @@ export const releases: Release[] = [
   // no date yet = upcoming: download links skip it, the changelog says "upcoming", and with
   // no signatures the appcast skips it too. fill in date and signatures at release
   {
+    version: "0.8.1",
+    date: "",
+    changes: [
+      "macOS: in-app updates work again. If 0.7.7 or an early download of 0.8.0 showed \"An error occurred while running the updater\", download DearSQL once from dearsql.dev; updates install by themselves after that.",
+      "iCloud sync is now a choice in Settings → iCloud, off by default. If you synced before, turn it on there to keep syncing.",
+      "The New Connection dialog opens instantly, even with many saved connections.",
+      "The SQL and MongoDB editors give the full width to the editor and results: the Assistant side strip is gone. Open the assistant chat from a connection instead.",
+    ],
+  },
+  {
     version: "0.8.0",
     date: "2026-11-21",
     changes: [
