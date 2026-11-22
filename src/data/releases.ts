@@ -39,8 +39,8 @@ export const releases: Release[] = [
     ],
     sparkle: {
       edSignature:
-        "5eWIvplQcfLeCa4rl8Dto5K5hE1hBRHTRXWLoTJ10nN90bwFTa5TakJEpKLm+p/WTCtDpWM64L8KqhzZ2vwjAw==",
-      length: 20583865,
+        "os6a2MW7LfBAyP84caBVqCw1inKtyXSGF2heSQmIoge+OShj+Qs5nMOnbOucYP8Q9lLdR5QJG0cMpt9uvBEcDw==",
+      length: 20583497,
     },
     windows: {
       edSignature:
